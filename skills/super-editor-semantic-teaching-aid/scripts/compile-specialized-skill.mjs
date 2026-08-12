@@ -23,6 +23,39 @@ function ensureSafeTarget(outputDirectory, skillName) {
   return target
 }
 
+function collectArtifactPaths(pack, artifactRoot) {
+  const references = new Set([pack.execution?.capability_snapshot?.catalog_path])
+  for (const forwardCase of pack.execution?.forward_cases || []) references.add(forwardCase.evidence_artifact)
+  const queue = [...references]
+  while (queue.length) {
+    const reference = queue.shift()
+    if (!reference || references.has(`${reference}\0processed`)) continue
+    references.add(`${reference}\0processed`)
+    const filename = path.resolve(artifactRoot, reference)
+    const relative = path.relative(artifactRoot, filename)
+    if (relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) {
+      throw new Error(`artifact path escapes rule-pack root: ${reference}`)
+    }
+    const value = JSON.parse(fs.readFileSync(filename, 'utf8'))
+    const visit = (item, key) => {
+      if (Array.isArray(item)) return item.forEach((child) => visit(child))
+      if (!item || typeof item !== 'object') return
+      for (const [childKey, child] of Object.entries(item)) {
+        if ((childKey === 'artifact' || childKey === 'evidence_artifact') && typeof child === 'string') {
+          const nested = path.relative(artifactRoot, path.resolve(path.dirname(filename), child)).replaceAll('\\', '/')
+          if (!references.has(nested)) {
+            references.add(nested)
+            queue.push(nested)
+          }
+        }
+        visit(child, childKey)
+      }
+    }
+    visit(value)
+  }
+  return [...references].filter((reference) => reference && !reference.endsWith('\0processed')).sort()
+}
+
 export function renderSpecializedSkill(pack) {
   const name = pack.identity.skill_name
   const family = markdownText(pack.identity.book_family)
@@ -40,7 +73,8 @@ ${COMPILER_MARKER}
 # ${markdownText(pack.identity.display_name)}
 
 按版本 ${pack.identity.version} 的已确认语义规则执行。完整读取
-[rule-pack.json](references/rule-pack.json)，不得把其中的自然语言意图改写为固定插槽。
+[rule-pack.json](references/rule-pack.json)、[workflow.md](references/workflow.md) 和
+[batch-and-provenance.md](references/batch-and-provenance.md)，不得把其中的自然语言意图改写为固定插槽。
 
 ## 执行
 
@@ -53,12 +87,18 @@ ${COMPILER_MARKER}
 6. 遵守每条规则的 \`on_missing\`、\`on_ambiguous\` 和验收。未知动作按其 \`intent\`、
    \`required_capabilities\` 与 \`validate\` 组合执行，不把动作类型当封闭枚举。
 7. 保存回读、审计和截图后，在稳定区块 JSON 的 \`ai_semantic_provenance\` 写入 Skill/版本、规则 ID、
-   运行时绑定与证据、源/样章/结果哈希；保留未知区块字段。
+   严格 source/target identity 绑定、可复算证据哈希及源/样章/结果哈希；保留未知区块字段。非 legacy
+   运行的 source bindings、target bindings、evidence 均不得为空。写入 provenance 会再次改变页面，所以必须
+   真实调用 \`editor_save_verified(scope=current)\`、\`editor_export_slide\`，保存两个完整 MCP envelope，再用
+   \`validate-readback\` 校验 saved/verified、slide identity、编辑器 FNV 页哈希，以及明确 \`uuid\` 承载区块
+   \`template_data_content.ai_semantic_provenance\` 中的 run ID 和完整性哈希；未生成 canonical readback receipt
+   artifact 时不得把目录标为 verified。测试 fixture 不代表浏览器真实调用，不能替代运行时回执。
 
 使用本 Skill 自带的脚本生成来源和账本：
 
 \`\`\`powershell
 node scripts/provenance-tools.mjs create --rule-pack references/rule-pack.json --input <run.json> --out <provenance.json>
+node scripts/provenance-tools.mjs validate-readback --input <editor-export-slide-envelope.json> --save-receipt <editor-save-verified-envelope.json> --expected <provenance.json> --carrier-block-id <uuid> --out <readback-receipt.json>
 node scripts/batch-ledger.mjs init --rule-pack references/rule-pack.json --books <books.json> --out <ledger.json>
 \`\`\`
 
@@ -85,8 +125,11 @@ export function renderOpenAiYaml(pack) {
 `
 }
 
-export function compileSpecializedSkill(pack, outputDirectory, { force = false } = {}) {
-  const validation = assertValidRulePack(pack)
+export function compileSpecializedSkill(pack, outputDirectory, { force = false, artifactRoot } = {}) {
+  const sourceScriptDirectory = path.dirname(fileURLToPath(import.meta.url))
+  const sourceReferenceDirectory = path.resolve(sourceScriptDirectory, '..', 'references')
+  const resolvedArtifactRoot = path.resolve(artifactRoot || sourceReferenceDirectory)
+  const validation = assertValidRulePack(pack, { artifactRoot: resolvedArtifactRoot })
   if (!['trial_approved', 'validated'].includes(pack.identity.status)) {
     throw new Error('only trial_approved or validated rule packs can be compiled')
   }
@@ -108,7 +151,10 @@ export function compileSpecializedSkill(pack, outputDirectory, { force = false }
     }
     const generated = new Set([
       'SKILL.md', 'agents/openai.yaml', 'references/rule-pack.json',
-      'scripts/semantic-rule-tools.mjs', 'scripts/provenance-tools.mjs', 'scripts/batch-ledger.mjs'
+      'references/workflow.md', 'references/batch-and-provenance.md',
+      'scripts/semantic-rule-tools.mjs', 'scripts/provenance-tools.mjs', 'scripts/batch-ledger.mjs',
+      'scripts/generate-capability-catalog.mjs',
+      ...collectArtifactPaths(pack, resolvedArtifactRoot).map((filename) => `references/${filename}`)
     ])
     preservedFiles = fs.readdirSync(target, { recursive: true, withFileTypes: true })
       .filter((entry) => entry.isFile())
@@ -120,11 +166,21 @@ export function compileSpecializedSkill(pack, outputDirectory, { force = false }
   atomicWriteText(path.join(target, 'SKILL.md'), renderSpecializedSkill(pack))
   atomicWriteText(path.join(target, 'agents', 'openai.yaml'), renderOpenAiYaml(pack))
   atomicWriteText(path.join(target, 'references', 'rule-pack.json'), `${JSON.stringify(pack, null, 2)}\n`)
-  const runtimeScripts = ['semantic-rule-tools.mjs', 'provenance-tools.mjs', 'batch-ledger.mjs']
-  const sourceScriptDirectory = path.dirname(fileURLToPath(import.meta.url))
+  const runtimeScripts = [
+    'semantic-rule-tools.mjs', 'provenance-tools.mjs', 'batch-ledger.mjs', 'generate-capability-catalog.mjs'
+  ]
+  const referenceFiles = ['workflow.md', 'batch-and-provenance.md']
+  for (const filename of referenceFiles) {
+    atomicWriteText(path.join(target, 'references', filename), fs.readFileSync(path.join(sourceReferenceDirectory, filename), 'utf8'))
+  }
   for (const filename of runtimeScripts) {
     atomicWriteText(path.join(target, 'scripts', filename), fs.readFileSync(path.join(sourceScriptDirectory, filename), 'utf8'))
   }
+  const artifactFiles = collectArtifactPaths(pack, resolvedArtifactRoot)
+  for (const filename of artifactFiles) {
+    atomicWriteText(path.join(target, 'references', filename), fs.readFileSync(path.join(resolvedArtifactRoot, filename), 'utf8'))
+  }
+  assertValidRulePack(pack, { artifactRoot: path.join(target, 'references') })
   return {
     skill_name: pack.identity.skill_name,
     version: pack.identity.version,
@@ -139,6 +195,8 @@ export function compileSpecializedSkill(pack, outputDirectory, { force = false }
       'SKILL.md',
       'agents/openai.yaml',
       'references/rule-pack.json',
+      ...referenceFiles.map((filename) => `references/${filename}`),
+      ...artifactFiles.map((filename) => `references/${filename}`),
       ...runtimeScripts.map((filename) => `scripts/${filename}`)
     ]
   }
@@ -168,7 +226,10 @@ export function runCli(argv = process.argv.slice(2)) {
   }
   const options = parseArgs(argv)
   if (!options.input || !options['output-dir']) throw new Error('--input and --output-dir are required')
-  const result = compileSpecializedSkill(readJson(options.input), options['output-dir'], { force: options.force })
+  const result = compileSpecializedSkill(readJson(options.input), options['output-dir'], {
+    force: options.force,
+    artifactRoot: path.dirname(path.resolve(options.input))
+  })
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`)
   return 0
 }

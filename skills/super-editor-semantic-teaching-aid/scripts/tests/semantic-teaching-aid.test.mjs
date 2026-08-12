@@ -16,12 +16,13 @@ import { compileSpecializedSkill } from '../compile-specialized-skill.mjs'
 import { createProvenance, matchSourceCandidates, planRefinement, validateProvenance } from '../provenance-tools.mjs'
 import {
   acquireLock,
-  initLedger,
+  initLedger as initLedgerRuntime,
   lockStatus,
   releaseLock,
   transitionLedger,
   validateLedger
 } from '../batch-ledger.mjs'
+import { materializeExecutablePack } from './semantic-fixtures.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const skillRoot = path.resolve(__dirname, '..', '..')
@@ -52,17 +53,19 @@ function trialPack() {
   pack.identity.status = 'trial_approved'
   pack.templates.default.snapshot_hash = sha('a')
   pack.templates.variants.forEach((variant) => { variant.snapshot_hash = sha('b') })
+  pack.execution.trial_approval = { approved: true, evidence: ['explicit test fixture approval'] }
   return pack
 }
 
-function validatedPack() {
+function validatedPack(artifactRoot = tempDirectory('semantic-forward-artifacts-')) {
   const pack = trialPack()
-  pack.identity.status = 'validated'
-  pack.forward_tests = [
-    { id: 'forward-a', source_label: '不同结构课时 A', status: 'passed', evidence: ['保存回读与视觉验收通过'], result_hash: sha('c') },
-    { id: 'forward-b', source_label: '单元复习 B', status: 'passed', evidence: ['特殊样章路由及交互验收通过'], result_hash: sha('d') }
-  ]
+  materializeExecutablePack(pack, artifactRoot, { validated: true })
+  Object.defineProperty(pack, '__artifactRoot', { value: artifactRoot })
   return pack
+}
+
+function initLedger(pack, books, options = {}) {
+  return initLedgerRuntime(pack, books, { ...options, rulePackArtifactRoot: pack.__artifactRoot })
 }
 
 describe('semantic rule pack', () => {
@@ -90,16 +93,16 @@ describe('semantic rule pack', () => {
     pack.rules[0].target.anchors = [{ kind: 'element_id', value: 'runtime-1' }]
     const invalidId = validateRulePack(pack)
     assert.equal(invalidId.valid, false)
-    assert.match(invalidId.errors.join('\n'), /runtime-only ID/)
+    assert.match(invalidId.errors.join('\n'), /unknown fields: anchors/)
 
     const trial = trialPack()
     trial.templates.default.snapshot_hash = null
     assert.match(validateRulePack(trial).errors.join('\n'), /templates\.default\.snapshot_hash is required/)
 
     const validated = validatedPack()
-    assert.equal(validateRulePack(validated).valid, true)
-    validated.forward_tests[0].evidence = []
-    assert.match(validateRulePack(validated).errors.join('\n'), /evidence must be non-empty when passed/)
+    assert.equal(validateRulePack(validated, { artifactRoot: validated.__artifactRoot }).valid, true)
+    delete validated.forward_tests[0].evidence_artifact
+    assert.match(validateRulePack(validated, { artifactRoot: validated.__artifactRoot }).errors.join('\n'), /evidence_artifact is required when passed/)
   })
 
   test('controlled replace overwrites an existing UTF-8 file repeatedly', () => {
@@ -301,27 +304,20 @@ describe('batch ledger and target lock', () => {
     assert.equal(lockStatus(lockDirectory, 'target-100').held, false)
   })
 
-  test('CLI lock acquire/status/release round-trips', () => {
+  test('lock acquire/status/release library injection round-trips under node:test', () => {
     const directory = tempDirectory('semantic-lock-cli-')
-    const common = ['--lock-dir', directory, '--target-book', 'target-cli']
-    const acquire = spawnSync(process.execPath, [ledgerCli, 'acquire-lock', ...common, '--owner', 'owner-cli'], { encoding: 'utf8' })
-    assert.equal(acquire.status, 0, acquire.stderr)
-    assert.equal(JSON.parse(acquire.stdout).held, true)
-    const status = spawnSync(process.execPath, [ledgerCli, 'lock-status', ...common], { encoding: 'utf8' })
-    assert.equal(JSON.parse(status.stdout).owner, 'owner-cli')
-    const release = spawnSync(process.execPath, [ledgerCli, 'release-lock', ...common, '--owner', 'owner-cli'], { encoding: 'utf8' })
-    assert.equal(release.status, 0, release.stderr)
-    assert.equal(JSON.parse(release.stdout).released, true)
+    assert.equal(acquireLock(directory, 'target-cli', 'owner-cli').held, true)
+    assert.equal(lockStatus(directory, 'target-cli').owner, 'owner-cli')
+    assert.equal(releaseLock(directory, 'target-cli', 'owner-cli').released, true)
   })
 
   test('CLI transitions replace the same ledger file repeatedly on Windows', () => {
     const directory = tempDirectory('semantic-ledger-cli-')
-    const lockDirectory = path.join(directory, 'locks')
     const packFile = path.join(directory, 'pack.json')
     const booksFile = path.join(directory, 'books.json')
     const ledgerFile = path.join(directory, 'ledger.json')
     const preflightFile = path.join(directory, 'preflight.json')
-    writeJson(packFile, validatedPack())
+    writeJson(packFile, validatedPack(directory))
     writeJson(booksFile, [{ item_id: 'cli-item', target_book_id: 'cli-target' }])
     writeJson(preflightFile, {
       fingerprint: {
@@ -331,16 +327,19 @@ describe('batch ledger and target lock', () => {
         resolved_template_id: '41073'
       }
     })
-    const init = spawnSync(process.execPath, [ledgerCli, 'init', '--rule-pack', packFile, '--books', booksFile, '--out', ledgerFile], { encoding: 'utf8' })
+    const isolatedLocalAppData = path.join(directory, 'local-app-data')
+    const cliEnvironment = { ...process.env, LOCALAPPDATA: isolatedLocalAppData }
+    const run = (args) => spawnSync(process.execPath, [ledgerCli, ...args], { encoding: 'utf8', env: cliEnvironment })
+    const init = run(['init', '--rule-pack', packFile, '--books', booksFile, '--out', ledgerFile])
     assert.equal(init.status, 0, init.stderr)
-    const lockArgs = ['--lock-dir', lockDirectory, '--target-book', 'cli-target', '--owner', 'cli-owner']
-    assert.equal(spawnSync(process.execPath, [ledgerCli, 'acquire-lock', ...lockArgs], { encoding: 'utf8' }).status, 0)
-    const common = ['--ledger', ledgerFile, '--item', 'cli-item', '--lock-dir', lockDirectory, '--owner', 'cli-owner']
-    const planned = spawnSync(process.execPath, [ledgerCli, 'transition', ...common, '--to', 'planned'], { encoding: 'utf8' })
+    const lockArgs = ['--target-book', 'cli-target', '--owner', 'cli-owner']
+    assert.equal(run(['acquire-lock', ...lockArgs]).status, 0)
+    const common = ['--ledger', ledgerFile, '--item', 'cli-item', '--owner', 'cli-owner']
+    const planned = run(['transition', ...common, '--to', 'planned'])
     assert.equal(planned.status, 0, planned.stderr)
-    const preflighted = spawnSync(process.execPath, [ledgerCli, 'transition', ...common, '--to', 'preflighted', '--evidence', preflightFile], { encoding: 'utf8' })
+    const preflighted = run(['transition', ...common, '--to', 'preflighted', '--evidence', preflightFile])
     assert.equal(preflighted.status, 0, preflighted.stderr)
     assert.equal(JSON.parse(fs.readFileSync(ledgerFile, 'utf8')).items[0].state, 'preflighted')
-    assert.equal(spawnSync(process.execPath, [ledgerCli, 'release-lock', ...lockArgs], { encoding: 'utf8' }).status, 0)
+    assert.equal(run(['release-lock', ...lockArgs]).status, 0)
   })
 })

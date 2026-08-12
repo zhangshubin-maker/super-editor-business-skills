@@ -41,6 +41,9 @@
 
 保持 `intent`、锚点和正反例为自然语言。结构字段只约束可重复执行所需的边界。
 
+选择器证据写成 `class/kind/claim/observation`；ID 和 slot 只允许进入 `optional_fingerprints`。不得把
+`title-slot`、`element_id` 或类似字符串改名为 role/evidence 来绕过语义与结构证据。
+
 ## 3. 试制与纠正
 
 选择同时覆盖主要内容和潜在例外的一个目录。写前输出只读 preflight；获用户授权后：
@@ -48,9 +51,52 @@
 1. 创建/进入试制目标并建立 checkpoint；
 2. 应用样章；
 3. 按规则顺序执行文本、图片、数字模块、区块、布局和大纲原子动作；
-4. 每个动作记录运行时绑定与证据；
-5. 保存回读，运行结构审计并截图核对；
-6. 把来源追溯放入现有区块 JSON 的 `ai_semantic_provenance` 字段。
+4. 每个规则都记录运行时绑定与证据；条件不命中也要以 `skipped` 和证据覆盖，不能留下空的
+   `rule_bindings`；
+5. 保存回读，运行结构审计、规则内 `severity=error` 验收、规则包顶层错误级验收并截图核对；
+6. 记录与本次模式一致的用户授权：试制为 `trial_authorization`，批量为 `batch_authorization`。授权、
+   错误级验收和规则绑定均不能为空；
+7. 把来源追溯放入现有区块 JSON 的 `ai_semantic_provenance` 字段。由于这次写入本身再次改变了页面，
+   必须随后再次调用 `editor_save_verified`、`editor_export_slide`，并执行
+   `provenance-tools.mjs validate-readback` 核对真实保存回执、页身份、页哈希以及承载区块中的 `run_id` 和
+   `integrity_hash`。后置回读未通过时，目录不能标为 `verified`。
+
+正常试制和批量的每条 `rule_bindings` 都必须有非空 `source_bindings`、`target_bindings` 和 `evidence`。
+绑定项固定记录 `semantic_role/identity/snapshot_hash/binding_hash`；identity 固定记录
+`side/book_id/catalog_id/block_id/entity_kind/entity_id`，且书本、目录必须等于本次 provenance 的真实来源或目标。
+证据项固定记录 `kind/summary/identity/artifact_hash/evidence_hash`，identity 必须引用同规则已声明的绑定。
+`binding_hash`、`evidence_hash` 和规则 `result_hash` 都是可复算的 canonical SHA-256，不能用自然语言、运行时
+ID 或空数组代替。只有明确标记为 `legacy_inferred` 且保持 `restricted=true` 的旧记录可走受限兼容分支。
+
+`validate-readback` 只接受插件当前真实 MCP 返回契约：外层必须是单一 `content[0].type=text`，其 `text`
+分别解码为 `editor_save_verified` 的 current-scope 保存回执和 `editor_export_slide` 的
+`{slideId, blocks}`。承载区块用导出对象的真实 `uuid` 唯一定位，来源对象必须直接位于
+`blocks[i].template_data_content.ai_semantic_provenance`；任意 `data` 包装、`blockId` 替身、字符串
+`template_data_content` 或其他嵌套对象都不能充当回读证据。保存回执必须同时证明 `saved=true`、
+`verified=true`、`dirty=false`、相同 slide identity，且 `contentHash=persistedContentHash`；脚本按编辑器实际
+算法从导出 blocks 重算 `fnv1a32` 页哈希并再次比对。
+
+```powershell
+node scripts/provenance-tools.mjs validate-readback `
+  --input <editor-export-slide-envelope.json> `
+  --save-receipt <editor-save-verified-envelope.json> `
+  --expected <provenance.json> `
+  --carrier-block-id <uuid> `
+  --out <readback-receipt.json>
+```
+
+成功输出是 `semantic_provenance_readback_receipt` artifact，绑定 run、provenance integrity、来源/目标身份、
+保存/导出 envelope hash、页哈希、blocks/carrier hash 和 `artifact_integrity.canonical_hash`，供账本终态读取。
+单元测试只可严格仿真上述返回结构，并必须注明没有调用浏览器；真实运行仍必须实际调用两个编辑器工具，
+测试 fixture 不能替代运行时回执。
+
+`validate-readback` 的结果保存到运行证据/批量账本，不要再回写进同一个 provenance；否则每次写入验收结果
+都会改变页面并产生无穷的“再保存”链。provenance 内保存的是可复算的预期哈希，外部运行证据证明该哈希已经
+在保存后的页面中被回读。
+
+`provenance-tools.mjs create` 会把规则包中的每条规则和所有错误级验收列入 coverage。旧运行记录缺少某个
+错误级验收时只会生成 `legacy_inferred` 的 `not_tested` 覆盖并把运行标为受限，不能据此进入批量。正常试制和
+批量必须补齐真实 `passed` 证据，不得把合成覆盖当作验收通过。
 
 收到纠正时使用四类：
 
@@ -65,8 +111,30 @@
 
 ## 4. 导出与前向验证
 
-先把规则包状态设为 `trial_approved` 并编译草稿专属 Skill。选至少两个不参与教授、结构有差异的同类
+先从当前安装的原子插件刷新能力目录，再把规则包状态设为 `trial_approved` 并编译草稿专属 Skill：
+
+```powershell
+node scripts/generate-capability-catalog.mjs --plugin-dir <super-editor-control> --out references/super-editor-capability-catalog.json
+node scripts/semantic-rule-tools.mjs validate --input references/rule-pack.json
+```
+
+能力快照必须绑定生成目录的 `catalog_hash`，且声明能力只能是目录工具名的子集。编译后的 Skill 必须携带
+同一目录及已登记的前向 evidence artifacts，脱离母 Skill 后仍能重新校验。
+
+选至少两个不参与教授、结构有差异的同类
 目录/书进行前向验证；不得把预期答案泄漏给验证过程。
+
+每个前向案例先落盘真实 JSON evidence artifact，再登记状态。主 artifact 必须绑定自身 case ID，并引用：
+
+- 源 `editor_export_semantic_snapshot` 文件、文件 SHA 和 `snapshotStableHash`；
+- 完整样章 JSON、文件 SHA 和 canonical template hash；
+- 同一目标的 before/after JSON、各自文件 SHA 和不同 canonical hash；
+- `editor_save_verified` 保存回执 JSON 及 canonical hash；
+- provenance 二次保存后的导出/回读 JSON 及 canonical hash；
+- acceptance report JSON；报告中的每个验收必须引用实际 JSON evidence 文件及文件 SHA。
+
+只填哈希、自然语言 evidence 或“已通过”状态不构成前向验证。外层与每个嵌套引用的文件 SHA、canonical
+hash、case/source/target 绑定任一不匹配，都必须保持未验证状态。
 
 只有以下条件同时满足才能设为 `validated`：
 
@@ -75,6 +143,9 @@
 - 所有未解决反馈都有明确的 `instance_fix` 或停止策略；
 - 样章变体优先级无并列歧义；
 - 数字模块与来源追溯完成回读。
+
+这里的“来源追溯完成回读”特指 provenance 写入后的第二次保存、导出和 `validate-readback`，不能用写入
+provenance 之前的页面保存结果代替。
 
 规则变化后版本递增、重新计算哈希并重跑受影响的验证，不在原版本上静默覆盖。
 
@@ -85,3 +156,8 @@
 
 同一幂等键已 `verified` 时跳过。`outcome_unknown` 必须依靠真实回读恢复，禁止直接重放写入。批量中发现
 新模式时标记 `needs_review`，在试制流程产生新版本后再继续。
+
+既有成品缺少来源时只能走 `legacy_inferred` 受限分支：先运行 `match-source`，保留查询、完整候选集、逐项
+分数和证据，再由用户明确确认候选。零分、没有可比较元数据或并列第一都不是唯一匹配。匹配输出始终为
+`automatic_write=false`；只有把 `inference` 和人工确认一并写入 provenance 后，才可称为人工补录来源，
+且该记录本身不能授权自动批量改写内容。

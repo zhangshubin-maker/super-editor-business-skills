@@ -1,7 +1,9 @@
 # 语义规则包
 
-规则包的机器契约见 [semantic-rule-pack.schema.json](semantic-rule-pack.schema.json)，可编辑起点见
-[rule-pack.example.json](rule-pack.example.json)。运行 `semantic-rule-tools.mjs validate` 后再试制或编译。
+规则包的 JSON Schema 见 [semantic-rule-pack.schema.json](semantic-rule-pack.schema.json)，可编辑起点见
+[rule-pack.example.json](rule-pack.example.json)。Schema 只提供单文件结构基线；跨字段关系、canonical hash、
+能力目录、文件 SHA 和外部 evidence artifact 绑定以 `semantic-rule-tools.mjs validate` 为权威。二者不宣称
+完全 parity。示例没有真实试制 evidence，因此明确保持 `draft`、未批准且没有前向案例。
 
 ## 设计边界
 
@@ -9,11 +11,18 @@
 - `applicability.intent` 用自然语言说明适用书类，元数据只用于召回和排除，不替代语义判断。
 - `templates.default` 是用户指定样章；`variants` 表达特殊目录样章，按唯一最高 `priority` 选择。
 - `rules` 按 `order` 执行。每条规则必须包含语义作用域、目标角色、基数、动作、异常策略和验收。
-- `training.feedback` 保存用户纠正的分类和是否确认；`forward_tests` 保存未参与教授的验证证据。
+- `execution.capability_snapshot` 保存批准时实际可用的原子能力子集，并同时绑定审计目录路径、目录哈希和
+  子集哈希。仓库目录 [super-editor-capability-catalog.json](super-editor-capability-catalog.json) 必须由安装的
+  `super-editor-control` MCP 实际执行 `tools/list` 生成，含插件版本与排序后的完整工具名。
+- `execution.trial_approval` 保存明确的人工试制批准；`execution.forward_cases` 保存不可由状态摘要替代的来源、目标和验收证据。
+- `training.feedback` 同时记录 `confirmed`、`resolved` 和解决说明；`forward_tests` 只记录与 `forward_cases.id` 对应的运行状态摘要。
 
-规则选择器可把稳定的 template/sourceId 当作可选指纹或锚点，但必须同时具有语义角色、基数、结构证据和
-歧义策略；任何 ID 都不能成为唯一选择条件。运行时 elementId/blockId 只写进 provenance 绑定证据。
-模板 ID 是用户选择的业务输入，可以保留。
+每个来源和目标选择器都必须填写 `role`、`cardinality` 和至少两项 `evidence`：至少一项
+`class: semantic`，至少一项 `class: structure`。每项 evidence 是 `additionalProperties: false` 的严格对象，
+只包含 `class`、`kind`、`claim` 与可从快照回读的 `observation`。固定 slot、运行时 ID、仅编号的值或把 ID
+包装进 role/claim/observation 的写法一律拒绝。稳定的 template/sourceId/slot 指纹只能放在
+`optional_fingerprints`，并说明 `intent`；即使指纹命中也仍须满足双类证据和基数。
+运行时 elementId/blockId 只写进 provenance 绑定证据。模板 ID 是用户选择的业务输入，可以保留。
 
 ## 动作
 
@@ -32,6 +41,12 @@
 | `other` 或新名称 | 当前表未覆盖的语义动作 | 必须声明 `intent`、原子能力、验收和歧义策略 |
 
 `action.type` 不是封闭枚举。表中名称只是常见表达；不要为了套用动作名而牺牲用户原始语义。
+
+`draft` 可以声明尚未安装的未来动作，用于继续教授。`action.type` 始终开放，`atomic_sequence` 可递归嵌套。
+进入 `trial_approved` 或 `validated` 时，校验器会递归
+展开 `atomic_sequence.steps`，把每层动作、规则验收和整体验收的 `required_capabilities` 与
+`execution.capability_snapshot.capabilities` 比对，再验证该子集中的每个名字确实存在于所绑定的 capability
+catalog。不存在的工具即使同时写入自报清单并重算 snapshot hash 也会被拒绝。
 
 样式策略：
 
@@ -62,8 +77,14 @@
 ## 版本
 
 - `draft`：仍在教授，不允许批量。
-- `trial_approved`：代表性目录已由用户确认，可导出草稿 Skill，但不允许生产批量。
-- `validated`：至少两个前向案例通过，可以创建批量账本。
+- `trial_approved`：必须有绑定真实 capability catalog 的非空能力快照、样章快照和
+  `trial_approval.approved: true` 的人工证据；可导出草稿 Skill，但不允许生产批量。
+- `validated`：除试制门禁外，必须有至少两个 ID 唯一的 `passed` 前向案例；每个状态记录必须绑定同 ID 的
+  `execution.forward_cases.evidence_artifact`。该相对路径必须落在规则包/Skill 的 artifact 根目录内，且
+  `artifact_sha256` 必须匹配实际 JSON 文件。artifact 进一步绑定 case ID、源 semantic snapshot artifact/hash、
+  样章 artifact/canonical hash、目标 before/after artifact/hash、保存回执、provenance 回读和验收报告；每个
+  引用都要校验实际文件 SHA-256。至少两个案例必须使用不同 evidence artifact、源、目标和前后结果；所有
+  顶层验收均须在各自 acceptance report 中为 `passed`，且不能存在未确认或未解决的反馈。
 - `deprecated`：保留历史追溯，不再新运行。
 
 规则、模板路由、错误级验收或默认策略变化时递增版本并生成新哈希。纯 `instance_fix` 不改变通用版本。

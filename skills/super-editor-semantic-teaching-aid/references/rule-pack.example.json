@@ -34,6 +34,27 @@
     "on_missing": "needs_review",
     "on_ambiguous": "stop"
   },
+  "execution": {
+    "capability_snapshot": {
+      "catalog_path": "super-editor-capability-catalog.json",
+      "catalog_hash": "sha256:ebbfbdadfe114efb26fa341aed26638622ffbb7ec24327498d6866740e2824d8",
+      "snapshot_hash": "sha256:7eadf45ca109d338f0d7c829ea671b00303a0d3c50adbd49142fb4a7fccb2b34",
+      "capabilities": [
+        "editor_text_document",
+        "editor_text_set_content",
+        "editor_text_inspect_layout",
+        "editor_text_search",
+        "editor_save_verified",
+        "editor_audit_content"
+      ],
+      "evidence": ["由当前 super-editor-control 工具清单生成；实际晋级时必须替换为当次能力快照"]
+    },
+    "trial_approval": {
+      "approved": false,
+      "evidence": []
+    },
+    "forward_cases": []
+  },
   "rules": [{
     "id": "replace-lesson-title",
     "order": 10,
@@ -43,12 +64,33 @@
     "source": {
       "role": "原课件本课主标题",
       "cardinality": { "min": 1, "max": 1 },
-      "anchors": [{ "kind": "structure", "value": "页面阅读顺序中最主要的标题" }]
+      "evidence": [{
+        "class": "semantic",
+        "kind": "visible_text_meaning",
+        "claim": "该文本承担当前目录的课题名称语义",
+        "observation": "课件中存在直接命名本课主题的可见标题文本"
+      }, {
+        "class": "structure",
+        "kind": "reading_order",
+        "claim": "阅读层级可区分主标题与小节标题、页眉或题干",
+        "observation": "页面阅读顺序中层级最高的标题对应当前目录主题"
+      }]
     },
     "target": {
       "role": "样章页面主标题",
       "cardinality": { "min": 1, "max": 1 },
-      "anchors": [{ "kind": "template_source_id", "value": "title-source", "optional": true, "intent": "仅作为样章结构指纹" }]
+      "evidence": [{
+        "class": "semantic",
+        "kind": "template_text_role",
+        "claim": "该文本承担样章当前课题标题角色",
+        "observation": "文本用于呈现当前课题名称而不是固定装饰文案"
+      }, {
+        "class": "structure",
+        "kind": "layout_hierarchy",
+        "claim": "版面层级能够区分主标题和其他文本",
+        "observation": "样章标题区中层级最高且基数唯一的是该文本元素"
+      }],
+      "optional_fingerprints": [{ "kind": "template_source_id", "value": "title-source", "intent": "仅作为样章结构辅助指纹，不参与唯一匹配" }]
     },
     "action": {
       "type": "set_rich_text",
