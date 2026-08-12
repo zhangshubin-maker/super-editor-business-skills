@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "identity": {
+    "skill_name": "primary-math-practice-interface",
+    "display_name": "小学数学练习册界面教辅",
+    "version": "0.1.0",
+    "status": "draft",
+    "book_family": "小学数学同步练习类"
+  },
+  "applicability": {
+    "intent": "适用于按课时编排且含例题、练习和提交按钮的小学数学同步练习册",
+    "include": { "subject": "数学", "grade": ["三年级", "四年级"] },
+    "exclude": { "catalog_name_contains": ["答案"] }
+  },
+  "templates": {
+    "default": {
+      "template_id": "41073",
+      "intent": "普通课时使用的练习型样章",
+      "snapshot_hash": null,
+      "anchors": [{ "kind": "template_source_id", "value": "title-source", "optional": true, "intent": "辅助识别标题元素" }]
+    },
+    "variants": [{
+      "id": "unit-review",
+      "priority": 100,
+      "when": "目录语义是单元复习而不是普通课时",
+      "template_id": "41075",
+      "intent": "单元复习使用更多练习区块的样章",
+      "snapshot_hash": null
+    }]
+  },
+  "defaults": {
+    "style_policy": "preserve_target",
+    "module_policy": "reuse_model_relation",
+    "on_missing": "needs_review",
+    "on_ambiguous": "stop"
+  },
+  "rules": [{
+    "id": "replace-lesson-title",
+    "order": 10,
+    "intent": "用原课件本课主标题替换样章标题并保留样章排版",
+    "when": "目录包含清晰的本课主题",
+    "scope": { "intent": "所有普通课时与单元复习目录" },
+    "source": {
+      "role": "原课件本课主标题",
+      "cardinality": { "min": 1, "max": 1 },
+      "anchors": [{ "kind": "structure", "value": "页面阅读顺序中最主要的标题" }]
+    },
+    "target": {
+      "role": "样章页面主标题",
+      "cardinality": { "min": 1, "max": 1 },
+      "anchors": [{ "kind": "template_source_id", "value": "title-source", "optional": true, "intent": "仅作为样章结构指纹" }]
+    },
+    "action": {
+      "type": "set_rich_text",
+      "intent": "迁移标题内容并保留样章字体、字号和文本框",
+      "required_capabilities": ["editor_text_document", "editor_text_set_content", "editor_text_inspect_layout"],
+      "content_policy": "保持原课件措辞和顺序",
+      "style_policy": "preserve_target"
+    },
+    "on_missing": "needs_review",
+    "on_ambiguous": "stop",
+    "validate": [{
+      "id": "title-visible-once",
+      "intent": "生成页中主标题完整可见且只出现一次",
+      "severity": "error",
+      "required_capabilities": ["editor_text_search", "editor_text_inspect_layout"]
+    }]
+  }],
+  "acceptance": [{
+    "id": "page-save-readback",
+    "intent": "每页保存后导出回读且不存在越界、空文本或占位内容",
+    "severity": "error",
+    "required_capabilities": ["editor_save_verified", "editor_audit_content"]
+  }],
+  "training": {
+    "feedback": [],
+    "examples": [{
+      "id": "ordinary-title-example",
+      "kind": "positive",
+      "description": "原课件顶部居中的课题名进入样章唯一的主标题文本框",
+      "rule_ids": ["replace-lesson-title"]
+    }]
+  },
+  "forward_tests": []
+}

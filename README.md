@@ -12,7 +12,7 @@
 ## Skills
 
 - `super-editor-pdf-annotation-import`：根据 PDF 标注 JSON 和本地音频，搜索并切换目标书本，逐页换算 794 宽画布坐标，创建 Lottie 按钮并关联音频或图文数字模块。
-- `super-editor-ai-interface-authoring`：复用 lesson-engine 的 47 份样章插槽规则与精确模板路由，通过 Codex 对话生成可追溯的界面型 AI 教辅，并支持历史来源回填和文本/布局三方微调。
+- `super-editor-semantic-teaching-aid`：连接完整原课件并指定样章，用自然语言教授文本、图片、数字模块、区块、布局和大纲转换规则；先试制和修正，再导出“书类 + 样章”专属 Skill，前向验证后按账本批量执行。该流程由 Codex 语义理解和 `super-editor-control` 原子能力驱动，不依赖固定插槽或旧任务体系。
 
 ## 使用
 
@@ -26,7 +26,7 @@
 
 ```text
 使用 $super-editor-pdf-annotation-import，把这个标注 JSON 和本地音频目录导入指定的 PDF 超媒书本。
-使用 $super-editor-ai-interface-authoring，根据这本原课件和参考样章生成一套可追溯的界面教辅。
+使用 $super-editor-semantic-teaching-aid，连接这本原课件，按指定样章试制并学习规则，确认后导出专属 Skill。
 ```
 
 分享整个项目时，可以压缩项目目录或推送到 Git 仓库；接收方只需安装其中需要的 Skill。
