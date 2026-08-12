@@ -1,0 +1,18 @@
+{
+  "lesson-engine": {
+    "enabled": true,
+    "command": "powershell.exe",
+    "args": [
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "./scripts/start-lesson-engine.ps1"
+    ],
+    "cwd": ".",
+    "startup_timeout_sec": 15,
+    "tool_timeout_sec": 180
+  }
+}
