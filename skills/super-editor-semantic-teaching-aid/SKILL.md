@@ -1,6 +1,6 @@
 ---
 name: super-editor-semantic-teaching-aid
-description: 通过 Codex 对话和 super-editor-control 原子能力，以完整原课件与指定样章为依据试制界面型教辅、学习自然语言转换规则、按用户反馈迭代、导出“书类 + 样章”专属 Skill，并在前向验证后按书单批量生成。用户要求摆脱固定插槽、`_analyse.json` 或 lesson-engine，以语义方式控制文本、图片、数字模块、区块选择/复用/删除、布局和大纲时使用；本 Skill 不依赖旧 OpenCode 或固定插槽链路。
+description: 通过 Codex 对话和 super-editor-control 原子能力，以完整原课件与指定样章为依据试制、批量生成或继续微调界面型教辅，学习自然语言转换规则并导出“书类 + 样章”专属 Skill。用户要求摆脱固定插槽、`_analyse.json` 或 lesson-engine，以语义方式控制文本、图片、数字模块、区块、布局和大纲，或需要在保留 block/element ID 与交互关系的前提下高效批量调整既有目录时使用；本 Skill 不依赖旧 OpenCode 或固定插槽链路。
 ---
 
 # Super Editor Semantic Teaching Aid
@@ -17,6 +17,8 @@ description: 通过 Codex 对话和 super-editor-control 原子能力，以完�
 首次教授、试制或修改规则前完整阅读 [workflow.md](references/workflow.md) 和
 [rule-pack.md](references/rule-pack.md)。进入批量或写来源追溯时再读
 [batch-and-provenance.md](references/batch-and-provenance.md)。
+调整既有成品时，如果逐元素富文本/组内移动接口受限，或多个同构目录需要高效联动修改，完整阅读
+[block-preserving-batch-refinement.md](references/block-preserving-batch-refinement.md)。
 
 ## 执行主流程
 
@@ -53,7 +55,9 @@ description: 通过 Codex 对话和 super-editor-control 原子能力，以完�
 - 数字模块默认复用已有 `modelId` 关系。要求独立深克隆、多关系或覆盖已有关系而当前原子接口不能证明
   安全时停止。
 - 单次微调可直接执行，但只有用户确认的规则变更才能进入专属 Skill。文字、样式、布局以及文本/图片元素
-  增删应原位操作，不重建整个区块。微调前后都要确认当前目录恰好有一个完整
+  增删优先使用逐元素原子工具。只有满足区块原位替换门禁时，才允许用完整导出结果调用
+  `editor_replace_block`：保持原 block UUID、全部需保留的 element ID、未知字段与模块锚点，并完成切页回读。
+  详细门禁见 [block-preserving-batch-refinement.md](references/block-preserving-batch-refinement.md)。微调前后都要确认当前目录恰好有一个完整
   `template_data_content.ai_semantic_provenance` 承载记录；复制承载区块时立即把副本中的该字段置空，删除或
   替换承载区块前先迁移记录。详细规则见 [batch-and-provenance.md](references/batch-and-provenance.md)。
   批量中禁止临场改全局规则。

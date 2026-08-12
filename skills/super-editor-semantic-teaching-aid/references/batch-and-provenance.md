@@ -91,8 +91,11 @@ template_data_content.ai_semantic_provenance
 
 ### 生成后的轻量微调
 
-文字内容与样式、元素位置和尺寸、区块尺寸，以及文本/图片元素的新增或删除，必须使用对应原子工具原位
-修改；不要为了这些微调调用 `editor_replace_block`、整页替换或重新套用样章。普通原位修改不重写
+文字内容与样式、元素位置和尺寸、区块尺寸，以及文本/图片元素的新增或删除，优先使用对应原子工具原位
+修改；不要仅为省调用次数而调用 `editor_replace_block`、整页替换或重新套用样章。若逐元素富文本写入被
+安全往返保护阻断、组内移动能力仍不可用，或同构批量需要联动修改多组叶子元素，只有完整满足
+[block-preserving-batch-refinement.md](block-preserving-batch-refinement.md) 的 ID、未知字段、provenance、模块关系
+和切页回读门禁，才允许以 `editor_export_slide` 的完整区块为基线做区块原位替换。普通原位修改不重写
 provenance，也不要把初次生成的 `target.result_hash` 改成当前页哈希；它继续作为生成基线，后续变化通过
 refinement/current hash 记录。
 
