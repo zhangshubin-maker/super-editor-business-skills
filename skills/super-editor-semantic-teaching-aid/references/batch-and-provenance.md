@@ -95,7 +95,9 @@ template_data_content.ai_semantic_provenance
 修改；不要仅为省调用次数而调用 `editor_replace_block`、整页替换或重新套用样章。若逐元素富文本写入被
 安全往返保护阻断、组内移动能力仍不可用，或同构批量需要联动修改多组叶子元素，只有完整满足
 [block-preserving-batch-refinement.md](block-preserving-batch-refinement.md) 的 ID、未知字段、provenance、模块关系
-和切页回读门禁，才允许以 `editor_export_slide` 的完整区块为基线做区块原位替换。普通原位修改不重写
+和切页回读门禁，才允许以 `editor_export_slide` 的完整区块为基线调用 `editor_replace_block_safe`；先
+dry-run 核对差异，再带 `expectedHash` 写入。只涉及一个元素/组树时改用 `editor_replace_element_safe`。
+普通原位修改不重写
 provenance，也不要把初次生成的 `target.result_hash` 改成当前页哈希；它继续作为生成基线，后续变化通过
 refinement/current hash 记录。
 
@@ -108,7 +110,7 @@ refinement/current hash 记录。
 复制普通区块无需特殊处理。复制承载区块时，使用复制工具返回的新 `blockId`，立即调用
 `editor_update_block` 把**副本**的 `ai_semantic_provenance` 置为 `null`，不得修改原承载区块；随后再继续修改
 副本。若确实要删除承载区块，先选择另一个不会被删除的稳定根区块，将完整 provenance 合并过去，再删除
-旧承载区块，最终只保存并验证一次唯一承载记录。若确实要用 `editor_replace_block` 替换承载区块，则传入的
+旧承载区块，最终只保存并验证一次唯一承载记录。若确实要用 `editor_replace_block_safe` 替换承载区块，则传入的
 完整 `templateData.template_data_content` 必须显式带回原 provenance；不能依赖替换操作自动继承未知字段。
 
 收尾时导出当前页检查承载数量。为零时停止保存交付并从本轮 provenance artifact 或人工确认的历史来源记录

@@ -56,7 +56,9 @@ description: 通过 Codex 对话和 super-editor-control 原子能力，以完�
   安全时停止。
 - 单次微调可直接执行，但只有用户确认的规则变更才能进入专属 Skill。文字、样式、布局以及文本/图片元素
   增删优先使用逐元素原子工具。只有满足区块原位替换门禁时，才允许用完整导出结果调用
-  `editor_replace_block`：保持原 block UUID、全部需保留的 element ID、未知字段与模块锚点，并完成切页回读。
+  `editor_replace_block_safe`：先 dry-run 核对差异，再带 `expectedHash` 写入；由 Bridge 强制保持原 block
+  UUID、后端区块 id、全部 element ID、未知字段与模块锚点，并完成切页回读。只影响一个普通元素或组树时
+  优先用 `editor_replace_element_safe` 缩小替换面。
   详细门禁见 [block-preserving-batch-refinement.md](references/block-preserving-batch-refinement.md)。微调前后都要确认当前目录恰好有一个完整
   `template_data_content.ai_semantic_provenance` 承载记录；复制承载区块时立即把副本中的该字段置空，删除或
   替换承载区块前先迁移记录。详细规则见 [batch-and-provenance.md](references/batch-and-provenance.md)。

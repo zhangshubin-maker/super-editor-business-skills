@@ -29,7 +29,7 @@
 
 ## 安全门禁
 
-调用 `editor_replace_block` 前必须全部满足：
+调用 `editor_replace_block_safe` 前必须全部满足：
 
 1. 已对当前目录创建 checkpoint；
 2. 已用 `editor_export_slide` 导出完整页面，修改对象直接来自该导出结果；
@@ -82,7 +82,11 @@
 3. 在内存中定位语义区块和叶子元素。组合使用：区块角色、元素类型、名称、可见文本、层级、阅读顺序、
    几何区域和期望基数；不要只靠固定 ID。
 4. 直接修改导出对象中的完整区块：保留未知字段、group 结构、block UUID 和 element ID。
-5. 对每个受影响区块调用 `editor_replace_block({blockId, templateData})`。不要导入为新区块。
+5. 对每个受影响区块先调用
+   `editor_replace_block_safe({blockId, templateData, dryRun: true})`，核对 `changedPaths`、
+   `identityPreserved` 与 `digitalModuleAnchorsPreserved`；确认后使用同一候选对象加
+   `dryRun: false, expectedHash` 写入。只改一个普通元素或组树时用更窄的
+   `editor_replace_element_safe`。不要导入为新区块。
 6. 替换完成后再处理数字模块，避免关系创建在即将被替换的元素上。
 7. 分别截图受影响区块，执行当前页审计和 `editor_save_verified`。
 8. 记录 slideId、source identity、checkpoint、模块动作、截图状态、审计错误/警告、内容 hash 和最终状态。

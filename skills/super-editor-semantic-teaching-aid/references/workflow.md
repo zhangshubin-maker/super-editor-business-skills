@@ -52,7 +52,7 @@
 2. 应用样章；
 3. 按规则顺序执行文本、图片、数字模块、区块、布局和大纲原子动作；既有同构成品遇到富文本往返保护或
    组内移动限制时，按 [block-preserving-batch-refinement.md](block-preserving-batch-refinement.md) 的门禁，
-   使用保留 block/element ID 的完整区块原位替换；
+   使用 `editor_replace_block_safe` 或更窄的 `editor_replace_element_safe` 做保留身份的完整 JSON 原位替换；
 4. 每个规则都记录运行时绑定与证据；条件不命中也要以 `skipped` 和证据覆盖，不能留下空的
    `rule_bindings`；
 5. 保存回读，运行结构审计、规则内 `severity=error` 验收、规则包顶层错误级验收并截图核对；
