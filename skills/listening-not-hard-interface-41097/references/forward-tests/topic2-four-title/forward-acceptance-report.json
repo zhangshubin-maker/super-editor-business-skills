@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "case_id": "topic2-food-four-title",
+  "status": "passed",
+  "checks": [
+    {
+      "check_id": "mobile-canvas-375",
+      "status": "passed",
+      "evidence_artifacts": [
+        {
+          "artifact": "acceptance-report.json",
+          "artifact_sha256": "sha256:fef5e7914517c2854358159fc4d96f866d3d4488f5648c2040c94d2d78c1bafd"
+        }
+      ]
+    },
+    {
+      "check_id": "structure-text-layout-audit",
+      "status": "passed",
+      "evidence_artifacts": [
+        {
+          "artifact": "acceptance-report.json",
+          "artifact_sha256": "sha256:fef5e7914517c2854358159fc4d96f866d3d4488f5648c2040c94d2d78c1bafd"
+        },
+        {
+          "artifact": "module-readback.json",
+          "artifact_sha256": "sha256:3bee632315b8e37463d4e5970e16668a394334e0d4a62b6b8804e61f2154a3c2"
+        }
+      ]
+    },
+    {
+      "check_id": "full-page-visual-review",
+      "status": "passed",
+      "evidence_artifacts": [
+        {
+          "artifact": "acceptance-report.json",
+          "artifact_sha256": "sha256:fef5e7914517c2854358159fc4d96f866d3d4488f5648c2040c94d2d78c1bafd"
+        }
+      ]
+    },
+    {
+      "check_id": "save-export-readback",
+      "status": "passed",
+      "evidence_artifacts": [
+        {
+          "artifact": "editor-save-verified-envelope.json",
+          "artifact_sha256": "sha256:e6b5821e2c72ec1dfbdda890eadc7eb03baa3af23f3ad7b9b8ae0ac86204453e"
+        },
+        {
+          "artifact": "provenance-readback-receipt.json",
+          "artifact_sha256": "sha256:99946351b1f8e291ec46d98e543cf99caa04bd32429597e4cf9a235acd970319"
+        }
+      ]
+    }
+  ]
+}

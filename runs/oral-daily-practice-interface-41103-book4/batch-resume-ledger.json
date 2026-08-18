@@ -1,0 +1,191 @@
+{
+  "schema_version": 2,
+  "ledger_id": "fcd442fa-36d0-44de-9a4b-abab071c5af6",
+  "skill": {
+    "name": "oral-daily-practice-interface-41103",
+    "version": "0.1.7",
+    "rule_pack_hash": "sha256:37dd42ed42e93c1b02dee4467a308788171c75eec985571da67325de8099e9ce"
+  },
+  "created_at": "2026-08-18T07:39:16.640Z",
+  "updated_at": "2026-08-18T08:05:37.001Z",
+  "items": [
+    {
+      "item_id": "book4-resume-day4",
+      "lock_key": "book:1820806",
+      "target": {
+        "book_stable_identity": "1820806",
+        "prospective_identity": null,
+        "promoted_book_id": "1820806",
+        "catalog_scope": {
+          "kind": "book_scope",
+          "value": "remaining_DAY_catalogs_after_verified_DAY_3"
+        }
+      },
+      "book": {
+        "item_id": "book4-resume-day4",
+        "target_book_id": "1820806",
+        "lock_key": "book:1820806",
+        "target_catalog_scope": {
+          "kind": "book_scope",
+          "value": "remaining_DAY_catalogs_after_verified_DAY_3"
+        }
+      },
+      "state": "saved",
+      "attempt": 1,
+      "fingerprint": {
+        "source_snapshot_hash": "sha256:495166f529cc95150f9008f82bcba78d9526abf5b2038f8e350a82886dd88450",
+        "template_snapshot_hash": "sha256:bc2055d69754023ad0801230c0866c0d57a425099a2194750b87c437a4715363",
+        "target_before_hash": "sha256:5f9716370d14fcd4318c227dfb6d6e7167af3dbb97e35f387824d109eef3d52d",
+        "resolved_template_id": "41103",
+        "rule_pack_hash": "sha256:37dd42ed42e93c1b02dee4467a308788171c75eec985571da67325de8099e9ce"
+      },
+      "idempotency_key": "sha256:e439a80d0d457bf138255140b8c6f038583533db2e8952c830ee8b9aa9b02a18",
+      "apply_authorization": null,
+      "write_blocked": null,
+      "evidence": {
+        "planned": {},
+        "preflighted": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:495166f529cc95150f9008f82bcba78d9526abf5b2038f8e350a82886dd88450",
+            "template_snapshot_hash": "sha256:bc2055d69754023ad0801230c0866c0d57a425099a2194750b87c437a4715363",
+            "target_before_hash": "sha256:5f9716370d14fcd4318c227dfb6d6e7167af3dbb97e35f387824d109eef3d52d",
+            "resolved_template_id": "41103",
+            "rule_pack_hash": "sha256:37dd42ed42e93c1b02dee4467a308788171c75eec985571da67325de8099e9ce"
+          },
+          "checks": {
+            "persisted_day3_slide_id": 45826,
+            "persisted_day3_content_hash": "fnv1a32:8da35774",
+            "existing_target_catalog_count": 7,
+            "remaining_catalog_count": 33,
+            "resume_from_day": 4,
+            "target_book_id": "1820806"
+          }
+        },
+        "apply_authorized": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:495166f529cc95150f9008f82bcba78d9526abf5b2038f8e350a82886dd88450",
+            "template_snapshot_hash": "sha256:bc2055d69754023ad0801230c0866c0d57a425099a2194750b87c437a4715363",
+            "target_before_hash": "sha256:5f9716370d14fcd4318c227dfb6d6e7167af3dbb97e35f387824d109eef3d52d",
+            "resolved_template_id": "41103",
+            "rule_pack_hash": "sha256:37dd42ed42e93c1b02dee4467a308788171c75eec985571da67325de8099e9ce"
+          },
+          "authorization": {
+            "token": "82e47d52-0f75-4cdd-9c27-aac6aeaf8ba7",
+            "issued_at": "2026-08-18T07:39:47.836Z",
+            "fingerprint_hash": "sha256:11371b9b5e54237c96317f00187eb10f05593b6e716669fce2c40aa5ed3cacad",
+            "idempotency_key": "sha256:e439a80d0d457bf138255140b8c6f038583533db2e8952c830ee8b9aa9b02a18",
+            "lock_owner": "book4-resume-20260818",
+            "lock_nonce": "a1d93c40-525f-4540-8174-311a5d03f367"
+          }
+        },
+        "applied": {
+          "target_after_hash": "sha256:618fbc1e910c5ebfee95ef36a3c6e790d277d91def1d07f2b4588e541db2d3ff",
+          "apply_authorization_token": "82e47d52-0f75-4cdd-9c27-aac6aeaf8ba7",
+          "catalogs_created": 33,
+          "catalogs_total": 40,
+          "catalog_order_verified": true
+        },
+        "saved": {
+          "save_readback_hash": "sha256:618fbc1e910c5ebfee95ef36a3c6e790d277d91def1d07f2b4588e541db2d3ff",
+          "save_verified_catalog_count": 33,
+          "day3_prior_save_verified": true,
+          "all_current_dirty_false_after_each_save": true
+        }
+      },
+      "last_error": null,
+      "history": [
+        {
+          "from": null,
+          "to": "pending",
+          "at": "2026-08-18T07:39:16.640Z",
+          "note": "ledger_initialized",
+          "evidence": {}
+        },
+        {
+          "from": "pending",
+          "to": "planned",
+          "at": "2026-08-18T07:39:16.810Z",
+          "note": "resume 33 remaining DAY catalogs after verified DAY 3",
+          "lock_owner": "book4-resume-20260818",
+          "evidence": {}
+        },
+        {
+          "from": "planned",
+          "to": "preflighted",
+          "at": "2026-08-18T07:39:47.651Z",
+          "note": null,
+          "lock_owner": "book4-resume-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:495166f529cc95150f9008f82bcba78d9526abf5b2038f8e350a82886dd88450",
+              "template_snapshot_hash": "sha256:bc2055d69754023ad0801230c0866c0d57a425099a2194750b87c437a4715363",
+              "target_before_hash": "sha256:5f9716370d14fcd4318c227dfb6d6e7167af3dbb97e35f387824d109eef3d52d",
+              "resolved_template_id": "41103",
+              "rule_pack_hash": "sha256:37dd42ed42e93c1b02dee4467a308788171c75eec985571da67325de8099e9ce"
+            },
+            "checks": {
+              "persisted_day3_slide_id": 45826,
+              "persisted_day3_content_hash": "fnv1a32:8da35774",
+              "existing_target_catalog_count": 7,
+              "remaining_catalog_count": 33,
+              "resume_from_day": 4,
+              "target_book_id": "1820806"
+            }
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "preflighted",
+          "at": "2026-08-18T07:39:47.836Z",
+          "note": "apply_authorized_after_fingerprint_recheck",
+          "lock_owner": "book4-resume-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:495166f529cc95150f9008f82bcba78d9526abf5b2038f8e350a82886dd88450",
+              "template_snapshot_hash": "sha256:bc2055d69754023ad0801230c0866c0d57a425099a2194750b87c437a4715363",
+              "target_before_hash": "sha256:5f9716370d14fcd4318c227dfb6d6e7167af3dbb97e35f387824d109eef3d52d",
+              "resolved_template_id": "41103",
+              "rule_pack_hash": "sha256:37dd42ed42e93c1b02dee4467a308788171c75eec985571da67325de8099e9ce"
+            },
+            "authorization": {
+              "token": "82e47d52-0f75-4cdd-9c27-aac6aeaf8ba7",
+              "issued_at": "2026-08-18T07:39:47.836Z",
+              "fingerprint_hash": "sha256:11371b9b5e54237c96317f00187eb10f05593b6e716669fce2c40aa5ed3cacad",
+              "idempotency_key": "sha256:e439a80d0d457bf138255140b8c6f038583533db2e8952c830ee8b9aa9b02a18",
+              "lock_owner": "book4-resume-20260818",
+              "lock_nonce": "a1d93c40-525f-4540-8174-311a5d03f367"
+            }
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "applied",
+          "at": "2026-08-18T08:05:36.594Z",
+          "note": null,
+          "lock_owner": "book4-resume-20260818",
+          "evidence": {
+            "target_after_hash": "sha256:618fbc1e910c5ebfee95ef36a3c6e790d277d91def1d07f2b4588e541db2d3ff",
+            "apply_authorization_token": "82e47d52-0f75-4cdd-9c27-aac6aeaf8ba7",
+            "catalogs_created": 33,
+            "catalogs_total": 40,
+            "catalog_order_verified": true
+          }
+        },
+        {
+          "from": "applied",
+          "to": "saved",
+          "at": "2026-08-18T08:05:37.001Z",
+          "note": null,
+          "lock_owner": "book4-resume-20260818",
+          "evidence": {
+            "save_readback_hash": "sha256:618fbc1e910c5ebfee95ef36a3c6e790d277d91def1d07f2b4588e541db2d3ff",
+            "save_verified_catalog_count": 33,
+            "day3_prior_save_verified": true,
+            "all_current_dirty_false_after_each_save": true
+          }
+        }
+      ]
+    }
+  ],
+  "integrity_hash": "sha256:4050438264f7c16f8aa5bafed92e71b5dff65595f4028d2d21e6d6da413ad5cc"
+}

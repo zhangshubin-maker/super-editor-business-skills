@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "case_id": "topic7-free-time-representative-trial",
+  "status": "passed",
+  "checks": [
+    {
+      "check_id": "semantic-content-and-layout",
+      "status": "passed",
+      "evidence_artifacts": [
+        {"artifact":"acceptance-report.json","artifact_sha256":"sha256:21cea3b942b7e2e6de00422bbf35355cbcc6a305ac187067d59cb3889d19d7cd"}
+      ]
+    },
+    {
+      "check_id": "digital-module-readback",
+      "status": "passed",
+      "evidence_artifacts": [
+        {"artifact":"module-readback.json","artifact_sha256":"sha256:4d8b12487f25ad272112b05b46f8432c1b3aa4249657489a7266271a3bff44ba"}
+      ]
+    },
+    {
+      "check_id": "save-export-provenance-closure",
+      "status": "passed",
+      "evidence_artifacts": [
+        {"artifact":"provenance-save-envelope.json","artifact_sha256":"sha256:b632caaa1156cde15bc34c22b5a643836b2b9f5a1855ddb07e6f0a9563d96c68"},
+        {"artifact":"../provenance-readback-receipt.json","artifact_sha256":"sha256:a88752257bbbf8b98cec01f19def48c41e05fddf5d3ca7f763fa68a142b55389"}
+      ]
+    }
+  ]
+}

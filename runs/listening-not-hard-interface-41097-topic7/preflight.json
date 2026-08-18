@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "run_scope": "trial_single_catalog",
+  "authorized": true,
+  "authorization": "用户明确同意按建议试制 Topic 7 Free Time；不包含其他 Topic 和发布",
+  "source": {
+    "book_id": "1815618",
+    "book_name": "听力不难",
+    "catalog_id": "5989",
+    "catalog_name": "Topic 7 Free Time",
+    "catalog_sort": 7,
+    "semantic_snapshot_artifact": "artifacts/source-topic7-semantic-snapshot.json",
+    "semantic_snapshot_file_sha256": "sha256:2304e69f0c5c21b47b09729067d8f67f72fd2ffdc2201836119c4dde38e92fdc",
+    "semantic_snapshot_stable_hash": "sha256:1fb10181248f972fba3dccbf706bc0d25c2be4aba0d93efd7caa5d1067345093",
+    "completeness": {
+      "complete": false,
+      "full_fidelity": false,
+      "complete_sections": ["blocks", "elementIndex", "outline", "outlineAnchors", "digitalModules", "digitalModulesRaw", "richText", "contentReady"],
+      "warning": "FONT_MAPPING_EMPTY"
+    },
+    "controlled_exception": {
+      "accepted_for_this_trial": true,
+      "reason": "规则只迁移可见文字、来源结构和已有数字模块关系，所有字体与文本框样式保留样章；实时可用字体清单已单独冻结",
+      "font_evidence_artifact": "artifacts/source-fonts-envelope.json",
+      "font_evidence_file_sha256": "sha256:6ebb847fbc01020a3f7c75a93cff5d1f25a01f82fea042b55bf095b0646fffa6",
+      "invalidates_when": "任一规则改为复制源书字体或依赖源书书本级字体映射"
+    },
+    "semantic_facts": {
+      "basic_titles": ["Words & Phrases", "Sentences"],
+      "classroom_summary": "听力绊脚石:动词过去式中“ed”的不同发音",
+      "classroom_titles": [
+        "1. 当动词以清辅音结尾（除了 /t/ 以外的清辅音），“ed” 发音为 /t/",
+        "2. 当动词以浊辅音结尾（除了 /d/ 以外的浊辅音）或元音结尾，“ed” 发音为 /d/",
+        "3. 当动词以 /t/ 或 /d/ 结尾时，“ed” 发音为 /ɪd/"
+      ],
+      "classroom_interface_labels": [
+        "1. “ed”在清辅音后发 /t/",
+        "2. “ed”在浊辅音或元音后发 /d/",
+        "3. “ed”在 /t/ 或 /d/ 后发 /ɪd/"
+      ],
+      "practice_titles": [
+        "Day 1 听力天天练",
+        "Day 2 听力天天练",
+        "Day 3 听力天天练",
+        "Day 4 听力天天练",
+        "Day 5 听力天天练",
+        "Day 6 听力周周练"
+      ],
+      "module_counts": {"61": 1, "77": 18, "82": 1, "83": 6, "84": 1},
+      "source_module_models": {"basic_online_answer": "1886605", "classroom_interactive_course": "1886606", "practice_print": "1893343"}
+    }
+  },
+  "template": {
+    "template_id": "41097",
+    "artifact": "artifacts/template-41097-envelope.json",
+    "artifact_file_sha256": "sha256:a7f650a37e61c5e7fc3315c6ff0028e780ff9712554271a0c141a02d52964379",
+    "canonical_hash": "sha256:50a40e8e42ab65c0c0d788b036a95860751e4ee76aeeb454454a955717643a41",
+    "block_count": 3,
+    "classroom_sample_title_count": 2,
+    "classroom_vertical_step": 60.9687907
+  },
+  "target": {
+    "prospective_name": "界面-听力不难",
+    "smart_book_type": 4,
+    "duplicate_search_total": 0,
+    "create_only_after_rule_validation": true
+  },
+  "decision": "proceed_to_rule_validation"
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "case_id": "day2-two-tigers",
+  "status": "passed",
+  "checks": [
+    { "check_id": "exact-book-family", "status": "passed", "evidence_artifacts": [{ "artifact": "source.json", "artifact_sha256": "sha256:b827f947691802f9b30e3a6c7bdc759a9771f3b493d4b0ce4a41b9ebdd98685a" }, { "artifact": "provenance-readback.json", "artifact_sha256": "sha256:61d83a5e3b2b30b7a9e9630ac68c606f9346b6199ec9f8e2e50486e17c7ff752" }] },
+    { "check_id": "font-mapping-empty-warning-only", "status": "passed", "evidence_artifacts": [{ "artifact": "source.json", "artifact_sha256": "sha256:b827f947691802f9b30e3a6c7bdc759a9771f3b493d4b0ce4a41b9ebdd98685a" }] },
+    { "check_id": "content-layout-audit", "status": "passed", "evidence_artifacts": [{ "artifact": "target-after.json", "artifact_sha256": "sha256:6e6ffb9c1b673044a13d3085f07664e9a597dd7598692c874e8b407a4272115b" }] },
+    { "check_id": "eight-modules-per-page", "status": "passed", "evidence_artifacts": [{ "artifact": "provenance-readback.json", "artifact_sha256": "sha256:61d83a5e3b2b30b7a9e9630ac68c606f9346b6199ec9f8e2e50486e17c7ff752" }] },
+    { "check_id": "save-readback", "status": "passed", "evidence_artifacts": [{ "artifact": "save-receipt.json", "artifact_sha256": "sha256:595dea9ba83d2cc84bc6ae07120a64e7e8515fb141a072dd2c3234e0906bf0fd" }] }
+  ]
+}

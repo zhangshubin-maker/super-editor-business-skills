@@ -1,0 +1,1067 @@
+{
+  "provenance": {
+    "schema_version": 1,
+    "skill": {
+      "name": "listening-not-hard-interface-41097",
+      "version": "0.2.0",
+      "rule_pack_hash": "sha256:3ac15c3192e8cdac2ea9685eb6d7663ba404e9f285cade3133225d5106b9ea18"
+    },
+    "run_id": "forward-topic17-one-title-20260817",
+    "source": {
+      "book_id": "1815618",
+      "catalog_id": "6038",
+      "catalog_path": [
+        "Topic 17 Daily Life"
+      ],
+      "snapshot_hash": "sha256:9acfd4f1192a8a2202d166ebf479730ba2ec9e044cd07da3c353c7579c3b4d6e",
+      "inference": null
+    },
+    "template": {
+      "requested_template_id": "41097",
+      "resolved_template_id": "41097",
+      "variant_id": null,
+      "snapshot_hash": "sha256:50a40e8e42ab65c0c0d788b036a95860751e4ee76aeeb454454a955717643a41"
+    },
+    "target": {
+      "book_id": "1820802",
+      "catalog_id": "45080",
+      "before_hash": "sha256:0dd8112239d2b648fec234807665d092e548786a3e8eff90957281b82cc4c710",
+      "result_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19"
+    },
+    "execution": {
+      "mode": "trial",
+      "required_authorization_type": "trial_authorization",
+      "restricted": false,
+      "restriction_reasons": [],
+      "automatic_write": false,
+      "authorization_confirmed": true,
+      "batch_authorized": false,
+      "required_error_validation_passed": true,
+      "post_write_verification_pending": true
+    },
+    "coverage": {
+      "required_rule_ids": [
+        "basic-section",
+        "classroom-section-cardinality",
+        "practice-section"
+      ],
+      "required_error_checks": [
+        {
+          "required_key": "rule:basic-section:basic-two-titles",
+          "id": "basic-two-titles",
+          "rule_id": "basic-section",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "第一段恰好显示两个完整标题且顺序与来源一致"
+        },
+        {
+          "required_key": "rule:basic-section:basic-module-readback",
+          "id": "basic-module-readback",
+          "rule_id": "basic-section",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "在线答题与一个根环节来源定位模块均回读到预期元素和来源资源"
+        },
+        {
+          "required_key": "rule:classroom-section-cardinality:classroom-card-count",
+          "id": "classroom-card-count",
+          "rule_id": "classroom-section-cardinality",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "完整标题卡数量与来源标题数量一致，且每张卡都包含背景、箭头、完整文字和点击区"
+        },
+        {
+          "required_key": "rule:classroom-section-cardinality:classroom-three-layout",
+          "id": "classroom-three-layout",
+          "rule_id": "classroom-section-cardinality",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "三个标题时第三张卡沿用前两张卡样式与纵向步距，入口不遮挡且区块完整容纳"
+        },
+        {
+          "required_key": "rule:classroom-section-cardinality:classroom-summary-line-fit",
+          "id": "classroom-summary-line-fit",
+          "rule_id": "classroom-section-cardinality",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "课堂摘要在卡片可用宽度内能完整显示时保持单行；只有真实放不下时才按语义边界换行，箭头紧跟最后一行且无溢出"
+        },
+        {
+          "required_key": "rule:classroom-section-cardinality:classroom-module-readback",
+          "id": "classroom-module-readback",
+          "rule_id": "classroom-section-cardinality",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "互动课程、摘要外层组、主入口和实际存在的每张标题卡外层组均回读到预期模块与真实来源资源；摘要必须指向承载该摘要原文的区块"
+        },
+        {
+          "required_key": "rule:practice-section:practice-six-titles",
+          "id": "practice-six-titles",
+          "rule_id": "practice-section",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "第三段恰好显示六个完整 Day 标题且顺序与来源一致"
+        },
+        {
+          "required_key": "rule:practice-section:practice-module-readback",
+          "id": "practice-module-readback",
+          "rule_id": "practice-section",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "打印与六个来源定位模块均回读到预期元素和来源资源"
+        },
+        {
+          "required_key": "rule:practice-section:page-tail-spacer-readback",
+          "id": "page-tail-spacer-readback",
+          "rule_id": "practice-section",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "最后一个内容区块为手机端 375×20 的空白区块，内边距为零、无元素且背景色与其他内容区块一致"
+        },
+        {
+          "required_key": "acceptance:mobile-canvas-375",
+          "id": "mobile-canvas-375",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "界面型教辅目录的页面级画布类型为手机端，重载后画布宽度仍为 375"
+        },
+        {
+          "required_key": "acceptance:structure-text-layout-audit",
+          "id": "structure-text-layout-audit",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "目标目录不存在空文本、占位、非法几何、新增越界或文本裁切错误"
+        },
+        {
+          "required_key": "acceptance:full-page-visual-review",
+          "id": "full-page-visual-review",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "整页三段流向、实际数量的听力课堂卡、摘要箭头位置以及末尾 20px 同底色留白经全页截图核对"
+        },
+        {
+          "required_key": "acceptance:save-export-readback",
+          "id": "save-export-readback",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "页面首次保存回读一致且完整导出页身份与区块结构匹配；来源追溯的后置回读由 provenance 工作流单独强制执行"
+        }
+      ],
+      "synthesized_validation_keys": []
+    },
+    "rule_bindings": [
+      {
+        "rule_id": "basic-section",
+        "status": "applied",
+        "action_summary": "按源目录保留 Words & Phrases 与 Sentences 两个基础标题，重排手机端卡片，并绑定在线答题和来源定位模块。",
+        "source_bindings": [
+          {
+            "semantic_role": "source basic listening section",
+            "identity": {
+              "side": "source",
+              "book_id": "1815618",
+              "catalog_id": "6038",
+              "block_id": "aMn046U5JU16010",
+              "entity_kind": "section",
+              "entity_id": "basic-section"
+            },
+            "snapshot_hash": "sha256:9acfd4f1192a8a2202d166ebf479730ba2ec9e044cd07da3c353c7579c3b4d6e",
+            "binding_hash": "sha256:49513740e55946df2784cda05fb7e9ab0895b9951ddf357a8f3b05d293aa4329"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "target basic interface section",
+            "identity": {
+              "side": "target",
+              "book_id": "1820802",
+              "catalog_id": "45080",
+              "block_id": "7-YhRBNKLP41104",
+              "entity_kind": "section",
+              "entity_id": "basic-section"
+            },
+            "snapshot_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19",
+            "binding_hash": "sha256:3a1f34274ddf75825761c2ada33d6238bbb035b119e0125a87ce26562aca9bac"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_and_module_readback",
+            "summary": "two basic titles and two expected modules read back on the mobile canvas",
+            "identity": {
+              "side": "target",
+              "book_id": "1820802",
+              "catalog_id": "45080",
+              "block_id": "7-YhRBNKLP41104",
+              "entity_kind": "section",
+              "entity_id": "basic-section"
+            },
+            "artifact_hash": "sha256:741ded790a85f1e631b0d45aa229b9b6f03ef5315829a3de552cbd77418f656c",
+            "evidence_hash": "sha256:e4402a3f9a5af6e95de165d47544dcd65af4f75e4d95997a2f860235fa650fcb"
+          }
+        ],
+        "result_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19"
+      },
+      {
+        "rule_id": "classroom-section-cardinality",
+        "status": "applied",
+        "action_summary": "识别源目录只有一个课堂标题，删除第二张完整卡，收缩区块；摘要单行优先并收拢箭头，所有跳转挂在外层组。",
+        "source_bindings": [
+          {
+            "semantic_role": "source classroom one-heading section",
+            "identity": {
+              "side": "source",
+              "book_id": "1815618",
+              "catalog_id": "6038",
+              "block_id": "zGZJysXw4u",
+              "entity_kind": "section",
+              "entity_id": "classroom-section"
+            },
+            "snapshot_hash": "sha256:9acfd4f1192a8a2202d166ebf479730ba2ec9e044cd07da3c353c7579c3b4d6e",
+            "binding_hash": "sha256:05879e42a9a1e4a61821a8f3a9b9feee6449f8a80f216909852db836bfeb399b"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "target classroom one-card section",
+            "identity": {
+              "side": "target",
+              "book_id": "1820802",
+              "catalog_id": "45080",
+              "block_id": "7-YhRBNKLP41105",
+              "entity_kind": "section",
+              "entity_id": "classroom-section"
+            },
+            "snapshot_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19",
+            "binding_hash": "sha256:a44174828078526cc69d4f981c0bf62bf99271adfe5531b8b2adcbe9cb37c4d1"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "visual_text_and_module_readback",
+            "summary": "one complete classroom card, single-line summary, outer-group anchors and four expected modules read back",
+            "identity": {
+              "side": "target",
+              "book_id": "1820802",
+              "catalog_id": "45080",
+              "block_id": "7-YhRBNKLP41105",
+              "entity_kind": "section",
+              "entity_id": "classroom-section"
+            },
+            "artifact_hash": "sha256:741ded790a85f1e631b0d45aa229b9b6f03ef5315829a3de552cbd77418f656c",
+            "evidence_hash": "sha256:39330f8b165510f2e28f49a7e96d1a3d93468098048e605119ea79d10f469661"
+          }
+        ],
+        "result_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19"
+      },
+      {
+        "rule_id": "practice-section",
+        "status": "applied",
+        "action_summary": "保留六个 Day 标题与顺序，将 Day 6 写为听力周周练，绑定打印和六个外层来源跳转，并追加 375×20 同底色空白区块。",
+        "source_bindings": [
+          {
+            "semantic_role": "source six-day practice section",
+            "identity": {
+              "side": "source",
+              "book_id": "1815618",
+              "catalog_id": "6038",
+              "block_id": "aMn046U5JU16027",
+              "entity_kind": "section",
+              "entity_id": "practice-section"
+            },
+            "snapshot_hash": "sha256:9acfd4f1192a8a2202d166ebf479730ba2ec9e044cd07da3c353c7579c3b4d6e",
+            "binding_hash": "sha256:6995d7de0eada7f266596e395adecf53ee6694517aa08f743fb267dcc27d56fa"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "target six-day practice interface section",
+            "identity": {
+              "side": "target",
+              "book_id": "1820802",
+              "catalog_id": "45080",
+              "block_id": "7-YhRBNKLP41106",
+              "entity_kind": "section",
+              "entity_id": "practice-section"
+            },
+            "snapshot_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19",
+            "binding_hash": "sha256:414ab8103109f79818df71539ac4897b7a5feb31e4291f9759f07e07624c4723"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "six day titles, seven expected modules and the 20px tail spacer read back",
+            "identity": {
+              "side": "target",
+              "book_id": "1820802",
+              "catalog_id": "45080",
+              "block_id": "7-YhRBNKLP41106",
+              "entity_kind": "section",
+              "entity_id": "practice-section"
+            },
+            "artifact_hash": "sha256:741ded790a85f1e631b0d45aa229b9b6f03ef5315829a3de552cbd77418f656c",
+            "evidence_hash": "sha256:456c49a1656c6a5690b55f2a1cfade6bc3594c5e2e08f12309430a984083fb8d"
+          }
+        ],
+        "result_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19"
+      }
+    ],
+    "instance_fixes": [
+      {
+        "kind": "forward_cardinality_case",
+        "summary": "Topic 17 来源只有一个课堂标题；删除第二张完整卡并收缩区块，没有保留空卡或误删第一张。"
+      },
+      {
+        "kind": "user_feedback_correction",
+        "summary": "课堂摘要能在卡片可用宽度内放下时保持单行；只有真实放不下才换行。"
+      },
+      {
+        "kind": "outer_anchor_correction",
+        "summary": "摘要、标题卡和六个 Day 跳转均绑定最外层完整交互组。"
+      },
+      {
+        "kind": "controlled_exception",
+        "summary": "源书与目标书均为 FONT_MAPPING_EMPTY；本轮保持样章字体配置，不复制或猜测字体映射。"
+      },
+      {
+        "kind": "template_warning_baseline",
+        "summary": "审计的三个越界 warning 来自样章组自身边界元数据与可见子元素不一致；截图中子元素均在区块内，未新增可见越界。"
+      }
+    ],
+    "user_approvals": [
+      {
+        "id": "topic17-forward-approval",
+        "type": "trial_authorization",
+        "status": "confirmed",
+        "scope": "Topic 17 Daily Life forward validation only",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-08-17T19:00:00+08:00",
+        "evidence": [
+          "用户在 Topic 7 试制验收后明确说：现在效果可以了，可以进行下一步了。"
+        ]
+      }
+    ],
+    "validation": [
+      {
+        "id": "basic-two-titles",
+        "rule_id": "basic-section",
+        "status": "passed",
+        "evidence": [
+          "两个基础标题顺序正确，文本布局检查无溢出。"
+        ],
+        "required_key": "rule:basic-section:basic-two-titles",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "basic-module-readback",
+        "rule_id": "basic-section",
+        "status": "passed",
+        "evidence": [
+          "在线答题与根来源定位模块回读存在，定位 raw 来源为原书目录 6038。"
+        ],
+        "required_key": "rule:basic-section:basic-module-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "classroom-card-count",
+        "rule_id": "classroom-section-cardinality",
+        "status": "passed",
+        "evidence": [
+          "源目录只有一个编号标题，目标只保留一张完整标题卡，第二张完整卡已删除。"
+        ],
+        "required_key": "rule:classroom-section-cardinality:classroom-card-count",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "classroom-three-layout",
+        "rule_id": "classroom-section-cardinality",
+        "status": "passed",
+        "evidence": [
+          "来源标题数为一，三标题分支未触发；一标题分支完成收缩且入口、卡片与后续区块无重叠。"
+        ],
+        "required_key": "rule:classroom-section-cardinality:classroom-three-layout",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "classroom-summary-line-fit",
+        "rule_id": "classroom-section-cardinality",
+        "status": "passed",
+        "evidence": [
+          "听力绊脚石：弱读保持单行，文本布局检查 overflow=false，箭头紧跟文字且未越界。"
+        ],
+        "required_key": "rule:classroom-section-cardinality:classroom-summary-line-fit",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "classroom-module-readback",
+        "rule_id": "classroom-section-cardinality",
+        "status": "passed",
+        "evidence": [
+          "互动课程、课堂入口、摘要外层组和唯一标题卡外层组均回读预期模块，定位 raw 来源为原书目录 6038。"
+        ],
+        "required_key": "rule:classroom-section-cardinality:classroom-module-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "practice-six-titles",
+        "rule_id": "practice-section",
+        "status": "passed",
+        "evidence": [
+          "六个 Day 标题顺序正确，Day 6 为听力周周练。"
+        ],
+        "required_key": "rule:practice-section:practice-six-titles",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "practice-module-readback",
+        "rule_id": "practice-section",
+        "status": "passed",
+        "evidence": [
+          "打印和六个 Day 外层来源定位模块均回读存在，定位 raw 来源为原书目录 6038。"
+        ],
+        "required_key": "rule:practice-section:practice-module-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "page-tail-spacer-readback",
+        "rule_id": "practice-section",
+        "status": "passed",
+        "evidence": [
+          "末尾空白区块为手机端 375×20、零内边距、无元素并使用统一底色。"
+        ],
+        "required_key": "rule:practice-section:page-tail-spacer-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "mobile-canvas-375",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "切换到其他目录再返回后，editor_get_canvas_info 仍返回 slideId=45080、canvasWidth=375。"
+        ],
+        "required_key": "acceptance:mobile-canvas-375",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "structure-text-layout-audit",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "当前页审计 0 error；三个 warning 为样章组边界元数据残留，截图与子元素几何未见可见越界或文本裁切。"
+        ],
+        "required_key": "acceptance:structure-text-layout-audit",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "full-page-visual-review",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "全页截图核对三段流向、一张课堂标题卡、摘要箭头、六个 Day、打印按钮和末尾留白均正确。"
+        ],
+        "required_key": "acceptance:full-page-visual-review",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "save-export-readback",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "重新载入后 editor_save_verified 返回 verified=true、dirty=false，contentHash 与 persistedContentHash 均为 fnv1a32:e67b56ce；语义快照回读 13 个数字模块。"
+        ],
+        "required_key": "acceptance:save-export-readback",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      }
+    ],
+    "baseline": {
+      "template_id": "41097",
+      "target_before_artifact": "target-topic17-before-semantic-snapshot.json",
+      "source_semantic_snapshot": "source-topic17-semantic-snapshot.json"
+    },
+    "baseline_hash": "sha256:024721f0e77255d5697efce3cce38594d0428b54cfc44bdb93fe291a24647b26",
+    "created_at": "2026-08-17T19:32:00+08:00",
+    "integrity_hash": "sha256:47a27187b26fd125e166c531fc27f32c97b8d291b558a723324046ef72e73543"
+  },
+  "editor_update_block": {
+    "tool": "editor_update_block",
+    "arguments": {
+      "blockId": "7-YhRBNKLP41104",
+      "patch": {
+        "ai_semantic_provenance": {
+          "schema_version": 1,
+          "skill": {
+            "name": "listening-not-hard-interface-41097",
+            "version": "0.2.0",
+            "rule_pack_hash": "sha256:3ac15c3192e8cdac2ea9685eb6d7663ba404e9f285cade3133225d5106b9ea18"
+          },
+          "run_id": "forward-topic17-one-title-20260817",
+          "source": {
+            "book_id": "1815618",
+            "catalog_id": "6038",
+            "catalog_path": [
+              "Topic 17 Daily Life"
+            ],
+            "snapshot_hash": "sha256:9acfd4f1192a8a2202d166ebf479730ba2ec9e044cd07da3c353c7579c3b4d6e",
+            "inference": null
+          },
+          "template": {
+            "requested_template_id": "41097",
+            "resolved_template_id": "41097",
+            "variant_id": null,
+            "snapshot_hash": "sha256:50a40e8e42ab65c0c0d788b036a95860751e4ee76aeeb454454a955717643a41"
+          },
+          "target": {
+            "book_id": "1820802",
+            "catalog_id": "45080",
+            "before_hash": "sha256:0dd8112239d2b648fec234807665d092e548786a3e8eff90957281b82cc4c710",
+            "result_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19"
+          },
+          "execution": {
+            "mode": "trial",
+            "required_authorization_type": "trial_authorization",
+            "restricted": false,
+            "restriction_reasons": [],
+            "automatic_write": false,
+            "authorization_confirmed": true,
+            "batch_authorized": false,
+            "required_error_validation_passed": true,
+            "post_write_verification_pending": true
+          },
+          "coverage": {
+            "required_rule_ids": [
+              "basic-section",
+              "classroom-section-cardinality",
+              "practice-section"
+            ],
+            "required_error_checks": [
+              {
+                "required_key": "rule:basic-section:basic-two-titles",
+                "id": "basic-two-titles",
+                "rule_id": "basic-section",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "第一段恰好显示两个完整标题且顺序与来源一致"
+              },
+              {
+                "required_key": "rule:basic-section:basic-module-readback",
+                "id": "basic-module-readback",
+                "rule_id": "basic-section",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "在线答题与一个根环节来源定位模块均回读到预期元素和来源资源"
+              },
+              {
+                "required_key": "rule:classroom-section-cardinality:classroom-card-count",
+                "id": "classroom-card-count",
+                "rule_id": "classroom-section-cardinality",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "完整标题卡数量与来源标题数量一致，且每张卡都包含背景、箭头、完整文字和点击区"
+              },
+              {
+                "required_key": "rule:classroom-section-cardinality:classroom-three-layout",
+                "id": "classroom-three-layout",
+                "rule_id": "classroom-section-cardinality",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "三个标题时第三张卡沿用前两张卡样式与纵向步距，入口不遮挡且区块完整容纳"
+              },
+              {
+                "required_key": "rule:classroom-section-cardinality:classroom-summary-line-fit",
+                "id": "classroom-summary-line-fit",
+                "rule_id": "classroom-section-cardinality",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "课堂摘要在卡片可用宽度内能完整显示时保持单行；只有真实放不下时才按语义边界换行，箭头紧跟最后一行且无溢出"
+              },
+              {
+                "required_key": "rule:classroom-section-cardinality:classroom-module-readback",
+                "id": "classroom-module-readback",
+                "rule_id": "classroom-section-cardinality",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "互动课程、摘要外层组、主入口和实际存在的每张标题卡外层组均回读到预期模块与真实来源资源；摘要必须指向承载该摘要原文的区块"
+              },
+              {
+                "required_key": "rule:practice-section:practice-six-titles",
+                "id": "practice-six-titles",
+                "rule_id": "practice-section",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "第三段恰好显示六个完整 Day 标题且顺序与来源一致"
+              },
+              {
+                "required_key": "rule:practice-section:practice-module-readback",
+                "id": "practice-module-readback",
+                "rule_id": "practice-section",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "打印与六个来源定位模块均回读到预期元素和来源资源"
+              },
+              {
+                "required_key": "rule:practice-section:page-tail-spacer-readback",
+                "id": "page-tail-spacer-readback",
+                "rule_id": "practice-section",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "最后一个内容区块为手机端 375×20 的空白区块，内边距为零、无元素且背景色与其他内容区块一致"
+              },
+              {
+                "required_key": "acceptance:mobile-canvas-375",
+                "id": "mobile-canvas-375",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "界面型教辅目录的页面级画布类型为手机端，重载后画布宽度仍为 375"
+              },
+              {
+                "required_key": "acceptance:structure-text-layout-audit",
+                "id": "structure-text-layout-audit",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "目标目录不存在空文本、占位、非法几何、新增越界或文本裁切错误"
+              },
+              {
+                "required_key": "acceptance:full-page-visual-review",
+                "id": "full-page-visual-review",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "整页三段流向、实际数量的听力课堂卡、摘要箭头位置以及末尾 20px 同底色留白经全页截图核对"
+              },
+              {
+                "required_key": "acceptance:save-export-readback",
+                "id": "save-export-readback",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "页面首次保存回读一致且完整导出页身份与区块结构匹配；来源追溯的后置回读由 provenance 工作流单独强制执行"
+              }
+            ],
+            "synthesized_validation_keys": []
+          },
+          "rule_bindings": [
+            {
+              "rule_id": "basic-section",
+              "status": "applied",
+              "action_summary": "按源目录保留 Words & Phrases 与 Sentences 两个基础标题，重排手机端卡片，并绑定在线答题和来源定位模块。",
+              "source_bindings": [
+                {
+                  "semantic_role": "source basic listening section",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1815618",
+                    "catalog_id": "6038",
+                    "block_id": "aMn046U5JU16010",
+                    "entity_kind": "section",
+                    "entity_id": "basic-section"
+                  },
+                  "snapshot_hash": "sha256:9acfd4f1192a8a2202d166ebf479730ba2ec9e044cd07da3c353c7579c3b4d6e",
+                  "binding_hash": "sha256:49513740e55946df2784cda05fb7e9ab0895b9951ddf357a8f3b05d293aa4329"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "target basic interface section",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820802",
+                    "catalog_id": "45080",
+                    "block_id": "7-YhRBNKLP41104",
+                    "entity_kind": "section",
+                    "entity_id": "basic-section"
+                  },
+                  "snapshot_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19",
+                  "binding_hash": "sha256:3a1f34274ddf75825761c2ada33d6238bbb035b119e0125a87ce26562aca9bac"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_and_module_readback",
+                  "summary": "two basic titles and two expected modules read back on the mobile canvas",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820802",
+                    "catalog_id": "45080",
+                    "block_id": "7-YhRBNKLP41104",
+                    "entity_kind": "section",
+                    "entity_id": "basic-section"
+                  },
+                  "artifact_hash": "sha256:741ded790a85f1e631b0d45aa229b9b6f03ef5315829a3de552cbd77418f656c",
+                  "evidence_hash": "sha256:e4402a3f9a5af6e95de165d47544dcd65af4f75e4d95997a2f860235fa650fcb"
+                }
+              ],
+              "result_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19"
+            },
+            {
+              "rule_id": "classroom-section-cardinality",
+              "status": "applied",
+              "action_summary": "识别源目录只有一个课堂标题，删除第二张完整卡，收缩区块；摘要单行优先并收拢箭头，所有跳转挂在外层组。",
+              "source_bindings": [
+                {
+                  "semantic_role": "source classroom one-heading section",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1815618",
+                    "catalog_id": "6038",
+                    "block_id": "zGZJysXw4u",
+                    "entity_kind": "section",
+                    "entity_id": "classroom-section"
+                  },
+                  "snapshot_hash": "sha256:9acfd4f1192a8a2202d166ebf479730ba2ec9e044cd07da3c353c7579c3b4d6e",
+                  "binding_hash": "sha256:05879e42a9a1e4a61821a8f3a9b9feee6449f8a80f216909852db836bfeb399b"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "target classroom one-card section",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820802",
+                    "catalog_id": "45080",
+                    "block_id": "7-YhRBNKLP41105",
+                    "entity_kind": "section",
+                    "entity_id": "classroom-section"
+                  },
+                  "snapshot_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19",
+                  "binding_hash": "sha256:a44174828078526cc69d4f981c0bf62bf99271adfe5531b8b2adcbe9cb37c4d1"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "visual_text_and_module_readback",
+                  "summary": "one complete classroom card, single-line summary, outer-group anchors and four expected modules read back",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820802",
+                    "catalog_id": "45080",
+                    "block_id": "7-YhRBNKLP41105",
+                    "entity_kind": "section",
+                    "entity_id": "classroom-section"
+                  },
+                  "artifact_hash": "sha256:741ded790a85f1e631b0d45aa229b9b6f03ef5315829a3de552cbd77418f656c",
+                  "evidence_hash": "sha256:39330f8b165510f2e28f49a7e96d1a3d93468098048e605119ea79d10f469661"
+                }
+              ],
+              "result_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19"
+            },
+            {
+              "rule_id": "practice-section",
+              "status": "applied",
+              "action_summary": "保留六个 Day 标题与顺序，将 Day 6 写为听力周周练，绑定打印和六个外层来源跳转，并追加 375×20 同底色空白区块。",
+              "source_bindings": [
+                {
+                  "semantic_role": "source six-day practice section",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1815618",
+                    "catalog_id": "6038",
+                    "block_id": "aMn046U5JU16027",
+                    "entity_kind": "section",
+                    "entity_id": "practice-section"
+                  },
+                  "snapshot_hash": "sha256:9acfd4f1192a8a2202d166ebf479730ba2ec9e044cd07da3c353c7579c3b4d6e",
+                  "binding_hash": "sha256:6995d7de0eada7f266596e395adecf53ee6694517aa08f743fb267dcc27d56fa"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "target six-day practice interface section",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820802",
+                    "catalog_id": "45080",
+                    "block_id": "7-YhRBNKLP41106",
+                    "entity_kind": "section",
+                    "entity_id": "practice-section"
+                  },
+                  "snapshot_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19",
+                  "binding_hash": "sha256:414ab8103109f79818df71539ac4897b7a5feb31e4291f9759f07e07624c4723"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "six day titles, seven expected modules and the 20px tail spacer read back",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820802",
+                    "catalog_id": "45080",
+                    "block_id": "7-YhRBNKLP41106",
+                    "entity_kind": "section",
+                    "entity_id": "practice-section"
+                  },
+                  "artifact_hash": "sha256:741ded790a85f1e631b0d45aa229b9b6f03ef5315829a3de552cbd77418f656c",
+                  "evidence_hash": "sha256:456c49a1656c6a5690b55f2a1cfade6bc3594c5e2e08f12309430a984083fb8d"
+                }
+              ],
+              "result_hash": "sha256:55137415f2ea4602abf5e07a07afb6640a7bbc79ef82ae604c5eb1250b122d19"
+            }
+          ],
+          "instance_fixes": [
+            {
+              "kind": "forward_cardinality_case",
+              "summary": "Topic 17 来源只有一个课堂标题；删除第二张完整卡并收缩区块，没有保留空卡或误删第一张。"
+            },
+            {
+              "kind": "user_feedback_correction",
+              "summary": "课堂摘要能在卡片可用宽度内放下时保持单行；只有真实放不下才换行。"
+            },
+            {
+              "kind": "outer_anchor_correction",
+              "summary": "摘要、标题卡和六个 Day 跳转均绑定最外层完整交互组。"
+            },
+            {
+              "kind": "controlled_exception",
+              "summary": "源书与目标书均为 FONT_MAPPING_EMPTY；本轮保持样章字体配置，不复制或猜测字体映射。"
+            },
+            {
+              "kind": "template_warning_baseline",
+              "summary": "审计的三个越界 warning 来自样章组自身边界元数据与可见子元素不一致；截图中子元素均在区块内，未新增可见越界。"
+            }
+          ],
+          "user_approvals": [
+            {
+              "id": "topic17-forward-approval",
+              "type": "trial_authorization",
+              "status": "confirmed",
+              "scope": "Topic 17 Daily Life forward validation only",
+              "confirmed_by": "user",
+              "confirmed_at": "2026-08-17T19:00:00+08:00",
+              "evidence": [
+                "用户在 Topic 7 试制验收后明确说：现在效果可以了，可以进行下一步了。"
+              ]
+            }
+          ],
+          "validation": [
+            {
+              "id": "basic-two-titles",
+              "rule_id": "basic-section",
+              "status": "passed",
+              "evidence": [
+                "两个基础标题顺序正确，文本布局检查无溢出。"
+              ],
+              "required_key": "rule:basic-section:basic-two-titles",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "basic-module-readback",
+              "rule_id": "basic-section",
+              "status": "passed",
+              "evidence": [
+                "在线答题与根来源定位模块回读存在，定位 raw 来源为原书目录 6038。"
+              ],
+              "required_key": "rule:basic-section:basic-module-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "classroom-card-count",
+              "rule_id": "classroom-section-cardinality",
+              "status": "passed",
+              "evidence": [
+                "源目录只有一个编号标题，目标只保留一张完整标题卡，第二张完整卡已删除。"
+              ],
+              "required_key": "rule:classroom-section-cardinality:classroom-card-count",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "classroom-three-layout",
+              "rule_id": "classroom-section-cardinality",
+              "status": "passed",
+              "evidence": [
+                "来源标题数为一，三标题分支未触发；一标题分支完成收缩且入口、卡片与后续区块无重叠。"
+              ],
+              "required_key": "rule:classroom-section-cardinality:classroom-three-layout",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "classroom-summary-line-fit",
+              "rule_id": "classroom-section-cardinality",
+              "status": "passed",
+              "evidence": [
+                "听力绊脚石：弱读保持单行，文本布局检查 overflow=false，箭头紧跟文字且未越界。"
+              ],
+              "required_key": "rule:classroom-section-cardinality:classroom-summary-line-fit",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "classroom-module-readback",
+              "rule_id": "classroom-section-cardinality",
+              "status": "passed",
+              "evidence": [
+                "互动课程、课堂入口、摘要外层组和唯一标题卡外层组均回读预期模块，定位 raw 来源为原书目录 6038。"
+              ],
+              "required_key": "rule:classroom-section-cardinality:classroom-module-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "practice-six-titles",
+              "rule_id": "practice-section",
+              "status": "passed",
+              "evidence": [
+                "六个 Day 标题顺序正确，Day 6 为听力周周练。"
+              ],
+              "required_key": "rule:practice-section:practice-six-titles",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "practice-module-readback",
+              "rule_id": "practice-section",
+              "status": "passed",
+              "evidence": [
+                "打印和六个 Day 外层来源定位模块均回读存在，定位 raw 来源为原书目录 6038。"
+              ],
+              "required_key": "rule:practice-section:practice-module-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "page-tail-spacer-readback",
+              "rule_id": "practice-section",
+              "status": "passed",
+              "evidence": [
+                "末尾空白区块为手机端 375×20、零内边距、无元素并使用统一底色。"
+              ],
+              "required_key": "rule:practice-section:page-tail-spacer-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "mobile-canvas-375",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "切换到其他目录再返回后，editor_get_canvas_info 仍返回 slideId=45080、canvasWidth=375。"
+              ],
+              "required_key": "acceptance:mobile-canvas-375",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "structure-text-layout-audit",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "当前页审计 0 error；三个 warning 为样章组边界元数据残留，截图与子元素几何未见可见越界或文本裁切。"
+              ],
+              "required_key": "acceptance:structure-text-layout-audit",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "full-page-visual-review",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "全页截图核对三段流向、一张课堂标题卡、摘要箭头、六个 Day、打印按钮和末尾留白均正确。"
+              ],
+              "required_key": "acceptance:full-page-visual-review",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "save-export-readback",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "重新载入后 editor_save_verified 返回 verified=true、dirty=false，contentHash 与 persistedContentHash 均为 fnv1a32:e67b56ce；语义快照回读 13 个数字模块。"
+              ],
+              "required_key": "acceptance:save-export-readback",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            }
+          ],
+          "baseline": {
+            "template_id": "41097",
+            "target_before_artifact": "target-topic17-before-semantic-snapshot.json",
+            "source_semantic_snapshot": "source-topic17-semantic-snapshot.json"
+          },
+          "baseline_hash": "sha256:024721f0e77255d5697efce3cce38594d0428b54cfc44bdb93fe291a24647b26",
+          "created_at": "2026-08-17T19:32:00+08:00",
+          "integrity_hash": "sha256:47a27187b26fd125e166c531fc27f32c97b8d291b558a723324046ef72e73543"
+        }
+      }
+    }
+  },
+  "post_write_verification": {
+    "required": true,
+    "expected_run_id": "forward-topic17-one-title-20260817",
+    "expected_integrity_hash": "sha256:47a27187b26fd125e166c531fc27f32c97b8d291b558a723324046ef72e73543",
+    "carrier_block_id": "7-YhRBNKLP41104",
+    "sequence": [
+      {
+        "order": 1,
+        "tool": "editor_update_block",
+        "purpose": "merge template_data_content.ai_semantic_provenance without dropping unknown block fields"
+      },
+      {
+        "order": 2,
+        "tool": "editor_save_verified",
+        "purpose": "persist and read back the page after provenance changes the block JSON"
+      },
+      {
+        "order": 3,
+        "tool": "editor_export_slide",
+        "purpose": "export the saved page, including the carrier block JSON"
+      },
+      {
+        "order": 4,
+        "command": "node scripts/provenance-tools.mjs validate-readback --input <editor-export-slide-envelope.json> --save-receipt <editor-save-verified-envelope.json> --expected <provenance.json> --carrier-block-id 7-YhRBNKLP41104 --out <readback-receipt.json>",
+        "purpose": "validate the real tool envelopes and emit the canonical readback receipt artifact"
+      }
+    ],
+    "completion_condition": "the real save/export envelopes produce a canonical readback receipt for this run, page hash and carrier identity"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "case_id": "day6-long-sentence",
+  "status": "passed",
+  "checks": [
+    {
+      "check_id": "template-three-block-plus-tail-structure",
+      "status": "passed",
+      "evidence_artifacts": [
+        {
+          "artifact": "target-after-semantic-snapshot.json",
+          "artifact_sha256": "sha256:2501fad4c604827846c1e39724c2be17b2a8c7d996b6ee9db8caa00d8f246791"
+        },
+        {
+          "artifact": "acceptance-observations.json",
+          "artifact_sha256": "sha256:a4184910028c989e85ae017fad48312b5f5f441aab23be23b091b1674804ebb0"
+        }
+      ]
+    },
+    {
+      "check_id": "text-and-layout-audit",
+      "status": "passed",
+      "evidence_artifacts": [
+        {
+          "artifact": "target-after-semantic-snapshot.json",
+          "artifact_sha256": "sha256:2501fad4c604827846c1e39724c2be17b2a8c7d996b6ee9db8caa00d8f246791"
+        },
+        {
+          "artifact": "acceptance-observations.json",
+          "artifact_sha256": "sha256:a4184910028c989e85ae017fad48312b5f5f441aab23be23b091b1674804ebb0"
+        }
+      ]
+    },
+    {
+      "check_id": "nine-module-relations",
+      "status": "passed",
+      "evidence_artifacts": [
+        {
+          "artifact": "target-after-semantic-snapshot.json",
+          "artifact_sha256": "sha256:2501fad4c604827846c1e39724c2be17b2a8c7d996b6ee9db8caa00d8f246791"
+        },
+        {
+          "artifact": "acceptance-observations.json",
+          "artifact_sha256": "sha256:a4184910028c989e85ae017fad48312b5f5f441aab23be23b091b1674804ebb0"
+        }
+      ]
+    },
+    {
+      "check_id": "full-page-visual-review",
+      "status": "passed",
+      "evidence_artifacts": [
+        {
+          "artifact": "acceptance-observations.json",
+          "artifact_sha256": "sha256:a4184910028c989e85ae017fad48312b5f5f441aab23be23b091b1674804ebb0"
+        }
+      ]
+    },
+    {
+      "check_id": "save-export-readback",
+      "status": "passed",
+      "evidence_artifacts": [
+        {
+          "artifact": "editor-save-verified-envelope.json",
+          "artifact_sha256": "sha256:243fa0886befc194090c0d1e99c8111e2374538dcf885d2c291ea7d38c39823d"
+        },
+        {
+          "artifact": "provenance-readback-receipt.json",
+          "artifact_sha256": "sha256:725e4cd0699361a8741e7cee37e5bd17311054a35935386d4bf5547a94f66f30"
+        }
+      ]
+    }
+  ]
+}

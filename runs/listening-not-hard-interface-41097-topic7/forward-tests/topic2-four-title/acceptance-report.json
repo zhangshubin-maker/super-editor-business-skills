@@ -1,0 +1,104 @@
+{
+  "accepted_at": "2026-08-18T09:55:25+08:00",
+  "scope": "Topic 2 Food independent four-title forward validation and provenance finalization",
+  "page": {
+    "book_id": "1820803",
+    "catalog_id": "45100",
+    "name": "Topic 2 Food"
+  },
+  "source": {
+    "book_id": "1815615",
+    "catalog_id": "5437",
+    "name": "Topic 2 Food"
+  },
+  "save": {
+    "saved": true,
+    "verified": true,
+    "content_hash": "fnv1a32:04e6a05e",
+    "persisted_content_hash": "fnv1a32:04e6a05e",
+    "dirty": false,
+    "warnings": []
+  },
+  "checks": [
+    {
+      "id": "mobile-canvas-375",
+      "status": "passed",
+      "evidence": "editor_get_canvas_info 回读 slideId=45100、canvasWidth=375。"
+    },
+    {
+      "id": "basic-two-titles",
+      "status": "passed",
+      "evidence": "words 与 sentences 两个标签按来源顺序存在。"
+    },
+    {
+      "id": "basic-module-readback",
+      "status": "passed",
+      "evidence": "听力基本功外层查看组定位到来源 3997021，趣味练习在线答题存在。"
+    },
+    {
+      "id": "classroom-card-count",
+      "status": "passed",
+      "evidence": "来源四个标题，目标全页截图显示四张完整卡片。"
+    },
+    {
+      "id": "classroom-multi-card-layout",
+      "status": "passed",
+      "evidence": "四卡等宽纵排、节奏一致，白底完整容纳且未遮挡后续区块。"
+    },
+    {
+      "id": "classroom-summary-line-fit",
+      "status": "passed",
+      "evidence": "摘要和卡片标题在 375 宽画布内完整可读，单行可容纳内容未强制换行。"
+    },
+    {
+      "id": "classroom-module-readback",
+      "status": "passed",
+      "evidence": "课堂根、绊脚石、课程及四个标题的外层组模块均已回读。"
+    },
+    {
+      "id": "practice-six-titles",
+      "status": "passed",
+      "evidence": "Day 1 到 Day 6 顺序正确且全页截图无错位。"
+    },
+    {
+      "id": "practice-module-readback",
+      "status": "passed",
+      "evidence": "六个 Day 外层定位模块和打印模块均已回读。"
+    },
+    {
+      "id": "page-tail-spacer-readback",
+      "status": "passed",
+      "evidence": "末尾区块为 phone 375×20、零内边距、无元素。"
+    },
+    {
+      "id": "catalog-order-readback",
+      "status": "passed",
+      "evidence": "Topic 2 Food 位于 Topic 1 Numbers 与 Topic 3 School 之间且名称无多余空格。"
+    },
+    {
+      "id": "all-pages-phone-canvas",
+      "status": "passed",
+      "evidence": "整书先前逐页保存回读；本独立用例再次确认 phone 375。"
+    },
+    {
+      "id": "structure-text-layout-audit",
+      "status": "passed",
+      "evidence": "当前页审计 0 error；三个样章基线 warning 在全页截图中无可见越界。"
+    },
+    {
+      "id": "full-page-visual-review",
+      "status": "passed",
+      "evidence": "全页截图核对基础段、四张课堂卡、六个 Day、按钮和底部留白。"
+    },
+    {
+      "id": "save-export-readback",
+      "status": "passed",
+      "evidence": "保存 verified=true、dirty=false；实际 editor_export_slide 与严格 provenance receipt 校验通过。"
+    }
+  ],
+  "known_boundaries": [
+    "未在学生端逐个点击验证来源跳转、在线答题、互动课程和打印体验。",
+    "源和目标语义快照报告 FONT_MAPPING_EMPTY；沿用样章字体配置，没有猜测字体映射。",
+    "三个越界 warning 为样章组边界元数据基线；全页截图未见可见越界。"
+  ]
+}

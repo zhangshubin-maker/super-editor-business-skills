@@ -1,0 +1,714 @@
+{
+  "schema_version": 1,
+  "identity": {
+    "skill_name": "morning-reading-interface-41100",
+    "display_name": "晨读美文界面型教辅（41100）",
+    "version": "0.3.0",
+    "status": "validated",
+    "book_family": "小学英语晨读美文"
+  },
+  "applicability": {
+    "intent": "把同年级段、同名晨读美文超媒书逐目录转换为手机端界面型教辅",
+    "include": {
+      "subject": "英语",
+      "source_category": "晨读美文",
+      "source_book_name_pattern": "晨读美文 适用于{grade_pair}年级",
+      "target_book_name_pattern": "晨读美文 适用于{grade_pair}年级",
+      "grade_pair_relation": "source.more_grade equals target.more_grade",
+      "known_source_book_ids": [
+        1814457,
+        1814549
+      ],
+      "known_target_book_ids": [
+        1820810,
+        1820811
+      ],
+      "validated_book_pairs": [
+        {
+          "grade_pair": "3-4",
+          "source_book_id": 1814457,
+          "target_book_id": 1820810
+        },
+        {
+          "grade_pair": "5-6",
+          "source_book_id": 1814549,
+          "target_book_id": 1820811
+        }
+      ],
+      "target_canvas_type": "phone",
+      "target_canvas_width": 375
+    },
+    "exclude": {
+      "source_category_not": "晨读美文",
+      "source_target_grade_pair_mismatch": true
+    }
+  },
+  "templates": {
+    "default": {
+      "template_id": "41100",
+      "intent": "晨读美文手机界面样章；正式转换从干净样章基页或用户确认的干净手机页复制，保证页面级 phone 375 且每页独立测量",
+      "snapshot_hash": "sha256:8e4e08e1f523f111bfa27c2d855e8963ef635964323bad8063d150a062760f77",
+      "anchors": [
+        {
+          "kind": "template_source_id",
+          "value": "41100",
+          "optional": true,
+          "intent": "确认样章来源，不作为跨书匹配条件"
+        }
+      ]
+    },
+    "variants": []
+  },
+  "defaults": {
+    "style_policy": "preserve_target",
+    "module_policy": "clone_if_supported",
+    "on_missing": "needs_review",
+    "on_ambiguous": "stop"
+  },
+  "execution": {
+    "capability_snapshot": {
+      "catalog_path": "super-editor-capability-catalog.json",
+      "catalog_hash": "sha256:5dc3cc385eab0252da7d52cfec9a6790ca39656e236139b555b16677b3e4b54c",
+      "snapshot_hash": "sha256:6cd8212cea7e1b8cb07787e3ed6fc938545fe51e45693ad454ac00faef3cc4fe",
+      "capabilities": [
+        "editor_export_semantic_snapshot",
+        "editor_duplicate_slide",
+        "editor_rename_slide",
+        "editor_select_slide",
+        "editor_get_book_manifest",
+        "editor_set_canvas_type",
+        "editor_add_block",
+        "editor_update_block",
+        "editor_resize_element",
+        "editor_move_element",
+        "editor_text_set_content",
+        "editor_text_inspect_layout",
+        "editor_create_digital_module",
+        "editor_list_digital_modules",
+        "editor_audit_content",
+        "editor_export_slide",
+        "editor_save_verified"
+      ],
+      "evidence": [
+        "由当前 super-editor-control MCP tools/list 生成，共 144 个原子工具；本规则仅声明实际调用子集"
+      ]
+    },
+    "trial_approval": {
+      "approved": true,
+      "evidence": [
+        "用户明确确认 Day 1 试制可以并要求固定规则后转换其他目录",
+        "Day 1 页面级画布为 phone 375，末尾空区块为 375x20 且背景 #cecece",
+        "用户确认书级字体清单允许为空，不得阻挡生成",
+        "用户指出重点词汇查看按钮必须关联跳转，已改为绑定内层查看组并删除外层重复关系"
+      ]
+    },
+    "forward_cases": [
+      {
+        "id": "day2-two-tigers",
+        "evidence_artifact": "forward-tests/day2-two-tigers/forward-evidence.json",
+        "artifact_sha256": "sha256:2cdb00a3318e44e547cf58b58a6c8ee4b9f3e8bddf3d2c6d9e1b3c75418f8f32"
+      },
+      {
+        "id": "morning-greeting-reflow",
+        "evidence_artifact": "forward-tests/morning-greeting/forward-evidence.json",
+        "artifact_sha256": "sha256:2ebd5f380ef43096d27bb0b46e20e45a0a78bfc640261ff1af0ac0574ff9b01c"
+      }
+    ]
+  },
+  "rules": [
+    {
+      "id": "source-book-identity-gate",
+      "order": 5,
+      "intent": "只从同年级段的晨读美文源书取内容和交互资源，禁止跨书系或同名错书",
+      "when": "开始任何目录转换之前",
+      "scope": {
+        "intent": "整书和每个目录"
+      },
+      "source": {
+        "role": "与目标年级段完全一致的晨读美文超媒源书及其目录",
+        "cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "book_family",
+            "claim": "源书属于晨读美文书系",
+            "observation": "书名和分类均为晨读美文，且 source.more_grade 与 target.more_grade 完全一致"
+          },
+          {
+            "class": "structure",
+            "kind": "book_identity",
+            "claim": "每个年级段的源书身份唯一",
+            "observation": "已验证3-4年级源书1814457和5-6年级源书1814549；新年级段必须重新核对后再扩展"
+          }
+        ]
+      },
+      "target": {
+        "role": "与源书年级段完全一致的晨读美文界面教辅目标书",
+        "cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "book_family",
+            "claim": "目标书属于同一晨读美文书系",
+            "observation": "目标书书名和分类均为晨读美文"
+          },
+          {
+            "class": "structure",
+            "kind": "book_identity",
+            "claim": "每个年级段的目标书身份唯一",
+            "observation": "已验证3-4年级目标书1820810和5-6年级目标书1820811；禁止跨年级连接"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "读取并核对书本身份后才允许转换",
+        "required_capabilities": [
+          "editor_get_book_manifest"
+        ],
+        "steps": [
+          {
+            "type": "verify_book_identity",
+            "intent": "核对书名、分类、源目标年级段一致性与已验证书本配对",
+            "required_capabilities": [
+              "editor_get_book_manifest"
+            ]
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "exact-book-pair",
+          "intent": "来源和目标均为同一已验证年级段的晨读美文书本配对",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_get_book_manifest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-card-content-and-navigation",
+      "order": 10,
+      "intent": "把来源目录名和英文美文写入样章阅读卡，并让英文查看与中文翻译跳转到来源真实区块",
+      "when": "来源目录可唯一识别英文正文和中文翻译区块",
+      "scope": {
+        "intent": "全部晨读美文目录"
+      },
+      "source": {
+        "role": "来源目录名、英文正文、中文翻译区块",
+        "cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "reading_content",
+            "claim": "英文正文承担晨读文章语义",
+            "observation": "来源第2内容区块为英文原文，第3内容区块为中文翻译"
+          },
+          {
+            "class": "structure",
+            "kind": "stable_block_order",
+            "claim": "英文和翻译资源可稳定定位",
+            "observation": "3-4和5-6年级共160个来源目录均通过完整快照确认相同内容区块顺序"
+          }
+        ]
+      },
+      "target": {
+        "role": "样章主标题、英文正文框、英文查看组和中文翻译组",
+        "cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "template_role",
+            "claim": "目标卡片呈现本日标题与英文正文",
+            "observation": "Day 1样页已由用户确认"
+          },
+          {
+            "class": "structure",
+            "kind": "stable_element_identity",
+            "claim": "复制确认页后元素角色稳定",
+            "observation": "标题、正文和两个点击组保留稳定前端ID"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "从干净基页保留目标样式替换标题与富文本正文，按真实渲染高度独立扩容，并创建两个来源定位模块",
+        "required_capabilities": [
+          "editor_text_set_content",
+          "editor_text_inspect_layout",
+          "editor_create_digital_module"
+        ],
+        "style_policy": "preserve_target",
+        "module_policy": "clone_if_supported",
+        "steps": [
+          {
+            "type": "set_title_and_article",
+            "intent": "写入目录名和完整英文正文，保留高亮及段落",
+            "required_capabilities": [
+              "editor_text_set_content",
+              "editor_text_inspect_layout"
+            ],
+            "style_policy": "preserve_target"
+          },
+          {
+            "type": "measure_and_reflow_from_clean_baseline",
+            "intent": "每页先回到样章原始几何，再测量标题和正文真实渲染高度；同步扩容正文框、背景、主区块并下移翻译入口，禁止继承上一页扩容高度。Bridge像素测量为空但当前页DOM可唯一定位时，可只读DOM的scrollHeight作为等价测量回退",
+            "required_capabilities": [
+              "editor_text_inspect_layout"
+            ]
+          },
+          {
+            "type": "bind_source_navigation",
+            "intent": "英文查看和中文翻译分别指向同一来源目录的真实英文和翻译区块",
+            "required_capabilities": [
+              "editor_create_digital_module"
+            ]
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "article-visible",
+          "intent": "标题和正文完整可见且无裁切",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_text_inspect_layout"
+          ]
+        },
+        {
+          "id": "reading-navigation-readback",
+          "intent": "两个定位模块指向当前来源目录的精确资源",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_list_digital_modules"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "daily-interactions",
+      "order": 20,
+      "intent": "把来源目录的音频、口语PK、口语AI测评和巧记单词交互独立重建到目标页",
+      "when": "来源目录各存在唯一的77、两个87和79模块",
+      "scope": {
+        "intent": "全部晨读美文目录"
+      },
+      "source": {
+        "role": "音频、agent27、agent34和互动课件模块配置",
+        "cardinality": {
+          "min": 4,
+          "max": 4
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "daily_actions",
+            "claim": "四个入口分别承担随身听、口语PK、AI测评和巧记单词",
+            "observation": "来源按钮语义与模块类型一致"
+          },
+          {
+            "class": "structure",
+            "kind": "module_cardinality",
+            "claim": "每目录四类交互基数稳定",
+            "observation": "3-4和5-6年级共160个来源完整快照均提取到四个模块配置"
+          }
+        ]
+      },
+      "target": {
+        "role": "样章随身听、口语PK、口语AI测评和巧记单词四个入口组",
+        "cardinality": {
+          "min": 4,
+          "max": 4
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "template_actions",
+            "claim": "四个入口角色唯一",
+            "observation": "目标按钮文案直接标明交互用途"
+          },
+          {
+            "class": "structure",
+            "kind": "stable_element_role",
+            "claim": "复制确认页后四个入口角色和后端归属稳定",
+            "observation": "Day 1和Day 2复制页均可按按钮文案与层级唯一识别四个入口，且目标页后端区块归属独立"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "使用来源配置在每个目标页创建独立模块，不共享跨页relation/model",
+        "required_capabilities": [
+          "editor_create_digital_module",
+          "editor_list_digital_modules"
+        ],
+        "module_policy": "clone_if_supported",
+        "steps": [
+          {
+            "type": "create_independent_modules",
+            "intent": "分别创建77、87(agent27)、87(agent34)、79模块",
+            "required_capabilities": [
+              "editor_create_digital_module"
+            ]
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "daily-module-readback",
+          "intent": "四个模块类型、智能体ID、资源ID和来源目录一致",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_list_digital_modules"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vocabulary-phonics-inner-view-links",
+      "order": 30,
+      "intent": "重点词汇与拼读能手的可见查看按钮绑定内层完整点击组，并跳转到来源真实区块",
+      "when": "来源可唯一识别重点词汇和拼读能手标题区块",
+      "scope": {
+        "intent": "全部晨读美文目录"
+      },
+      "source": {
+        "role": "来源重点词汇标题区块和拼读能手标题区块",
+        "cardinality": {
+          "min": 2,
+          "max": 2
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "section_navigation",
+            "claim": "两个资源分别进入词汇与拼读内容",
+            "observation": "来源第5和第8内容区块承担两个环节标题"
+          },
+          {
+            "class": "structure",
+            "kind": "stable_block_order",
+            "claim": "两个来源资源可稳定定位",
+            "observation": "3-4和5-6年级共160个来源完整快照均确认相同区块顺序"
+          }
+        ]
+      },
+      "target": {
+        "role": "重点词汇与拼读能手卡片内可见查看文字和箭头组成的内层点击组",
+        "cardinality": {
+          "min": 2,
+          "max": 2
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "visible_view_action",
+            "claim": "用户点击的是查看文字与箭头区域",
+            "observation": "用户反馈重点词汇查看按钮未关联跳转"
+          },
+          {
+            "class": "structure",
+            "kind": "inner_click_group",
+            "claim": "模块必须挂在内层完整组而非外层卡片",
+            "observation": "Day 1已删除外层重复关系并把定位模块挂到内层查看组"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "在两个内层查看组创建来源定位模块，禁止给外层卡片重复挂载",
+        "required_capabilities": [
+          "editor_create_digital_module",
+          "editor_list_digital_modules"
+        ],
+        "module_policy": "clone_if_supported",
+        "steps": [
+          {
+            "type": "bind_inner_view_groups",
+            "intent": "重点词汇与拼读能手内层查看组分别指向真实来源区块",
+            "required_capabilities": [
+              "editor_create_digital_module"
+            ]
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "inner-view-module-readback",
+          "intent": "两个内层查看组各有且仅有一个定位模块，外层卡片无重复模块",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_list_digital_modules"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phone-page-and-tail-spacer",
+      "order": 40,
+      "intent": "每个目录都从已确认手机页复制，保持页面级 phone 375，并以20px灰色空区块结束",
+      "when": "创建任一目标目录",
+      "scope": {
+        "intent": "目标整书全部目录"
+      },
+      "source": {
+        "role": "用户确认的Day 1目标手机页",
+        "cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "approved_baseline",
+            "claim": "Day 1是已确认转换基线",
+            "observation": "用户明确表示可以并要求固定规则"
+          },
+          {
+            "class": "structure",
+            "kind": "phone_page_geometry",
+            "claim": "基线页面级画布为phone 375",
+            "observation": "保存回读显示sizeType=phone,totalWidth=375"
+          }
+        ]
+      },
+      "target": {
+        "role": "每个新目录的页面级画布和末尾空区块",
+        "cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "mobile_interface",
+            "claim": "界面教辅按手机宽度制作",
+            "observation": "用户明确要求宽度使用phone"
+          },
+          {
+            "class": "structure",
+            "kind": "tail_spacer",
+            "claim": "页面末尾留固定灰色空区块",
+            "observation": "用户明确要求高度20、背景#cecece"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "从41100生成并切为phone的干净基页，或复制用户确认的干净phone基页；禁止复制已按某篇正文扩容的上一页。随后重命名、写入内容、创建交互并保存",
+        "required_capabilities": [
+          "editor_duplicate_slide",
+          "editor_rename_slide",
+          "editor_select_slide",
+          "editor_export_slide",
+          "editor_save_verified"
+        ],
+        "style_policy": "preserve_target",
+        "steps": [
+          {
+            "type": "duplicate_clean_phone_baseline",
+            "intent": "复制干净基页，确保页面级phone 375和末尾空区块随页继承，并让每页从相同原始几何独立测量",
+            "required_capabilities": [
+              "editor_duplicate_slide",
+              "editor_rename_slide",
+              "editor_select_slide"
+            ]
+          },
+          {
+            "type": "verify_tail_spacer",
+            "intent": "最后区块必须375x20、phone、无元素、零内边距、背景#cecece",
+            "required_capabilities": [
+              "editor_export_slide"
+            ]
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "phone-375-readback",
+          "intent": "页面级画布重载后仍为phone 375",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_get_book_manifest"
+          ]
+        },
+        {
+          "id": "tail-spacer-readback",
+          "intent": "最后空区块为375x20且背景#cecece",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_export_slide"
+          ]
+        }
+      ]
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "exact-book-family",
+      "intent": "来源与目标均为同一已验证年级段的晨读美文书本配对",
+      "severity": "error",
+      "required_capabilities": [
+        "editor_get_book_manifest"
+      ]
+    },
+    {
+      "id": "font-mapping-empty-warning-only",
+      "intent": "书级字体清单为空只记录警告，不阻断读取、生成、保存和回读",
+      "severity": "warning",
+      "required_capabilities": [
+        "editor_audit_content"
+      ]
+    },
+    {
+      "id": "content-layout-audit",
+      "intent": "标题正文完整且不存在新增裁切、空文本、占位和非法几何",
+      "severity": "error",
+      "required_capabilities": [
+        "editor_audit_content",
+        "editor_text_inspect_layout"
+      ]
+    },
+    {
+      "id": "eight-modules-per-page",
+      "intent": "每页恰有8个模块：4个来源定位、音频、两个智能体和互动课件",
+      "severity": "error",
+      "required_capabilities": [
+        "editor_list_digital_modules"
+      ]
+    },
+    {
+      "id": "save-readback",
+      "intent": "每页保存回读业务内容哈希一致且dirty=false",
+      "severity": "error",
+      "required_capabilities": [
+        "editor_save_verified"
+      ]
+    }
+  ],
+  "training": {
+    "feedback": [
+      {
+        "id": "exact-morning-reading-source",
+        "classification": "rule_refinement",
+        "summary": "用户反复强调只能连接晨读美文书本，不能连错书",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "固定已验证配对3-4年级1814457→1820810、5-6年级1814549→1820811，并在每次转换前核对书名、分类和年级段一致性",
+        "promoted_to_rule_ids": [
+          "source-book-identity-gate"
+        ]
+      },
+      {
+        "id": "empty-font-list-nonblocking",
+        "classification": "acceptance_refinement",
+        "summary": "用户确认书级字体映射为空不是问题，不得阻挡进度",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "FONT_MAPPING_EMPTY降为仅警告，其他完整性与保存校验仍照常执行",
+        "promoted_to_rule_ids": [
+          "phone-page-and-tail-spacer"
+        ]
+      },
+      {
+        "id": "phone-width",
+        "classification": "rule_refinement",
+        "summary": "用户确认宽度要使用phone",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "所有目录从已确认phone 375页复制并回读页面级画布",
+        "promoted_to_rule_ids": [
+          "phone-page-and-tail-spacer"
+        ]
+      },
+      {
+        "id": "tail-spacer-20-gray",
+        "classification": "rule_refinement",
+        "summary": "用户要求页面底部增加高20、背景#cecece的空区块",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "基线页和所有复制页最后保留375x20灰色空区块",
+        "promoted_to_rule_ids": [
+          "phone-page-and-tail-spacer"
+        ]
+      },
+      {
+        "id": "view-button-inner-group",
+        "classification": "rule_refinement",
+        "summary": "用户指出重点词汇查看按钮没有关联跳转",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "定位模块绑定可见查看文字与箭头的内层完整组，删除外层卡片重复关系",
+        "promoted_to_rule_ids": [
+          "vocabulary-phonics-inner-view-links"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "id": "day1-approved-baseline",
+        "kind": "positive",
+        "description": "Day 1使用phone 375、底部20px灰色空区块，并由8个独立模块完成内容和交互映射",
+        "rule_ids": [
+          "reading-card-content-and-navigation",
+          "daily-interactions",
+          "vocabulary-phonics-inner-view-links",
+          "phone-page-and-tail-spacer"
+        ]
+      },
+      {
+        "id": "reject-wrong-book",
+        "kind": "negative",
+        "description": "禁止因名称相近从非晨读美文书系或不同年级段书本取资源",
+        "rule_ids": [
+          "source-book-identity-gate"
+        ]
+      },
+      {
+        "id": "reject-outer-card-link",
+        "kind": "negative",
+        "description": "禁止把重点词汇查看跳转只挂在外层卡片或同时保留外层重复关系",
+        "rule_ids": [
+          "vocabulary-phonics-inner-view-links"
+        ]
+      }
+    ]
+  },
+  "forward_tests": [
+    {
+      "id": "day2-two-tigers",
+      "source_label": "Day 2 Two tigers（同组常规标题）",
+      "status": "passed",
+      "evidence_artifact": "forward-tests/day2-two-tigers/forward-evidence.json"
+    },
+    {
+      "id": "morning-greeting-reflow",
+      "source_label": "Day 1 Morning greeting（跨分组双行标题重排）",
+      "status": "passed",
+      "evidence_artifact": "forward-tests/morning-greeting/forward-evidence.json"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "semantic_trial_acceptance",
+  "skill": {"name": "oral-daily-practice-interface-41103", "version": "0.1.3", "status": "trial_approved"},
+  "source": {"book_id": "1814807", "catalog_id": "5195", "catalog_name": "DAY 1 Catch a cold", "snapshot_stable_hash": "sha256:301fe33c14a2f2114c430d7e0dc20e445f87b0b85d489999d4af97cd2a969bed"},
+  "template": {"id": "41103", "canonical_hash": "sha256:bc2055d69754023ad0801230c0866c0d57a425099a2194750b87c437a4715363"},
+  "target": {"book_id": "1820806", "catalog_id": "45159", "catalog_name": "DAY 1 Catch a cold", "canvas_width": 375, "save_content_hash": "fnv1a32:b5f80b46", "verified": true, "dirty": false},
+  "checks": [
+    {"id": "template-three-block-plus-tail-structure", "status": "passed", "evidence": "3 sample content blocks plus final empty block Jj7b4c7vbD"},
+    {"id": "dialogue-text-readback", "status": "passed", "evidence": "title, Dialogue and Chinese prompt read back; Dialogue box is 24px high at top 74.2698455, Chinese prompt moved down 2px, and post-save full-page screenshot shows complete descenders"},
+    {"id": "sentence-cardinality-and-order", "status": "passed", "evidence": "3 ordered sentence paragraphs"},
+    {"id": "word-pair-cardinality", "status": "passed", "evidence": "eight independent text elements form two rows; both rows use left 56.9543682, 152.9543682, 216.9543682, 296.9543682; post-save screenshot shows complete rightmost Chinese"},
+    {"id": "dialogue-view-navigation-readback", "status": "passed", "evidence": "outer group CsAsgQ2GkN has type 80; raw catalog_content points to source book 1814807, catalog 5195, block 3928819"},
+    {"id": "nine-module-relations", "status": "passed", "evidence": "types 80,77,78,78,79,82,79,87,84 on nine semantic targets"},
+    {"id": "phone-canvas-and-save-readback", "status": "passed", "evidence": "canvasWidth=375; saved=true; verified=true; dirty=false"},
+    {"id": "page-tail-spacer-readback", "status": "passed", "evidence": "last block Jj7b4c7vbD is phone 375x20, zero padding, zero elements, solid #CECECE, no design image"},
+    {"id": "structure-audit-errors", "status": "passed", "evidence": "0 errors; 2 inherited sample geometry warnings"},
+    {"id": "student-interaction-clickthrough", "status": "not_tested", "evidence": "requires student-side runtime acceptance"},
+    {"id": "semantic-provenance-readback", "status": "not_tested", "evidence": "not written during first trial"}
+  ],
+  "overall": "trial_passed_with_open_runtime_and_provenance_checks"
+}

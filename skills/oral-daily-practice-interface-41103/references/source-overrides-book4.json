@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "source_book_id": "1814807",
+  "catalogs": {
+    "5195": {
+      "words_chinese": ["鼻子", "认为", "说话", "咳嗽"],
+      "word_pairing_evidence": "源中文词框依次为三段：鼻子、认为、说话咳嗽；结合四个英文词 nose、think、talk、cough 及试制页视觉顺序，将末段解析为说话、咳嗽。"
+    },
+    "5205": {
+      "accept_relevant_warnings": [
+        {
+          "code": "RICH_TEXT_ROUND_TRIP_UNSAFE",
+          "target_element_id": "_5ROMKb4gV",
+          "reason": "该告警只阻止富文本原样回写；只读语义快照的四个独立中文段落药、更好的、苦的、糖果完整且与四个英文词一一对应。"
+        }
+      ]
+    },
+    "5212": {
+      "accept_relevant_warnings": [
+        {
+          "code": "RICH_TEXT_ROUND_TRIP_UNSAFE",
+          "target_element_id": "_5ROMKb4gV",
+          "reason": "该告警只阻止富文本原样回写；只读语义快照的四个独立中文段落太阳、小心的、眼睛、胡萝卜完整且与四个英文词一一对应。"
+        }
+      ]
+    },
+    "5250": {
+      "words_chinese": ["口渴的", "在……期间", "瓶子", "玻璃杯"],
+      "word_pairing_evidence": "源中文词框首段为口渴的 在……期间，后两段为瓶子、玻璃杯；结合四个英文词 thirsty、during、bottle、glass 与源空格分隔，解析为四组。"
+    }
+  }
+}

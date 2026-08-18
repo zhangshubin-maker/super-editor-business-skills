@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "case_id": "topic17-daily-life-one-title",
+  "status": "passed",
+  "checks": [
+    {
+      "check_id": "semantic-content-layout-and-cardinality",
+      "status": "passed",
+      "evidence_artifacts": [
+        {"artifact":"acceptance-report.json","artifact_sha256":"sha256:90f10293a39bc9f0bbdb48ca5ca701c7ed03c24fee42e05c5c0f64162731f50c"}
+      ]
+    },
+    {
+      "check_id": "digital-module-outer-anchor-readback",
+      "status": "passed",
+      "evidence_artifacts": [
+        {"artifact":"module-readback.json","artifact_sha256":"sha256:d513da55b947b0def90182919126b6ab8f5b9a2fb16f59e7d6567c0cc0803b42"}
+      ]
+    },
+    {
+      "check_id": "save-export-provenance-closure",
+      "status": "passed",
+      "evidence_artifacts": [
+        {"artifact":"editor-save-verified-envelope.json","artifact_sha256":"sha256:62e55211f75788e6c5566fa0ea8d22dae664fe64a9cc51cddbe14ef8ed092451"},
+        {"artifact":"provenance-readback-receipt.json","artifact_sha256":"sha256:e5d70ad3f769caa758f6131760a362efbeb9e223ac4ab74c8dc750d70ef566e9"}
+      ]
+    }
+  ]
+}

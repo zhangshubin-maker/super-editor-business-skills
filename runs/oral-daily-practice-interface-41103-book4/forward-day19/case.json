@@ -1,0 +1,171 @@
+{
+  "run_id": "forward-day19-two-line-title-20260818",
+  "carrier_block_id": "lhhlXLwwK541125",
+  "execution_mode": "trial",
+  "source": {
+    "book_id": "1814807",
+    "catalog_id": "5244",
+    "catalog_path": [
+      "DAY 19 Eat more vegetables and fruits"
+    ],
+    "snapshot_hash": "sha256:06eaefa99f9fe7339dddf77a33b7749108e9a6d646949b0c0b5a90823ae4ab39",
+    "blocks": {
+      "dialogue": "3932915",
+      "learning_path": "5235597",
+      "words_and_sentences": "3932917",
+      "write": "5235598"
+    }
+  },
+  "template": {
+    "requested_template_id": "41103",
+    "resolved_template_id": "41103",
+    "variant_id": "validated-day1-mature-page",
+    "snapshot_hash": "sha256:bc2055d69754023ad0801230c0866c0d57a425099a2194750b87c437a4715363"
+  },
+  "target": {
+    "book_id": "1820806",
+    "catalog_id": "45825",
+    "before_hash": "sha256:2ea25c6dd8ce365be761eb1a2c05e390e12d70ac927413ff849302e54bd08256",
+    "result_hash": "sha256:c32bbe5bcaeb588d1ce5007f3db468312527e7b05ec8d7533ada1f66b68cd1dc",
+    "blocks": {
+      "dialogue": "lhhlXLwwK541125",
+      "learning_path": "lhhlXLwwK541126",
+      "write": "lhhlXLwwK541127"
+    }
+  },
+  "evidence_artifact_hash": "sha256:b0babe585cdbe846dd71e181fb9a16ed421584fd48d1ed03a79e8a34efb9262d",
+  "baseline": {
+    "template_id": "41103",
+    "target_before_artifact": "C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1820806-45159-c1d7de727176cbcbd51037bdd7b7277eaf868b31c6888cf680551415c988e4a3.json",
+    "source_semantic_snapshot": "C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1814807-5244-81f1489a4c61dac97647739916e61743be8ebaa8e74e0286fcfe1ec7c5096b6d.json"
+  },
+  "instance_fixes": [
+    {
+      "kind": "extreme_title_layout",
+      "summary": "Kept the long title at 16px in a 48px two-line box, moved the Dialogue region down 24px, and increased the top block height by 24px."
+    }
+  ],
+  "user_approvals": [
+    {
+      "id": "book4-forward-and-batch-approval",
+      "type": "trial_authorization",
+      "status": "confirmed",
+      "scope": "Fourth-book forward validation and completion in target book 1820806",
+      "confirmed_by": "user",
+      "confirmed_at": "2026-08-18T15:00:00+08:00",
+      "evidence": [
+        "用户指出顶部标题高度不足，并要求处理好。"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "id": "dialogue-text-readback",
+      "rule_id": "dialogue-header",
+      "status": "passed",
+      "evidence": [
+        "Day 19 title, Dialogue and prompt were visually complete without overlap."
+      ]
+    },
+    {
+      "id": "dialogue-audio-readback",
+      "rule_id": "dialogue-header",
+      "status": "passed",
+      "evidence": [
+        "Day 19 audio relation was copied from the source model."
+      ]
+    },
+    {
+      "id": "dialogue-view-navigation-readback",
+      "rule_id": "dialogue-header",
+      "status": "passed",
+      "evidence": [
+        "Raw catalog_content resolved source book 1814807 and the Day 19 Dialogue block."
+      ]
+    },
+    {
+      "id": "sentence-cardinality-and-order",
+      "rule_id": "learning-path-content",
+      "status": "passed",
+      "evidence": [
+        "All source sentences remained complete and in order in the learning-block screenshot."
+      ]
+    },
+    {
+      "id": "word-pair-cardinality",
+      "rule_id": "learning-path-content",
+      "status": "passed",
+      "evidence": [
+        "Eight independent text elements displayed four complete bilingual pairs in aligned content-aware columns."
+      ]
+    },
+    {
+      "id": "six-learning-modules-readback",
+      "rule_id": "learning-entry-modules",
+      "status": "passed",
+      "evidence": [
+        "Six learning-entry relations matched the source types and model relations."
+      ]
+    },
+    {
+      "id": "print-module-readback",
+      "rule_id": "print-entry-and-page-finalization",
+      "status": "passed",
+      "evidence": [
+        "The print target copied the source print model."
+      ]
+    },
+    {
+      "id": "phone-canvas-and-save-readback",
+      "rule_id": "print-entry-and-page-finalization",
+      "status": "passed",
+      "evidence": [
+        "The saved page remained phone width 375; save verified true and dirty false."
+      ]
+    },
+    {
+      "id": "page-tail-spacer-readback",
+      "rule_id": "print-entry-and-page-finalization",
+      "status": "passed",
+      "evidence": [
+        "The final tail block remained empty 375 by 20 with #CECECE background."
+      ]
+    },
+    {
+      "id": "template-three-block-plus-tail-structure",
+      "status": "passed",
+      "evidence": [
+        "The page retained the three 41103 content sections plus the tail spacer."
+      ]
+    },
+    {
+      "id": "text-and-layout-audit",
+      "status": "passed",
+      "evidence": [
+        "Audit returned zero errors and only the two inherited baseline warnings."
+      ]
+    },
+    {
+      "id": "nine-module-relations",
+      "status": "passed",
+      "evidence": [
+        "Nine required module relations were present."
+      ]
+    },
+    {
+      "id": "full-page-visual-review",
+      "status": "passed",
+      "evidence": [
+        "Day 19 full-page and affected-block screenshots showed no relevant clipping or overlap."
+      ]
+    },
+    {
+      "id": "save-export-readback",
+      "status": "passed",
+      "evidence": [
+        "Save verified true and the semantic snapshot matched the target slide."
+      ]
+    }
+  ],
+  "created_at": "2026-08-18T15:25:00+08:00"
+}

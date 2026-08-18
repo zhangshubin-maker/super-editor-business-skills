@@ -1,0 +1,1197 @@
+{
+  "provenance": {
+    "schema_version": 1,
+    "skill": {
+      "name": "oral-daily-practice-interface-41103",
+      "version": "0.1.4",
+      "rule_pack_hash": "sha256:b90d2502a518ab42c4ef1e65b6bde68b75b2fb1211fcb81391e69d3bd2c010d5"
+    },
+    "run_id": "forward-day2-have-a-fever-20260818",
+    "source": {
+      "book_id": "1814807",
+      "catalog_id": "5200",
+      "catalog_path": [
+        "DAY 2 Have a fever"
+      ],
+      "snapshot_hash": "sha256:8cabf39c84e8bb7f8f5bcd83a83d3512a8815e9f70de938167e76d9d07c4a437",
+      "inference": null
+    },
+    "template": {
+      "requested_template_id": "41103",
+      "resolved_template_id": "41103",
+      "variant_id": "validated-day1-mature-page",
+      "snapshot_hash": "sha256:bc2055d69754023ad0801230c0866c0d57a425099a2194750b87c437a4715363"
+    },
+    "target": {
+      "book_id": "1820806",
+      "catalog_id": "45161",
+      "before_hash": "sha256:2ea25c6dd8ce365be761eb1a2c05e390e12d70ac927413ff849302e54bd08256",
+      "result_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff"
+    },
+    "execution": {
+      "mode": "trial",
+      "required_authorization_type": "trial_authorization",
+      "restricted": false,
+      "restriction_reasons": [],
+      "automatic_write": false,
+      "authorization_confirmed": true,
+      "batch_authorized": false,
+      "required_error_validation_passed": true,
+      "post_write_verification_pending": true
+    },
+    "coverage": {
+      "required_rule_ids": [
+        "dialogue-header",
+        "learning-path-content",
+        "learning-entry-modules",
+        "print-entry-and-page-finalization"
+      ],
+      "required_error_checks": [
+        {
+          "required_key": "rule:dialogue-header:dialogue-text-readback",
+          "id": "dialogue-text-readback",
+          "rule_id": "dialogue-header",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "主标题和 Dialogue 中英文标题与来源一致；主标题保持单行且不遮挡查看入口，Dialogue 英文字母下缘完整、无裁切，并与中文提示无重叠"
+        },
+        {
+          "required_key": "rule:dialogue-header:dialogue-audio-readback",
+          "id": "dialogue-audio-readback",
+          "rule_id": "dialogue-header",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "GO 点击区回读到来源磨耳朵音频关系"
+        },
+        {
+          "required_key": "rule:dialogue-header:dialogue-view-navigation-readback",
+          "id": "dialogue-view-navigation-readback",
+          "rule_id": "dialogue-header",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "查看完整外层组回读为定位模块，原始 catalog_content 明确指向来源书、来源目录和 Dialogue 内容区块"
+        },
+        {
+          "required_key": "rule:learning-path-content:sentence-cardinality-and-order",
+          "id": "sentence-cardinality-and-order",
+          "rule_id": "learning-path-content",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "目标显示的二至三个完整句型条数、顺序和标点与来源一致，不得补写来源不存在的句型；Sentence Pattern 句型标题及最长句均完整显示、无右侧裁切"
+        },
+        {
+          "required_key": "rule:learning-path-content:word-pair-cardinality",
+          "id": "word-pair-cardinality",
+          "rule_id": "learning-path-content",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "目标恰好以八个独立文本元素显示四组中英词汇，无合并、遗漏、错配或裁切；两行四列中同列 left 数值一致，最右两个中文释义完整显示"
+        },
+        {
+          "required_key": "rule:learning-entry-modules:six-learning-modules-readback",
+          "id": "six-learning-modules-readback",
+          "rule_id": "learning-entry-modules",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "六个目标入口分别回读到正确来源资源和模块类型，且无交叉错配"
+        },
+        {
+          "required_key": "rule:print-entry-and-page-finalization:print-module-readback",
+          "id": "print-module-readback",
+          "rule_id": "print-entry-and-page-finalization",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "打印入口回读到来源打印资源"
+        },
+        {
+          "required_key": "rule:print-entry-and-page-finalization:phone-canvas-and-save-readback",
+          "id": "phone-canvas-and-save-readback",
+          "rule_id": "print-entry-and-page-finalization",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "重载后页面仍为 phone 375，保存已验证且导出页身份一致"
+        },
+        {
+          "required_key": "rule:print-entry-and-page-finalization:page-tail-spacer-readback",
+          "id": "page-tail-spacer-readback",
+          "rule_id": "print-entry-and-page-finalization",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "最后一个内容区块为 375×20 phone 空区块，零内边距、无元素、纯色背景 #CECECE 且不含设计参考图"
+        },
+        {
+          "required_key": "acceptance:template-three-block-plus-tail-structure",
+          "id": "template-three-block-plus-tail-structure",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "目标保留 41103 的 Dialogue、口语学习路径、打印书写练习三段结构，并在末尾追加唯一的 20px 空区块"
+        },
+        {
+          "required_key": "acceptance:text-and-layout-audit",
+          "id": "text-and-layout-audit",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "目标无新增空文本、占位、非法几何、越界或文本裁切错误"
+        },
+        {
+          "required_key": "acceptance:nine-module-relations",
+          "id": "nine-module-relations",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "Dialogue 定位、音频、两视频、两个智能课件、在线答题、智能体和打印共九个模块关系全部正确回读"
+        },
+        {
+          "required_key": "acceptance:full-page-visual-review",
+          "id": "full-page-visual-review",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "整页标题、来源实际存在的二至三句句型、四组词汇、六张学习卡和打印入口经全页截图核对无异常；词汇卡四列在两行间对齐且无右侧裁切"
+        },
+        {
+          "required_key": "acceptance:save-export-readback",
+          "id": "save-export-readback",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "保存回执 verified=true、dirty=false，导出页身份与区块结构匹配"
+        }
+      ],
+      "synthesized_validation_keys": []
+    },
+    "rule_bindings": [
+      {
+        "rule_id": "dialogue-header",
+        "status": "applied",
+        "action_summary": "Copied the catalog title and Dialogue prompt, reused the source audio relation, and created source-block navigation.",
+        "source_bindings": [
+          {
+            "semantic_role": "source Dialogue header prompt audio and content block",
+            "identity": {
+              "side": "source",
+              "book_id": "1814807",
+              "catalog_id": "5200",
+              "block_id": "3929047",
+              "entity_kind": "section",
+              "entity_id": "dialogue-header"
+            },
+            "snapshot_hash": "sha256:8cabf39c84e8bb7f8f5bcd83a83d3512a8815e9f70de938167e76d9d07c4a437",
+            "binding_hash": "sha256:4d9a148e1630a2d4a0167177359ceb3ec827ef4766ae81733414b9a9433b936d"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "target Dialogue interface header audio and view entry",
+            "identity": {
+              "side": "target",
+              "book_id": "1820806",
+              "catalog_id": "45161",
+              "block_id": "lhhlXLwwK541125",
+              "entity_kind": "section",
+              "entity_id": "dialogue-header"
+            },
+            "snapshot_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff",
+            "binding_hash": "sha256:18b1b606c22d2cfbcf1736a94048b3368b062d443695c1417d38da6be5c33ca6"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "Rule dialogue-header passed saved semantic, module, layout, and screenshot readback.",
+            "identity": {
+              "side": "target",
+              "book_id": "1820806",
+              "catalog_id": "45161",
+              "block_id": "lhhlXLwwK541125",
+              "entity_kind": "section",
+              "entity_id": "dialogue-header"
+            },
+            "artifact_hash": "sha256:0659ff12214dec317f7b52e237b6fab96438d038451f1e54d43e583d3e14109a",
+            "evidence_hash": "sha256:0c91132510fd2ccf586b53001dacb546251b40c0fea34d175524ce86a12be93b"
+          }
+        ],
+        "result_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff"
+      },
+      {
+        "rule_id": "learning-path-content",
+        "status": "applied",
+        "action_summary": "Preserved source sentence cardinality and order, widened the sentence area, and wrote four aligned bilingual word pairs as eight text elements.",
+        "source_bindings": [
+          {
+            "semantic_role": "source ordered sentence patterns and four bilingual word pairs",
+            "identity": {
+              "side": "source",
+              "book_id": "1814807",
+              "catalog_id": "5200",
+              "block_id": "3929049",
+              "entity_kind": "section",
+              "entity_id": "learning-path-content"
+            },
+            "snapshot_hash": "sha256:8cabf39c84e8bb7f8f5bcd83a83d3512a8815e9f70de938167e76d9d07c4a437",
+            "binding_hash": "sha256:cc7b67020e4b259fb38c882ae1738ce2f0ae109ff85b97a25e4c33068ca48f0a"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "target learning-path sentence and bilingual word cards",
+            "identity": {
+              "side": "target",
+              "book_id": "1820806",
+              "catalog_id": "45161",
+              "block_id": "lhhlXLwwK541126",
+              "entity_kind": "section",
+              "entity_id": "learning-path-content"
+            },
+            "snapshot_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff",
+            "binding_hash": "sha256:5368219640b9c1b2ffc800afd178af0bb5d53b9e00d8d5979c680b64d3e08807"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "Rule learning-path-content passed saved semantic, module, layout, and screenshot readback.",
+            "identity": {
+              "side": "target",
+              "book_id": "1820806",
+              "catalog_id": "45161",
+              "block_id": "lhhlXLwwK541126",
+              "entity_kind": "section",
+              "entity_id": "learning-path-content"
+            },
+            "artifact_hash": "sha256:0659ff12214dec317f7b52e237b6fab96438d038451f1e54d43e583d3e14109a",
+            "evidence_hash": "sha256:53e099c44444ad72d179ecc2d6a220323ae1181f27bc04a57897f62f1129440d"
+          }
+        ],
+        "result_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff"
+      },
+      {
+        "rule_id": "learning-entry-modules",
+        "status": "applied",
+        "action_summary": "Reused the six source module relations on the matching target cards and verified their types and resources.",
+        "source_bindings": [
+          {
+            "semantic_role": "source six semantic learning-entry module relations",
+            "identity": {
+              "side": "source",
+              "book_id": "1814807",
+              "catalog_id": "5200",
+              "block_id": "5235544",
+              "entity_kind": "section",
+              "entity_id": "learning-entry-modules"
+            },
+            "snapshot_hash": "sha256:8cabf39c84e8bb7f8f5bcd83a83d3512a8815e9f70de938167e76d9d07c4a437",
+            "binding_hash": "sha256:349d51924574fa4eaa1a2814a35e31b6f9b65377ba96f13c304e78fdf5764af7"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "target six named learning-entry cards",
+            "identity": {
+              "side": "target",
+              "book_id": "1820806",
+              "catalog_id": "45161",
+              "block_id": "lhhlXLwwK541126",
+              "entity_kind": "section",
+              "entity_id": "learning-entry-modules"
+            },
+            "snapshot_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff",
+            "binding_hash": "sha256:f920915ea12e8d2136c1e4a5c9df22c70a349a842f46b1f5727159ef9417e4a2"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "Rule learning-entry-modules passed saved semantic, module, layout, and screenshot readback.",
+            "identity": {
+              "side": "target",
+              "book_id": "1820806",
+              "catalog_id": "45161",
+              "block_id": "lhhlXLwwK541126",
+              "entity_kind": "section",
+              "entity_id": "learning-entry-modules"
+            },
+            "artifact_hash": "sha256:0659ff12214dec317f7b52e237b6fab96438d038451f1e54d43e583d3e14109a",
+            "evidence_hash": "sha256:447af1f26bace38a931989f378c3a505db975442cde88464605b55296ddc2f0d"
+          }
+        ],
+        "result_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff"
+      },
+      {
+        "rule_id": "print-entry-and-page-finalization",
+        "status": "applied",
+        "action_summary": "Reused the print relation, kept the normalized catalog name, phone-375 canvas, and the final twenty-pixel gray spacer.",
+        "source_bindings": [
+          {
+            "semantic_role": "source print-handwriting entry and catalog identity",
+            "identity": {
+              "side": "source",
+              "book_id": "1814807",
+              "catalog_id": "5200",
+              "block_id": "5235545",
+              "entity_kind": "section",
+              "entity_id": "print-entry-and-page-finalization"
+            },
+            "snapshot_hash": "sha256:8cabf39c84e8bb7f8f5bcd83a83d3512a8815e9f70de938167e76d9d07c4a437",
+            "binding_hash": "sha256:fd86e6b69c20aedb803fc4a4fab3e3597cbb86db3c114fdb3dfcb0a9b536827a"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "target print entry phone canvas and twenty-pixel tail spacer",
+            "identity": {
+              "side": "target",
+              "book_id": "1820806",
+              "catalog_id": "45161",
+              "block_id": "lhhlXLwwK541127",
+              "entity_kind": "section",
+              "entity_id": "print-entry-and-page-finalization"
+            },
+            "snapshot_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff",
+            "binding_hash": "sha256:40eeab71142f030cbe036e4275a34f05788d3a12e763ddd80becb690ab5a9cb8"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "Rule print-entry-and-page-finalization passed saved semantic, module, layout, and screenshot readback.",
+            "identity": {
+              "side": "target",
+              "book_id": "1820806",
+              "catalog_id": "45161",
+              "block_id": "lhhlXLwwK541127",
+              "entity_kind": "section",
+              "entity_id": "print-entry-and-page-finalization"
+            },
+            "artifact_hash": "sha256:0659ff12214dec317f7b52e237b6fab96438d038451f1e54d43e583d3e14109a",
+            "evidence_hash": "sha256:edca6cbf83dbe51f7d9b77f7180fcde8d53611a042d5fb0a31b2cedd8c8b9daf"
+          }
+        ],
+        "result_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff"
+      }
+    ],
+    "instance_fixes": [
+      {
+        "kind": "bridge_capability_fallback",
+        "summary": "The current Bridge lacks setCanvasType, so the validated DAY 1 phone-375 page was duplicated as the mature target baseline without browser control."
+      },
+      {
+        "kind": "layout_refinement",
+        "summary": "Expanded the Sentence Pattern title and body boxes inside the blue card after screenshot evidence showed right-edge clipping."
+      },
+      {
+        "kind": "template_warning_baseline",
+        "summary": "Two inherited out-of-bounds warnings are unchanged from the validated mature page; no error-severity audit issue was introduced."
+      }
+    ],
+    "user_approvals": [
+      {
+        "id": "book4-forward-and-batch-approval",
+        "type": "trial_authorization",
+        "status": "confirmed",
+        "scope": "Fourth-book forward validation and completion in target book 1820806",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-08-18T12:05:00+08:00",
+        "evidence": [
+          "用户明确确认规则可以固定，并要求补全本书其他目录。"
+        ]
+      }
+    ],
+    "validation": [
+      {
+        "id": "dialogue-text-readback",
+        "rule_id": "dialogue-header",
+        "status": "passed",
+        "evidence": [
+          "Canvas tree readback matched the source title and prompt; Dialogue geometry remained 210.17 by 24 with no overlap."
+        ],
+        "required_key": "rule:dialogue-header:dialogue-text-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "dialogue-audio-readback",
+        "rule_id": "dialogue-header",
+        "status": "passed",
+        "evidence": [
+          "Audio readback returned Have a fever and source file id 978711."
+        ],
+        "required_key": "rule:dialogue-header:dialogue-audio-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "dialogue-view-navigation-readback",
+        "rule_id": "dialogue-header",
+        "status": "passed",
+        "evidence": [
+          "Raw catalog_content resolved book 1814807, catalog 5200, source Dialogue block 3929047."
+        ],
+        "required_key": "rule:dialogue-header:dialogue-view-navigation-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "sentence-cardinality-and-order",
+        "rule_id": "learning-path-content",
+        "status": "passed",
+        "evidence": [
+          "Three source sentences read back in source order; resized title/body rendered completely in the block screenshot."
+        ],
+        "required_key": "rule:learning-path-content:sentence-cardinality-and-order",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "word-pair-cardinality",
+        "rule_id": "learning-path-content",
+        "status": "passed",
+        "evidence": [
+          "Eight independent text elements formed two rows with aligned column left values and complete rightmost Chinese text."
+        ],
+        "required_key": "rule:learning-path-content:word-pair-cardinality",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "six-learning-modules-readback",
+        "rule_id": "learning-entry-modules",
+        "status": "passed",
+        "evidence": [
+          "Six card relations read back with types 78,78,79,82,79,87 and source resources matched DAY 2."
+        ],
+        "required_key": "rule:learning-entry-modules:six-learning-modules-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "print-module-readback",
+        "rule_id": "print-entry-and-page-finalization",
+        "status": "passed",
+        "evidence": [
+          "Print target read back as type 84 with the DAY 2 source print resource."
+        ],
+        "required_key": "rule:print-entry-and-page-finalization:print-module-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "phone-canvas-and-save-readback",
+        "rule_id": "print-entry-and-page-finalization",
+        "status": "passed",
+        "evidence": [
+          "editor_get_canvas_info returned width 375; save verified true and dirty false."
+        ],
+        "required_key": "rule:print-entry-and-page-finalization:phone-canvas-and-save-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "page-tail-spacer-readback",
+        "rule_id": "print-entry-and-page-finalization",
+        "status": "passed",
+        "evidence": [
+          "Final inherited tail block remained the empty 375 by 20 phone block with #CECECE background."
+        ],
+        "required_key": "rule:print-entry-and-page-finalization:page-tail-spacer-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "template-three-block-plus-tail-structure",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "Canvas tree and snapshot contained the three 41103 content blocks plus one final tail spacer."
+        ],
+        "required_key": "acceptance:template-three-block-plus-tail-structure",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "text-and-layout-audit",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "Audit returned zero errors; two warnings were inherited from the mature baseline and are outside changed content."
+        ],
+        "required_key": "acceptance:text-and-layout-audit",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "nine-module-relations",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "Nine relations read back: position, audio, two videos, two coursewares, online practice, agent, and print."
+        ],
+        "required_key": "acceptance:nine-module-relations",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "full-page-visual-review",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "Full-page and learning-block screenshots showed aligned words and complete sentence title and lines after refinement."
+        ],
+        "required_key": "acceptance:full-page-visual-review",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "save-export-readback",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "Initial save verified true with matching FNV hashes; target semantic snapshot matched slide 45161 and nine modules."
+        ],
+        "required_key": "acceptance:save-export-readback",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      }
+    ],
+    "baseline": {
+      "template_id": "41103",
+      "target_before_artifact": "C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1820806-45159-c1d7de727176cbcbd51037bdd7b7277eaf868b31c6888cf680551415c988e4a3.json",
+      "source_semantic_snapshot": "C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1814807-5200-91e6a1e81204f486096f858a1a10d64f5d025df87838e691f7bcc68f112e620c.json"
+    },
+    "baseline_hash": "sha256:c1f0756dd6c99ea81dd60e267e83b1e5be5941592c0e3155d61f7dd410877f40",
+    "created_at": "2026-08-18T12:05:00+08:00",
+    "integrity_hash": "sha256:bbea7f15c31d38a4baaaacfe6a81472d233b363081d19cb6dcff31734727f5be"
+  },
+  "editor_update_block": {
+    "tool": "editor_update_block",
+    "arguments": {
+      "blockId": "lhhlXLwwK541125",
+      "patch": {
+        "ai_semantic_provenance": {
+          "schema_version": 1,
+          "skill": {
+            "name": "oral-daily-practice-interface-41103",
+            "version": "0.1.4",
+            "rule_pack_hash": "sha256:b90d2502a518ab42c4ef1e65b6bde68b75b2fb1211fcb81391e69d3bd2c010d5"
+          },
+          "run_id": "forward-day2-have-a-fever-20260818",
+          "source": {
+            "book_id": "1814807",
+            "catalog_id": "5200",
+            "catalog_path": [
+              "DAY 2 Have a fever"
+            ],
+            "snapshot_hash": "sha256:8cabf39c84e8bb7f8f5bcd83a83d3512a8815e9f70de938167e76d9d07c4a437",
+            "inference": null
+          },
+          "template": {
+            "requested_template_id": "41103",
+            "resolved_template_id": "41103",
+            "variant_id": "validated-day1-mature-page",
+            "snapshot_hash": "sha256:bc2055d69754023ad0801230c0866c0d57a425099a2194750b87c437a4715363"
+          },
+          "target": {
+            "book_id": "1820806",
+            "catalog_id": "45161",
+            "before_hash": "sha256:2ea25c6dd8ce365be761eb1a2c05e390e12d70ac927413ff849302e54bd08256",
+            "result_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff"
+          },
+          "execution": {
+            "mode": "trial",
+            "required_authorization_type": "trial_authorization",
+            "restricted": false,
+            "restriction_reasons": [],
+            "automatic_write": false,
+            "authorization_confirmed": true,
+            "batch_authorized": false,
+            "required_error_validation_passed": true,
+            "post_write_verification_pending": true
+          },
+          "coverage": {
+            "required_rule_ids": [
+              "dialogue-header",
+              "learning-path-content",
+              "learning-entry-modules",
+              "print-entry-and-page-finalization"
+            ],
+            "required_error_checks": [
+              {
+                "required_key": "rule:dialogue-header:dialogue-text-readback",
+                "id": "dialogue-text-readback",
+                "rule_id": "dialogue-header",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "主标题和 Dialogue 中英文标题与来源一致；主标题保持单行且不遮挡查看入口，Dialogue 英文字母下缘完整、无裁切，并与中文提示无重叠"
+              },
+              {
+                "required_key": "rule:dialogue-header:dialogue-audio-readback",
+                "id": "dialogue-audio-readback",
+                "rule_id": "dialogue-header",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "GO 点击区回读到来源磨耳朵音频关系"
+              },
+              {
+                "required_key": "rule:dialogue-header:dialogue-view-navigation-readback",
+                "id": "dialogue-view-navigation-readback",
+                "rule_id": "dialogue-header",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "查看完整外层组回读为定位模块，原始 catalog_content 明确指向来源书、来源目录和 Dialogue 内容区块"
+              },
+              {
+                "required_key": "rule:learning-path-content:sentence-cardinality-and-order",
+                "id": "sentence-cardinality-and-order",
+                "rule_id": "learning-path-content",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "目标显示的二至三个完整句型条数、顺序和标点与来源一致，不得补写来源不存在的句型；Sentence Pattern 句型标题及最长句均完整显示、无右侧裁切"
+              },
+              {
+                "required_key": "rule:learning-path-content:word-pair-cardinality",
+                "id": "word-pair-cardinality",
+                "rule_id": "learning-path-content",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "目标恰好以八个独立文本元素显示四组中英词汇，无合并、遗漏、错配或裁切；两行四列中同列 left 数值一致，最右两个中文释义完整显示"
+              },
+              {
+                "required_key": "rule:learning-entry-modules:six-learning-modules-readback",
+                "id": "six-learning-modules-readback",
+                "rule_id": "learning-entry-modules",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "六个目标入口分别回读到正确来源资源和模块类型，且无交叉错配"
+              },
+              {
+                "required_key": "rule:print-entry-and-page-finalization:print-module-readback",
+                "id": "print-module-readback",
+                "rule_id": "print-entry-and-page-finalization",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "打印入口回读到来源打印资源"
+              },
+              {
+                "required_key": "rule:print-entry-and-page-finalization:phone-canvas-and-save-readback",
+                "id": "phone-canvas-and-save-readback",
+                "rule_id": "print-entry-and-page-finalization",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "重载后页面仍为 phone 375，保存已验证且导出页身份一致"
+              },
+              {
+                "required_key": "rule:print-entry-and-page-finalization:page-tail-spacer-readback",
+                "id": "page-tail-spacer-readback",
+                "rule_id": "print-entry-and-page-finalization",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "最后一个内容区块为 375×20 phone 空区块，零内边距、无元素、纯色背景 #CECECE 且不含设计参考图"
+              },
+              {
+                "required_key": "acceptance:template-three-block-plus-tail-structure",
+                "id": "template-three-block-plus-tail-structure",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "目标保留 41103 的 Dialogue、口语学习路径、打印书写练习三段结构，并在末尾追加唯一的 20px 空区块"
+              },
+              {
+                "required_key": "acceptance:text-and-layout-audit",
+                "id": "text-and-layout-audit",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "目标无新增空文本、占位、非法几何、越界或文本裁切错误"
+              },
+              {
+                "required_key": "acceptance:nine-module-relations",
+                "id": "nine-module-relations",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "Dialogue 定位、音频、两视频、两个智能课件、在线答题、智能体和打印共九个模块关系全部正确回读"
+              },
+              {
+                "required_key": "acceptance:full-page-visual-review",
+                "id": "full-page-visual-review",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "整页标题、来源实际存在的二至三句句型、四组词汇、六张学习卡和打印入口经全页截图核对无异常；词汇卡四列在两行间对齐且无右侧裁切"
+              },
+              {
+                "required_key": "acceptance:save-export-readback",
+                "id": "save-export-readback",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "保存回执 verified=true、dirty=false，导出页身份与区块结构匹配"
+              }
+            ],
+            "synthesized_validation_keys": []
+          },
+          "rule_bindings": [
+            {
+              "rule_id": "dialogue-header",
+              "status": "applied",
+              "action_summary": "Copied the catalog title and Dialogue prompt, reused the source audio relation, and created source-block navigation.",
+              "source_bindings": [
+                {
+                  "semantic_role": "source Dialogue header prompt audio and content block",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1814807",
+                    "catalog_id": "5200",
+                    "block_id": "3929047",
+                    "entity_kind": "section",
+                    "entity_id": "dialogue-header"
+                  },
+                  "snapshot_hash": "sha256:8cabf39c84e8bb7f8f5bcd83a83d3512a8815e9f70de938167e76d9d07c4a437",
+                  "binding_hash": "sha256:4d9a148e1630a2d4a0167177359ceb3ec827ef4766ae81733414b9a9433b936d"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "target Dialogue interface header audio and view entry",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820806",
+                    "catalog_id": "45161",
+                    "block_id": "lhhlXLwwK541125",
+                    "entity_kind": "section",
+                    "entity_id": "dialogue-header"
+                  },
+                  "snapshot_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff",
+                  "binding_hash": "sha256:18b1b606c22d2cfbcf1736a94048b3368b062d443695c1417d38da6be5c33ca6"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "Rule dialogue-header passed saved semantic, module, layout, and screenshot readback.",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820806",
+                    "catalog_id": "45161",
+                    "block_id": "lhhlXLwwK541125",
+                    "entity_kind": "section",
+                    "entity_id": "dialogue-header"
+                  },
+                  "artifact_hash": "sha256:0659ff12214dec317f7b52e237b6fab96438d038451f1e54d43e583d3e14109a",
+                  "evidence_hash": "sha256:0c91132510fd2ccf586b53001dacb546251b40c0fea34d175524ce86a12be93b"
+                }
+              ],
+              "result_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff"
+            },
+            {
+              "rule_id": "learning-path-content",
+              "status": "applied",
+              "action_summary": "Preserved source sentence cardinality and order, widened the sentence area, and wrote four aligned bilingual word pairs as eight text elements.",
+              "source_bindings": [
+                {
+                  "semantic_role": "source ordered sentence patterns and four bilingual word pairs",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1814807",
+                    "catalog_id": "5200",
+                    "block_id": "3929049",
+                    "entity_kind": "section",
+                    "entity_id": "learning-path-content"
+                  },
+                  "snapshot_hash": "sha256:8cabf39c84e8bb7f8f5bcd83a83d3512a8815e9f70de938167e76d9d07c4a437",
+                  "binding_hash": "sha256:cc7b67020e4b259fb38c882ae1738ce2f0ae109ff85b97a25e4c33068ca48f0a"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "target learning-path sentence and bilingual word cards",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820806",
+                    "catalog_id": "45161",
+                    "block_id": "lhhlXLwwK541126",
+                    "entity_kind": "section",
+                    "entity_id": "learning-path-content"
+                  },
+                  "snapshot_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff",
+                  "binding_hash": "sha256:5368219640b9c1b2ffc800afd178af0bb5d53b9e00d8d5979c680b64d3e08807"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "Rule learning-path-content passed saved semantic, module, layout, and screenshot readback.",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820806",
+                    "catalog_id": "45161",
+                    "block_id": "lhhlXLwwK541126",
+                    "entity_kind": "section",
+                    "entity_id": "learning-path-content"
+                  },
+                  "artifact_hash": "sha256:0659ff12214dec317f7b52e237b6fab96438d038451f1e54d43e583d3e14109a",
+                  "evidence_hash": "sha256:53e099c44444ad72d179ecc2d6a220323ae1181f27bc04a57897f62f1129440d"
+                }
+              ],
+              "result_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff"
+            },
+            {
+              "rule_id": "learning-entry-modules",
+              "status": "applied",
+              "action_summary": "Reused the six source module relations on the matching target cards and verified their types and resources.",
+              "source_bindings": [
+                {
+                  "semantic_role": "source six semantic learning-entry module relations",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1814807",
+                    "catalog_id": "5200",
+                    "block_id": "5235544",
+                    "entity_kind": "section",
+                    "entity_id": "learning-entry-modules"
+                  },
+                  "snapshot_hash": "sha256:8cabf39c84e8bb7f8f5bcd83a83d3512a8815e9f70de938167e76d9d07c4a437",
+                  "binding_hash": "sha256:349d51924574fa4eaa1a2814a35e31b6f9b65377ba96f13c304e78fdf5764af7"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "target six named learning-entry cards",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820806",
+                    "catalog_id": "45161",
+                    "block_id": "lhhlXLwwK541126",
+                    "entity_kind": "section",
+                    "entity_id": "learning-entry-modules"
+                  },
+                  "snapshot_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff",
+                  "binding_hash": "sha256:f920915ea12e8d2136c1e4a5c9df22c70a349a842f46b1f5727159ef9417e4a2"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "Rule learning-entry-modules passed saved semantic, module, layout, and screenshot readback.",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820806",
+                    "catalog_id": "45161",
+                    "block_id": "lhhlXLwwK541126",
+                    "entity_kind": "section",
+                    "entity_id": "learning-entry-modules"
+                  },
+                  "artifact_hash": "sha256:0659ff12214dec317f7b52e237b6fab96438d038451f1e54d43e583d3e14109a",
+                  "evidence_hash": "sha256:447af1f26bace38a931989f378c3a505db975442cde88464605b55296ddc2f0d"
+                }
+              ],
+              "result_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff"
+            },
+            {
+              "rule_id": "print-entry-and-page-finalization",
+              "status": "applied",
+              "action_summary": "Reused the print relation, kept the normalized catalog name, phone-375 canvas, and the final twenty-pixel gray spacer.",
+              "source_bindings": [
+                {
+                  "semantic_role": "source print-handwriting entry and catalog identity",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1814807",
+                    "catalog_id": "5200",
+                    "block_id": "5235545",
+                    "entity_kind": "section",
+                    "entity_id": "print-entry-and-page-finalization"
+                  },
+                  "snapshot_hash": "sha256:8cabf39c84e8bb7f8f5bcd83a83d3512a8815e9f70de938167e76d9d07c4a437",
+                  "binding_hash": "sha256:fd86e6b69c20aedb803fc4a4fab3e3597cbb86db3c114fdb3dfcb0a9b536827a"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "target print entry phone canvas and twenty-pixel tail spacer",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820806",
+                    "catalog_id": "45161",
+                    "block_id": "lhhlXLwwK541127",
+                    "entity_kind": "section",
+                    "entity_id": "print-entry-and-page-finalization"
+                  },
+                  "snapshot_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff",
+                  "binding_hash": "sha256:40eeab71142f030cbe036e4275a34f05788d3a12e763ddd80becb690ab5a9cb8"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "Rule print-entry-and-page-finalization passed saved semantic, module, layout, and screenshot readback.",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820806",
+                    "catalog_id": "45161",
+                    "block_id": "lhhlXLwwK541127",
+                    "entity_kind": "section",
+                    "entity_id": "print-entry-and-page-finalization"
+                  },
+                  "artifact_hash": "sha256:0659ff12214dec317f7b52e237b6fab96438d038451f1e54d43e583d3e14109a",
+                  "evidence_hash": "sha256:edca6cbf83dbe51f7d9b77f7180fcde8d53611a042d5fb0a31b2cedd8c8b9daf"
+                }
+              ],
+              "result_hash": "sha256:c1aa51e24ac5a774f7164dda4c65792a0f5de1e1d9cfeb6539028befc549beff"
+            }
+          ],
+          "instance_fixes": [
+            {
+              "kind": "bridge_capability_fallback",
+              "summary": "The current Bridge lacks setCanvasType, so the validated DAY 1 phone-375 page was duplicated as the mature target baseline without browser control."
+            },
+            {
+              "kind": "layout_refinement",
+              "summary": "Expanded the Sentence Pattern title and body boxes inside the blue card after screenshot evidence showed right-edge clipping."
+            },
+            {
+              "kind": "template_warning_baseline",
+              "summary": "Two inherited out-of-bounds warnings are unchanged from the validated mature page; no error-severity audit issue was introduced."
+            }
+          ],
+          "user_approvals": [
+            {
+              "id": "book4-forward-and-batch-approval",
+              "type": "trial_authorization",
+              "status": "confirmed",
+              "scope": "Fourth-book forward validation and completion in target book 1820806",
+              "confirmed_by": "user",
+              "confirmed_at": "2026-08-18T12:05:00+08:00",
+              "evidence": [
+                "用户明确确认规则可以固定，并要求补全本书其他目录。"
+              ]
+            }
+          ],
+          "validation": [
+            {
+              "id": "dialogue-text-readback",
+              "rule_id": "dialogue-header",
+              "status": "passed",
+              "evidence": [
+                "Canvas tree readback matched the source title and prompt; Dialogue geometry remained 210.17 by 24 with no overlap."
+              ],
+              "required_key": "rule:dialogue-header:dialogue-text-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "dialogue-audio-readback",
+              "rule_id": "dialogue-header",
+              "status": "passed",
+              "evidence": [
+                "Audio readback returned Have a fever and source file id 978711."
+              ],
+              "required_key": "rule:dialogue-header:dialogue-audio-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "dialogue-view-navigation-readback",
+              "rule_id": "dialogue-header",
+              "status": "passed",
+              "evidence": [
+                "Raw catalog_content resolved book 1814807, catalog 5200, source Dialogue block 3929047."
+              ],
+              "required_key": "rule:dialogue-header:dialogue-view-navigation-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "sentence-cardinality-and-order",
+              "rule_id": "learning-path-content",
+              "status": "passed",
+              "evidence": [
+                "Three source sentences read back in source order; resized title/body rendered completely in the block screenshot."
+              ],
+              "required_key": "rule:learning-path-content:sentence-cardinality-and-order",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "word-pair-cardinality",
+              "rule_id": "learning-path-content",
+              "status": "passed",
+              "evidence": [
+                "Eight independent text elements formed two rows with aligned column left values and complete rightmost Chinese text."
+              ],
+              "required_key": "rule:learning-path-content:word-pair-cardinality",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "six-learning-modules-readback",
+              "rule_id": "learning-entry-modules",
+              "status": "passed",
+              "evidence": [
+                "Six card relations read back with types 78,78,79,82,79,87 and source resources matched DAY 2."
+              ],
+              "required_key": "rule:learning-entry-modules:six-learning-modules-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "print-module-readback",
+              "rule_id": "print-entry-and-page-finalization",
+              "status": "passed",
+              "evidence": [
+                "Print target read back as type 84 with the DAY 2 source print resource."
+              ],
+              "required_key": "rule:print-entry-and-page-finalization:print-module-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "phone-canvas-and-save-readback",
+              "rule_id": "print-entry-and-page-finalization",
+              "status": "passed",
+              "evidence": [
+                "editor_get_canvas_info returned width 375; save verified true and dirty false."
+              ],
+              "required_key": "rule:print-entry-and-page-finalization:phone-canvas-and-save-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "page-tail-spacer-readback",
+              "rule_id": "print-entry-and-page-finalization",
+              "status": "passed",
+              "evidence": [
+                "Final inherited tail block remained the empty 375 by 20 phone block with #CECECE background."
+              ],
+              "required_key": "rule:print-entry-and-page-finalization:page-tail-spacer-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "template-three-block-plus-tail-structure",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "Canvas tree and snapshot contained the three 41103 content blocks plus one final tail spacer."
+              ],
+              "required_key": "acceptance:template-three-block-plus-tail-structure",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "text-and-layout-audit",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "Audit returned zero errors; two warnings were inherited from the mature baseline and are outside changed content."
+              ],
+              "required_key": "acceptance:text-and-layout-audit",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "nine-module-relations",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "Nine relations read back: position, audio, two videos, two coursewares, online practice, agent, and print."
+              ],
+              "required_key": "acceptance:nine-module-relations",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "full-page-visual-review",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "Full-page and learning-block screenshots showed aligned words and complete sentence title and lines after refinement."
+              ],
+              "required_key": "acceptance:full-page-visual-review",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "save-export-readback",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "Initial save verified true with matching FNV hashes; target semantic snapshot matched slide 45161 and nine modules."
+              ],
+              "required_key": "acceptance:save-export-readback",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            }
+          ],
+          "baseline": {
+            "template_id": "41103",
+            "target_before_artifact": "C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1820806-45159-c1d7de727176cbcbd51037bdd7b7277eaf868b31c6888cf680551415c988e4a3.json",
+            "source_semantic_snapshot": "C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1814807-5200-91e6a1e81204f486096f858a1a10d64f5d025df87838e691f7bcc68f112e620c.json"
+          },
+          "baseline_hash": "sha256:c1f0756dd6c99ea81dd60e267e83b1e5be5941592c0e3155d61f7dd410877f40",
+          "created_at": "2026-08-18T12:05:00+08:00",
+          "integrity_hash": "sha256:bbea7f15c31d38a4baaaacfe6a81472d233b363081d19cb6dcff31734727f5be"
+        }
+      }
+    }
+  },
+  "post_write_verification": {
+    "required": true,
+    "expected_run_id": "forward-day2-have-a-fever-20260818",
+    "expected_integrity_hash": "sha256:bbea7f15c31d38a4baaaacfe6a81472d233b363081d19cb6dcff31734727f5be",
+    "carrier_block_id": "lhhlXLwwK541125",
+    "sequence": [
+      {
+        "order": 1,
+        "tool": "editor_update_block",
+        "purpose": "merge template_data_content.ai_semantic_provenance without dropping unknown block fields"
+      },
+      {
+        "order": 2,
+        "tool": "editor_save_verified",
+        "purpose": "persist and read back the page after provenance changes the block JSON"
+      },
+      {
+        "order": 3,
+        "tool": "editor_export_slide",
+        "purpose": "export the saved page, including the carrier block JSON"
+      },
+      {
+        "order": 4,
+        "command": "node scripts/provenance-tools.mjs validate-readback --input <editor-export-slide-envelope.json> --save-receipt <editor-save-verified-envelope.json> --expected <provenance.json> --carrier-block-id lhhlXLwwK541125 --out <readback-receipt.json>",
+        "purpose": "validate the real tool envelopes and emit the canonical readback receipt artifact"
+      }
+    ],
+    "completion_condition": "the real save/export envelopes produce a canonical readback receipt for this run, page hash and carrier identity"
+  }
+}

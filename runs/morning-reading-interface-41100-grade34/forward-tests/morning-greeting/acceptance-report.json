@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "case_id": "morning-greeting-reflow",
+  "status": "passed",
+  "checks": [
+    { "check_id": "exact-book-family", "status": "passed", "evidence_artifacts": [{ "artifact": "source.json", "artifact_sha256": "sha256:f779037d87f5e92d61037a36fdebcc6818be3cf42d496af192e03b19c50cf810" }, { "artifact": "provenance-readback.json", "artifact_sha256": "sha256:a136a802e5534b722a4cf57fd7f552975104b1a40b4b0495fce32cfdce15b6d8" }] },
+    { "check_id": "font-mapping-empty-warning-only", "status": "passed", "evidence_artifacts": [{ "artifact": "source.json", "artifact_sha256": "sha256:f779037d87f5e92d61037a36fdebcc6818be3cf42d496af192e03b19c50cf810" }] },
+    { "check_id": "content-layout-audit", "status": "passed", "evidence_artifacts": [{ "artifact": "target-after.json", "artifact_sha256": "sha256:5a626c847c7b4ee7c3dd99212dcd2e00ff3486934d441dfdbdbde8d35179da13" }] },
+    { "check_id": "eight-modules-per-page", "status": "passed", "evidence_artifacts": [{ "artifact": "provenance-readback.json", "artifact_sha256": "sha256:a136a802e5534b722a4cf57fd7f552975104b1a40b4b0495fce32cfdce15b6d8" }] },
+    { "check_id": "save-readback", "status": "passed", "evidence_artifacts": [{ "artifact": "save-receipt.json", "artifact_sha256": "sha256:52d21fc12ba563462c228fc99e5a590c71642d86ec852c0c285fa2af3be88fde" }] }
+  ]
+}

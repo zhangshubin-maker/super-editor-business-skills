@@ -1,0 +1,391 @@
+{
+  "run_id": "forward-topic2-four-title-20260818",
+  "carrier_block_id": "xsEXYUN0hs41104",
+  "execution_mode": "trial",
+  "source": {
+    "book_id": "1815615",
+    "catalog_id": "5437",
+    "catalog_path": [
+      "Topic 2 Food"
+    ],
+    "snapshot_hash": "sha256:1e15b9d5d7275626cba094593442956f0b1406110ed8295a9b9298adc350db24"
+  },
+  "template": {
+    "requested_template_id": "41097",
+    "resolved_template_id": "41097",
+    "variant_id": null,
+    "snapshot_hash": "sha256:50a40e8e42ab65c0c0d788b036a95860751e4ee76aeeb454454a955717643a41"
+  },
+  "target": {
+    "book_id": "1820803",
+    "catalog_id": "45100",
+    "before_hash": "sha256:a575c74fd9d312974fecc0206ebb7838396a23c8d3881287d3309d54547d3fb1",
+    "result_hash": "sha256:a575c74fd9d312974fecc0206ebb7838396a23c8d3881287d3309d54547d3fb1"
+  },
+  "rule_bindings": [
+    {
+      "rule_id": "basic-section",
+      "status": "applied",
+      "action_summary": "保留两个基础训练标题、趣味练习入口及外层来源定位模块。",
+      "source_bindings": [
+        {
+          "semantic_role": "source basic listening section",
+          "identity": {
+            "side": "source",
+            "book_id": "1815615",
+            "catalog_id": "5437",
+            "block_id": "Pxu2f3GthL15887",
+            "entity_kind": "section",
+            "entity_id": "basic-section"
+          },
+          "snapshot_hash": "sha256:1e15b9d5d7275626cba094593442956f0b1406110ed8295a9b9298adc350db24",
+          "binding_hash": "sha256:eb776013a8190e6890a947ea275aa9606c7b7b92cfd7344b64992fcb3baf5f2d"
+        }
+      ],
+      "target_bindings": [
+        {
+          "semantic_role": "target basic interface section",
+          "identity": {
+            "side": "target",
+            "book_id": "1820803",
+            "catalog_id": "45100",
+            "block_id": "xsEXYUN0hs41104",
+            "entity_kind": "section",
+            "entity_id": "basic-section"
+          },
+          "snapshot_hash": "sha256:a575c74fd9d312974fecc0206ebb7838396a23c8d3881287d3309d54547d3fb1",
+          "binding_hash": "sha256:d78170081a46bfa494e8f43ae7ecc02afe4f65a034dd4c2270c63c4cb65822b6"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "semantic_and_module_readback",
+          "summary": "两个基础标签与两个预期模块已在目标语义快照和模块回读中确认。",
+          "identity": {
+            "side": "target",
+            "book_id": "1820803",
+            "catalog_id": "45100",
+            "block_id": "xsEXYUN0hs41104",
+            "entity_kind": "section",
+            "entity_id": "basic-section"
+          },
+          "artifact_hash": "sha256:a47989ed11941163c07e0c8308e8207e105e97f27a6b08cd477eeac7d131c0ed",
+          "evidence_hash": "sha256:f079c92a8a17d29dcaf64d13ec92ba1e37bbb92e4898b061450288986190d72c"
+        }
+      ],
+      "result_hash": "sha256:a575c74fd9d312974fecc0206ebb7838396a23c8d3881287d3309d54547d3fb1"
+    },
+    {
+      "rule_id": "classroom-section-cardinality",
+      "status": "applied",
+      "action_summary": "依据四个来源标题生成四张完整课堂卡片，保持样式、步距、白底和外层点击范围。",
+      "source_bindings": [
+        {
+          "semantic_role": "source classroom four-heading section",
+          "identity": {
+            "side": "source",
+            "book_id": "1815615",
+            "catalog_id": "5437",
+            "block_id": "Q8fUzlNP4C",
+            "entity_kind": "section",
+            "entity_id": "classroom-section"
+          },
+          "snapshot_hash": "sha256:1e15b9d5d7275626cba094593442956f0b1406110ed8295a9b9298adc350db24",
+          "binding_hash": "sha256:b728b6efcb70b3f3bfa40c62e9529c936e269c86f95df92851c65184a3805d04"
+        }
+      ],
+      "target_bindings": [
+        {
+          "semantic_role": "target classroom four-card section",
+          "identity": {
+            "side": "target",
+            "book_id": "1820803",
+            "catalog_id": "45100",
+            "block_id": "xsEXYUN0hs41105",
+            "entity_kind": "section",
+            "entity_id": "classroom-section"
+          },
+          "snapshot_hash": "sha256:a575c74fd9d312974fecc0206ebb7838396a23c8d3881287d3309d54547d3fb1",
+          "binding_hash": "sha256:72794bb69e303f901e290b48f738ab5807837b65a927a5eaa01727dc354b31ee"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "visual_and_module_readback",
+          "summary": "全页截图确认四卡纵排；课堂根入口、绊脚石、课程和四个标题定位模块均已回读。",
+          "identity": {
+            "side": "target",
+            "book_id": "1820803",
+            "catalog_id": "45100",
+            "block_id": "xsEXYUN0hs41105",
+            "entity_kind": "section",
+            "entity_id": "classroom-section"
+          },
+          "artifact_hash": "sha256:a47989ed11941163c07e0c8308e8207e105e97f27a6b08cd477eeac7d131c0ed",
+          "evidence_hash": "sha256:a5034dcdbdfbc435bdb2c93d87cb16377866f1637579cf07cde35dc8423c6f62"
+        }
+      ],
+      "result_hash": "sha256:a575c74fd9d312974fecc0206ebb7838396a23c8d3881287d3309d54547d3fb1"
+    },
+    {
+      "rule_id": "practice-section",
+      "status": "applied",
+      "action_summary": "保留六个 Day 练习标题、外层定位模块、打印入口及 20 高度底部留白。",
+      "source_bindings": [
+        {
+          "semantic_role": "source six-day practice section",
+          "identity": {
+            "side": "source",
+            "book_id": "1815615",
+            "catalog_id": "5437",
+            "block_id": "6nCLsBa2Ni",
+            "entity_kind": "section",
+            "entity_id": "practice-section"
+          },
+          "snapshot_hash": "sha256:1e15b9d5d7275626cba094593442956f0b1406110ed8295a9b9298adc350db24",
+          "binding_hash": "sha256:1db02c357c5d23a5279c55c996f208f93bfa082ce6b9e86e702de9834613e7fa"
+        }
+      ],
+      "target_bindings": [
+        {
+          "semantic_role": "target six-day practice interface section",
+          "identity": {
+            "side": "target",
+            "book_id": "1820803",
+            "catalog_id": "45100",
+            "block_id": "xsEXYUN0hs41106",
+            "entity_kind": "section",
+            "entity_id": "practice-section"
+          },
+          "snapshot_hash": "sha256:a575c74fd9d312974fecc0206ebb7838396a23c8d3881287d3309d54547d3fb1",
+          "binding_hash": "sha256:5357074dfffa1b297e0948e55ce11d3185211e80c550ef01bdc979d9c6f46cce"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "visual_and_module_readback",
+          "summary": "全页截图和模块回读确认六个 Day、打印入口、六个定位模块及底部留白。",
+          "identity": {
+            "side": "target",
+            "book_id": "1820803",
+            "catalog_id": "45100",
+            "block_id": "xsEXYUN0hs41106",
+            "entity_kind": "section",
+            "entity_id": "practice-section"
+          },
+          "artifact_hash": "sha256:a47989ed11941163c07e0c8308e8207e105e97f27a6b08cd477eeac7d131c0ed",
+          "evidence_hash": "sha256:f598c20e3cc1dd3c8bb1236fc194c6380d769c34dfa6c10457366cfbf99eb6aa"
+        }
+      ],
+      "result_hash": "sha256:a575c74fd9d312974fecc0206ebb7838396a23c8d3881287d3309d54547d3fb1"
+    },
+    {
+      "rule_id": "book-catalog-finalization",
+      "status": "applied",
+      "action_summary": "目录名按 Topic 顺序规范化，并将页面级画布和全部区块统一为手机端 375 宽。",
+      "source_bindings": [
+        {
+          "semantic_role": "source topic catalog identity",
+          "identity": {
+            "side": "source",
+            "book_id": "1815615",
+            "catalog_id": "5437",
+            "block_id": "Pxu2f3GthL15882",
+            "entity_kind": "catalog",
+            "entity_id": "5437"
+          },
+          "snapshot_hash": "sha256:1e15b9d5d7275626cba094593442956f0b1406110ed8295a9b9298adc350db24",
+          "binding_hash": "sha256:4c89f4283611f6b07411f44ad8911810d1c6a69a0b50b06253222bfd31696be1"
+        }
+      ],
+      "target_bindings": [
+        {
+          "semantic_role": "target phone catalog identity",
+          "identity": {
+            "side": "target",
+            "book_id": "1820803",
+            "catalog_id": "45100",
+            "block_id": "xsEXYUN0hs41097",
+            "entity_kind": "catalog",
+            "entity_id": "45100"
+          },
+          "snapshot_hash": "sha256:a575c74fd9d312974fecc0206ebb7838396a23c8d3881287d3309d54547d3fb1",
+          "binding_hash": "sha256:e332a840b54569e67eee3568f943a41422624fc46441f4cf68525173d4e1550a"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "catalog_and_canvas_readback",
+          "summary": "目标目录名为 Topic 2 Food，位于 Topic 1 与 Topic 3 之间；画布回读为 phone 375。",
+          "identity": {
+            "side": "target",
+            "book_id": "1820803",
+            "catalog_id": "45100",
+            "block_id": "xsEXYUN0hs41097",
+            "entity_kind": "catalog",
+            "entity_id": "45100"
+          },
+          "artifact_hash": "sha256:a47989ed11941163c07e0c8308e8207e105e97f27a6b08cd477eeac7d131c0ed",
+          "evidence_hash": "sha256:6107e5ebfdb6ba40a1ff7bf16d0775793bd69a34d4ec4cc474e6d36925693b8f"
+        }
+      ],
+      "result_hash": "sha256:a575c74fd9d312974fecc0206ebb7838396a23c8d3881287d3309d54547d3fb1"
+    }
+  ],
+  "baseline": {
+    "template_id": "41097",
+    "source_semantic_snapshot": "forward-tests/topic2-four-title/source-topic2-semantic-snapshot.json",
+    "target_before_artifact": "forward-tests/topic2-four-title/target-topic2-before-semantic-snapshot.json",
+    "evidence_scope": "completed batch result plus strict provenance finalization"
+  },
+  "instance_fixes": [
+    {
+      "kind": "four-title-variant",
+      "summary": "来源课堂标题数为四，按第二张完整卡片的结构和实测步距扩展为四卡。"
+    },
+    {
+      "kind": "outer-anchor-correction",
+      "summary": "课堂标题与 Day 条目的定位模块均绑定到最外层完整点击组。"
+    },
+    {
+      "kind": "single-line-first",
+      "summary": "标题在手机宽度内优先单行，仅在确实放不下时换行。"
+    },
+    {
+      "kind": "template_warning_baseline",
+      "summary": "当前页审计为 0 error；三个越界 warning 属于样章装饰/按钮基线，视觉截图无可见越界。"
+    }
+  ],
+  "user_approvals": [
+    {
+      "id": "solidify-rule-pack-20260818",
+      "type": "trial_authorization",
+      "status": "confirmed",
+      "scope": "使用已完成的 Topic 2 Food 四标题目录作为第二个独立前向证据，并写入严格来源证明。",
+      "confirmed_by": "user",
+      "confirmed_at": "2026-08-18T09:30:00+08:00",
+      "evidence": [
+        "用户明确说：已生成完成，这个规则可以固化了"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "id": "mobile-canvas-375",
+      "status": "passed",
+      "evidence": [
+        "editor_get_canvas_info 回读 slideId=45100、canvasWidth=375、blockCount=4。"
+      ]
+    },
+    {
+      "id": "basic-two-titles",
+      "rule_id": "basic-section",
+      "status": "passed",
+      "evidence": [
+        "目标快照中 words 与 sentences 两个标签按样章顺序存在。"
+      ]
+    },
+    {
+      "id": "basic-module-readback",
+      "rule_id": "basic-section",
+      "status": "passed",
+      "evidence": [
+        "外层查看组 rUjjxSnQCL 定位至来源 3997021；趣味练习为在线答题模块。"
+      ]
+    },
+    {
+      "id": "classroom-card-count",
+      "rule_id": "classroom-section-cardinality",
+      "status": "passed",
+      "evidence": [
+        "全页截图确认四张完整课堂卡片。"
+      ]
+    },
+    {
+      "id": "classroom-multi-card-layout",
+      "rule_id": "classroom-section-cardinality",
+      "status": "passed",
+      "evidence": [
+        "四卡保持相同宽度与纵向节奏，白底已扩展且未与听力实战重叠。"
+      ]
+    },
+    {
+      "id": "classroom-summary-line-fit",
+      "rule_id": "classroom-section-cardinality",
+      "status": "passed",
+      "evidence": [
+        "绊脚石摘要和四个卡片标题在 375 宽画布内可读，单行可容纳的内容未强制换行。"
+      ]
+    },
+    {
+      "id": "classroom-module-readback",
+      "rule_id": "classroom-section-cardinality",
+      "status": "passed",
+      "evidence": [
+        "课堂根、绊脚石、课程和四个标题模块共七项均在外层组上回读。"
+      ]
+    },
+    {
+      "id": "practice-six-titles",
+      "rule_id": "practice-section",
+      "status": "passed",
+      "evidence": [
+        "Day 1 到 Day 6 共六项顺序正确，截图无错位。"
+      ]
+    },
+    {
+      "id": "practice-module-readback",
+      "rule_id": "practice-section",
+      "status": "passed",
+      "evidence": [
+        "六个 Day 外层组均有来源定位模块，打印入口存在。"
+      ]
+    },
+    {
+      "id": "page-tail-spacer-readback",
+      "rule_id": "practice-section",
+      "status": "passed",
+      "evidence": [
+        "底部留白区块 B0l2lpqcei 高 20、宽 375、phone。"
+      ]
+    },
+    {
+      "id": "catalog-order-readback",
+      "rule_id": "book-catalog-finalization",
+      "status": "passed",
+      "evidence": [
+        "Topic 2 Food 位于 Topic 1 Numbers 与 Topic 3 School 之间，目录名无多余空格。"
+      ]
+    },
+    {
+      "id": "all-pages-phone-canvas",
+      "rule_id": "book-catalog-finalization",
+      "status": "passed",
+      "evidence": [
+        "整书批量完成时已逐页保存回读；本前向用例页再次回读为 375。"
+      ]
+    },
+    {
+      "id": "structure-text-layout-audit",
+      "status": "passed",
+      "evidence": [
+        "editor_audit_content 返回 0 error；三个 warning 为样章基线且截图无可见越界。"
+      ]
+    },
+    {
+      "id": "full-page-visual-review",
+      "status": "passed",
+      "evidence": [
+        "editor_screenshot fullPage 显示基础、四卡课堂、六项实战与按钮完整可见。"
+      ]
+    },
+    {
+      "id": "save-export-readback",
+      "status": "passed",
+      "evidence": [
+        "待 provenance 写入后由 editor_save_verified、editor_export_slide 和 validate-readback 闭环。"
+      ]
+    }
+  ],
+  "created_at": "2026-08-18T09:30:00+08:00"
+}

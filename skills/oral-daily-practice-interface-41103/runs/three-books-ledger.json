@@ -1,0 +1,266 @@
+{
+  "schema_version": 2,
+  "ledger_id": "d7de7304-712a-445d-9626-237f446ffec8",
+  "skill": {
+    "name": "oral-daily-practice-interface-41103",
+    "version": "0.1.7",
+    "rule_pack_hash": "sha256:37dd42ed42e93c1b02dee4467a308788171c75eec985571da67325de8099e9ce"
+  },
+  "created_at": "2026-08-18T08:21:28.321Z",
+  "updated_at": "2026-08-18T08:22:05.410Z",
+  "items": [
+    {
+      "item_id": "oral-daily-practice-volume1",
+      "lock_key": "oral-daily-practice-interface-41103:volume1:20260818",
+      "target": {
+        "book_stable_identity": "oral-daily-practice-interface-41103-volume1-20260818",
+        "prospective_identity": "oral-daily-practice-interface-41103-volume1-20260818",
+        "promoted_book_id": "1820812",
+        "catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        }
+      },
+      "book": {
+        "item_id": "oral-daily-practice-volume1",
+        "source_book_id": "1814804",
+        "target_book_prospective_identity": "oral-daily-practice-interface-41103-volume1-20260818",
+        "target_book_stable_identity": "oral-daily-practice-interface-41103-volume1-20260818",
+        "lock_key": "oral-daily-practice-interface-41103:volume1:20260818",
+        "target_catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        },
+        "target_book_id": "1820812"
+      },
+      "state": "pending",
+      "attempt": 0,
+      "fingerprint": null,
+      "idempotency_key": null,
+      "apply_authorization": null,
+      "write_blocked": null,
+      "evidence": {
+        "target_promoted": {
+          "prospective_identity": "oral-daily-practice-interface-41103-volume1-20260818",
+          "lock_key": "oral-daily-practice-interface-41103:volume1:20260818",
+          "target_book_id": "1820812",
+          "registered_at": "2026-08-18T08:21:28.321Z",
+          "updated_at": "2026-08-18T08:22:03.493Z",
+          "promoted_at": "2026-08-18T08:22:03.493Z",
+          "promotion": {
+            "expected_prospective_identity": "oral-daily-practice-interface-41103-volume1-20260818",
+            "expected_lock_key": "oral-daily-practice-interface-41103:volume1:20260818",
+            "target_book_id": "1820812",
+            "reason": "用户授权将未转换的第一册转换为界面型目标书；目标由源书 1814804 轻量创建。",
+            "authorized_by": "user current conversation",
+            "lock_owner": "oral-daily-practice-3books-20260818",
+            "lock_nonce": "7f5adb5b-7781-49fe-8304-6ce55dfa70ce"
+          }
+        }
+      },
+      "last_error": null,
+      "history": [
+        {
+          "from": null,
+          "to": "pending",
+          "at": "2026-08-18T08:21:28.321Z",
+          "note": "ledger_initialized",
+          "evidence": {}
+        },
+        {
+          "from": "pending",
+          "to": "pending",
+          "at": "2026-08-18T08:22:03.500Z",
+          "note": "prospective_target_promoted",
+          "lock_owner": "oral-daily-practice-3books-20260818",
+          "evidence": {
+            "prospective_identity": "oral-daily-practice-interface-41103-volume1-20260818",
+            "lock_key": "oral-daily-practice-interface-41103:volume1:20260818",
+            "target_book_id": "1820812",
+            "registered_at": "2026-08-18T08:21:28.321Z",
+            "updated_at": "2026-08-18T08:22:03.493Z",
+            "promoted_at": "2026-08-18T08:22:03.493Z",
+            "promotion": {
+              "expected_prospective_identity": "oral-daily-practice-interface-41103-volume1-20260818",
+              "expected_lock_key": "oral-daily-practice-interface-41103:volume1:20260818",
+              "target_book_id": "1820812",
+              "reason": "用户授权将未转换的第一册转换为界面型目标书；目标由源书 1814804 轻量创建。",
+              "authorized_by": "user current conversation",
+              "lock_owner": "oral-daily-practice-3books-20260818",
+              "lock_nonce": "7f5adb5b-7781-49fe-8304-6ce55dfa70ce"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "item_id": "oral-daily-practice-volume2",
+      "lock_key": "oral-daily-practice-interface-41103:volume2:20260818",
+      "target": {
+        "book_stable_identity": "oral-daily-practice-interface-41103-volume2-20260818",
+        "prospective_identity": "oral-daily-practice-interface-41103-volume2-20260818",
+        "promoted_book_id": "1820813",
+        "catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        }
+      },
+      "book": {
+        "item_id": "oral-daily-practice-volume2",
+        "source_book_id": "1814805",
+        "target_book_prospective_identity": "oral-daily-practice-interface-41103-volume2-20260818",
+        "target_book_stable_identity": "oral-daily-practice-interface-41103-volume2-20260818",
+        "lock_key": "oral-daily-practice-interface-41103:volume2:20260818",
+        "target_catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        },
+        "target_book_id": "1820813"
+      },
+      "state": "pending",
+      "attempt": 0,
+      "fingerprint": null,
+      "idempotency_key": null,
+      "apply_authorization": null,
+      "write_blocked": null,
+      "evidence": {
+        "target_promoted": {
+          "prospective_identity": "oral-daily-practice-interface-41103-volume2-20260818",
+          "lock_key": "oral-daily-practice-interface-41103:volume2:20260818",
+          "target_book_id": "1820813",
+          "registered_at": "2026-08-18T08:21:28.321Z",
+          "updated_at": "2026-08-18T08:22:04.740Z",
+          "promoted_at": "2026-08-18T08:22:04.740Z",
+          "promotion": {
+            "expected_prospective_identity": "oral-daily-practice-interface-41103-volume2-20260818",
+            "expected_lock_key": "oral-daily-practice-interface-41103:volume2:20260818",
+            "target_book_id": "1820813",
+            "reason": "用户授权将未转换的第二册转换为界面型目标书；目标由源书 1814805 轻量创建。",
+            "authorized_by": "user current conversation",
+            "lock_owner": "oral-daily-practice-3books-20260818",
+            "lock_nonce": "1f5f9b47-3045-4203-bd11-d18ad25ba73c"
+          }
+        }
+      },
+      "last_error": null,
+      "history": [
+        {
+          "from": null,
+          "to": "pending",
+          "at": "2026-08-18T08:21:28.321Z",
+          "note": "ledger_initialized",
+          "evidence": {}
+        },
+        {
+          "from": "pending",
+          "to": "pending",
+          "at": "2026-08-18T08:22:04.748Z",
+          "note": "prospective_target_promoted",
+          "lock_owner": "oral-daily-practice-3books-20260818",
+          "evidence": {
+            "prospective_identity": "oral-daily-practice-interface-41103-volume2-20260818",
+            "lock_key": "oral-daily-practice-interface-41103:volume2:20260818",
+            "target_book_id": "1820813",
+            "registered_at": "2026-08-18T08:21:28.321Z",
+            "updated_at": "2026-08-18T08:22:04.740Z",
+            "promoted_at": "2026-08-18T08:22:04.740Z",
+            "promotion": {
+              "expected_prospective_identity": "oral-daily-practice-interface-41103-volume2-20260818",
+              "expected_lock_key": "oral-daily-practice-interface-41103:volume2:20260818",
+              "target_book_id": "1820813",
+              "reason": "用户授权将未转换的第二册转换为界面型目标书；目标由源书 1814805 轻量创建。",
+              "authorized_by": "user current conversation",
+              "lock_owner": "oral-daily-practice-3books-20260818",
+              "lock_nonce": "1f5f9b47-3045-4203-bd11-d18ad25ba73c"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "item_id": "oral-daily-practice-volume3",
+      "lock_key": "oral-daily-practice-interface-41103:volume3:20260818",
+      "target": {
+        "book_stable_identity": "oral-daily-practice-interface-41103-volume3-20260818",
+        "prospective_identity": "oral-daily-practice-interface-41103-volume3-20260818",
+        "promoted_book_id": "1820814",
+        "catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        }
+      },
+      "book": {
+        "item_id": "oral-daily-practice-volume3",
+        "source_book_id": "1814806",
+        "target_book_prospective_identity": "oral-daily-practice-interface-41103-volume3-20260818",
+        "target_book_stable_identity": "oral-daily-practice-interface-41103-volume3-20260818",
+        "lock_key": "oral-daily-practice-interface-41103:volume3:20260818",
+        "target_catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        },
+        "target_book_id": "1820814"
+      },
+      "state": "pending",
+      "attempt": 0,
+      "fingerprint": null,
+      "idempotency_key": null,
+      "apply_authorization": null,
+      "write_blocked": null,
+      "evidence": {
+        "target_promoted": {
+          "prospective_identity": "oral-daily-practice-interface-41103-volume3-20260818",
+          "lock_key": "oral-daily-practice-interface-41103:volume3:20260818",
+          "target_book_id": "1820814",
+          "registered_at": "2026-08-18T08:21:28.321Z",
+          "updated_at": "2026-08-18T08:22:05.399Z",
+          "promoted_at": "2026-08-18T08:22:05.399Z",
+          "promotion": {
+            "expected_prospective_identity": "oral-daily-practice-interface-41103-volume3-20260818",
+            "expected_lock_key": "oral-daily-practice-interface-41103:volume3:20260818",
+            "target_book_id": "1820814",
+            "reason": "用户授权将未转换的第三册转换为界面型目标书；目标由源书 1814806 轻量创建。",
+            "authorized_by": "user current conversation",
+            "lock_owner": "oral-daily-practice-3books-20260818",
+            "lock_nonce": "fd8e31f2-20af-45c3-b478-ca1f65782eef"
+          }
+        }
+      },
+      "last_error": null,
+      "history": [
+        {
+          "from": null,
+          "to": "pending",
+          "at": "2026-08-18T08:21:28.321Z",
+          "note": "ledger_initialized",
+          "evidence": {}
+        },
+        {
+          "from": "pending",
+          "to": "pending",
+          "at": "2026-08-18T08:22:05.410Z",
+          "note": "prospective_target_promoted",
+          "lock_owner": "oral-daily-practice-3books-20260818",
+          "evidence": {
+            "prospective_identity": "oral-daily-practice-interface-41103-volume3-20260818",
+            "lock_key": "oral-daily-practice-interface-41103:volume3:20260818",
+            "target_book_id": "1820814",
+            "registered_at": "2026-08-18T08:21:28.321Z",
+            "updated_at": "2026-08-18T08:22:05.399Z",
+            "promoted_at": "2026-08-18T08:22:05.399Z",
+            "promotion": {
+              "expected_prospective_identity": "oral-daily-practice-interface-41103-volume3-20260818",
+              "expected_lock_key": "oral-daily-practice-interface-41103:volume3:20260818",
+              "target_book_id": "1820814",
+              "reason": "用户授权将未转换的第三册转换为界面型目标书；目标由源书 1814806 轻量创建。",
+              "authorized_by": "user current conversation",
+              "lock_owner": "oral-daily-practice-3books-20260818",
+              "lock_nonce": "fd8e31f2-20af-45c3-b478-ca1f65782eef"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "integrity_hash": "sha256:fdafeaf96be0e51cce8fb98985278a0a648cd74f51af827f646d0126732d840b"
+}

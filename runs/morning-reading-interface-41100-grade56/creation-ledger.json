@@ -1,0 +1,233 @@
+{
+  "schema_version": 2,
+  "ledger_id": "13af9d0e-a11e-4200-a1a3-f366a117b2bf",
+  "skill": {
+    "name": "morning-reading-interface-41100",
+    "version": "0.2.0",
+    "rule_pack_hash": "sha256:f94c9d52fb8bba9b96d520a2fdd31dd4a5645d7c42b353c35b46523c550e9b1c"
+  },
+  "created_at": "2026-08-18T06:15:14.067Z",
+  "updated_at": "2026-08-18T06:17:37.432Z",
+  "items": [
+    {
+      "item_id": "create-morning-reading-grade56-interface",
+      "lock_key": "morning-reading-interface:grade56:book:prospective:v1",
+      "target": {
+        "book_stable_identity": "book-family:morning-reading:grades-5-6:interface",
+        "prospective_identity": "book-family:morning-reading:grades-5-6:interface",
+        "promoted_book_id": "1820811",
+        "catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        }
+      },
+      "book": {
+        "item_id": "create-morning-reading-grade56-interface",
+        "lock_key": "morning-reading-interface:grade56:book:prospective:v1",
+        "target_book_prospective_identity": "book-family:morning-reading:grades-5-6:interface",
+        "target_book_stable_identity": "book-family:morning-reading:grades-5-6:interface",
+        "target_catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        },
+        "source_book_id": 1814549,
+        "source_book_name": "晨读美文 适用于5-6年级",
+        "target_book_name": "晨读美文 适用于5-6年级",
+        "target_smart_book_type": 4,
+        "target_book_id": "1820811"
+      },
+      "state": "planned",
+      "attempt": 2,
+      "fingerprint": {
+        "source_snapshot_hash": "sha256:8e875a215ef7dc1c3eb43ca886764eb51d431f3974e0d77dc2397da946869baf",
+        "template_snapshot_hash": "sha256:8e4e08e1f523f111bfa27c2d855e8963ef635964323bad8063d150a062760f77",
+        "rule_pack_hash": "sha256:f94c9d52fb8bba9b96d520a2fdd31dd4a5645d7c42b353c35b46523c550e9b1c",
+        "target_before_hash": "sha256:eb72277ae708da5278d9b4ac3bf00ec604bb94dbe4a373619a2708def0d92f8b",
+        "resolved_template_id": "41100"
+      },
+      "idempotency_key": "sha256:941ea506e9038a5be88bf6dd3910923182af8e697096006bb219dae88cec1836",
+      "apply_authorization": {
+        "token": "e8b037ac-3c89-47ea-9e3e-c3ac175a11ab",
+        "issued_at": "2026-08-18T06:16:27.407Z",
+        "fingerprint_hash": "sha256:dc3bbc8a068cab4c054d73360a6fd7f9f8a507a2bbb2208f6f1ffad9c29567ac",
+        "idempotency_key": "sha256:941ea506e9038a5be88bf6dd3910923182af8e697096006bb219dae88cec1836",
+        "lock_owner": "morning-reading-grade56-20260818",
+        "lock_nonce": "9f4dee11-57af-4499-9007-4cce295ad336"
+      },
+      "write_blocked": null,
+      "evidence": {
+        "planned": {
+          "reason": "reorder ledger bookkeeping so target promotion is recorded before content preflight",
+          "target_book_id": "1820811",
+          "content_write_started": false
+        },
+        "preflighted": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:8e875a215ef7dc1c3eb43ca886764eb51d431f3974e0d77dc2397da946869baf",
+            "template_snapshot_hash": "sha256:8e4e08e1f523f111bfa27c2d855e8963ef635964323bad8063d150a062760f77",
+            "rule_pack_hash": "sha256:f94c9d52fb8bba9b96d520a2fdd31dd4a5645d7c42b353c35b46523c550e9b1c",
+            "target_before_hash": "sha256:eb72277ae708da5278d9b4ac3bf00ec604bb94dbe4a373619a2708def0d92f8b",
+            "resolved_template_id": "41100"
+          },
+          "preflight_artifact": "creation-preflight.json",
+          "source_structure_validated": true,
+          "target_absent": true
+        },
+        "apply_authorized": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:8e875a215ef7dc1c3eb43ca886764eb51d431f3974e0d77dc2397da946869baf",
+            "template_snapshot_hash": "sha256:8e4e08e1f523f111bfa27c2d855e8963ef635964323bad8063d150a062760f77",
+            "rule_pack_hash": "sha256:f94c9d52fb8bba9b96d520a2fdd31dd4a5645d7c42b353c35b46523c550e9b1c",
+            "target_before_hash": "sha256:eb72277ae708da5278d9b4ac3bf00ec604bb94dbe4a373619a2708def0d92f8b",
+            "resolved_template_id": "41100"
+          },
+          "authorization": {
+            "token": "e8b037ac-3c89-47ea-9e3e-c3ac175a11ab",
+            "issued_at": "2026-08-18T06:16:27.407Z",
+            "fingerprint_hash": "sha256:dc3bbc8a068cab4c054d73360a6fd7f9f8a507a2bbb2208f6f1ffad9c29567ac",
+            "idempotency_key": "sha256:941ea506e9038a5be88bf6dd3910923182af8e697096006bb219dae88cec1836",
+            "lock_owner": "morning-reading-grade56-20260818",
+            "lock_nonce": "9f4dee11-57af-4499-9007-4cce295ad336"
+          }
+        },
+        "needs_review": {
+          "reason": "target book was created successfully but prospective target promotion must occur before preflight in the ledger contract; no catalog content has been written",
+          "target_book_id": "1820811",
+          "readback_recovery": true
+        },
+        "target_promoted": {
+          "prospective_identity": "book-family:morning-reading:grades-5-6:interface",
+          "lock_key": "morning-reading-interface:grade56:book:prospective:v1",
+          "target_book_id": "1820811",
+          "registered_at": "2026-08-18T06:15:14.067Z",
+          "updated_at": "2026-08-18T06:17:37.426Z",
+          "promoted_at": "2026-08-18T06:17:37.426Z",
+          "promotion": {
+            "expected_prospective_identity": "book-family:morning-reading:grades-5-6:interface",
+            "expected_lock_key": "morning-reading-interface:grade56:book:prospective:v1",
+            "target_book_id": "1820811",
+            "reason": "Created the exact missing 5-6 grade Morning Reading interface book after unique source and target-absence preflight",
+            "authorized_by": "user request: 把剩下的另一本书也转换完",
+            "lock_owner": "morning-reading-grade56-20260818",
+            "lock_nonce": "9f4dee11-57af-4499-9007-4cce295ad336"
+          }
+        }
+      },
+      "last_error": null,
+      "history": [
+        {
+          "from": null,
+          "to": "pending",
+          "at": "2026-08-18T06:15:14.067Z",
+          "note": "ledger_initialized",
+          "evidence": {}
+        },
+        {
+          "from": "pending",
+          "to": "planned",
+          "at": "2026-08-18T06:16:26.226Z",
+          "note": null,
+          "lock_owner": "morning-reading-grade56-20260818",
+          "evidence": {
+            "scope": "create exact 5-6 grade interface target only",
+            "source_book_id": 1814549,
+            "target_prospective_identity": "book-family:morning-reading:grades-5-6:interface",
+            "authorized_by_user": true
+          }
+        },
+        {
+          "from": "planned",
+          "to": "preflighted",
+          "at": "2026-08-18T06:16:26.812Z",
+          "note": null,
+          "lock_owner": "morning-reading-grade56-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:8e875a215ef7dc1c3eb43ca886764eb51d431f3974e0d77dc2397da946869baf",
+              "template_snapshot_hash": "sha256:8e4e08e1f523f111bfa27c2d855e8963ef635964323bad8063d150a062760f77",
+              "rule_pack_hash": "sha256:f94c9d52fb8bba9b96d520a2fdd31dd4a5645d7c42b353c35b46523c550e9b1c",
+              "target_before_hash": "sha256:eb72277ae708da5278d9b4ac3bf00ec604bb94dbe4a373619a2708def0d92f8b",
+              "resolved_template_id": "41100"
+            },
+            "preflight_artifact": "creation-preflight.json",
+            "source_structure_validated": true,
+            "target_absent": true
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "preflighted",
+          "at": "2026-08-18T06:16:27.407Z",
+          "note": "apply_authorized_after_fingerprint_recheck",
+          "lock_owner": "morning-reading-grade56-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:8e875a215ef7dc1c3eb43ca886764eb51d431f3974e0d77dc2397da946869baf",
+              "template_snapshot_hash": "sha256:8e4e08e1f523f111bfa27c2d855e8963ef635964323bad8063d150a062760f77",
+              "rule_pack_hash": "sha256:f94c9d52fb8bba9b96d520a2fdd31dd4a5645d7c42b353c35b46523c550e9b1c",
+              "target_before_hash": "sha256:eb72277ae708da5278d9b4ac3bf00ec604bb94dbe4a373619a2708def0d92f8b",
+              "resolved_template_id": "41100"
+            },
+            "authorization": {
+              "token": "e8b037ac-3c89-47ea-9e3e-c3ac175a11ab",
+              "issued_at": "2026-08-18T06:16:27.407Z",
+              "fingerprint_hash": "sha256:dc3bbc8a068cab4c054d73360a6fd7f9f8a507a2bbb2208f6f1ffad9c29567ac",
+              "idempotency_key": "sha256:941ea506e9038a5be88bf6dd3910923182af8e697096006bb219dae88cec1836",
+              "lock_owner": "morning-reading-grade56-20260818",
+              "lock_nonce": "9f4dee11-57af-4499-9007-4cce295ad336"
+            }
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "needs_review",
+          "at": "2026-08-18T06:17:36.326Z",
+          "note": null,
+          "lock_owner": "morning-reading-grade56-20260818",
+          "evidence": {
+            "reason": "target book was created successfully but prospective target promotion must occur before preflight in the ledger contract; no catalog content has been written",
+            "target_book_id": "1820811",
+            "readback_recovery": true
+          }
+        },
+        {
+          "from": "needs_review",
+          "to": "planned",
+          "at": "2026-08-18T06:17:36.930Z",
+          "note": null,
+          "lock_owner": "morning-reading-grade56-20260818",
+          "evidence": {
+            "reason": "reorder ledger bookkeeping so target promotion is recorded before content preflight",
+            "target_book_id": "1820811",
+            "content_write_started": false
+          }
+        },
+        {
+          "from": "planned",
+          "to": "planned",
+          "at": "2026-08-18T06:17:37.432Z",
+          "note": "prospective_target_promoted",
+          "lock_owner": "morning-reading-grade56-20260818",
+          "evidence": {
+            "prospective_identity": "book-family:morning-reading:grades-5-6:interface",
+            "lock_key": "morning-reading-interface:grade56:book:prospective:v1",
+            "target_book_id": "1820811",
+            "registered_at": "2026-08-18T06:15:14.067Z",
+            "updated_at": "2026-08-18T06:17:37.426Z",
+            "promoted_at": "2026-08-18T06:17:37.426Z",
+            "promotion": {
+              "expected_prospective_identity": "book-family:morning-reading:grades-5-6:interface",
+              "expected_lock_key": "morning-reading-interface:grade56:book:prospective:v1",
+              "target_book_id": "1820811",
+              "reason": "Created the exact missing 5-6 grade Morning Reading interface book after unique source and target-absence preflight",
+              "authorized_by": "user request: 把剩下的另一本书也转换完",
+              "lock_owner": "morning-reading-grade56-20260818",
+              "lock_nonce": "9f4dee11-57af-4499-9007-4cce295ad336"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "integrity_hash": "sha256:84906327c4755cbde3f69575f767a6c3832dec179d18c95072903d41541eb662"
+}

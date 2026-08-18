@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "identity": {
+    "skill_name": "oral-daily-practice-interface-41103",
+    "display_name": "口语天天练界面型教辅（41103）",
+    "version": "0.1.7",
+    "status": "validated",
+    "book_family": "小学英语口语天天练2.0"
+  },
+  "applicability": {
+    "intent": "适用于按 DAY 编排，包含 Dialogue、口语学习路径、句型、词汇和八类学习入口的口语天天练2.0 原课件",
+    "include": {
+      "subject": "英语",
+      "source_book_name": "口语天天练2.0",
+      "catalog_name_pattern": "DAY 序号 英文主题",
+      "source_smart_book_type": 3,
+      "target_canvas_type": "phone",
+      "target_canvas_width": 375
+    },
+    "exclude": {"catalog_name_contains": ["答案", "测试", "样章"]}
+  },
+  "templates": {
+    "default": {
+      "template_id": "41103",
+      "intent": "Dialogue、口语学习路径、六个学习入口和打印入口组成的手机界面样章",
+      "snapshot_hash": "sha256:bc2055d69754023ad0801230c0866c0d57a425099a2194750b87c437a4715363",
+      "anchors": [
+        {"kind": "template_source_id", "value": "41103", "optional": true, "intent": "确认样章来源，不作为语义角色唯一证据"},
+        {"kind": "template_block_roles", "value": "Dialogue header, oral learning path, six cards, print", "optional": false, "intent": "确认三段样章结构"}
+      ]
+    },
+    "variants": []
+  },
+  "defaults": {
+    "style_policy": "preserve_target",
+    "module_policy": "reuse_model_relation",
+    "on_missing": "needs_review",
+    "on_ambiguous": "stop"
+  },
+  "execution": {
+    "capability_snapshot": {
+      "catalog_path": "super-editor-capability-catalog.json",
+      "catalog_hash": "sha256:5dc3cc385eab0252da7d52cfec9a6790ca39656e236139b555b16677b3e4b54c",
+      "snapshot_hash": "sha256:c77760ecae60ee89c9e7365de61b9dd28fe0fb48c55d86c0faffbfe1e7fdfcb6",
+      "capabilities": [
+        "editor_add_block", "editor_apply_template", "editor_audit_content", "editor_checkpoint", "editor_copy_digital_module", "editor_create_digital_module",
+        "editor_create_book", "editor_duplicate_elements", "editor_duplicate_slide", "editor_export_semantic_snapshot", "editor_export_slide", "editor_get_book_manifest",
+        "editor_get_canvas_info", "editor_get_canvas_tree", "editor_get_digital_module", "editor_get_template",
+        "editor_list_blocks", "editor_list_digital_module_types", "editor_list_digital_modules", "editor_rename_slide", "editor_replace_element_safe", "editor_resize_element", "editor_save_verified",
+        "editor_screenshot", "editor_select_slide", "editor_set_canvas_type", "editor_text_document", "editor_text_format", "editor_move_element",
+        "editor_text_inspect_layout", "editor_text_set_content", "editor_update_block"
+      ],
+      "evidence": ["由当前安装的 super-editor-control tools/list 生成，共 144 个原子工具；这里只声明本规则需要的子集"]
+    },
+    "trial_approval": {
+      "approved": true,
+      "evidence": ["用户于 2026-08-18 明确回复‘可以，然后开始试制’"]
+    },
+    "forward_cases": [
+      {
+        "id": "day6-long-sentence",
+        "evidence_artifact": "forward-tests/day6-long-sentence/forward-evidence.json",
+        "artifact_sha256": "sha256:1573b42f9b2eae69665644bcf4bd2378956731be796ee5faa105aabb62352bf3"
+      },
+      {
+        "id": "day19-two-line-title",
+        "evidence_artifact": "forward-tests/day19-two-line-title/forward-evidence.json",
+        "artifact_sha256": "sha256:0789806bb7c1503d0a1310e5e1d0ae49c6beeb02902da7f613336f9b0b4a894f"
+      }
+    ]
+  },
+  "rules": [
+    {
+      "id": "dialogue-header",
+      "order": 10,
+      "intent": "把源目录完整名称、Dialogue 标题、中文交流提示和磨耳朵音频映射到样章首段，并让查看入口定位到来源 Dialogue 内容区块",
+      "when": "来源存在唯一目录名称、Dialogue 语义段、Dialogue 内容区块和磨耳朵音频入口",
+      "scope": {"intent": "符合本书类结构的单个 DAY 目录"},
+      "source": {
+        "role": "目录名称、Dialogue 中英文标题、真实承载 Dialogue 内容的区块及磨耳朵音频入口",
+        "cardinality": {"min": 1, "max": 1},
+        "evidence": [
+          {"class": "semantic", "kind": "dialogue_section_meaning", "claim": "该段承担本日口语主题和交流提示", "observation": "来源含英文标题 Dialogue、一个中文问句和双语对话"},
+          {"class": "structure", "kind": "catalog_dialogue_block_and_audio_relation", "claim": "目录名、Dialogue 内容区块和磨耳朵入口均可唯一定位", "observation": "目录名含 DAY 序号与英文主题；Dialogue 标题、双语对话和磨耳朵音频共同锚定同一真实内容区块"}
+        ]
+      },
+      "target": {
+        "role": "样章首段主标题、Dialogue 标题、中文提示、GO 点击区和查看加箭头的完整外层组",
+        "cardinality": {"min": 1, "max": 1},
+        "evidence": [
+          {"class": "semantic", "kind": "template_dialogue_role", "claim": "首段表达当日 Dialogue 入口", "observation": "样章显示 Day 1 Colors、Dialogue、中文提示和 GO"},
+          {"class": "structure", "kind": "template_header_structure", "claim": "五个目标在首段可唯一识别", "observation": "主标题、英文小标题、中文提示、GO 点击元素和查看外层组分别唯一"}
+        ],
+        "optional_fingerprints": [
+          {"kind": "template_source_id", "value": "8wZaji7OVG", "intent": "主标题辅助指纹，不参与唯一匹配"},
+          {"kind": "template_source_id", "value": "q_TeQiArFS", "intent": "Dialogue 标题辅助指纹，不参与唯一匹配"},
+          {"kind": "template_source_id", "value": "npWeY3R6lD", "intent": "中文提示辅助指纹，不参与唯一匹配"},
+          {"kind": "template_source_id", "value": "rp91Q0qyWx", "intent": "GO 点击区辅助指纹，不参与唯一匹配"},
+          {"kind": "template_source_id", "value": "vvUO6DDApz", "intent": "查看外层组辅助指纹，不参与唯一匹配"}
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "保留样章样式写入三个文本、复用来源音频关系，并创建指向来源 Dialogue 内容区块的定位模块",
+        "required_capabilities": ["editor_text_document", "editor_text_set_content", "editor_text_inspect_layout", "editor_resize_element", "editor_copy_digital_module", "editor_get_digital_module", "editor_list_digital_module_types", "editor_create_digital_module"],
+        "style_policy": "preserve_target",
+        "module_policy": "reuse_model_relation",
+        "steps": [
+          {"type": "set_catalog_title", "intent": "复制源目录完整名称，只折叠空白，不改大小写、标点和序号", "required_capabilities": ["editor_text_set_content"]},
+          {"type": "fit_catalog_title", "intent": "默认 18px；先横向扩展到查看入口前的可用宽度。中等长标题保持单行并降至 16px；仍放不下的超长标题保持 16px、改成两行和 48px 高度，同时把 Dialogue 圆点、标题、提示和绿色卡片全部下移 24px，顶部区块及白底同步增高 24px；不得遮挡查看入口或下方内容", "required_capabilities": ["editor_text_inspect_layout", "editor_resize_element", "editor_text_format", "editor_move_element", "editor_update_block"]},
+          {"type": "set_dialogue_titles", "intent": "复制 Dialogue 英文标题与唯一中文交流提示；按实际字体行高检查英文下降部，必要时保持字号和中心线增高标题框，并下移中文提示避免重叠", "required_capabilities": ["editor_text_set_content", "editor_text_inspect_layout", "editor_resize_element"]},
+          {"type": "bind_existing_module", "intent": "把来源磨耳朵音频关系复用到 GO 点击区", "required_capabilities": ["editor_copy_digital_module", "editor_get_digital_module"]},
+          {"type": "bind_source_navigation", "intent": "给查看加箭头的完整外层组创建定位模块，目标为来源目录中真实承载 Dialogue 标题、双语对话和磨耳朵入口的区块后端资源 ID", "required_capabilities": ["editor_list_digital_module_types", "editor_create_digital_module", "editor_get_digital_module"]}
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {"id": "dialogue-text-readback", "intent": "主标题和 Dialogue 中英文标题与来源一致；主标题保持单行且不遮挡查看入口，Dialogue 英文字母下缘完整、无裁切，并与中文提示无重叠", "severity": "error", "required_capabilities": ["editor_get_canvas_tree", "editor_text_inspect_layout", "editor_screenshot"]},
+        {"id": "dialogue-audio-readback", "intent": "GO 点击区回读到来源磨耳朵音频关系", "severity": "error", "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module"]},
+        {"id": "dialogue-view-navigation-readback", "intent": "查看完整外层组回读为定位模块，原始 catalog_content 明确指向来源书、来源目录和 Dialogue 内容区块", "severity": "error", "required_capabilities": ["editor_get_digital_module"]}
+      ]
+    },
+    {
+      "id": "learning-path-content",
+      "order": 20,
+      "intent": "把学习路径标题、来源实际存在的二至三个句型和四组双语词汇映射到样章第二段",
+      "when": "来源存在唯一学习路径段、二至三个有序句型和四组可唯一配对的双语词汇",
+      "scope": {"intent": "符合本书类结构的单个 DAY 目录"},
+      "source": {
+        "role": "Oral Learning Path 中英文标题、Sentence Pattern 二至三句和 Words 四组中英词项",
+        "cardinality": {"min": 1, "max": 1},
+        "evidence": [
+          {"class": "semantic", "kind": "learning_path_meaning", "claim": "该段表达学习路径、目标句型和核心词汇", "observation": "来源含 Oral Learning Path/口语学习路径、Sentence Pattern/句型、Words/单词"},
+          {"class": "structure", "kind": "sentence_and_word_cardinality", "claim": "句型按来源实际为二至三条且顺序稳定，英语词项四条且中文词义应形成四组", "observation": "本册大多数目录为三条句型，少数目录原课件只有两条；中文窄框可能因视觉换行与富文本段落数不同"}
+        ]
+      },
+      "target": {
+        "role": "样章第二段学习路径标题、编号句型列表和两列双语词表",
+        "cardinality": {"min": 1, "max": 1},
+        "evidence": [
+          {"class": "semantic", "kind": "template_learning_path_role", "claim": "该段承载学习目标与活动入口", "observation": "样章含学习路径、编号句型和四组词汇"},
+          {"class": "structure", "kind": "template_text_targets", "claim": "两标题、句型文本和词表文本各自唯一", "observation": "第二段可唯一识别四个文本目标"}
+        ],
+        "optional_fingerprints": [
+          {"kind": "template_source_id", "value": "lELNTPxsVH", "intent": "学习路径英文标题辅助指纹"},
+          {"kind": "template_source_id", "value": "xDnFe7r7R6", "intent": "学习路径中文标题辅助指纹"},
+          {"kind": "template_source_id", "value": "hdFhj2m141", "intent": "句型列表辅助指纹"},
+          {"kind": "template_source_id", "value": "MFYR7DjdbA", "intent": "双语词表辅助指纹"}
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "保持样章样式写入标题、来源实际存在的二至三个编号句型和四组双语词汇",
+        "required_capabilities": ["editor_text_document", "editor_text_set_content", "editor_text_inspect_layout", "editor_duplicate_elements", "editor_replace_element_safe", "editor_resize_element", "editor_screenshot"],
+        "style_policy": "preserve_target",
+        "module_policy": "none",
+        "steps": [
+          {"type": "set_learning_path_titles", "intent": "复制来源中英文学习路径标题", "required_capabilities": ["editor_text_set_content"]},
+          {"type": "set_source_sentence_patterns", "intent": "按来源实际条数、顺序和标点写入二至三个编号句型；不得为空位编造第三句；标题框和句型正文框扩宽到蓝色卡片内的可用宽度。正文默认 16px；最长句 45–49 字符时使用 13px，50–55 字符使用 12px，56–60 字符允许使用 11px，确保全部句型完整显示", "required_capabilities": ["editor_text_set_content", "editor_text_inspect_layout", "editor_resize_element", "editor_text_format"]},
+          {"type": "pair_four_bilingual_words", "intent": "按阅读顺序写入四组英语词项与中文释义；结合伴随列表基数、富文本、截图和几何判断，禁止仅按换行切分。词汇卡排成两行四列，每行依次为英文、中文、英文、中文，每个词项和释义必须是独立文本元素；上下两行同列 left 完全一致，列宽按本页同列最长内容动态计算（英文参考字符数×9+6，中文参考字符数×16+4），列间距 6px，整组在卡片内居中，确保最右中文完整显示；禁止用空格、制表符或会被清洗的 inline width 撑列。旧单文本框不可安全往返时复制为八个文本元素，再用 editor_replace_element_safe 两阶段设置内容与几何", "required_capabilities": ["editor_text_document", "editor_screenshot", "editor_text_set_content", "editor_text_inspect_layout", "editor_duplicate_elements", "editor_replace_element_safe", "editor_resize_element", "editor_move_element"]}
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {"id": "sentence-cardinality-and-order", "intent": "目标显示的二至三个完整句型条数、顺序和标点与来源一致，不得补写来源不存在的句型；Sentence Pattern 句型标题及最长句均完整显示、无右侧裁切", "severity": "error", "required_capabilities": ["editor_get_canvas_tree", "editor_text_inspect_layout", "editor_screenshot"]},
+        {"id": "word-pair-cardinality", "intent": "目标恰好以八个独立文本元素显示四组中英词汇，无合并、遗漏、错配或裁切；两行四列中同列 left 数值一致，最右两个中文释义完整显示", "severity": "error", "required_capabilities": ["editor_get_canvas_tree", "editor_text_inspect_layout", "editor_screenshot"]}
+      ]
+    },
+    {
+      "id": "learning-entry-modules",
+      "order": 30,
+      "intent": "按按钮语义和模块类型把六个学习入口映射到样章第二段对应卡片",
+      "when": "来源六个语义入口均唯一且模块类型符合预期",
+      "scope": {"intent": "符合本书类结构的单个 DAY 目录"},
+      "source": {
+        "role": "看口语视频、听句型讲解、单词巧记、句型巧练、AI口语跟读测评和口语PK 六个按钮及其模块关系",
+        "cardinality": {"min": 6, "max": 6},
+        "evidence": [
+          {"class": "semantic", "kind": "button_role_and_module_kind", "claim": "六个入口具有不同教学语义", "observation": "来源按钮名称分别对应两视频、智能课件、在线答题、智能课件和智能体"},
+          {"class": "structure", "kind": "unique_module_relation", "claim": "每个来源按钮只绑定一个可回读模块关系", "observation": "按元素语义名和模块类型联合匹配，不使用 sort 顺序决定角色"}
+        ]
+      },
+      "target": {
+        "role": "样章第二段六张同名学习入口卡片",
+        "cardinality": {"min": 6, "max": 6},
+        "evidence": [
+          {"class": "semantic", "kind": "matching_card_labels", "claim": "六张卡片文案与来源入口一一对应", "observation": "样章包含六个同名活动入口"},
+          {"class": "structure", "kind": "six_unique_click_targets", "claim": "六个完整点击目标各自唯一", "observation": "目标卡片可按标签和完整外层点击元素唯一定位"}
+        ],
+        "optional_fingerprints": [
+          {"kind": "template_source_id", "value": "V-WRKDfibb", "intent": "看口语视频卡辅助指纹"},
+          {"kind": "template_source_id", "value": "C24wjVUTGR", "intent": "听句型讲解卡辅助指纹"},
+          {"kind": "template_source_id", "value": "irrB3s6sHL", "intent": "单词巧记卡辅助指纹"},
+          {"kind": "template_source_id", "value": "s4i53j_q-5", "intent": "句型巧练卡辅助指纹"},
+          {"kind": "template_source_id", "value": "TWpW00ExgW", "intent": "AI口语跟读测评卡辅助指纹"},
+          {"kind": "template_source_id", "value": "8pnBCUOX2W", "intent": "口语PK卡辅助指纹"}
+        ]
+      },
+      "action": {
+        "type": "bind_semantic_modules",
+        "intent": "把六个来源模块关系复用到同名目标卡片，保留 model relation 与智能体参数",
+        "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module", "editor_copy_digital_module"],
+        "style_policy": "preserve_target",
+        "module_policy": "reuse_model_relation"
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {"id": "six-learning-modules-readback", "intent": "六个目标入口分别回读到正确来源资源和模块类型，且无交叉错配", "severity": "error", "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module"]}
+      ]
+    },
+    {
+      "id": "print-entry-and-page-finalization",
+      "order": 40,
+      "intent": "复用来源打印手写模块，并完成目录名称、手机画布、底部留白、保存与页面验收",
+      "when": "来源存在唯一打印手写入口且前三条规则已完成",
+      "scope": {"intent": "本轮试制或生成的目标 DAY 目录"},
+      "source": {
+        "role": "打印手写按钮、来源目录名称与业务顺序",
+        "cardinality": {"min": 1, "max": 1},
+        "evidence": [
+          {"class": "semantic", "kind": "print_handwriting_role", "claim": "该入口用于打印书写练习", "observation": "来源按钮名为打印手写且绑定打印模块"},
+          {"class": "structure", "kind": "catalog_identity", "claim": "目录名称和顺序可稳定回读", "observation": "来源根目录提供唯一 ID、名称和 sort"}
+        ]
+      },
+      "target": {
+        "role": "样章第三段打印书写练习入口、当前目标目录页面及其末尾空白收尾区块",
+        "cardinality": {"min": 1, "max": 1},
+        "evidence": [
+          {"class": "semantic", "kind": "template_print_role", "claim": "第三段承担打印书写练习入口", "observation": "样章第三段文案为打印书写练习"},
+          {"class": "structure", "kind": "page_identity_canvas_and_tail", "claim": "目标目录、页面级画布和末尾区块可唯一回读", "observation": "当前目录有唯一 slide identity、canvas info 和最后一个内容区块"}
+        ],
+        "optional_fingerprints": [
+          {"kind": "template_source_id", "value": "-Qx2NyZxoj", "intent": "打印书写练习入口辅助指纹"}
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "复用打印关系，规范目录名称，设置 phone 375，追加固定底色的 20px 空区块并保存回读",
+        "required_capabilities": ["editor_copy_digital_module", "editor_get_digital_module", "editor_rename_slide", "editor_set_canvas_type", "editor_duplicate_slide", "editor_get_canvas_info", "editor_list_blocks", "editor_add_block", "editor_update_block", "editor_save_verified", "editor_export_slide"],
+        "style_policy": "preserve_target",
+        "module_policy": "reuse_model_relation",
+        "steps": [
+          {"type": "bind_existing_module", "intent": "把来源打印手写模块复用到目标打印入口", "required_capabilities": ["editor_copy_digital_module", "editor_get_digital_module"]},
+          {"type": "normalize_catalog_name", "intent": "目标目录使用源目录完整名称，仅折叠空白", "required_capabilities": ["editor_rename_slide"]},
+          {"type": "set_or_inherit_phone_canvas", "intent": "优先设置页面级 phone 375；Bridge 无法执行页面级画布切换时，仅允许从已保存回读的 phone 375 成熟基线页复制结构，并确认复制后数字模块为空，再在保存重载后回读画布", "required_capabilities": ["editor_set_canvas_type", "editor_duplicate_slide", "editor_get_canvas_info", "editor_list_digital_modules", "editor_save_verified"]},
+          {"type": "append_page_tail_spacer", "intent": "在全部样章内容之后追加一个最后区块：名称底部留白，width=375、height=20、type=phone、paddingTop=0、paddingBottom=0、elementCount=0，background.type=solid、background.color=#CECECE，且不携带设计参考图", "required_capabilities": ["editor_list_blocks", "editor_add_block", "editor_update_block", "editor_export_slide"]}
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {"id": "print-module-readback", "intent": "打印入口回读到来源打印资源", "severity": "error", "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module"]},
+        {"id": "phone-canvas-and-save-readback", "intent": "重载后页面仍为 phone 375，保存已验证且导出页身份一致", "severity": "error", "required_capabilities": ["editor_get_canvas_info", "editor_save_verified", "editor_export_slide"]},
+        {"id": "page-tail-spacer-readback", "intent": "最后一个内容区块为 375×20 phone 空区块，零内边距、无元素、纯色背景 #CECECE 且不含设计参考图", "severity": "error", "required_capabilities": ["editor_list_blocks", "editor_export_slide"]}
+      ]
+    }
+  ],
+  "acceptance": [
+    {"id": "template-three-block-plus-tail-structure", "intent": "目标保留 41103 的 Dialogue、口语学习路径、打印书写练习三段结构，并在末尾追加唯一的 20px 空区块", "severity": "error", "required_capabilities": ["editor_list_blocks", "editor_get_canvas_tree", "editor_export_slide"]},
+    {"id": "text-and-layout-audit", "intent": "目标无新增空文本、占位、非法几何、越界或文本裁切错误", "severity": "error", "required_capabilities": ["editor_audit_content", "editor_text_inspect_layout"]},
+    {"id": "nine-module-relations", "intent": "Dialogue 定位、音频、两视频、两个智能课件、在线答题、智能体和打印共九个模块关系全部正确回读", "severity": "error", "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module"]},
+    {"id": "full-page-visual-review", "intent": "整页标题、来源实际存在的二至三句句型、四组词汇、六张学习卡和打印入口经全页截图核对无异常；词汇卡四列在两行间对齐且无右侧裁切", "severity": "error", "required_capabilities": ["editor_screenshot", "editor_get_canvas_tree"]},
+    {"id": "save-export-readback", "intent": "保存回执 verified=true、dirty=false，导出页身份与区块结构匹配", "severity": "error", "required_capabilities": ["editor_save_verified", "editor_export_slide"]}
+  ],
+  "training": {
+    "feedback": [
+      {"id": "main-title-slot-correction", "classification": "rule_refinement", "summary": "旧 41103 分析遗漏实际主标题并把 Dialogue 错当原课件名称", "confirmed": true, "resolved": true, "resolution": "主标题复制源目录名；Dialogue 单独复制来源英文段标题", "promoted_to_rule_ids": ["dialogue-header"]},
+      {"id": "semantic-module-matching", "classification": "rule_refinement", "summary": "旧规则按第一第二模块定位存在顺序错配风险", "confirmed": true, "resolved": true, "resolution": "按按钮语义和模块类型联合唯一匹配", "promoted_to_rule_ids": ["dialogue-header", "learning-entry-modules", "print-entry-and-page-finalization"]},
+      {"id": "visual-wrap-is-not-item-boundary", "classification": "rule_refinement", "summary": "中文词义窄框可能视觉显示四行但富文本只有三段", "confirmed": true, "resolved": true, "resolution": "结合英语词项基数、富文本、截图和几何完成配对；不能唯一判断时停止", "promoted_to_rule_ids": ["learning-path-content"]}
+      ,{"id": "long-catalog-title-fit", "classification": "rule_refinement", "summary": "DAY 1 Catch a cold 在样章 144px 标题框中发生换行裁切", "confirmed": true, "resolved": true, "resolution": "保持 18px 字号并把标题框横向扩至查看入口前，试制页使用 245px 后单行完整显示", "promoted_to_rule_ids": ["dialogue-header"]},
+      {"id": "dialogue-view-navigation-required", "classification": "rule_refinement", "summary": "用户指出顶部查看按钮没有关联跳转", "confirmed": true, "resolved": true, "resolution": "查看加箭头的完整外层组绑定定位模块，原始回读必须指向来源目录的真实 Dialogue 内容区块", "promoted_to_rule_ids": ["dialogue-header"]},
+      {"id": "fixed-gray-page-tail", "classification": "rule_refinement", "summary": "用户要求底部增加高 20 的空区块，背景色 #CECECE", "confirmed": true, "resolved": true, "resolution": "每个目标目录末尾追加 375×20 phone、零内边距、无元素、纯色 #CECECE 且无设计参考图的空区块", "promoted_to_rule_ids": ["print-entry-and-page-finalization"]},
+      {"id": "bilingual-word-column-alignment", "classification": "rule_refinement", "summary": "用户指出词汇卡的单词与翻译没有按列对齐，制表符方案在页面重新排版后再次漂移", "confirmed": true, "resolved": true, "resolution": "废弃空白字符和 inline width 撑列；试制页把四组词汇拆成八个独立文本元素，两行固定 left 为 56.954、152.954、216.954、296.954，并在保存后整页截图复核", "promoted_to_rule_ids": ["learning-path-content"]},
+      {"id": "dialogue-descender-clipping", "classification": "rule_refinement", "summary": "用户指出 Dialogue 英文标题底部被裁掉一点", "confirmed": true, "resolved": true, "resolution": "保持 16px 字号和原中心线，把标题框高度从约 18.24 增至 24、top 调到约 74.27，并把下方中文提示下移 2px；保存后整页截图确认字母下缘完整", "promoted_to_rule_ids": ["dialogue-header"]}
+      ,{"id": "content-aware-word-columns", "classification": "rule_refinement", "summary": "固定列宽在 remember 等长单词与三字中文词义下发生裁切", "confirmed": true, "resolved": true, "resolution": "按本页上下两行同列最长内容动态计算四列宽度、保持两行同列 left 一致，并将整组在词汇卡内居中", "promoted_to_rule_ids": ["learning-path-content"]}
+      ,{"id": "long-title-safe-font-fallback", "classification": "rule_refinement", "summary": "DAY 15 长标题在 18px 下扩宽会遮挡查看入口", "confirmed": true, "resolved": true, "resolution": "默认 18px；达到查看入口前安全宽度仍放不下时仅对长标题降至 16px，保持单行完整且查看入口可见", "promoted_to_rule_ids": ["dialogue-header"]}
+      ,{"id": "long-sentence-safe-font-fallback", "classification": "rule_refinement", "summary": "DAY 38 两条长句在 16px、280px 文本框内发生右侧裁切", "confirmed": true, "resolved": true, "resolution": "句型正文默认 16px；有长句时统一降至能完整显示的最大字号且不得小于 13px，DAY 38 以 13px 截图通过", "promoted_to_rule_ids": ["learning-path-content"]}
+      ,{"id": "position-module-block-target", "classification": "rule_refinement", "summary": "定位模块使用 targetType=anchor 时无法回读来源 catalog_content", "confirmed": true, "resolved": true, "resolution": "定位模块固定 targetType=block，并要求 raw catalog_content 回读来源书、目录和 Dialogue 区块", "promoted_to_rule_ids": ["dialogue-header"]}
+      ,{"id": "extreme-title-two-line-height", "classification": "rule_refinement", "summary": "用户指出超长顶部标题第二行因标题框高度不足被裁切", "confirmed": true, "resolved": true, "resolution": "超长标题保持 16px、使用 48px 两行标题框；Dialogue 区与绿色卡片下移 24px，顶部区块和白底增高 24px，Day 19 整页截图通过", "promoted_to_rule_ids": ["dialogue-header"]}
+      ,{"id": "extreme-sentence-font-floor", "classification": "rule_refinement", "summary": "DAY 6 的 60 字符句型在 13px 下仍右侧裁切", "confirmed": true, "resolved": true, "resolution": "56–60 字符的极长句型允许统一降至 11px，DAY 6 区块截图确认三句完整", "promoted_to_rule_ids": ["learning-path-content"]}
+    ],
+    "examples": [
+      {"id": "day1-four-word-pairs", "kind": "positive", "description": "nose/鼻子、think/认为、talk/说话、cough/咳嗽按四组写入，即使中文富文本中说话与咳嗽没有显式段落边界", "rule_ids": ["learning-path-content"]},
+      {"id": "reject-ordinal-module-selection", "kind": "negative", "description": "禁止因为模块 sort 为 2 或 3 就猜测其是看视频或听讲解，必须联合按钮语义和模块类型", "rule_ids": ["learning-entry-modules"]},
+      {"id": "dialogue-view-outer-group-navigation", "kind": "positive", "description": "顶部查看文字与箭头的完整外层组绑定定位模块，跳转到来源目录的 Dialogue 内容区块", "rule_ids": ["dialogue-header"]},
+      {"id": "reject-view-child-only-anchor", "kind": "negative", "description": "禁止只把定位模块挂在查看文字或箭头子元素，也禁止指向相邻的学习路径或头部区块", "rule_ids": ["dialogue-header"]},
+      {"id": "fixed-gray-page-tail-20", "kind": "positive", "description": "全部内容结束后追加手机端 375×20 空区块，零内边距、无元素、纯色 #CECECE 且不复制设计参考图", "rule_ids": ["print-entry-and-page-finalization"]},
+      {"id": "two-row-four-column-word-alignment", "kind": "positive", "description": "nose/鼻子/think/认为 与 talk/说话/cough/咳嗽使用八个独立文本元素排成两行四列，上下行同列 left 完全一致，最右中文不被裁切", "rule_ids": ["learning-path-content"]},
+      {"id": "reject-whitespace-word-columns", "kind": "negative", "description": "禁止把四组词汇保留在一个文本框内，用空格、制表符或可被编辑器清洗的 inline width 模拟列对齐", "rule_ids": ["learning-path-content"]},
+      {"id": "dialogue-descender-visible", "kind": "positive", "description": "Dialogue 保持字号和原中心线，文本框高度容纳完整字体行高，字母下缘清晰且不压住中文提示", "rule_ids": ["dialogue-header"]}
+    ]
+  },
+  "forward_tests": [
+    {
+      "id": "day6-long-sentence",
+      "source_label": "DAY 6 Protect your eyes（全册最长句）",
+      "status": "passed",
+      "evidence_artifact": "forward-tests/day6-long-sentence/forward-evidence.json"
+    },
+    {
+      "id": "day19-two-line-title",
+      "source_label": "DAY 19 Eat more vegetables and fruits（全册最长标题）",
+      "status": "passed",
+      "evidence_artifact": "forward-tests/day19-two-line-title/forward-evidence.json"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "accepted_at": "2026-08-17T17:38:32+08:00",
+  "scope": "Topic 7 Free Time trial only",
+  "page": {"book_id":"1820802","catalog_id":"44936","name":"Topic 7 Free Time"},
+  "save": {"saved":true,"verified":true,"content_hash":"fnv1a32:57fc2226","persisted_content_hash":"fnv1a32:57fc2226","dirty":false,"warnings":[]},
+  "checks": [
+    {"id":"mobile-canvas-375","status":"passed","evidence":"页面级画布已从 PC 切换为手机端；编辑器完全重载后 editor_get_canvas_info 仍返回 canvasWidth=375、slideId=44936。"},
+    {"id":"basic-two-titles","status":"passed","evidence":"Words & Phrases / Sentences 顺序正确；两文本 rendered=true、无溢出或裁切。"},
+    {"id":"basic-module-readback","status":"passed","evidence":"在线答题和一个根来源定位模块均存在；定位 raw 资源指向源书 1815618 / 目录 5989。"},
+    {"id":"classroom-card-count","status":"passed","evidence":"三张完整卡片存在；第三张为复制第二张完整组后修改，含背景、箭头、文字和点击组。"},
+    {"id":"classroom-three-layout","status":"passed","evidence":"Chrome 实景截图中三卡按约 61px 步距纵排，入口未遮挡，第三卡与后续区块间留白正常；组内文本因未处于当前原子渲染窗口，像素测量为受限项。"},
+    {"id":"classroom-module-readback","status":"passed","evidence":"互动课程、根来源定位和三标题来源定位共五个模块回读存在；四个定位 raw 资源均属于源目录 5989。"},
+    {"id":"practice-six-titles","status":"passed","evidence":"Day 1 至 Day 6 顺序保留；Day 6 为听力周周练且 rendered=true、无溢出或裁切。"},
+    {"id":"practice-module-readback","status":"passed","evidence":"打印和六个 Day 来源定位共七个模块回读存在；六个定位 raw 资源均属于源目录 5989。"},
+    {"id":"structure-text-layout-audit","status":"passed","evidence":"当前页审计 0 error；3 个越界 warning 与套用样章前相同，均为样章既存组包围盒元数据，不是本轮新增。"},
+    {"id":"full-page-visual-review","status":"passed","evidence":"在真实 Chrome 编辑器全页实景中核对三段流向、三张课堂卡及后续留白。"},
+    {"id":"save-export-readback","status":"passed","evidence":"初次保存 verified=true、dirty=false、contentHash 与 persistedContentHash 同为 fnv1a32:57fc2226；导出页为 44936 且包含四个预期根区块。"}
+  ],
+  "known_boundaries": [
+    "未在学生端逐个点击验证来源跳转、在线答题、互动课程和打印体验。",
+    "课堂三张组内文本当前原子测量 reported rendered=false；浏览器实景已核，但不能等同像素级自动测量。",
+    "源快照因 FONT_MAPPING_EMPTY 为 controlled exception；本轮沿用样章字体和样式，未复制源书字体映射。"
+  ]
+}

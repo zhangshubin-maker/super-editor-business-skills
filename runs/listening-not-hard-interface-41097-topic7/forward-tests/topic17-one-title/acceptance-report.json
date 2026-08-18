@@ -1,0 +1,27 @@
+{
+  "accepted_at": "2026-08-17T19:34:37+08:00",
+  "scope": "Topic 17 Daily Life independent forward validation only",
+  "page": {"book_id":"1820802","catalog_id":"45080","name":"Topic 17 Daily Life"},
+  "source": {"book_id":"1815618","catalog_id":"6038","name":"Topic 17 Daily Life"},
+  "save": {"saved":true,"verified":true,"content_hash":"fnv1a32:1c5387bc","persisted_content_hash":"fnv1a32:1c5387bc","dirty":false,"warnings":[]},
+  "checks": [
+    {"id":"mobile-canvas-375","status":"passed","evidence":"切换到 Topic 7 再返回后，editor_get_canvas_info 仍返回 canvasWidth=375、slideId=45080。"},
+    {"id":"basic-two-titles","status":"passed","evidence":"Words & Phrases / Sentences 顺序正确，文本布局检查无溢出。"},
+    {"id":"basic-module-readback","status":"passed","evidence":"在线答题和基础根来源定位模块均存在；定位 raw 资源指向源书 1815618 / 目录 6038。"},
+    {"id":"classroom-card-count","status":"passed","evidence":"来源只有一个编号标题，目标只保留一张完整标题卡；第二张完整卡已整体删除。"},
+    {"id":"classroom-three-layout","status":"passed","evidence":"来源标题数为一，三标题分支未触发；一标题分支完成区块收缩且无可见重叠。"},
+    {"id":"classroom-summary-line-fit","status":"passed","evidence":"听力绊脚石：弱读保持单行，editor_text_inspect_layout 返回 overflow=false，箭头紧跟文字。"},
+    {"id":"classroom-module-readback","status":"passed","evidence":"互动课程、课堂入口、摘要外层组和唯一标题卡外层组均回读模块；三个定位 raw 资源属于源目录 6038。"},
+    {"id":"practice-six-titles","status":"passed","evidence":"Day 1 至 Day 6 顺序保留；Day 6 为听力周周练。"},
+    {"id":"practice-module-readback","status":"passed","evidence":"打印和六个 Day 外层来源定位模块均存在；六个定位 raw 资源属于源目录 6038。"},
+    {"id":"page-tail-spacer-readback","status":"passed","evidence":"末尾区块为手机端 375×20、零内边距、无元素并使用统一灰色底。"},
+    {"id":"structure-text-layout-audit","status":"passed","evidence":"当前页审计 0 error；三个 warning 是样章组边界元数据与可见子元素不一致，截图未见新增可见越界或文本裁切。"},
+    {"id":"full-page-visual-review","status":"passed","evidence":"全页截图核对三段流向、一张课堂标题卡、摘要箭头、六个 Day、打印按钮和末尾留白。"},
+    {"id":"save-export-readback","status":"passed","evidence":"来源追溯写入后保存 verified=true、dirty=false；严格 export/save/provenance 回读 receipt 校验通过。"}
+  ],
+  "known_boundaries": [
+    "未在学生端逐个点击验证来源跳转、在线答题、互动课程和打印体验。",
+    "源和目标语义快照均报告 FONT_MAPPING_EMPTY；本轮沿用样章字体配置，没有猜测字体映射。",
+    "审计的三个越界 warning 来自样章组自身边界元数据，自动审计不能将其判定为零 warning；全页截图和子元素几何已人工核对。"
+  ]
+}

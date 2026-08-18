@@ -1,0 +1,935 @@
+{
+  "schema_version": 1,
+  "identity": {
+    "skill_name": "listening-not-hard-interface-41097",
+    "display_name": "听力不难界面型教辅（41097）",
+    "version": "0.3.0",
+    "status": "validated",
+    "book_family": "小学英语听力不难专题训练"
+  },
+  "applicability": {
+    "intent": "适用于原课件按 Topic 编排、含听力基本功与听力实战，并可选含听力课堂的听力不难书类",
+    "include": {
+      "subject": "英语",
+      "source_book_name": "听力不难",
+      "catalog_name_pattern": "Topic 序号 主题",
+      "target_canvas_type": "phone",
+      "target_canvas_width": 375
+    },
+    "exclude": {
+      "catalog_name_contains": [
+        "答案",
+        "测试",
+        "样章"
+      ],
+      "classroom_title_count": [
+        5,
+        6
+      ]
+    }
+  },
+  "templates": {
+    "default": {
+      "template_id": "41097",
+      "intent": "听力基本功、可选听力课堂、听力实战三段式手机界面样章",
+      "snapshot_hash": "sha256:50a40e8e42ab65c0c0d788b036a95860751e4ee76aeeb454454a955717643a41",
+      "anchors": [
+        {
+          "kind": "template_source_id",
+          "value": "41097",
+          "optional": true,
+          "intent": "仅用于确认样章来源，不作为语义角色唯一匹配条件"
+        }
+      ]
+    },
+    "variants": []
+  },
+  "defaults": {
+    "style_policy": "preserve_target",
+    "module_policy": "reuse_model_relation",
+    "on_missing": "needs_review",
+    "on_ambiguous": "stop"
+  },
+  "execution": {
+    "capability_snapshot": {
+      "catalog_path": "super-editor-capability-catalog.v0.3.0.json",
+      "catalog_hash": "sha256:5dc3cc385eab0252da7d52cfec9a6790ca39656e236139b555b16677b3e4b54c",
+      "snapshot_hash": "sha256:1c897c26f7c97c631efdcddaebb8888500f685f7b78bcd0045958fc3aeb47f6d",
+      "capabilities": [
+        "editor_apply_template",
+        "editor_add_block",
+        "editor_audit_content",
+        "editor_checkpoint",
+        "editor_copy_digital_module",
+        "editor_create_book",
+        "editor_create_digital_module",
+        "editor_delete_element",
+        "editor_duplicate_elements",
+        "editor_export_slide",
+        "editor_get_book_manifest",
+        "editor_get_canvas_info",
+        "editor_get_canvas_tree",
+        "editor_get_digital_module",
+        "editor_get_element",
+        "editor_get_elements_bounds",
+        "editor_jump_to_book",
+        "editor_list_slides",
+        "editor_list_digital_module_types",
+        "editor_list_digital_modules",
+        "editor_list_blocks",
+        "editor_move_elements_by_offset",
+        "editor_move_slide",
+        "editor_rename_slide",
+        "editor_replace_block_safe",
+        "editor_replace_element_safe",
+        "editor_resize_element",
+        "editor_save_verified",
+        "editor_select_slide",
+        "editor_set_canvas_type",
+        "editor_screenshot",
+        "editor_text_document",
+        "editor_text_inspect_layout",
+        "editor_text_set_content",
+        "editor_update_block"
+      ],
+      "evidence": [
+        "由当前安装的 super-editor-control 通过 MCP tools/list 生成，共 143 个原子工具；本规则只声明其中实际需要的子集"
+      ]
+    },
+    "trial_approval": {
+      "approved": true,
+      "evidence": [
+        "用户明确授权 Topic 7 Free Time 单目录试制",
+        "手机端页面级画布在完全重载后仍为 375 宽",
+        "provenance-mobile-readback-receipt.json 证明最终保存与导出回读闭环通过"
+      ]
+    },
+    "forward_cases": [
+      {
+        "id": "topic17-daily-life-one-title",
+        "evidence_artifact": "forward-tests/topic17-one-title/forward-evidence.json",
+        "artifact_sha256": "sha256:3967ef8a115b6ff5b66f84c61155da9aeadf9202e9d3c53d8b5132ec61119d8b"
+      },
+      {
+        "id": "topic2-food-four-title",
+        "evidence_artifact": "forward-tests/topic2-four-title/forward-evidence.json",
+        "artifact_sha256": "sha256:bf70b373a1099fe5ded7206723a0aa530d1b1599633170e7ba54f6c510ef22ca"
+      }
+    ]
+  },
+  "rules": [
+    {
+      "id": "basic-section",
+      "order": 10,
+      "intent": "把听力基本功的两个子环节标题和在线答题入口映射到样章第一段，并为查看入口建立根环节来源跳转",
+      "when": "来源存在唯一的听力基本功根环节且恰有两个有序子环节",
+      "scope": {
+        "intent": "所有符合本书类结构的 Topic 目录"
+      },
+      "source": {
+        "role": "听力基本功根环节及其两个有序子环节、首个内容区块和在线答题入口",
+        "cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "teaching_stage_meaning",
+            "claim": "该根环节承担基础词句训练语义",
+            "observation": "根环节名称为听力基本功，子环节分别呈现词汇短语和句子"
+          },
+          {
+            "class": "structure",
+            "kind": "outline_order",
+            "claim": "两个子环节具有稳定先后顺序并各自关联内容",
+            "observation": "大纲树中根环节下恰有两个子节点，排序为一和二且均有内容关联"
+          }
+        ]
+      },
+      "target": {
+        "role": "样章第一段的两个标题卡、在线答题按钮和查看入口点击区",
+        "cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "template_section_role",
+            "claim": "该段表达基础训练入口而非固定装饰",
+            "observation": "段标题为听力基本功，包含两个子标题和一个主入口"
+          },
+          {
+            "class": "structure",
+            "kind": "layout_hierarchy",
+            "claim": "两个标题卡按阅读顺序排列且点击区与文字同组",
+            "observation": "样章第一段可唯一识别两张同构标题卡与相邻入口按钮"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "保持样章样式，依次写入两个标题，复用在线答题模块，并为查看入口创建根环节来源定位",
+        "required_capabilities": [
+          "editor_text_document",
+          "editor_text_set_content",
+          "editor_text_inspect_layout",
+          "editor_copy_digital_module",
+          "editor_create_digital_module",
+          "editor_get_digital_module"
+        ],
+        "style_policy": "preserve_target",
+        "module_policy": "reuse_model_relation",
+        "steps": [
+          {
+            "type": "set_ordered_titles",
+            "intent": "按来源顺序写入两个标题",
+            "required_capabilities": [
+              "editor_text_document",
+              "editor_text_set_content",
+              "editor_text_inspect_layout"
+            ],
+            "content_policy": "保持来源措辞和顺序",
+            "style_policy": "preserve_target"
+          },
+          {
+            "type": "bind_existing_module",
+            "intent": "让主入口共享来源在线答题模块关系",
+            "required_capabilities": [
+              "editor_copy_digital_module",
+              "editor_get_digital_module"
+            ],
+            "module_policy": "reuse_model_relation"
+          },
+          {
+            "type": "bind_source_navigation",
+            "intent": "查看入口定位到听力基本功根环节首个现存内容区块",
+            "required_capabilities": [
+              "editor_list_digital_module_types",
+              "editor_create_digital_module",
+              "editor_get_digital_module"
+            ]
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "basic-two-titles",
+          "intent": "第一段恰好显示两个完整标题且顺序与来源一致",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_get_canvas_tree",
+            "editor_text_inspect_layout"
+          ]
+        },
+        {
+          "id": "basic-module-readback",
+          "intent": "在线答题与一个根环节来源定位模块均回读到预期元素和来源资源",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_list_digital_modules",
+            "editor_get_digital_module"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classroom-section-cardinality",
+      "order": 20,
+      "intent": "按听力课堂是否存在及标题数量安全删除整段、保留、删除或新增完整标题卡并重排，同时让摘要和标题卡的外层点击组跳转到各自原文区块",
+      "when": "来源没有听力课堂，或存在听力课堂且可唯一识别一至四个有序标题；同一目录有多个课堂子段时可按阅读顺序扁平化为标题卡",
+      "scope": {
+        "intent": "适用于全部 Topic 目录；不存在听力课堂时执行整段删除分支"
+      },
+      "source": {
+        "role": "可选的听力课堂根环节、总结文案、零至四个有序标题、对应内容区块和互动课程入口",
+        "cardinality": {
+          "min": 0,
+          "max": 4
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "numbered_explanation_meaning",
+            "claim": "这些标题共同解释同一个听力难点并可作为可点击子项",
+            "observation": "总结文案后可出现一至四个按编号或阅读顺序排列的并列发音规则；无课堂时不存在该教学阶段"
+          },
+          {
+            "class": "structure",
+            "kind": "ordered_content_blocks",
+            "claim": "标题顺序与来源内容区块顺序一致且每个标题可指向一个真实区块",
+            "observation": "听力课堂关联内容中可按阅读顺序唯一得到零至四个标题及对应区块；多个课堂子段保持原先后顺序"
+          }
+        ]
+      },
+      "target": {
+        "role": "样章中可整体删除的听力课堂段、总结文案与箭头外层点击组、完整标题卡序列和互动课程入口",
+        "cardinality": {
+          "min": 0,
+          "max": 4
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "template_classroom_role",
+            "claim": "该段用于展示听力难点摘要与可进入的分项说明",
+            "observation": "段标题为听力课堂，摘要下方是带箭头和点击区的标题卡"
+          },
+          {
+            "class": "structure",
+            "kind": "repeated_card_pattern",
+            "claim": "摘要文字与箭头、每张标题卡背景与内容分别形成可点击的外层组，卡片可复制或整体删除",
+            "observation": "样章中摘要文字和箭头同组，前两张卡具有一致宽高、对齐和稳定纵向步距；数字模块应挂在这些外层点击组而非内层文字或箭头"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "无课堂时删除整段；有课堂时写入摘要并按一至四标题分支调整完整卡片，令摘要箭头紧跟末行文字，最后把互动课程与来源定位绑定到正确外层点击组并重排区块",
+        "required_capabilities": [
+          "editor_text_document",
+          "editor_text_set_content",
+          "editor_text_inspect_layout",
+          "editor_replace_element_safe",
+          "editor_delete_element",
+          "editor_duplicate_elements",
+          "editor_move_elements_by_offset",
+          "editor_update_block",
+          "editor_resize_element",
+          "editor_get_elements_bounds",
+          "editor_copy_digital_module",
+          "editor_create_digital_module",
+          "editor_get_digital_module",
+          "editor_screenshot"
+        ],
+        "content_policy": "保持来源标题编号、阅读顺序、条件与发音结果；课堂摘要先按卡片可用宽度尝试单行，只有一行真实放不下时才按语义边界换行，不机械沿用样章换行；标题卡允许删减不改变规则含义的赘词和括注以优先单行显示，但不得省略发音条件或 /t/、/d/、/ɪd/ 等结论，来源完整原文保留在语义快照",
+        "style_policy": "preserve_target",
+        "module_policy": "reuse_model_relation",
+        "layout_policy": "无课堂时删除完整听力课堂区块；一个标题时删除第二张完整卡并收缩区块；两个标题保持样章；三个或四个标题时以第二张完整卡为基准分别复制一或两张，使用前两张卡实测纵向步距顺序放置，同步增加区块和白底高度；只把实际位于第二卡之后的同块元素下移，若不存在则不移动前置入口；摘要和标题能在可用宽度内完整显示时必须保持单行，确实放不下才换行；箭头紧跟最后一行文字之后，保持小间距并做基线偏下的光学校正，不得贴到卡片外侧；超过四个停止",
+        "steps": [
+          {
+            "type": "set_summary_and_titles",
+            "intent": "有课堂时写入摘要及一至四个标题；模板富文本无法安全往返时只对完整元素做保留身份的 dry-run 与 expectedHash 原位替换",
+            "required_capabilities": [
+              "editor_text_document",
+              "editor_text_set_content",
+              "editor_text_inspect_layout",
+              "editor_get_element",
+              "editor_replace_element_safe"
+            ],
+            "style_policy": "preserve_target"
+          },
+          {
+            "type": "branch_complete_cards",
+            "intent": "无课堂时删除整个课堂区块；有课堂时按标题数量删除或复制背景、箭头、文字、点击区组成的完整卡片",
+            "required_capabilities": [
+              "editor_delete_element",
+              "editor_duplicate_elements",
+              "editor_get_elements_bounds"
+            ]
+          },
+          {
+            "type": "reflow_classroom_block",
+            "intent": "按样章实测步距重排一至四张卡片、同块后续元素、白底和区块高度，保持对齐与留白",
+            "required_capabilities": [
+              "editor_move_elements_by_offset",
+              "editor_update_block",
+              "editor_resize_element",
+              "editor_get_canvas_tree",
+              "editor_screenshot"
+            ],
+            "layout_policy": "不得只复制文字；第三、第四卡与前两卡同构并保持同一步距；位于第二卡之后的元素才整体下移；白底和区块高度同步增加"
+          },
+          {
+            "type": "bind_existing_module",
+            "intent": "让听力课堂主入口共享来源首个互动课程模块关系；多个课堂子段仍通过各标题卡定位到原文，若要求多个直接课程按钮则停止复核",
+            "required_capabilities": [
+              "editor_copy_digital_module",
+              "editor_get_digital_module"
+            ],
+            "module_policy": "reuse_model_relation"
+          },
+          {
+            "type": "bind_source_navigation",
+            "intent": "摘要文字与箭头的外层组定位到原课件中实际承载摘要全文的区块；主入口定位到听力课堂入口区块；每张标题卡的最外层完整点击组分别定位到对应来源内容区块，禁止把模块挂在内层文字、箭头或背景上",
+            "required_capabilities": [
+              "editor_list_digital_module_types",
+              "editor_create_digital_module",
+              "editor_get_digital_module"
+            ]
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "classroom-card-count",
+          "intent": "无课堂时目标不保留课堂区块；有课堂时完整标题卡数量与来源标题数量一致，且每张卡都包含背景、箭头、完整文字和点击区",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_get_canvas_tree",
+            "editor_get_elements_bounds"
+          ]
+        },
+        {
+          "id": "classroom-multi-card-layout",
+          "intent": "三个或四个标题时新增卡沿用前两张卡样式与纵向步距，入口不遮挡且区块完整容纳",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_get_elements_bounds",
+            "editor_text_inspect_layout",
+            "editor_screenshot"
+          ]
+        },
+        {
+          "id": "classroom-summary-line-fit",
+          "intent": "课堂摘要在卡片可用宽度内能完整显示时保持单行；只有真实放不下时才按语义边界换行，箭头紧跟最后一行且无溢出",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_text_inspect_layout",
+            "editor_get_elements_bounds",
+            "editor_screenshot"
+          ]
+        },
+        {
+          "id": "classroom-module-readback",
+          "intent": "互动课程、摘要外层组、主入口和实际存在的每张标题卡外层组均回读到预期模块与真实来源资源；摘要必须指向承载该摘要原文的区块",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_list_digital_modules",
+            "editor_get_digital_module"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "practice-section",
+      "order": 30,
+      "intent": "把听力实战六个 Day 子环节映射到样章第三段，绑定打印入口和逐日来源跳转，并以统一底色的 20px 空白区块结束页面",
+      "when": "来源存在唯一的听力实战根环节且恰有六个有序 Day 子环节",
+      "scope": {
+        "intent": "所有符合本书类结构的 Topic 目录"
+      },
+      "source": {
+        "role": "听力实战根环节、六个有序 Day 子环节、各自首个内容区块和打印入口",
+        "cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "daily_practice_meaning",
+            "claim": "六个子环节承担按日训练和周练语义",
+            "observation": "子环节从 Day 1 到 Day 6 连续命名，最后一天为周周练"
+          },
+          {
+            "class": "structure",
+            "kind": "six_child_order",
+            "claim": "六个子环节排序稳定且各自关联至少一个内容区块",
+            "observation": "大纲树中听力实战下恰有六个子节点，排序连续并存在内容关联"
+          }
+        ]
+      },
+      "target": {
+        "role": "样章第三段六个标题卡、打印入口和六个来源跳转点击区",
+        "cardinality": {
+          "min": 1,
+          "max": 1
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "template_practice_role",
+            "claim": "该段承担每日听力实战入口语义",
+            "observation": "段标题为听力实战并展示六个 Day 子项和打印入口"
+          },
+          {
+            "class": "structure",
+            "kind": "six_card_grid",
+            "claim": "六个标题卡按固定阅读顺序排列且各有点击区",
+            "observation": "样章第三段可唯一识别六个同类标题卡和一个独立打印入口"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "保持样章布局写入六个 Day 标题，复用打印模块，并为六个标题建立来源定位",
+        "required_capabilities": [
+          "editor_text_document",
+          "editor_text_set_content",
+          "editor_text_inspect_layout",
+          "editor_copy_digital_module",
+          "editor_create_digital_module",
+          "editor_get_digital_module",
+          "editor_list_blocks",
+          "editor_add_block",
+          "editor_update_block"
+        ],
+        "style_policy": "preserve_target",
+        "module_policy": "reuse_model_relation",
+        "steps": [
+          {
+            "type": "set_ordered_titles",
+            "intent": "按来源顺序写入六个 Day 标题",
+            "required_capabilities": [
+              "editor_text_document",
+              "editor_text_set_content",
+              "editor_text_inspect_layout"
+            ],
+            "content_policy": "保持来源措辞和顺序",
+            "style_policy": "preserve_target"
+          },
+          {
+            "type": "bind_existing_module",
+            "intent": "让打印入口共享来源打印模块关系",
+            "required_capabilities": [
+              "editor_copy_digital_module",
+              "editor_get_digital_module"
+            ],
+            "module_policy": "reuse_model_relation"
+          },
+          {
+            "type": "bind_source_navigation",
+            "intent": "六个标题卡的最外层完整点击组分别定位到对应 Day 子环节首个内容区块，禁止把模块只挂在内层文字、箭头或装饰上",
+            "required_capabilities": [
+              "editor_list_digital_module_types",
+              "editor_create_digital_module",
+              "editor_get_digital_module"
+            ]
+          },
+          {
+            "type": "append_page_tail_spacer",
+            "intent": "在全部内容区块之后追加一个手机端宽 375、高 20、无元素、内边距为零且背景色与内容区块统一的空白区块",
+            "required_capabilities": [
+              "editor_list_blocks",
+              "editor_add_block",
+              "editor_update_block"
+            ],
+            "layout_policy": "空白区块必须是最后一个内容区块，width=375、height=20、type=phone、paddingTop=0、paddingBottom=0、elementCount=0；背景复用同页内容区块的真实统一底色，不凭截图猜色"
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "practice-six-titles",
+          "intent": "第三段恰好显示六个完整 Day 标题且顺序与来源一致",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_get_canvas_tree",
+            "editor_text_inspect_layout"
+          ]
+        },
+        {
+          "id": "practice-module-readback",
+          "intent": "打印与六个来源定位模块均回读到预期元素和来源资源",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_list_digital_modules",
+            "editor_get_digital_module"
+          ]
+        },
+        {
+          "id": "page-tail-spacer-readback",
+          "intent": "最后一个内容区块为手机端 375×20 的空白区块，内边距为零、无元素且背景色与其他内容区块一致",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_list_blocks",
+            "editor_export_slide"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "book-catalog-finalization",
+      "order": 40,
+      "intent": "按来源目录顺序完成整书收尾，规范 Topic 名称中的多余空格，并确保每个目标目录都是手机端页面级画布",
+      "when": "完成一个或多个 Topic 目录生成后",
+      "scope": {
+        "intent": "同一本目标界面教辅中本轮生成的全部 Topic 根目录"
+      },
+      "source": {
+        "role": "来源书根目录下按业务顺序排列的 Topic 名称与序号",
+        "cardinality": {
+          "min": 1,
+          "max": 200
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "topic_sequence_meaning",
+            "claim": "Topic 序号表达业务阅读顺序",
+            "observation": "来源目录名称由 Topic、连续序号和主题组成"
+          },
+          {
+            "class": "structure",
+            "kind": "root_catalog_order",
+            "claim": "来源根目录排序提供目标目录的最终顺序",
+            "observation": "来源书根目录可读取稳定的目录顺序和目录名称"
+          }
+        ]
+      },
+      "target": {
+        "role": "目标书根目录下本轮生成的全部 Topic 目录及其页面级画布",
+        "cardinality": {
+          "min": 1,
+          "max": 200
+        },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "generated_topic_catalogs",
+            "claim": "目标目录与来源 Topic 一一对应",
+            "observation": "目标目录保留相同 Topic 序号和主题"
+          },
+          {
+            "class": "structure",
+            "kind": "target_root_order_and_canvas",
+            "claim": "目标根目录顺序和每页画布均可独立回读",
+            "observation": "目录列表提供稳定顺序，页面画布信息提供类型和宽度"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "把连续空白规范为单个空格，按来源根目录顺序移动目标目录，并通过页面级原子接口把每页设置为 phone 375",
+        "required_capabilities": [
+          "editor_list_slides",
+          "editor_rename_slide",
+          "editor_move_slide",
+          "editor_select_slide",
+          "editor_set_canvas_type",
+          "editor_get_canvas_info",
+          "editor_save_verified"
+        ],
+        "style_policy": "none",
+        "module_policy": "none",
+        "steps": [
+          {
+            "type": "normalize_catalog_names",
+            "intent": "仅折叠目录名首尾与连续空白，不改 Topic 序号或主题词",
+            "required_capabilities": [
+              "editor_list_slides",
+              "editor_rename_slide"
+            ]
+          },
+          {
+            "type": "restore_source_catalog_order",
+            "intent": "按来源根目录顺序排列目标 Topic；同名或缺号时停止，不猜测",
+            "required_capabilities": [
+              "editor_list_slides",
+              "editor_move_slide"
+            ]
+          },
+          {
+            "type": "set_phone_canvas",
+            "intent": "逐目录调用页面级画布原子接口设置 phone，并在保存重载后确认宽度 375",
+            "required_capabilities": [
+              "editor_select_slide",
+              "editor_set_canvas_type",
+              "editor_get_canvas_info",
+              "editor_save_verified"
+            ]
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "catalog-order-readback",
+          "intent": "目标目录数量、规范化名称和顺序与来源一致",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_list_slides"
+          ]
+        },
+        {
+          "id": "all-pages-phone-canvas",
+          "intent": "本轮生成的每个目标目录重载后均为 phone 375",
+          "severity": "error",
+          "required_capabilities": [
+            "editor_select_slide",
+            "editor_get_canvas_info"
+          ]
+        }
+      ]
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "mobile-canvas-375",
+      "intent": "界面型教辅目录的页面级画布类型为手机端，重载后画布宽度仍为 375",
+      "severity": "error",
+      "required_capabilities": [
+        "editor_get_canvas_info"
+      ]
+    },
+    {
+      "id": "structure-text-layout-audit",
+      "intent": "目标目录不存在空文本、占位、非法几何、新增越界或文本裁切错误",
+      "severity": "error",
+      "required_capabilities": [
+        "editor_audit_content",
+        "editor_text_inspect_layout"
+      ]
+    },
+    {
+      "id": "full-page-visual-review",
+      "intent": "整页三段流向、实际数量的听力课堂卡、摘要箭头位置以及末尾 20px 同底色留白经全页截图核对",
+      "severity": "error",
+      "required_capabilities": [
+        "editor_screenshot",
+        "editor_get_canvas_tree"
+      ]
+    },
+    {
+      "id": "save-export-readback",
+      "intent": "页面首次保存回读一致且完整导出页身份与区块结构匹配；来源追溯的后置回读由 provenance 工作流单独强制执行",
+      "severity": "error",
+      "required_capabilities": [
+        "editor_save_verified",
+        "editor_export_slide"
+      ]
+    }
+  ],
+  "training": {
+    "feedback": [
+      {
+        "id": "mobile-canvas-type-refinement",
+        "classification": "rule_refinement",
+        "summary": "用户确认所有界面型教辅均使用手机端页面级画布，不能只让区块内部看起来是 375 宽",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "适用条件固定 target_canvas_type=phone、target_canvas_width=375，并新增重载后 editor_get_canvas_info 验收",
+        "promoted_to_rule_ids": [
+          "basic-section",
+          "classroom-section-cardinality",
+          "practice-section"
+        ]
+      },
+      {
+        "id": "classroom-cardinality-refinement",
+        "classification": "rule_refinement",
+        "summary": "用户确认听力课堂只有一个标题时删除第二张完整卡，三个标题时安全复制第二张完整卡并完成界面重排",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "已写入一二三标题分支；零个或超过三个停止；完整卡包含背景、箭头、文字和点击区",
+        "promoted_to_rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "classroom-summary-click-group-refinement",
+        "classification": "rule_refinement",
+        "summary": "用户确认听力绊脚石摘要应由文字与箭头的外层群组统一响应点击，并跳到原课件中实际承载该摘要全文的区块",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "摘要定位模块绑定外层组，不绑定内层文本或箭头；来源资源必须通过源快照正文核实，不能沿用相邻查看按钮的入口区块",
+        "promoted_to_rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "outer-group-module-anchor-refinement",
+        "classification": "rule_refinement",
+        "summary": "用户确认课堂标题卡与听力实战 Day 卡的数字模块应挂在完整外层点击组，而不是内层文字或箭头",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "来源定位统一绑定完整卡片最外层点击组，并把外层 elementId 与真实资源回读纳入错误级验收",
+        "promoted_to_rule_ids": [
+          "classroom-section-cardinality",
+          "practice-section"
+        ]
+      },
+      {
+        "id": "summary-arrow-and-tail-spacing-refinement",
+        "classification": "rule_refinement",
+        "summary": "用户确认摘要箭头应紧跟末行文字并略向下光学校正，页面最后追加高 20 的同底色空白区块",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "课堂布局策略加入摘要箭头末行跟随；听力实战规则末尾加入 375×20、无元素、零内边距、同底色空白区块",
+        "promoted_to_rule_ids": [
+          "classroom-section-cardinality",
+          "practice-section"
+        ]
+      },
+      {
+        "id": "summary-single-line-fit-refinement",
+        "classification": "rule_refinement",
+        "summary": "用户确认课堂摘要能在卡片可用宽度内完整显示时不要换行，只有一行真实放不下才换行",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "课堂内容与布局策略改为单行优先，并新增文本溢出、箭头末行跟随和截图的错误级验收",
+        "promoted_to_rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "classroom-zero-card-refinement",
+        "classification": "rule_refinement",
+        "summary": "用户确认来源没有听力课堂时，不保留空课堂壳，直接删除整个听力课堂区块",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "课堂规则新增零标题分支，删除完整课堂区块并在后续内容中保持正常段间流向",
+        "promoted_to_rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "classroom-four-card-variant",
+        "classification": "new_variant",
+        "summary": "完成三年级 Topic 2 后确认来源有四个课堂标题时可沿用前两卡样式安全扩展为四张",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "以第二卡为基准复制第三、第四完整卡，使用实测步距并同步增长白底和区块高度",
+        "promoted_to_rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "multiple-classroom-subsections-variant",
+        "classification": "new_variant",
+        "summary": "完成三年级 Topic 1 后确认同一目录含多个课堂子段时不能静默丢弃后续子段",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "按阅读顺序扁平化为标题卡；单个视频按钮绑定首个课程，其他子段通过标题卡定位保留可达性；要求多个直接课程按钮时停止复核",
+        "promoted_to_rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "catalog-order-and-spacing-refinement",
+        "classification": "acceptance_refinement",
+        "summary": "整书完成后规范目录名多余空格，并按来源 Topic 顺序逐项回读检查",
+        "confirmed": true,
+        "resolved": true,
+        "resolution": "新增整书目录收尾规则，使用页面级手机画布原子接口并核对目录数量、名称、顺序和 phone 375",
+        "promoted_to_rule_ids": [
+          "book-catalog-finalization"
+        ]
+      }
+    ],
+    "examples": [
+      {
+        "id": "phone-canvas-for-interface-aid",
+        "kind": "positive",
+        "description": "界面型教辅目录页面级画布选择手机端，重载后宽度仍为 375",
+        "rule_ids": [
+          "basic-section",
+          "classroom-section-cardinality",
+          "practice-section"
+        ]
+      },
+      {
+        "id": "topic7-three-classroom-cards",
+        "kind": "positive",
+        "description": "Topic 7 有三个编号发音标题，复制第二张完整标题卡为第三张，保持样式与纵向步距并下移入口",
+        "rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "single-title-delete-whole-card",
+        "kind": "positive",
+        "description": "听力课堂只有一个标题时删除第二张卡的背景、箭头、文字和点击区，再收缩区块",
+        "rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "reject-text-only-duplication",
+        "kind": "negative",
+        "description": "禁止只复制第三条文字而不复制背景、箭头和点击区，也禁止不增加区块高度造成遮挡",
+        "rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "summary-group-jumps-to-exact-source-text-block",
+        "kind": "positive",
+        "description": "摘要文字与箭头的外层组绑定定位模块，资源指向原课件中包含该摘要全文的真实区块，而不是相邻入口标题区块",
+        "rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "summary-single-line-first",
+        "kind": "positive",
+        "description": "课堂摘要在卡片可用宽度内可以完整显示时保持一行；只有真实放不下才按语义边界换行，箭头随最后一行收拢",
+        "rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "reject-inner-child-module-anchor",
+        "kind": "negative",
+        "description": "禁止把课堂标题、Day 卡或摘要的定位模块只挂在内层文字、箭头、圆点或背景元素上",
+        "rule_ids": [
+          "classroom-section-cardinality",
+          "practice-section"
+        ]
+      },
+      {
+        "id": "page-tail-spacer-20",
+        "kind": "positive",
+        "description": "全部内容结束后追加手机端 375×20 的空白区块，内边距为零、无元素并复用内容区块真实统一底色",
+        "rule_ids": [
+          "practice-section"
+        ]
+      },
+      {
+        "id": "no-classroom-delete-section",
+        "kind": "positive",
+        "description": "来源目录没有听力课堂时删除整个课堂区块，不留下空标题、空卡片或空白壳",
+        "rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "four-classroom-cards",
+        "kind": "positive",
+        "description": "来源有四个课堂标题时复制两张完整卡，保持顺序、样式和实测步距，并同步增长白底和区块高度",
+        "rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "multiple-classroom-subsections",
+        "kind": "positive",
+        "description": "多个课堂子段按来源阅读顺序映射到标题卡；一个视频按钮绑定首段，其余子段仍通过外层标题卡定位可达",
+        "rule_ids": [
+          "classroom-section-cardinality"
+        ]
+      },
+      {
+        "id": "normalize-and-sort-topic-catalogs",
+        "kind": "positive",
+        "description": "整书生成后折叠目录名多余空格，按来源 Topic 顺序排序，并逐页回读 phone 375",
+        "rule_ids": [
+          "book-catalog-finalization"
+        ]
+      }
+    ]
+  },
+  "forward_tests": [
+    {
+      "id": "topic17-daily-life-one-title",
+      "source_label": "Topic 17 Daily Life（单课堂标题）",
+      "status": "passed",
+      "evidence_artifact": "forward-tests/topic17-one-title/forward-evidence.json"
+    },
+    {
+      "id": "topic2-food-four-title",
+      "source_label": "Topic 2 Food（四课堂标题）",
+      "status": "passed",
+      "evidence_artifact": "forward-tests/topic2-four-title/forward-evidence.json"
+    }
+  ]
+}
