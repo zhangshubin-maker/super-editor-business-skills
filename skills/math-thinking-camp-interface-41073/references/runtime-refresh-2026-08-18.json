@@ -1,0 +1,75 @@
+{
+  "artifact_type": "semantic_runtime_refresh",
+  "captured_at": "2026-08-18T20:55:17+08:00",
+  "skill_name": "math-thinking-camp-interface-41073",
+  "status": "runtime_updated_pending_new_task_verification",
+  "business_writes_performed": false,
+  "acceptance_policy": {
+    "text": "compare extracted character text and ignore structural CR/LF plus presentation-only formats",
+    "embeds": "compare ordered embed type, payload and position in the newline-free content sequence",
+    "interactions": "compare non-presentation interaction formats and targets in the newline-free content sequence"
+  },
+  "frontend_change": {
+    "repository": "D:/GIT-web/super-editor",
+    "dev_origin": "http://127.0.0.1:8090",
+    "book_id": 1819783,
+    "tests": {
+      "command": "npm run test:unit -- --runInBand tests/unit/modules/contentEditor/aiControl/richTextDocument.spec.js tests/unit/modules/contentEditor/aiControl/elementTextMethods.spec.js",
+      "suites_passed": 2,
+      "tests_passed": 46
+    },
+    "build": {
+      "command": "npm run build",
+      "passed": true,
+      "pre_existing_warning_count": 45
+    }
+  },
+  "runtime_observations": [
+    {
+      "book_id": 1819783,
+      "catalog_id": 22380,
+      "catalog_name": "学习之旅1 数数有多少",
+      "snapshot_file_sha256": "sha256:46f907d1bc5f9deb67d4ca6e0338cbe4c8fc1a488cfd050608ecb4eea0440fd6",
+      "snapshot_stable_hash": "sha256:c2455e17116655f2d0ea9170454616c5ff0b547caed150822c55db38104045a2",
+      "rich_text_complete": true,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819783,
+      "catalog_id": 22385,
+      "catalog_name": "能力达标A",
+      "snapshot_file_sha256": "sha256:88fab3c63c289331c5d05b27b84fe083b0cae1053a4081645a6cc97772924372",
+      "snapshot_stable_hash": "sha256:c4d7b5ed5754950c8afa052a8b4ce57914c1ea7f7c5ca09c96511a0d0d16c9b8",
+      "rich_text_complete": true,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 },
+      "note": "The previously blocked ordered-list text target became semanticEquivalent=true and roundTripSafe=true after newline-free plain-text comparison loaded through HMR."
+    },
+    {
+      "book_id": 1819783,
+      "catalog_id": 22386,
+      "catalog_name": "能力达标B",
+      "snapshot_file_sha256": "sha256:981fd50e16e3453325f9dac7ced18270d64a7a60b7135437dedeaf8f6f5101fc",
+      "snapshot_stable_hash": "sha256:c9d2a9f8d3b40e4c75e88fbe65418dcab993c69276a3b39f7fe9ecfacdf84f84",
+      "rich_text_complete": true,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 }
+    }
+  ],
+  "plugin_update": {
+    "source_version": "1.0.0+codex.20260818125039",
+    "cache_path": "C:/Users/shubin/.codex/plugins/cache/personal/super-editor-control/1.0.0+codex.20260818125039",
+    "plugin_validation_passed": true,
+    "font_mapping_empty_only_full_fidelity_logic_present": true,
+    "mcp_manifest_wrapped_in_mcpServers": true,
+    "same_task_transport_restarted": false,
+    "resume_instruction": "Start a new Codex task so the new plugin cache owns the MCP stdio transport, reconnect to the already logged-in local editor, and re-export all seven representative snapshots."
+  },
+  "remaining_verification": [
+    { "book_id": 1819783, "catalog_id": 22380 },
+    { "book_id": 1819783, "catalog_id": 22385 },
+    { "book_id": 1819783, "catalog_id": 22386 },
+    { "book_id": 1819791, "catalog_id": 23831 },
+    { "book_id": 1819791, "catalog_id": 31565 },
+    { "book_id": 1819790, "catalog_id": 23759 },
+    { "book_id": 1819790, "catalog_id": 31595 }
+  ]
+}

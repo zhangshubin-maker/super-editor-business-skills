@@ -1,0 +1,57 @@
+{
+  "captured_at": "2026-08-18T18:15:00+08:00",
+  "scope": "数学思维特训营一至三年级当前成套来源与界面书本映射",
+  "status_definition": {
+    "converted_book_exists": "存在 smart_book_type=4 且 source_book_id 精确指向当前成套来源的书本；只证明书级转换产物存在，不等同于逐页验收通过",
+    "missing": "没有任何界面书本以 source_book_id 指向该当前成套来源"
+  },
+  "source_selection": {
+    "included_background_names": [
+      "数学思维特训营",
+      "数学思维特训营-A版练习+解析",
+      "数学思维特训营-B版练习+解析"
+    ],
+    "excluded_from_automatic_scope": [
+      "数学思维特训营-全",
+      "数学思维特训营-A版解析",
+      "数学思维特训营-B版解析"
+    ],
+    "reason": "四至六年级既有界面成品和二至三年级现有成品均指向无“-全”后缀的当前全册书，以及合并后的A/B版练习+解析书；旧“-全”和单独解析书未出现在当前转换映射中。"
+  },
+  "grades": [
+    {
+      "grade_id": 1,
+      "items": [
+        { "variant": "full", "source_book_id": 1819783, "source_name": "数学思维特训营", "template_route": 41073, "target_book_ids": [], "status": "missing" },
+        { "variant": "a", "source_book_id": 1819791, "source_name": "数学思维特训营-A版练习+解析", "template_route": 41074, "target_book_ids": [], "status": "missing" },
+        { "variant": "b", "source_book_id": 1819790, "source_name": "数学思维特训营-B版练习+解析", "template_route": 41076, "target_book_ids": [], "status": "missing" }
+      ]
+    },
+    {
+      "grade_id": 2,
+      "items": [
+        { "variant": "full", "source_book_id": 1819794, "source_name": "数学思维特训营", "template_route": 41073, "target_book_ids": [1820720], "status": "converted_book_exists" },
+        { "variant": "a", "source_book_id": 1819796, "source_name": "数学思维特训营-A版练习+解析", "template_route": 41074, "target_book_ids": [1820719], "status": "converted_book_exists" },
+        { "variant": "b", "source_book_id": 1819798, "source_name": "数学思维特训营-B版练习+解析", "template_route": 41076, "target_book_ids": [], "status": "missing" }
+      ]
+    },
+    {
+      "grade_id": 3,
+      "items": [
+        { "variant": "full", "source_book_id": 1819800, "source_name": "数学思维特训营", "template_route": 41073, "target_book_ids": [1820796], "status": "converted_book_exists" },
+        { "variant": "a", "source_book_id": 1819801, "source_name": "数学思维特训营-A版练习+解析", "template_route": 41074, "target_book_ids": [1820727], "status": "converted_book_exists" },
+        { "variant": "b", "source_book_id": 1819803, "source_name": "数学思维特训营-B版练习+解析", "template_route": 41076, "target_book_ids": [], "status": "missing" }
+      ]
+    }
+  ],
+  "missing_summary": {
+    "count": 5,
+    "source_book_ids": [1819783, 1819791, 1819790, 1819798, 1819803]
+  },
+  "comparison_baseline": {
+    "grade_4_targets": [1820722, 1820726, 1820724],
+    "grade_5_targets": [1820728, 1820733, 1820730],
+    "grade_6_targets": [1820753, 1820736, 1820735],
+    "observation": "四至六年级每个年级均存在 full、A、B 三个 source_book_id 精确映射，支持把每个年级的当前转换集合定义为三本。"
+  }
+}

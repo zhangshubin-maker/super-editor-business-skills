@@ -1,0 +1,846 @@
+{
+  "schema_version": 1,
+  "identity": {
+    "skill_name": "math-thinking-camp-interface-41073",
+    "display_name": "数学思维特训营界面型教辅",
+    "version": "0.1.0",
+    "status": "draft",
+    "book_family": "小学数学《数学思维特训营》全册与A/B版练习解析"
+  },
+  "applicability": {
+    "intent": "适用于小学数学《数学思维特训营》当前成套全册、A版练习+解析和B版练习+解析来源，重点补齐一至三年级缺失的界面教辅",
+    "include": {
+      "subject": "数学",
+      "grades": [1, 2, 3, 4, 5, 6],
+      "source_background_names": [
+        "数学思维特训营",
+        "数学思维特训营-A版练习+解析",
+        "数学思维特训营-B版练习+解析"
+      ]
+    },
+    "exclude": {
+      "automatic_source_background_names": [
+        "数学思维特训营-全",
+        "数学思维特训营-A版解析",
+        "数学思维特训营-B版解析"
+      ],
+      "reason": "旧全册和独立解析书未出现在当前四至六年级及二至三年级既有转换的来源映射中，未经用户确认只进入人工复核"
+    }
+  },
+  "templates": {
+    "default": {
+      "template_id": 41073,
+      "intent": "当前成套全册中普通学习之旅目录使用的问题探索与解题思路手机样章",
+      "snapshot_hash": null
+    },
+    "variants": [
+      {
+        "id": "full-ability",
+        "priority": 400,
+        "when": "来源书语义是当前成套全册，且当前目录名称包含能力达标并可唯一判断为A或B",
+        "template_id": 41075,
+        "intent": "能力达标A/B使用的互斥双子区块手机样章",
+        "snapshot_hash": null
+      },
+      {
+        "id": "a-edition",
+        "priority": 300,
+        "when": "来源书语义和完整书名明确为A版练习+解析",
+        "template_id": 41074,
+        "intent": "A版普通练习页与解析页共用的双子区块手机样章",
+        "snapshot_hash": null
+      },
+      {
+        "id": "b-edition",
+        "priority": 200,
+        "when": "来源书语义和完整书名明确为B版练习+解析",
+        "template_id": 41076,
+        "intent": "B版普通练习页与解析页共用的双子区块手机样章",
+        "snapshot_hash": null
+      }
+    ]
+  },
+  "defaults": {
+    "style_policy": "preserve_target",
+    "module_policy": "reuse_model_relation",
+    "on_missing": "needs_review",
+    "on_ambiguous": "stop"
+  },
+  "execution": {
+    "capability_snapshot": {
+      "catalog_path": "super-editor-capability-catalog.json",
+      "catalog_hash": "sha256:5dc3cc385eab0252da7d52cfec9a6790ca39656e236139b555b16677b3e4b54c",
+      "snapshot_hash": "sha256:adfafdd10768523302ca828f6825e427d562f69c306c752ccde4ca699989dec8",
+      "capabilities": [
+        "editor_audit_content",
+        "editor_create_digital_module",
+        "editor_delete_block",
+        "editor_delete_element",
+        "editor_export_slide",
+        "editor_get_book",
+        "editor_get_canvas_info",
+        "editor_get_canvas_tree",
+        "editor_get_digital_module",
+        "editor_get_state",
+        "editor_list_digital_modules",
+        "editor_save_verified",
+        "editor_screenshot",
+        "editor_search_book_content",
+        "editor_text_document",
+        "editor_text_inspect_layout",
+        "editor_text_search",
+        "editor_text_set_content"
+      ],
+      "evidence": [
+        "2026-08-18 由当前安装的 super-editor-control 1.0.0+codex.20260817194925 真实 tools/list 生成；规则仍为 draft，不授权业务写入"
+      ]
+    },
+    "trial_approval": {
+      "approved": false,
+      "evidence": [
+        "用户要求继续进入试制准备，但一年级全册、A版解析以及B版练习和解析代表页均存在 RICH_TEXT_ROUND_TRIP_UNSAFE，未通过完整保真写入门禁"
+      ]
+    },
+    "forward_cases": []
+  },
+  "rules": [
+    {
+      "id": "full-problem-questions",
+      "order": 10,
+      "intent": "把全册普通目录问题探索中的一至两道完整题目写入问题卡，并在只有一道题时移除完整第二题容器",
+      "when": "解析样章为41073且来源目录具有问题探索教学环节",
+      "scope": {
+        "intent": "当前成套全册的普通学习之旅目录"
+      },
+      "source": {
+        "role": "问题探索教学环节中按阅读顺序出现的完整题目",
+        "cardinality": { "min": 1, "max": 2 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "teaching_role",
+            "claim": "候选文本承担本课问题探索的题目语义",
+            "observation": "可见题干位于名称表达问题探索的大纲或教学环节中"
+          },
+          {
+            "class": "structure",
+            "kind": "outline_membership",
+            "claim": "题目顺序可由所属大纲和页面阅读顺序稳定确定",
+            "observation": "候选来自同一问题探索范围，按区块排序和文本阅读顺序得到第一题与第二题"
+          }
+        ]
+      },
+      "target": {
+        "role": "问题探索卡片中的第一题和可选第二题正文",
+        "cardinality": { "min": 1, "max": 2 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "template_text_role",
+            "claim": "候选文本框承担问题题干展示语义",
+            "observation": "候选位于问题探索卡片而非标题、查看入口或装饰文案"
+          },
+          {
+            "class": "structure",
+            "kind": "card_order",
+            "claim": "两个题目容器按卡片阅读顺序可区分第一题和第二题",
+            "observation": "模板问题区最多提供两个完整题目容器，第二容器可整体删除"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "逐题写入并按来源基数保留或删除第二题完整容器",
+        "required_capabilities": ["editor_text_set_content", "editor_delete_element", "editor_text_inspect_layout"],
+        "steps": [
+          {
+            "type": "set_rich_text",
+            "intent": "保持题目正文、公式、图片嵌入和标点，保留样章文本框样式",
+            "required_capabilities": ["editor_text_set_content", "editor_text_inspect_layout"],
+            "content_policy": "复制完整题目语义，不摘要、不补题；含复杂嵌入且无法安全迁移时停止",
+            "style_policy": "preserve_target"
+          },
+          {
+            "type": "delete_element",
+            "intent": "来源只有一道题时删除第二题的完整外层容器而不是只清空文字",
+            "required_capabilities": ["editor_delete_element"],
+            "selection_policy": "仅在第二题来源不存在时删除第二题完整容器"
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "full-question-count",
+          "intent": "目标题目卡数量与来源问题探索中的一至两道题数量一致且没有空第二题容器",
+          "severity": "error",
+          "required_capabilities": ["editor_text_search", "editor_get_canvas_tree"]
+        }
+      ]
+    },
+    {
+      "id": "full-solution-summary",
+      "order": 20,
+      "intent": "根据解题思路教学环节生成简短方法引导语，保留样章解题思路卡的排版",
+      "when": "解析样章为41073且来源存在可唯一识别的解题思路教学环节",
+      "scope": {
+        "intent": "当前成套全册的普通学习之旅目录"
+      },
+      "source": {
+        "role": "解题思路主环节中用于归纳本课方法的正文",
+        "cardinality": { "min": 1, "max": null },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "method_explanation",
+            "claim": "候选内容解释本课通用解题方法而非单独题目的最终答案",
+            "observation": "可见正文位于解题思路或等价教学环节并包含方法、步骤或判断依据"
+          },
+          {
+            "class": "structure",
+            "kind": "outline_scope",
+            "claim": "候选属于解题思路主范围且排除变式题干和按钮文案",
+            "observation": "大纲关系、区块邻接和阅读顺序共同限定方法正文范围"
+          }
+        ]
+      },
+      "target": {
+        "role": "解题思路卡中的唯一方法引导正文",
+        "cardinality": { "min": 1, "max": 1 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "template_summary_role",
+            "claim": "候选用于概括解题方法并引导查看完整来源",
+            "observation": "候选位于解题思路标题下方，不是名师总结标签或变式按钮"
+          },
+          {
+            "class": "structure",
+            "kind": "layout_hierarchy",
+            "claim": "解题思路卡中只有一个正文摘要区域",
+            "observation": "该文本框与主标题和主查看入口同属顶部解题思路卡"
+          }
+        ]
+      },
+      "action": {
+        "type": "set_rich_text",
+        "intent": "用自然中文概括来源方法，长度适配样章卡片并保留样章样式",
+        "required_capabilities": ["editor_text_set_content", "editor_text_inspect_layout"],
+        "content_policy": "概括核心观察、判断或步骤，不编造来源未出现的方法，不写最终答案堆砌",
+        "style_policy": "preserve_target"
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "full-summary-fidelity",
+          "intent": "引导语可由来源解题思路支持且完整可见、无占位文案",
+          "severity": "error",
+          "required_capabilities": ["editor_text_document", "editor_text_inspect_layout"]
+        }
+      ]
+    },
+    {
+      "id": "full-primary-links",
+      "order": 30,
+      "intent": "让问题探索查看、解题思路查看和名师总结查看分别定位到来源中真实承载对应语义的区块",
+      "when": "解析样章为41073",
+      "scope": {
+        "intent": "当前成套全册的普通学习之旅目录"
+      },
+      "source": {
+        "role": "问题探索首个实质内容区块、解题思路首个实质内容区块和名师总结内容区块",
+        "cardinality": { "min": 3, "max": 3 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "destination_role",
+            "claim": "三个来源区块分别承载问题、方法与总结语义",
+            "observation": "可见标题、正文和教学环节语义能够区分问题探索、解题思路和名师总结"
+          },
+          {
+            "class": "structure",
+            "kind": "semantic_adjacency",
+            "claim": "每个来源区块可由所属大纲、邻接标题和内容顺序唯一定位",
+            "observation": "目标区块属于对应教学范围，且不是占位边距、装饰头部或其他变式内容"
+          }
+        ]
+      },
+      "target": {
+        "role": "问题探索主查看、解题思路主查看和名师总结查看的完整外层交互组",
+        "cardinality": { "min": 3, "max": 3 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "interaction_label",
+            "claim": "三个目标分别提供查看问题、查看方法和查看总结的入口",
+            "observation": "入口可见语义与所在卡片角色共同区分三个查看动作"
+          },
+          {
+            "class": "structure",
+            "kind": "outer_group",
+            "claim": "交互绑定应落在包含文字、箭头和背景的完整外层组",
+            "observation": "每个入口的外层组可唯一包含其可见文字与箭头子元素"
+          }
+        ]
+      },
+      "action": {
+        "type": "copy_digital_module",
+        "intent": "为三个完整外层组创建指向来源区块的定位关系",
+        "required_capabilities": ["editor_create_digital_module", "editor_get_digital_module"],
+        "module_policy": "reuse_model_relation",
+        "parameters": {
+          "module_type": 80,
+          "target_type": "block",
+          "require_source_identity_readback": true
+        }
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "full-primary-link-readback",
+          "intent": "三个定位关系均能回读出正确来源书、来源目录、来源区块和区块定位类型",
+          "severity": "error",
+          "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module"]
+        }
+      ]
+    },
+    {
+      "id": "full-variant-links",
+      "order": 40,
+      "intent": "把最多两个变式的思路分析、解答和关键点入口定位到各自来源内容，并移除不存在的完整变式卡",
+      "when": "解析样章为41073",
+      "scope": {
+        "intent": "当前成套全册的普通学习之旅目录"
+      },
+      "source": {
+        "role": "按阅读顺序出现的一至两个变式及其思路分析、解答和关键点内容",
+        "cardinality": { "min": 1, "max": 2 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "variant_bundle",
+            "claim": "每个候选组合属于同一道变式并包含方法、解答和关键点语义",
+            "observation": "变式题干与后续思路分析、解答、关键点可由可见标签和内容语义关联"
+          },
+          {
+            "class": "structure",
+            "kind": "local_sequence",
+            "claim": "变式序号及其内容边界可由区块顺序、大纲子节点或相邻标题唯一确定",
+            "observation": "同一变式的三个目标位于下一变式开始之前，且不跨教学环节混配"
+          }
+        ]
+      },
+      "target": {
+        "role": "变式一和可选变式二卡片中的思路分析、解答、关键点完整入口组",
+        "cardinality": { "min": 3, "max": 6 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "variant_interaction_role",
+            "claim": "每组三个入口分别表达思路分析、解答和关键点",
+            "observation": "入口的可见标签和所属变式卡共同确定目标语义"
+          },
+          {
+            "class": "structure",
+            "kind": "variant_card_membership",
+            "claim": "入口外层组稳定属于变式一或变式二卡片",
+            "observation": "模板最多有两个变式卡，每卡恰有三个可绑定的完整入口组"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "逐变式创建三个区块定位，并按来源变式数量移除多余完整卡片",
+        "required_capabilities": ["editor_create_digital_module", "editor_get_digital_module", "editor_delete_element"],
+        "steps": [
+          {
+            "type": "copy_digital_module",
+            "intent": "按同一变式内部语义分别创建思路分析、解答和关键点区块定位",
+            "required_capabilities": ["editor_create_digital_module", "editor_get_digital_module"],
+            "module_policy": "reuse_model_relation",
+            "parameters": { "module_type": 80, "target_type": "block" }
+          },
+          {
+            "type": "delete_element",
+            "intent": "来源只有一个变式时删除第二个完整变式卡片",
+            "required_capabilities": ["editor_delete_element"],
+            "selection_policy": "只删除不存在来源对应物的完整第二变式卡"
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "full-variant-link-readback",
+          "intent": "每个保留变式恰有三个可回读且不串题的区块定位，未保留变式没有残留入口或关系",
+          "severity": "error",
+          "required_capabilities": ["editor_list_digital_modules", "editor_get_canvas_tree"]
+        }
+      ]
+    },
+    {
+      "id": "ability-content",
+      "order": 50,
+      "intent": "能力达标目录只保留同字母子区块，并填入最近五个知识点和对应巩固文案",
+      "when": "解析样章为41075且当前目录可唯一判断为能力达标A或能力达标B",
+      "scope": {
+        "intent": "当前成套全册中的能力达标A/B目录"
+      },
+      "source": {
+        "role": "当前能力达标之前且不跨越上一能力达标边界的最近五个学习之旅知识点",
+        "cardinality": { "min": 5, "max": 5 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "knowledge_topic",
+            "claim": "每个候选目录表达一个已学习的数学知识点",
+            "observation": "目录名称由学习之旅序号和知识点名称组成，排除能力达标与解析目录"
+          },
+          {
+            "class": "structure",
+            "kind": "unit_boundary",
+            "claim": "五个候选是当前能力达标所属单元内最近的五个普通目录",
+            "observation": "从当前目录向前读取，遇到上一能力达标或书首即停止，不跨边界补数"
+          }
+        ]
+      },
+      "target": {
+        "role": "与当前A/B一致的能力达标卡中的五个知识点标签、主标题和说明正文",
+        "cardinality": { "min": 7, "max": 7 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "ability_card_role",
+            "claim": "目标共同呈现已学知识点、能力达标层级和巩固说明",
+            "observation": "保留卡片的主标题字母与当前目录一致，另一个字母卡片应整体删除"
+          },
+          {
+            "class": "structure",
+            "kind": "label_sequence",
+            "claim": "五个标签可按卡片阅读顺序唯一排序，标题和说明正文各自唯一",
+            "observation": "模板卡片提供五个同类标签、一个主标题和一个说明正文"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "删除错误字母卡片，按最近到最早写入五个知识点，并写入A/B对应说明",
+        "required_capabilities": ["editor_delete_block", "editor_text_set_content", "editor_text_inspect_layout"],
+        "steps": [
+          {
+            "type": "delete_block",
+            "intent": "能力达标A删除B卡，能力达标B删除A卡",
+            "required_capabilities": ["editor_delete_block"],
+            "selection_policy": "以目录字母与卡片可见主标题共同确认保留项"
+          },
+          {
+            "type": "set_rich_text",
+            "intent": "去掉学习之旅与序号前缀后，按最近到最早写入五个知识点",
+            "required_capabilities": ["editor_text_set_content", "editor_text_inspect_layout"],
+            "content_policy": "保留知识点原有文字、空格和括号语义，不跨单元，不补造知识点",
+            "style_policy": "preserve_target"
+          },
+          {
+            "type": "set_rich_text",
+            "intent": "A写基础巩固说明，B写进阶拔高说明，并让主标题与目录名称一致",
+            "required_capabilities": ["editor_text_set_content", "editor_text_inspect_layout"],
+            "content_policy": "A说明已学习内容并进行基础巩固，B说明已学习内容并进行进阶拔高",
+            "style_policy": "preserve_target"
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "ability-content-exact",
+          "intent": "只保留一个与目录同字母的卡片，五个知识点顺序正确且没有占位符",
+          "severity": "error",
+          "required_capabilities": ["editor_text_search", "editor_get_canvas_tree", "editor_text_inspect_layout"]
+        }
+      ]
+    },
+    {
+      "id": "ability-modules",
+      "order": 60,
+      "intent": "能力达标页只绑定一个来源智能体和一个查看定位，来源没有打印模块时删除打印入口",
+      "when": "解析样章为41075",
+      "scope": {
+        "intent": "当前成套全册中的能力达标A/B目录"
+      },
+      "source": {
+        "role": "能力达标目录中唯一用于拍照批改或作业检查的智能体关系，以及首个实质内容区块",
+        "cardinality": { "min": 2, "max": 2 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "ability_action",
+            "claim": "一个来源承担智能批改动作，另一个来源承载查看能力达标内容的目标",
+            "observation": "数字模块类型与可见按钮语义可确认智能体，题目内容区块可确认查看目的地"
+          },
+          {
+            "class": "structure",
+            "kind": "module_and_content_boundary",
+            "claim": "智能体与首个实质内容区块均属于当前能力达标目录且基数唯一",
+            "observation": "排除核对答案关系、装饰头部、预留边距和跨目录资源"
+          }
+        ]
+      },
+      "target": {
+        "role": "AI拍照批改完整外层组、查看完整外层组和可选打印入口",
+        "cardinality": { "min": 2, "max": 3 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "ability_target_action",
+            "claim": "目标分别表达AI拍照批改、查看来源内容和可选打印",
+            "observation": "可见文案与按钮所在卡片共同区分三种动作"
+          },
+          {
+            "class": "structure",
+            "kind": "complete_interaction_group",
+            "claim": "模块应绑定到每个动作的完整外层组而非文字或图标子元素",
+            "observation": "外层组包含对应可见文案、图标和点击区域"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "复用来源智能体关系、创建区块定位，并按真实来源决定是否保留打印入口",
+        "required_capabilities": ["editor_create_digital_module", "editor_get_digital_module", "editor_delete_element"],
+        "steps": [
+          {
+            "type": "copy_digital_module",
+            "intent": "在AI拍照批改外层组复用唯一来源智能体关系",
+            "required_capabilities": ["editor_create_digital_module", "editor_get_digital_module"],
+            "module_policy": "reuse_model_relation"
+          },
+          {
+            "type": "copy_digital_module",
+            "intent": "在查看外层组创建指向来源首个实质内容区块的定位关系",
+            "required_capabilities": ["editor_create_digital_module", "editor_get_digital_module"],
+            "module_policy": "reuse_model_relation",
+            "parameters": { "module_type": 80, "target_type": "block" }
+          },
+          {
+            "type": "delete_element",
+            "intent": "来源不存在打印模块时删除打印入口；存在唯一打印模块时才保留并绑定",
+            "required_capabilities": ["editor_delete_element"],
+            "selection_policy": "不把核对答案或智能体误认为打印模块"
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "ability-module-cardinality",
+          "intent": "无打印来源时目标恰好一个智能体和一个定位关系，且没有额外核对答案或重复智能体关系",
+          "severity": "error",
+          "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module"]
+        }
+      ]
+    },
+    {
+      "id": "ab-block-and-copy",
+      "order": 70,
+      "intent": "A/B书按目录是否为解析选择唯一子区块，并用唯一知识点生成对应练习或解析说明",
+      "when": "解析样章为41074或41076",
+      "scope": {
+        "intent": "A版或B版练习+解析来源中的所有目录"
+      },
+      "source": {
+        "role": "当前练习目录的知识点，或与解析目录同序号唯一配对的练习目录知识点",
+        "cardinality": { "min": 1, "max": 1 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "lesson_topic",
+            "claim": "候选文本表达当前学习之旅的数学知识点",
+            "observation": "去掉学习之旅序号、解析标记和末尾纯编号括号后仍留下明确知识点名称"
+          },
+          {
+            "class": "structure",
+            "kind": "paired_catalog",
+            "claim": "解析目录通过相同学习之旅序号与唯一非解析目录配对",
+            "observation": "同一来源书中只有一个同序号普通目录，缺失或重复时不进行猜测"
+          }
+        ]
+      },
+      "target": {
+        "role": "与A/B书类和练习或解析状态一致的唯一子区块中的说明正文",
+        "cardinality": { "min": 1, "max": 1 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "edition_copy_role",
+            "claim": "目标说明正文表达A版或B版的练习巩固或解析核对用途",
+            "observation": "练习页与解析页的主标题和正文语义不同，且必须与来源书类一致"
+          },
+          {
+            "class": "structure",
+            "kind": "mutually_exclusive_block",
+            "claim": "双子区块中只保留与当前目录状态一致的一块",
+            "observation": "普通目录保留练习块并删除解析块，解析目录保留解析块并删除练习块"
+          }
+        ]
+      },
+      "action": {
+        "type": "atomic_sequence",
+        "intent": "删除错误状态子区块并写入A/B对应说明",
+        "required_capabilities": ["editor_delete_block", "editor_text_set_content", "editor_text_inspect_layout"],
+        "steps": [
+          {
+            "type": "delete_block",
+            "intent": "普通目录删除解析子区块，解析目录删除练习子区块",
+            "required_capabilities": ["editor_delete_block"],
+            "selection_policy": "目录解析语义与子区块可见主标题必须同时吻合"
+          },
+          {
+            "type": "set_rich_text",
+            "intent": "写入A基础巩固、B拔高巩固或对应A/B解析说明",
+            "required_capabilities": ["editor_text_set_content", "editor_text_inspect_layout"],
+            "content_policy": "A练习为针对知识点设置基础习题巩固；B练习为针对知识点设置难题拔高；解析为对应版练习题提供思路分析与完整解答",
+            "style_policy": "preserve_target"
+          }
+        ]
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "ab-block-exact",
+          "intent": "每页只保留一个正确子区块，版别、练习或解析状态和知识点文案一致且无占位符",
+          "severity": "error",
+          "required_capabilities": ["editor_get_canvas_tree", "editor_text_search", "editor_text_inspect_layout"]
+        }
+      ]
+    },
+    {
+      "id": "ab-exercise-modules",
+      "order": 80,
+      "intent": "A/B普通练习页把两个练习区各自相邻的互动课程关系绑定到对应解题灵感助手卡片",
+      "when": "解析样章为41074或41076且当前目录不是解析目录",
+      "scope": {
+        "intent": "A版或B版练习+解析来源中的普通练习目录"
+      },
+      "source": {
+        "role": "练习一和练习二各自相邻的互动课程关系",
+        "cardinality": { "min": 2, "max": 2 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "interactive_practice",
+            "claim": "两个关系分别启动对应练习的解题灵感互动课程",
+            "observation": "模块类型为互动课程，且按钮可见语义为解题灵感助手"
+          },
+          {
+            "class": "structure",
+            "kind": "practice_adjacency",
+            "claim": "每个互动课程与唯一练习题区通过相邻区块和阅读顺序配对",
+            "observation": "练习一内容之后的按钮属于练习一，练习二内容之后的按钮属于练习二"
+          }
+        ]
+      },
+      "target": {
+        "role": "练习一卡和练习二卡中各自的解题灵感助手完整外层组",
+        "cardinality": { "min": 2, "max": 2 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "practice_action",
+            "claim": "两个目标分别提供练习一和练习二的解题灵感入口",
+            "observation": "可见练习编号和解题灵感助手文案共同确定对应关系"
+          },
+          {
+            "class": "structure",
+            "kind": "practice_card_membership",
+            "claim": "每个入口完整外层组稳定属于一个练习卡",
+            "observation": "模板保留的练习区块含两张按阅读顺序排列的练习卡"
+          }
+        ]
+      },
+      "action": {
+        "type": "copy_digital_module",
+        "intent": "按练习邻接关系复用两个互动课程，不按全页模块数组顺序盲配",
+        "required_capabilities": ["editor_create_digital_module", "editor_get_digital_module"],
+        "module_policy": "reuse_model_relation"
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "ab-interactive-cardinality",
+          "intent": "普通练习页恰好有两个互动课程且分别对应练习一和练习二，没有交叉或重复关系",
+          "severity": "error",
+          "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module"]
+        }
+      ]
+    },
+    {
+      "id": "ab-view-link",
+      "order": 90,
+      "intent": "A/B练习页或解析页的查看入口定位到当前来源目录首个实质内容区块",
+      "when": "解析样章为41074或41076",
+      "scope": {
+        "intent": "A版或B版练习+解析来源中的所有目录"
+      },
+      "source": {
+        "role": "当前来源目录中首个承载练习或解析内容的实质区块",
+        "cardinality": { "min": 1, "max": 1 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "catalog_entry_content",
+            "claim": "候选区块进入当前目录的A/B练习或解析内容",
+            "observation": "可见标题明确包含当前学习之旅及版别或解析语义"
+          },
+          {
+            "class": "structure",
+            "kind": "first_substantive_block",
+            "claim": "候选是按来源区块顺序出现的首个实质内容区块",
+            "observation": "排除空记录、预留边距和纯装饰占位后，候选在当前目录中排序最前"
+          }
+        ]
+      },
+      "target": {
+        "role": "保留的A/B练习或解析子区块中的查看完整外层组",
+        "cardinality": { "min": 1, "max": 1 },
+        "evidence": [
+          {
+            "class": "semantic",
+            "kind": "view_action",
+            "claim": "目标用于查看当前来源目录的完整练习或解析内容",
+            "observation": "可见文案为查看，所在卡片的版别与练习或解析状态与当前目录一致"
+          },
+          {
+            "class": "structure",
+            "kind": "retained_block_group",
+            "claim": "目标是保留子区块中包含文字和箭头的唯一完整外层组",
+            "observation": "删除互斥子区块后只剩一个查看入口"
+          }
+        ]
+      },
+      "action": {
+        "type": "copy_digital_module",
+        "intent": "创建指向来源目录首个实质内容区块的定位关系",
+        "required_capabilities": ["editor_create_digital_module", "editor_get_digital_module"],
+        "module_policy": "reuse_model_relation",
+        "parameters": {
+          "module_type": 80,
+          "target_type": "block",
+          "require_source_identity_readback": true
+        }
+      },
+      "on_missing": "needs_review",
+      "on_ambiguous": "stop",
+      "validate": [
+        {
+          "id": "ab-view-readback",
+          "intent": "练习页和解析页均恰好一个查看定位，能回读正确来源书、来源目录、来源区块和区块定位类型",
+          "severity": "error",
+          "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module"]
+        }
+      ]
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "template-route-unique",
+      "intent": "每个目录只命中一个最高优先级样章，能力达标优先于全册默认且A/B不串版",
+      "severity": "error",
+      "required_capabilities": ["editor_get_book", "editor_get_state"]
+    },
+    {
+      "id": "phone-canvas",
+      "intent": "目标目录使用手机画布并回读宽度375，保留样章布局且无越界或裁切",
+      "severity": "error",
+      "required_capabilities": ["editor_get_canvas_info", "editor_audit_content", "editor_screenshot"]
+    },
+    {
+      "id": "no-placeholder-copy",
+      "intent": "目标不存在占位符、知识点后期替换、打印字帖或字词听写等历史错配文案",
+      "severity": "error",
+      "required_capabilities": ["editor_search_book_content", "editor_text_search"]
+    },
+    {
+      "id": "module-cardinality",
+      "intent": "能力达标、A/B练习、A/B解析和全册普通页的数字模块数量与语义分别符合规则，不保留重复或无目标语义关系",
+      "severity": "error",
+      "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module"]
+    },
+    {
+      "id": "save-and-provenance-readback",
+      "intent": "每页保存回读成功，来源追溯后置保存与导出生成canonical回读凭据，且目标不再为脏状态",
+      "severity": "error",
+      "required_capabilities": ["editor_save_verified", "editor_export_slide", "editor_audit_content"]
+    },
+    {
+      "id": "student-interaction-open",
+      "intent": "查看定位、互动课程和智能体需要学生端点击实测，未实测时必须明确报告而不能以结构回读代替",
+      "severity": "warning",
+      "required_capabilities": ["editor_get_digital_module"]
+    }
+  ],
+  "training": {
+    "feedback": [
+      {
+        "id": "analysis-file-is-reference-only",
+        "classification": "rule_refinement",
+        "summary": "41075历史分析包含与数学真实来源不一致的打印字帖、字词听写和作业检查描述，不能作为唯一规则来源",
+        "confirmed": false,
+        "resolved": true,
+        "resolution": "草案改为按真实模块类型、可见语义和目标控件基数匹配，并把历史文案列入错误级占位检查",
+        "promoted_to_rule_ids": ["ability-modules"]
+      }
+    ],
+    "examples": [
+      {
+        "id": "full-normal-route",
+        "kind": "positive",
+        "description": "当前全册的学习之旅普通目录使用41073，而不是因为书名含数学思维特训营就统一使用同一个能力达标样章",
+        "rule_ids": ["full-problem-questions", "full-solution-summary", "full-primary-links", "full-variant-links"]
+      },
+      {
+        "id": "ability-route",
+        "kind": "positive",
+        "description": "当前全册目录能力达标A使用41075并只保留A卡，五个知识点取本单元前五课且按最近到最早排列",
+        "rule_ids": ["ability-content", "ability-modules"]
+      },
+      {
+        "id": "ability-extra-agent",
+        "kind": "negative",
+        "description": "历史成品能力达标B存在两个智能体关系；新规则不得把该缺陷当作基线，额外关系必须验收失败",
+        "rule_ids": ["ability-modules"]
+      },
+      {
+        "id": "analysis-topic-pair",
+        "kind": "positive",
+        "description": "学习之旅一解析目录本身不含知识点时，与同序号普通目录唯一配对后取得知识点并生成版别解析说明",
+        "rule_ids": ["ab-block-and-copy"]
+      },
+      {
+        "id": "module-array-order",
+        "kind": "negative",
+        "description": "两个互动课程不能只按全页模块数组的先后顺序绑定，必须先证明各自与练习一卡和练习二卡的结构邻接",
+        "rule_ids": ["ab-exercise-modules"]
+      }
+    ]
+  },
+  "forward_tests": [
+    {
+      "id": "grade1-full-normal-and-ability",
+      "source_label": "一年级当前全册中的普通学习之旅与能力达标A/B",
+      "status": "pending"
+    },
+    {
+      "id": "grade1-a-and-b-pairs",
+      "source_label": "一年级A/B版练习页及其解析配对页",
+      "status": "pending"
+    }
+  ]
+}

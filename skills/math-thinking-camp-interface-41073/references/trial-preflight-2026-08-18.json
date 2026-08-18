@@ -1,0 +1,98 @@
+{
+  "artifact_type": "semantic_trial_preflight",
+  "captured_at": "2026-08-18T20:03:20+08:00",
+  "skill_name": "math-thinking-camp-interface-41073",
+  "status": "blocked_before_write",
+  "business_writes_performed": false,
+  "capability_snapshot": {
+    "plugin_version": "1.0.0+codex.20260817194925",
+    "catalog_path": "super-editor-capability-catalog.json",
+    "catalog_hash": "sha256:5dc3cc385eab0252da7d52cfec9a6790ca39656e236139b555b16677b3e4b54c",
+    "required_subset_hash": "sha256:adfafdd10768523302ca828f6825e427d562f69c306c752ccde4ca699989dec8",
+    "tool_count": 144
+  },
+  "templates": [
+    { "template_id": 41073, "read_ok": true, "child_template_ids": [41089, 41090] },
+    { "template_id": 41074, "read_ok": true, "child_template_ids": [41091, 41092] },
+    { "template_id": 41075, "read_ok": true, "child_template_ids": [41095, 41096] },
+    { "template_id": 41076, "read_ok": true, "child_template_ids": [41093, 41094] }
+  ],
+  "source_snapshots": [
+    {
+      "book_id": 1819783,
+      "catalog_id": 22380,
+      "catalog_name": "学习之旅1 数数有多少",
+      "snapshot_file_sha256": "sha256:6a24d8500d282d12c1d5eaf1a604149c299cb41fcb2caa6dbe44e4bd5171897d",
+      "snapshot_stable_hash": "sha256:9c3846df8d545e56072d31fb27e8616a936378f8840263359e6f5c8d39539eea",
+      "full_fidelity": false,
+      "warnings": { "RICH_TEXT_ROUND_TRIP_UNSAFE": 2, "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819783,
+      "catalog_id": 22385,
+      "catalog_name": "能力达标A",
+      "snapshot_file_sha256": "sha256:478950f52920f188e3f1f6830425fb0f0f75eafeb69e6964a0a410b6d8641e96",
+      "snapshot_stable_hash": "sha256:44e301107b0c8cdafba13d280684e4b97486af60b99af7ce603cb9eecf61aa69",
+      "full_fidelity": false,
+      "warnings": { "RICH_TEXT_ROUND_TRIP_UNSAFE": 2, "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819783,
+      "catalog_id": 22386,
+      "catalog_name": "能力达标B",
+      "snapshot_file_sha256": "sha256:f22a29cc8ddded6410927ee29356f5c512e7624f4f281e13bc45a873e3cadec3",
+      "snapshot_stable_hash": "sha256:bb38c615012e725b21547f3f02e1558c42eabc7235a832e94a52f3f85c635ee8",
+      "full_fidelity": false,
+      "warnings": { "RICH_TEXT_ROUND_TRIP_UNSAFE": 2, "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819791,
+      "catalog_id": 23831,
+      "catalog_name": "学习之旅1 数数有多少",
+      "snapshot_file_sha256": "sha256:90f7ae8d2176f5926ecf66bc0bd60058553a8b5b4bbfd480d13e174a171499de",
+      "snapshot_stable_hash": "sha256:83491c3a4a8e6e07148ec4e144fb3817bc7b57e371edc46ec71fb222ea53fcd3",
+      "full_fidelity": false,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 },
+      "note": "唯一告警为空字体映射，深富文本本身完整；当前 MCP 仍返回 fullFidelity=false，因此本轮不绕过门禁"
+    },
+    {
+      "book_id": 1819791,
+      "catalog_id": 31565,
+      "catalog_name": "学习之旅1-解析",
+      "snapshot_file_sha256": "sha256:2b939e6f95b4a004e5ef873c3af3d84a4ae98999d418813fd9f24c78de61127c",
+      "snapshot_stable_hash": "sha256:0f32bdf5bd7f7bc0cd8bf8c0f130dd9f72ac61b4047ef18479c0187fdef0a6e0",
+      "full_fidelity": false,
+      "warnings": { "RICH_TEXT_ROUND_TRIP_UNSAFE": 5, "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819790,
+      "catalog_id": 23759,
+      "catalog_name": "学习之旅1 数数有多少",
+      "snapshot_file_sha256": "sha256:848301fb80280fdcf50847b4bca1775d54749679d98379e3cc72283625b979cb",
+      "snapshot_stable_hash": "sha256:5ad28425be03115542f3a85c280462951a8de4bd081298ef9d06feb0e69d7321",
+      "full_fidelity": false,
+      "warnings": { "RICH_TEXT_ROUND_TRIP_UNSAFE": 1, "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819790,
+      "catalog_id": 31595,
+      "catalog_name": "学习之旅1-解析",
+      "snapshot_file_sha256": "sha256:f4cdbbeda24ab789692253c8ccfcafc339e1129e3a80efeef9342676bee69d83",
+      "snapshot_stable_hash": "sha256:a47092fe4cf7485c4ddacabc06119f8d843ad29ccb08843f337a36e035c30078",
+      "full_fidelity": false,
+      "warnings": { "RICH_TEXT_ROUND_TRIP_UNSAFE": 3, "FONT_MAPPING_EMPTY": 1 }
+    }
+  ],
+  "decision": {
+    "rule_pack_status": "draft",
+    "trial_approval": false,
+    "reason": "代表来源未满足 richText=deep 且 fullFidelity=true；依照语义教辅 Skill 只能继续分析，不能应用样章、创建目录、创建数字模块或保存试制页",
+    "resume_condition": "消除 RICH_TEXT_ROUND_TRIP_UNSAFE，并使所选普通、能力达标、A/B练习及解析代表页重新导出为 fullFidelity=true",
+    "diagnosis": [
+      "全册普通页和A版解析页含 cmihee-underline 自定义点状下划线，原HTML携带 data-type、data-style 与自定义CSS变量，当前生产序列化未通过受保护节点往返校验",
+      "A版解析、B版练习和B版解析含 quill-image 富文本内嵌图片及宽度、原始尺寸或光标样式属性，当前生产序列化未通过受保护节点往返校验",
+      "切换到解析页使其成为当前工作页后重新导出，告警仍存在，排除单纯页面未加载或格式注册等待状态",
+      "A版练习页原始快照满足仅 book-store-empty 字体映射且深富文本完整的宽松条件，本地当前插件代码可判为完整，但运行中MCP仍返回 false；需要重启或更新运行实例，不过这不是解析页阻断的充分修复"
+    ]
+  }
+}
