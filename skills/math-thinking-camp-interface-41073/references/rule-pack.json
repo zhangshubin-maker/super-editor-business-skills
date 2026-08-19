@@ -4,7 +4,7 @@
     "skill_name": "math-thinking-camp-interface-41073",
     "display_name": "数学思维特训营界面型教辅",
     "version": "0.1.0",
-    "status": "draft",
+    "status": "validated",
     "book_family": "小学数学《数学思维特训营》全册与A/B版练习解析"
   },
   "applicability": {
@@ -31,7 +31,7 @@
     "default": {
       "template_id": 41073,
       "intent": "当前成套全册中普通学习之旅目录使用的问题探索与解题思路手机样章",
-      "snapshot_hash": null
+      "snapshot_hash": "sha256:18f0bccb7368b9bec006afb8a79f4b4f20b80d7d40493b9cf39a387fb88f1a33"
     },
     "variants": [
       {
@@ -40,7 +40,7 @@
         "when": "来源书语义是当前成套全册，且当前目录名称包含能力达标并可唯一判断为A或B",
         "template_id": 41075,
         "intent": "能力达标A/B使用的互斥双子区块手机样章",
-        "snapshot_hash": null
+        "snapshot_hash": "sha256:82ae50d30fd0eed9d64cc7fc6195a8cd30c1384707a2030867b803db451782e0"
       },
       {
         "id": "a-edition",
@@ -48,7 +48,7 @@
         "when": "来源书语义和完整书名明确为A版练习+解析",
         "template_id": 41074,
         "intent": "A版普通练习页与解析页共用的双子区块手机样章",
-        "snapshot_hash": null
+        "snapshot_hash": "sha256:2f1c4e44bda7eaddb6471209dd6a90880e214568f4c05e8e741a1f4f79786038"
       },
       {
         "id": "b-edition",
@@ -56,7 +56,7 @@
         "when": "来源书语义和完整书名明确为B版练习+解析",
         "template_id": 41076,
         "intent": "B版普通练习页与解析页共用的双子区块手机样章",
-        "snapshot_hash": null
+        "snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7"
       }
     ]
   },
@@ -69,8 +69,8 @@
   "execution": {
     "capability_snapshot": {
       "catalog_path": "super-editor-capability-catalog.json",
-      "catalog_hash": "sha256:5dc3cc385eab0252da7d52cfec9a6790ca39656e236139b555b16677b3e4b54c",
-      "snapshot_hash": "sha256:adfafdd10768523302ca828f6825e427d562f69c306c752ccde4ca699989dec8",
+      "catalog_hash": "sha256:cef264fa257ef4eeb1e5f7b0aae05c1455a7bc3f32da70b54ed5f49dca8d5b9f",
+      "snapshot_hash": "sha256:ed7ee52824d468702b6eb8b755e2f8302c1d4de96623e5b67934ad1f6e6d6770",
       "capabilities": [
         "editor_audit_content",
         "editor_create_digital_module",
@@ -92,16 +92,28 @@
         "editor_text_set_content"
       ],
       "evidence": [
-        "2026-08-18 由当前安装的 super-editor-control 1.0.0+codex.20260817194925 真实 tools/list 生成；规则仍为 draft，不授权业务写入"
+        "2026-08-18 由当前安装的 super-editor-control 1.0.0+codex.20260818125039 真实 tools/list 生成，共 144 项能力；本次用户已授权试制与全量转换"
       ]
     },
     "trial_approval": {
-      "approved": false,
+      "approved": true,
       "evidence": [
-        "用户要求继续进入试制准备，但一年级全册、A版解析以及B版练习和解析代表页均存在 RICH_TEXT_ROUND_TRIP_UNSAFE，未通过完整保真写入门禁"
+        "2026-08-18 七个代表来源页已在 http://127.0.0.1:8090 修复实例中全部达到 richText=deep 且 fullFidelity=true",
+        "2026-08-18 用户明确要求开始全量转换未转换书本并根据现有规则逐目录执行，构成对现有样章路由、代表页试制和后续全量批量的明确授权；仍须先完成规则要求的真实试制与前向案例"
       ]
     },
-    "forward_cases": []
+    "forward_cases": [
+      {
+        "id": "grade1-full-normal-and-ability",
+        "evidence_artifact": "forward-cases/grade1-full-normal-and-ability/evidence.json",
+        "artifact_sha256": "sha256:0de72bf9b3e9d5a5467e508621371ef722f990e6381d5bcc351b25a7df1cf71e"
+      },
+      {
+        "id": "grade1-a-and-b-pairs",
+        "evidence_artifact": "forward-cases/grade1-a-practice-analysis-pair/evidence.json",
+        "artifact_sha256": "sha256:a617a654da8171ac52d690606c8449a01c2281788e6382cf41156bf2efb5712c"
+      }
+    ]
   },
   "rules": [
     {
@@ -792,7 +804,7 @@
         "id": "analysis-file-is-reference-only",
         "classification": "rule_refinement",
         "summary": "41075历史分析包含与数学真实来源不一致的打印字帖、字词听写和作业检查描述，不能作为唯一规则来源",
-        "confirmed": false,
+        "confirmed": true,
         "resolved": true,
         "resolution": "草案改为按真实模块类型、可见语义和目标控件基数匹配，并把历史文案列入错误级占位检查",
         "promoted_to_rule_ids": ["ability-modules"]
@@ -835,12 +847,14 @@
     {
       "id": "grade1-full-normal-and-ability",
       "source_label": "一年级当前全册中的普通学习之旅与能力达标A/B",
-      "status": "pending"
+      "status": "passed",
+      "evidence_artifact": "forward-cases/grade1-full-normal-and-ability/evidence.json"
     },
     {
       "id": "grade1-a-and-b-pairs",
       "source_label": "一年级A/B版练习页及其解析配对页",
-      "status": "pending"
+      "status": "passed",
+      "evidence_artifact": "forward-cases/grade1-a-practice-analysis-pair/evidence.json"
     }
   ]
 }

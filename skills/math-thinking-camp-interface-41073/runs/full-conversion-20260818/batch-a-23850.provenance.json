@@ -1,0 +1,1725 @@
+{
+  "provenance": {
+    "schema_version": 1,
+    "skill": {
+      "name": "math-thinking-camp-interface-41073",
+      "version": "0.1.0",
+      "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82"
+    },
+    "run_id": "math-thinking-camp-batch-a-23850-20260818",
+    "source": {
+      "book_id": "1819791",
+      "catalog_id": "23850",
+      "catalog_path": [
+        "学习之旅20 算式猜谜"
+      ],
+      "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+      "inference": null
+    },
+    "template": {
+      "requested_template_id": "41074",
+      "resolved_template_id": "41074",
+      "variant_id": "a-practice",
+      "snapshot_hash": "sha256:2f1c4e44bda7eaddb6471209dd6a90880e214568f4c05e8e741a1f4f79786038"
+    },
+    "target": {
+      "book_id": "1820816",
+      "catalog_id": "46118",
+      "before_hash": "sha256:54714c31f9e79be0a64ab5771887ed875be0176d2e7ac02ee45d90a7a6f1af21",
+      "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+    },
+    "execution": {
+      "mode": "batch",
+      "required_authorization_type": "batch_authorization",
+      "restricted": false,
+      "restriction_reasons": [],
+      "automatic_write": false,
+      "authorization_confirmed": true,
+      "batch_authorized": true,
+      "required_error_validation_passed": true,
+      "post_write_verification_pending": true
+    },
+    "coverage": {
+      "required_rule_ids": [
+        "full-problem-questions",
+        "full-solution-summary",
+        "full-primary-links",
+        "full-variant-links",
+        "ability-content",
+        "ability-modules",
+        "ab-block-and-copy",
+        "ab-exercise-modules",
+        "ab-view-link"
+      ],
+      "required_error_checks": [
+        {
+          "required_key": "rule:full-problem-questions:full-question-count",
+          "id": "full-question-count",
+          "rule_id": "full-problem-questions",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "目标题目卡数量与来源问题探索中的一至两道题数量一致且没有空第二题容器"
+        },
+        {
+          "required_key": "rule:full-solution-summary:full-summary-fidelity",
+          "id": "full-summary-fidelity",
+          "rule_id": "full-solution-summary",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "引导语可由来源解题思路支持且完整可见、无占位文案"
+        },
+        {
+          "required_key": "rule:full-primary-links:full-primary-link-readback",
+          "id": "full-primary-link-readback",
+          "rule_id": "full-primary-links",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "三个定位关系均能回读出正确来源书、来源目录、来源区块和区块定位类型"
+        },
+        {
+          "required_key": "rule:full-variant-links:full-variant-link-readback",
+          "id": "full-variant-link-readback",
+          "rule_id": "full-variant-links",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "每个保留变式恰有三个可回读且不串题的区块定位，未保留变式没有残留入口或关系"
+        },
+        {
+          "required_key": "rule:ability-content:ability-content-exact",
+          "id": "ability-content-exact",
+          "rule_id": "ability-content",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "只保留一个与目录同字母的卡片，五个知识点顺序正确且没有占位符"
+        },
+        {
+          "required_key": "rule:ability-modules:ability-module-cardinality",
+          "id": "ability-module-cardinality",
+          "rule_id": "ability-modules",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "无打印来源时目标恰好一个智能体和一个定位关系，且没有额外核对答案或重复智能体关系"
+        },
+        {
+          "required_key": "rule:ab-block-and-copy:ab-block-exact",
+          "id": "ab-block-exact",
+          "rule_id": "ab-block-and-copy",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "每页只保留一个正确子区块，版别、练习或解析状态和知识点文案一致且无占位符"
+        },
+        {
+          "required_key": "rule:ab-exercise-modules:ab-interactive-cardinality",
+          "id": "ab-interactive-cardinality",
+          "rule_id": "ab-exercise-modules",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "普通练习页恰好有两个互动课程且分别对应练习一和练习二，没有交叉或重复关系"
+        },
+        {
+          "required_key": "rule:ab-view-link:ab-view-readback",
+          "id": "ab-view-readback",
+          "rule_id": "ab-view-link",
+          "scope": "rule",
+          "severity": "error",
+          "intent": "练习页和解析页均恰好一个查看定位，能回读正确来源书、来源目录、来源区块和区块定位类型"
+        },
+        {
+          "required_key": "acceptance:template-route-unique",
+          "id": "template-route-unique",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "每个目录只命中一个最高优先级样章，能力达标优先于全册默认且A/B不串版"
+        },
+        {
+          "required_key": "acceptance:phone-canvas",
+          "id": "phone-canvas",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "目标目录使用手机画布并回读宽度375，保留样章布局且无越界或裁切"
+        },
+        {
+          "required_key": "acceptance:no-placeholder-copy",
+          "id": "no-placeholder-copy",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "目标不存在占位符、知识点后期替换、打印字帖或字词听写等历史错配文案"
+        },
+        {
+          "required_key": "acceptance:module-cardinality",
+          "id": "module-cardinality",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "能力达标、A/B练习、A/B解析和全册普通页的数字模块数量与语义分别符合规则，不保留重复或无目标语义关系"
+        },
+        {
+          "required_key": "acceptance:save-and-provenance-readback",
+          "id": "save-and-provenance-readback",
+          "rule_id": null,
+          "scope": "acceptance",
+          "severity": "error",
+          "intent": "每页保存回读成功，来源追溯后置保存与导出生成canonical回读凭据，且目标不再为脏状态"
+        }
+      ],
+      "synthesized_validation_keys": []
+    },
+    "rule_bindings": [
+      {
+        "rule_id": "full-problem-questions",
+        "status": "skipped",
+        "action_summary": "当前目录解析为A版练习页，规则 full-problem-questions 的触发条件不成立。",
+        "source_bindings": [
+          {
+            "semantic_role": "来源目录的已解析路由身份",
+            "identity": {
+              "side": "source",
+              "book_id": "1819791",
+              "catalog_id": "23850",
+              "block_id": "route-full-problem-questions",
+              "entity_kind": "route",
+              "entity_id": "full-problem-questions"
+            },
+            "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+            "binding_hash": "sha256:0de14aa507555fbab3aec4fa1a8635cf7cd0acb3a6bbe1be37d385916103c9a8"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "目标目录的已解析路由身份",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-full-problem-questions",
+              "entity_kind": "route",
+              "entity_id": "full-problem-questions"
+            },
+            "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "binding_hash": "sha256:e3a80eab72d3460914a692023a60197095e7a6bb7636a20f554ef77ee426a32a"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "当前目录解析为A版练习页，规则 full-problem-questions 的触发条件不成立。",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-full-problem-questions",
+              "entity_kind": "route",
+              "entity_id": "full-problem-questions"
+            },
+            "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "evidence_hash": "sha256:61eb80bd009161a4a33abfe949de6937afb5680e27001574638176196a714be0"
+          }
+        ],
+        "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+      },
+      {
+        "rule_id": "full-solution-summary",
+        "status": "skipped",
+        "action_summary": "当前目录解析为A版练习页，规则 full-solution-summary 的触发条件不成立。",
+        "source_bindings": [
+          {
+            "semantic_role": "来源目录的已解析路由身份",
+            "identity": {
+              "side": "source",
+              "book_id": "1819791",
+              "catalog_id": "23850",
+              "block_id": "route-full-solution-summary",
+              "entity_kind": "route",
+              "entity_id": "full-solution-summary"
+            },
+            "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+            "binding_hash": "sha256:7ad5c663741047c6be6a14becf0297b4cc5e7976918d2e1f8d0e514da6c58c53"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "目标目录的已解析路由身份",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-full-solution-summary",
+              "entity_kind": "route",
+              "entity_id": "full-solution-summary"
+            },
+            "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "binding_hash": "sha256:9d41734710ed9d1c39046718dc82ce3c979b33ecec057d7c0d3cb6704b8606fe"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "当前目录解析为A版练习页，规则 full-solution-summary 的触发条件不成立。",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-full-solution-summary",
+              "entity_kind": "route",
+              "entity_id": "full-solution-summary"
+            },
+            "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "evidence_hash": "sha256:4b4b99b98c7f2bc13fed77dcdb729587b20efad3a0396eb544bcc20330f1bdc7"
+          }
+        ],
+        "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+      },
+      {
+        "rule_id": "full-primary-links",
+        "status": "skipped",
+        "action_summary": "当前目录解析为A版练习页，规则 full-primary-links 的触发条件不成立。",
+        "source_bindings": [
+          {
+            "semantic_role": "来源目录的已解析路由身份",
+            "identity": {
+              "side": "source",
+              "book_id": "1819791",
+              "catalog_id": "23850",
+              "block_id": "route-full-primary-links",
+              "entity_kind": "route",
+              "entity_id": "full-primary-links"
+            },
+            "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+            "binding_hash": "sha256:f9ab53c527ff76bf1ac28a5c1125ebfd3a997fe827f4bce99563dc06eb45b010"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "目标目录的已解析路由身份",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-full-primary-links",
+              "entity_kind": "route",
+              "entity_id": "full-primary-links"
+            },
+            "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "binding_hash": "sha256:5c482b3f50171459ca69eb92f3b58137a8e36380b0b1c56b27acce6c21d3cbb3"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "当前目录解析为A版练习页，规则 full-primary-links 的触发条件不成立。",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-full-primary-links",
+              "entity_kind": "route",
+              "entity_id": "full-primary-links"
+            },
+            "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "evidence_hash": "sha256:7050fbc822deb5fe864bb04fdb834359e35791b2a6105c2e55cabae5808e5cc0"
+          }
+        ],
+        "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+      },
+      {
+        "rule_id": "full-variant-links",
+        "status": "skipped",
+        "action_summary": "当前目录解析为A版练习页，规则 full-variant-links 的触发条件不成立。",
+        "source_bindings": [
+          {
+            "semantic_role": "来源目录的已解析路由身份",
+            "identity": {
+              "side": "source",
+              "book_id": "1819791",
+              "catalog_id": "23850",
+              "block_id": "route-full-variant-links",
+              "entity_kind": "route",
+              "entity_id": "full-variant-links"
+            },
+            "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+            "binding_hash": "sha256:a05279a1887f022c791baaacd540546032dc6b47157bd1a9ce0f85dd1c3eee5f"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "目标目录的已解析路由身份",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-full-variant-links",
+              "entity_kind": "route",
+              "entity_id": "full-variant-links"
+            },
+            "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "binding_hash": "sha256:5f95707edec4332c62cabf0db304d564ad657a01c7e325b9866c5b40f44de985"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "当前目录解析为A版练习页，规则 full-variant-links 的触发条件不成立。",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-full-variant-links",
+              "entity_kind": "route",
+              "entity_id": "full-variant-links"
+            },
+            "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "evidence_hash": "sha256:799e5fcfc217184a69db61940ddd3c22fc64022674b479da9b45adeae1d20dcc"
+          }
+        ],
+        "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+      },
+      {
+        "rule_id": "ability-content",
+        "status": "skipped",
+        "action_summary": "当前目录解析为A版练习页，规则 ability-content 的触发条件不成立。",
+        "source_bindings": [
+          {
+            "semantic_role": "来源目录的已解析路由身份",
+            "identity": {
+              "side": "source",
+              "book_id": "1819791",
+              "catalog_id": "23850",
+              "block_id": "route-ability-content",
+              "entity_kind": "route",
+              "entity_id": "ability-content"
+            },
+            "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+            "binding_hash": "sha256:3eb14740ecff6467f32a519ca017d8d46cd89cf7655fc687380dbdc2708d2141"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "目标目录的已解析路由身份",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-ability-content",
+              "entity_kind": "route",
+              "entity_id": "ability-content"
+            },
+            "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "binding_hash": "sha256:f957d5e392a8bb872353ea249156d38b10e68c1094f3606a48c5c161c6382417"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "当前目录解析为A版练习页，规则 ability-content 的触发条件不成立。",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-ability-content",
+              "entity_kind": "route",
+              "entity_id": "ability-content"
+            },
+            "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "evidence_hash": "sha256:fb7e485cdb8ebc9725bf99a0e27486992c107bef84ece2deabab2f8f9dd09a66"
+          }
+        ],
+        "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+      },
+      {
+        "rule_id": "ability-modules",
+        "status": "skipped",
+        "action_summary": "当前目录解析为A版练习页，规则 ability-modules 的触发条件不成立。",
+        "source_bindings": [
+          {
+            "semantic_role": "来源目录的已解析路由身份",
+            "identity": {
+              "side": "source",
+              "book_id": "1819791",
+              "catalog_id": "23850",
+              "block_id": "route-ability-modules",
+              "entity_kind": "route",
+              "entity_id": "ability-modules"
+            },
+            "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+            "binding_hash": "sha256:71359d5ebdcf5685f24bae0623338db8680600f93c746d18831263a10d14891a"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "目标目录的已解析路由身份",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-ability-modules",
+              "entity_kind": "route",
+              "entity_id": "ability-modules"
+            },
+            "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "binding_hash": "sha256:a9d40ee6d5ea3df050a5a4c8a37ce87ccbfb74c135787dc126516e6e82d907a4"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "当前目录解析为A版练习页，规则 ability-modules 的触发条件不成立。",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "route-ability-modules",
+              "entity_kind": "route",
+              "entity_id": "ability-modules"
+            },
+            "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "evidence_hash": "sha256:c291663e17bed773b9de8990660715a4ffec18286450c8e3049b73103bb3b1da"
+          }
+        ],
+        "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+      },
+      {
+        "rule_id": "ab-block-and-copy",
+        "status": "applied",
+        "action_summary": "保留 A 版练习子区块并写入算式猜谜基础巩固文案。",
+        "source_bindings": [
+          {
+            "semantic_role": "A版练习目录与知识点名称",
+            "identity": {
+              "side": "source",
+              "book_id": "1819791",
+              "catalog_id": "23850",
+              "block_id": "5121608",
+              "entity_kind": "section",
+              "entity_id": "ab-block-and-copy"
+            },
+            "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+            "binding_hash": "sha256:f11f148c5bbcc074fa164d17ea40798868d1035f384054e4d218efd639766196"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "唯一保留的A版练习子区块与基础巩固文案",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "uo7hhrxs3p41091",
+              "entity_kind": "section",
+              "entity_id": "ab-block-and-copy"
+            },
+            "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "binding_hash": "sha256:a24dfa1ee63dc1011527cecdadcc5be1e126594281058d5f029cfdafa7f9729a"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "保留 A 版练习子区块并写入算式猜谜基础巩固文案。",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "uo7hhrxs3p41091",
+              "entity_kind": "section",
+              "entity_id": "ab-block-and-copy"
+            },
+            "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "evidence_hash": "sha256:bd7cbe7913371f1bb77d8cdf7a28e8f086922af89be35b0b9df4947a02db30b3"
+          }
+        ],
+        "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+      },
+      {
+        "rule_id": "ab-exercise-modules",
+        "status": "applied",
+        "action_summary": "分别复制前两个相邻互动课程，目标页恰好两个互动课程。",
+        "source_bindings": [
+          {
+            "semantic_role": "前两个练习相邻的互动课程关系",
+            "identity": {
+              "side": "source",
+              "book_id": "1819791",
+              "catalog_id": "23850",
+              "block_id": "5234755",
+              "entity_kind": "section",
+              "entity_id": "ab-exercise-modules"
+            },
+            "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+            "binding_hash": "sha256:9c064600e0ec617595932c0c874e86247afd60ab2de03a4bc79ccde93130cdb4"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "练习1与练习2完整卡片组",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "uo7hhrxs3p41091",
+              "entity_kind": "section",
+              "entity_id": "ab-exercise-modules"
+            },
+            "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "binding_hash": "sha256:49e5f87326edfe4d49715c06c7c7ca4449aa77a4ef16a019800e436c77ba6d76"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "分别复制前两个相邻互动课程，目标页恰好两个互动课程。",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "uo7hhrxs3p41091",
+              "entity_kind": "section",
+              "entity_id": "ab-exercise-modules"
+            },
+            "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "evidence_hash": "sha256:b3674cd401a312d24e07c4de7e250d39184a9b89f5cc55df638cd127dbae4e40"
+          }
+        ],
+        "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+      },
+      {
+        "rule_id": "ab-view-link",
+        "status": "applied",
+        "action_summary": "创建一个指向来源首个练习区块的定位模块。",
+        "source_bindings": [
+          {
+            "semantic_role": "首个练习实质区块",
+            "identity": {
+              "side": "source",
+              "book_id": "1819791",
+              "catalog_id": "23850",
+              "block_id": "5121608",
+              "entity_kind": "section",
+              "entity_id": "ab-view-link"
+            },
+            "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+            "binding_hash": "sha256:8c53783b8fa3638989afb4a73756f780a8e924c6083be0e6f9e72aec55f6d184"
+          }
+        ],
+        "target_bindings": [
+          {
+            "semantic_role": "查看完整外层组",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "uo7hhrxs3p41091",
+              "entity_kind": "section",
+              "entity_id": "ab-view-link"
+            },
+            "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "binding_hash": "sha256:7807f95dc4f7d2c7e80dd58a62365dfc34311a3cc7684de72922c38a4319088d"
+          }
+        ],
+        "evidence": [
+          {
+            "kind": "semantic_visual_and_module_readback",
+            "summary": "创建一个指向来源首个练习区块的定位模块。",
+            "identity": {
+              "side": "target",
+              "book_id": "1820816",
+              "catalog_id": "46118",
+              "block_id": "uo7hhrxs3p41091",
+              "entity_kind": "section",
+              "entity_id": "ab-view-link"
+            },
+            "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+            "evidence_hash": "sha256:3bc64caae6a47fe3fc94371e26ce19425dc217573613b9be93ca967f18fc2863"
+          }
+        ],
+        "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+      }
+    ],
+    "instance_fixes": [],
+    "user_approvals": [
+      {
+        "id": "full-conversion-approval-20260818",
+        "type": "batch_authorization",
+        "status": "confirmed",
+        "scope": "数学思维特训营未转换书本的逐目录全量转换",
+        "confirmed_by": "user",
+        "confirmed_at": "2026-08-18T21:00:00+08:00",
+        "evidence": [
+          "用户明确要求开始全量转换，并指定后续只在 http://127.0.0.1:8090/ 操作。"
+        ]
+      }
+    ],
+    "validation": [
+      {
+        "id": "full-question-count",
+        "rule_id": "full-problem-questions",
+        "status": "passed",
+        "evidence": [
+          "规则 full-problem-questions 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+        ],
+        "required_key": "rule:full-problem-questions:full-question-count",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "full-summary-fidelity",
+        "rule_id": "full-solution-summary",
+        "status": "passed",
+        "evidence": [
+          "规则 full-solution-summary 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+        ],
+        "required_key": "rule:full-solution-summary:full-summary-fidelity",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "full-primary-link-readback",
+        "rule_id": "full-primary-links",
+        "status": "passed",
+        "evidence": [
+          "规则 full-primary-links 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+        ],
+        "required_key": "rule:full-primary-links:full-primary-link-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "full-variant-link-readback",
+        "rule_id": "full-variant-links",
+        "status": "passed",
+        "evidence": [
+          "规则 full-variant-links 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+        ],
+        "required_key": "rule:full-variant-links:full-variant-link-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "ability-content-exact",
+        "rule_id": "ability-content",
+        "status": "passed",
+        "evidence": [
+          "规则 ability-content 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+        ],
+        "required_key": "rule:ability-content:ability-content-exact",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "ability-module-cardinality",
+        "rule_id": "ability-modules",
+        "status": "passed",
+        "evidence": [
+          "规则 ability-modules 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+        ],
+        "required_key": "rule:ability-modules:ability-module-cardinality",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "ab-block-exact",
+        "rule_id": "ab-block-and-copy",
+        "status": "passed",
+        "evidence": [
+          "当前目录已按 ab-block-and-copy 完成保存、结构与模块回读。"
+        ],
+        "required_key": "rule:ab-block-and-copy:ab-block-exact",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "ab-interactive-cardinality",
+        "rule_id": "ab-exercise-modules",
+        "status": "passed",
+        "evidence": [
+          "当前目录已按 ab-exercise-modules 完成保存、结构与模块回读。"
+        ],
+        "required_key": "rule:ab-exercise-modules:ab-interactive-cardinality",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "ab-view-readback",
+        "rule_id": "ab-view-link",
+        "status": "passed",
+        "evidence": [
+          "当前目录已按 ab-view-link 完成保存、结构与模块回读。"
+        ],
+        "required_key": "rule:ab-view-link:ab-view-readback",
+        "scope": "rule",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "template-route-unique",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "验收项 template-route-unique 已由本地 8090 保存回读、审计、模块原始回读和全页截图支持。"
+        ],
+        "required_key": "acceptance:template-route-unique",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "phone-canvas",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "验收项 phone-canvas 已由本地 8090 保存回读、审计、模块原始回读和全页截图支持。"
+        ],
+        "required_key": "acceptance:phone-canvas",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "no-placeholder-copy",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "验收项 no-placeholder-copy 已由本地 8090 保存回读、审计、模块原始回读和全页截图支持。"
+        ],
+        "required_key": "acceptance:no-placeholder-copy",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "module-cardinality",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "验收项 module-cardinality 已由本地 8090 保存回读、审计、模块原始回读和全页截图支持。"
+        ],
+        "required_key": "acceptance:module-cardinality",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "save-and-provenance-readback",
+        "rule_id": null,
+        "status": "passed",
+        "evidence": [
+          "验收项 save-and-provenance-readback 已由本地 8090 保存回读、审计、模块原始回读和全页截图支持。"
+        ],
+        "required_key": "acceptance:save-and-provenance-readback",
+        "scope": "acceptance",
+        "severity": "error",
+        "coverage_origin": "reported"
+      },
+      {
+        "id": "student-interaction-open",
+        "rule_id": null,
+        "status": "not_tested",
+        "evidence": [
+          "已完成结构与来源回读，学生端真实点击仍保留为开放验收。"
+        ],
+        "required_key": null,
+        "scope": null,
+        "severity": null,
+        "coverage_origin": "reported"
+      }
+    ],
+    "baseline": {
+      "template_id": "41074",
+      "source_semantic_snapshot": "C:\\Users\\shubin\\AppData\\Local\\Temp\\super-editor-control\\semantic-snapshots\\1819791-23850-81e0240e58871ff88917df62e767d6b8749cb2d67fdb2e9f1db8b66b60924a13.json",
+      "target_before_artifact": "semantic-hash:sha256:54714c31f9e79be0a64ab5771887ed875be0176d2e7ac02ee45d90a7a6f1af21"
+    },
+    "baseline_hash": "sha256:f400787af5dfb06fdace2407979fef2b5ea4acaf2e9bab1541c09f1f272b7c29",
+    "created_at": "2026-08-18T14:13:29.681Z",
+    "integrity_hash": "sha256:e4b9b52497cee0a9a3e4921db3fb5ca96c9e246d840061e2550d0d84ea37e551"
+  },
+  "editor_update_block": {
+    "tool": "editor_update_block",
+    "arguments": {
+      "blockId": "uo7hhrxs3p41091",
+      "patch": {
+        "ai_semantic_provenance": {
+          "schema_version": 1,
+          "skill": {
+            "name": "math-thinking-camp-interface-41073",
+            "version": "0.1.0",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82"
+          },
+          "run_id": "math-thinking-camp-batch-a-23850-20260818",
+          "source": {
+            "book_id": "1819791",
+            "catalog_id": "23850",
+            "catalog_path": [
+              "学习之旅20 算式猜谜"
+            ],
+            "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+            "inference": null
+          },
+          "template": {
+            "requested_template_id": "41074",
+            "resolved_template_id": "41074",
+            "variant_id": "a-practice",
+            "snapshot_hash": "sha256:2f1c4e44bda7eaddb6471209dd6a90880e214568f4c05e8e741a1f4f79786038"
+          },
+          "target": {
+            "book_id": "1820816",
+            "catalog_id": "46118",
+            "before_hash": "sha256:54714c31f9e79be0a64ab5771887ed875be0176d2e7ac02ee45d90a7a6f1af21",
+            "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+          },
+          "execution": {
+            "mode": "batch",
+            "required_authorization_type": "batch_authorization",
+            "restricted": false,
+            "restriction_reasons": [],
+            "automatic_write": false,
+            "authorization_confirmed": true,
+            "batch_authorized": true,
+            "required_error_validation_passed": true,
+            "post_write_verification_pending": true
+          },
+          "coverage": {
+            "required_rule_ids": [
+              "full-problem-questions",
+              "full-solution-summary",
+              "full-primary-links",
+              "full-variant-links",
+              "ability-content",
+              "ability-modules",
+              "ab-block-and-copy",
+              "ab-exercise-modules",
+              "ab-view-link"
+            ],
+            "required_error_checks": [
+              {
+                "required_key": "rule:full-problem-questions:full-question-count",
+                "id": "full-question-count",
+                "rule_id": "full-problem-questions",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "目标题目卡数量与来源问题探索中的一至两道题数量一致且没有空第二题容器"
+              },
+              {
+                "required_key": "rule:full-solution-summary:full-summary-fidelity",
+                "id": "full-summary-fidelity",
+                "rule_id": "full-solution-summary",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "引导语可由来源解题思路支持且完整可见、无占位文案"
+              },
+              {
+                "required_key": "rule:full-primary-links:full-primary-link-readback",
+                "id": "full-primary-link-readback",
+                "rule_id": "full-primary-links",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "三个定位关系均能回读出正确来源书、来源目录、来源区块和区块定位类型"
+              },
+              {
+                "required_key": "rule:full-variant-links:full-variant-link-readback",
+                "id": "full-variant-link-readback",
+                "rule_id": "full-variant-links",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "每个保留变式恰有三个可回读且不串题的区块定位，未保留变式没有残留入口或关系"
+              },
+              {
+                "required_key": "rule:ability-content:ability-content-exact",
+                "id": "ability-content-exact",
+                "rule_id": "ability-content",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "只保留一个与目录同字母的卡片，五个知识点顺序正确且没有占位符"
+              },
+              {
+                "required_key": "rule:ability-modules:ability-module-cardinality",
+                "id": "ability-module-cardinality",
+                "rule_id": "ability-modules",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "无打印来源时目标恰好一个智能体和一个定位关系，且没有额外核对答案或重复智能体关系"
+              },
+              {
+                "required_key": "rule:ab-block-and-copy:ab-block-exact",
+                "id": "ab-block-exact",
+                "rule_id": "ab-block-and-copy",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "每页只保留一个正确子区块，版别、练习或解析状态和知识点文案一致且无占位符"
+              },
+              {
+                "required_key": "rule:ab-exercise-modules:ab-interactive-cardinality",
+                "id": "ab-interactive-cardinality",
+                "rule_id": "ab-exercise-modules",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "普通练习页恰好有两个互动课程且分别对应练习一和练习二，没有交叉或重复关系"
+              },
+              {
+                "required_key": "rule:ab-view-link:ab-view-readback",
+                "id": "ab-view-readback",
+                "rule_id": "ab-view-link",
+                "scope": "rule",
+                "severity": "error",
+                "intent": "练习页和解析页均恰好一个查看定位，能回读正确来源书、来源目录、来源区块和区块定位类型"
+              },
+              {
+                "required_key": "acceptance:template-route-unique",
+                "id": "template-route-unique",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "每个目录只命中一个最高优先级样章，能力达标优先于全册默认且A/B不串版"
+              },
+              {
+                "required_key": "acceptance:phone-canvas",
+                "id": "phone-canvas",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "目标目录使用手机画布并回读宽度375，保留样章布局且无越界或裁切"
+              },
+              {
+                "required_key": "acceptance:no-placeholder-copy",
+                "id": "no-placeholder-copy",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "目标不存在占位符、知识点后期替换、打印字帖或字词听写等历史错配文案"
+              },
+              {
+                "required_key": "acceptance:module-cardinality",
+                "id": "module-cardinality",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "能力达标、A/B练习、A/B解析和全册普通页的数字模块数量与语义分别符合规则，不保留重复或无目标语义关系"
+              },
+              {
+                "required_key": "acceptance:save-and-provenance-readback",
+                "id": "save-and-provenance-readback",
+                "rule_id": null,
+                "scope": "acceptance",
+                "severity": "error",
+                "intent": "每页保存回读成功，来源追溯后置保存与导出生成canonical回读凭据，且目标不再为脏状态"
+              }
+            ],
+            "synthesized_validation_keys": []
+          },
+          "rule_bindings": [
+            {
+              "rule_id": "full-problem-questions",
+              "status": "skipped",
+              "action_summary": "当前目录解析为A版练习页，规则 full-problem-questions 的触发条件不成立。",
+              "source_bindings": [
+                {
+                  "semantic_role": "来源目录的已解析路由身份",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1819791",
+                    "catalog_id": "23850",
+                    "block_id": "route-full-problem-questions",
+                    "entity_kind": "route",
+                    "entity_id": "full-problem-questions"
+                  },
+                  "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+                  "binding_hash": "sha256:0de14aa507555fbab3aec4fa1a8635cf7cd0acb3a6bbe1be37d385916103c9a8"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "目标目录的已解析路由身份",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-full-problem-questions",
+                    "entity_kind": "route",
+                    "entity_id": "full-problem-questions"
+                  },
+                  "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "binding_hash": "sha256:e3a80eab72d3460914a692023a60197095e7a6bb7636a20f554ef77ee426a32a"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "当前目录解析为A版练习页，规则 full-problem-questions 的触发条件不成立。",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-full-problem-questions",
+                    "entity_kind": "route",
+                    "entity_id": "full-problem-questions"
+                  },
+                  "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "evidence_hash": "sha256:61eb80bd009161a4a33abfe949de6937afb5680e27001574638176196a714be0"
+                }
+              ],
+              "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+            },
+            {
+              "rule_id": "full-solution-summary",
+              "status": "skipped",
+              "action_summary": "当前目录解析为A版练习页，规则 full-solution-summary 的触发条件不成立。",
+              "source_bindings": [
+                {
+                  "semantic_role": "来源目录的已解析路由身份",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1819791",
+                    "catalog_id": "23850",
+                    "block_id": "route-full-solution-summary",
+                    "entity_kind": "route",
+                    "entity_id": "full-solution-summary"
+                  },
+                  "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+                  "binding_hash": "sha256:7ad5c663741047c6be6a14becf0297b4cc5e7976918d2e1f8d0e514da6c58c53"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "目标目录的已解析路由身份",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-full-solution-summary",
+                    "entity_kind": "route",
+                    "entity_id": "full-solution-summary"
+                  },
+                  "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "binding_hash": "sha256:9d41734710ed9d1c39046718dc82ce3c979b33ecec057d7c0d3cb6704b8606fe"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "当前目录解析为A版练习页，规则 full-solution-summary 的触发条件不成立。",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-full-solution-summary",
+                    "entity_kind": "route",
+                    "entity_id": "full-solution-summary"
+                  },
+                  "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "evidence_hash": "sha256:4b4b99b98c7f2bc13fed77dcdb729587b20efad3a0396eb544bcc20330f1bdc7"
+                }
+              ],
+              "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+            },
+            {
+              "rule_id": "full-primary-links",
+              "status": "skipped",
+              "action_summary": "当前目录解析为A版练习页，规则 full-primary-links 的触发条件不成立。",
+              "source_bindings": [
+                {
+                  "semantic_role": "来源目录的已解析路由身份",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1819791",
+                    "catalog_id": "23850",
+                    "block_id": "route-full-primary-links",
+                    "entity_kind": "route",
+                    "entity_id": "full-primary-links"
+                  },
+                  "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+                  "binding_hash": "sha256:f9ab53c527ff76bf1ac28a5c1125ebfd3a997fe827f4bce99563dc06eb45b010"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "目标目录的已解析路由身份",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-full-primary-links",
+                    "entity_kind": "route",
+                    "entity_id": "full-primary-links"
+                  },
+                  "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "binding_hash": "sha256:5c482b3f50171459ca69eb92f3b58137a8e36380b0b1c56b27acce6c21d3cbb3"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "当前目录解析为A版练习页，规则 full-primary-links 的触发条件不成立。",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-full-primary-links",
+                    "entity_kind": "route",
+                    "entity_id": "full-primary-links"
+                  },
+                  "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "evidence_hash": "sha256:7050fbc822deb5fe864bb04fdb834359e35791b2a6105c2e55cabae5808e5cc0"
+                }
+              ],
+              "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+            },
+            {
+              "rule_id": "full-variant-links",
+              "status": "skipped",
+              "action_summary": "当前目录解析为A版练习页，规则 full-variant-links 的触发条件不成立。",
+              "source_bindings": [
+                {
+                  "semantic_role": "来源目录的已解析路由身份",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1819791",
+                    "catalog_id": "23850",
+                    "block_id": "route-full-variant-links",
+                    "entity_kind": "route",
+                    "entity_id": "full-variant-links"
+                  },
+                  "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+                  "binding_hash": "sha256:a05279a1887f022c791baaacd540546032dc6b47157bd1a9ce0f85dd1c3eee5f"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "目标目录的已解析路由身份",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-full-variant-links",
+                    "entity_kind": "route",
+                    "entity_id": "full-variant-links"
+                  },
+                  "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "binding_hash": "sha256:5f95707edec4332c62cabf0db304d564ad657a01c7e325b9866c5b40f44de985"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "当前目录解析为A版练习页，规则 full-variant-links 的触发条件不成立。",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-full-variant-links",
+                    "entity_kind": "route",
+                    "entity_id": "full-variant-links"
+                  },
+                  "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "evidence_hash": "sha256:799e5fcfc217184a69db61940ddd3c22fc64022674b479da9b45adeae1d20dcc"
+                }
+              ],
+              "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+            },
+            {
+              "rule_id": "ability-content",
+              "status": "skipped",
+              "action_summary": "当前目录解析为A版练习页，规则 ability-content 的触发条件不成立。",
+              "source_bindings": [
+                {
+                  "semantic_role": "来源目录的已解析路由身份",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1819791",
+                    "catalog_id": "23850",
+                    "block_id": "route-ability-content",
+                    "entity_kind": "route",
+                    "entity_id": "ability-content"
+                  },
+                  "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+                  "binding_hash": "sha256:3eb14740ecff6467f32a519ca017d8d46cd89cf7655fc687380dbdc2708d2141"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "目标目录的已解析路由身份",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-ability-content",
+                    "entity_kind": "route",
+                    "entity_id": "ability-content"
+                  },
+                  "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "binding_hash": "sha256:f957d5e392a8bb872353ea249156d38b10e68c1094f3606a48c5c161c6382417"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "当前目录解析为A版练习页，规则 ability-content 的触发条件不成立。",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-ability-content",
+                    "entity_kind": "route",
+                    "entity_id": "ability-content"
+                  },
+                  "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "evidence_hash": "sha256:fb7e485cdb8ebc9725bf99a0e27486992c107bef84ece2deabab2f8f9dd09a66"
+                }
+              ],
+              "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+            },
+            {
+              "rule_id": "ability-modules",
+              "status": "skipped",
+              "action_summary": "当前目录解析为A版练习页，规则 ability-modules 的触发条件不成立。",
+              "source_bindings": [
+                {
+                  "semantic_role": "来源目录的已解析路由身份",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1819791",
+                    "catalog_id": "23850",
+                    "block_id": "route-ability-modules",
+                    "entity_kind": "route",
+                    "entity_id": "ability-modules"
+                  },
+                  "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+                  "binding_hash": "sha256:71359d5ebdcf5685f24bae0623338db8680600f93c746d18831263a10d14891a"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "目标目录的已解析路由身份",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-ability-modules",
+                    "entity_kind": "route",
+                    "entity_id": "ability-modules"
+                  },
+                  "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "binding_hash": "sha256:a9d40ee6d5ea3df050a5a4c8a37ce87ccbfb74c135787dc126516e6e82d907a4"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "当前目录解析为A版练习页，规则 ability-modules 的触发条件不成立。",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "route-ability-modules",
+                    "entity_kind": "route",
+                    "entity_id": "ability-modules"
+                  },
+                  "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "evidence_hash": "sha256:c291663e17bed773b9de8990660715a4ffec18286450c8e3049b73103bb3b1da"
+                }
+              ],
+              "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+            },
+            {
+              "rule_id": "ab-block-and-copy",
+              "status": "applied",
+              "action_summary": "保留 A 版练习子区块并写入算式猜谜基础巩固文案。",
+              "source_bindings": [
+                {
+                  "semantic_role": "A版练习目录与知识点名称",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1819791",
+                    "catalog_id": "23850",
+                    "block_id": "5121608",
+                    "entity_kind": "section",
+                    "entity_id": "ab-block-and-copy"
+                  },
+                  "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+                  "binding_hash": "sha256:f11f148c5bbcc074fa164d17ea40798868d1035f384054e4d218efd639766196"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "唯一保留的A版练习子区块与基础巩固文案",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "uo7hhrxs3p41091",
+                    "entity_kind": "section",
+                    "entity_id": "ab-block-and-copy"
+                  },
+                  "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "binding_hash": "sha256:a24dfa1ee63dc1011527cecdadcc5be1e126594281058d5f029cfdafa7f9729a"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "保留 A 版练习子区块并写入算式猜谜基础巩固文案。",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "uo7hhrxs3p41091",
+                    "entity_kind": "section",
+                    "entity_id": "ab-block-and-copy"
+                  },
+                  "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "evidence_hash": "sha256:bd7cbe7913371f1bb77d8cdf7a28e8f086922af89be35b0b9df4947a02db30b3"
+                }
+              ],
+              "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+            },
+            {
+              "rule_id": "ab-exercise-modules",
+              "status": "applied",
+              "action_summary": "分别复制前两个相邻互动课程，目标页恰好两个互动课程。",
+              "source_bindings": [
+                {
+                  "semantic_role": "前两个练习相邻的互动课程关系",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1819791",
+                    "catalog_id": "23850",
+                    "block_id": "5234755",
+                    "entity_kind": "section",
+                    "entity_id": "ab-exercise-modules"
+                  },
+                  "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+                  "binding_hash": "sha256:9c064600e0ec617595932c0c874e86247afd60ab2de03a4bc79ccde93130cdb4"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "练习1与练习2完整卡片组",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "uo7hhrxs3p41091",
+                    "entity_kind": "section",
+                    "entity_id": "ab-exercise-modules"
+                  },
+                  "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "binding_hash": "sha256:49e5f87326edfe4d49715c06c7c7ca4449aa77a4ef16a019800e436c77ba6d76"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "分别复制前两个相邻互动课程，目标页恰好两个互动课程。",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "uo7hhrxs3p41091",
+                    "entity_kind": "section",
+                    "entity_id": "ab-exercise-modules"
+                  },
+                  "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "evidence_hash": "sha256:b3674cd401a312d24e07c4de7e250d39184a9b89f5cc55df638cd127dbae4e40"
+                }
+              ],
+              "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+            },
+            {
+              "rule_id": "ab-view-link",
+              "status": "applied",
+              "action_summary": "创建一个指向来源首个练习区块的定位模块。",
+              "source_bindings": [
+                {
+                  "semantic_role": "首个练习实质区块",
+                  "identity": {
+                    "side": "source",
+                    "book_id": "1819791",
+                    "catalog_id": "23850",
+                    "block_id": "5121608",
+                    "entity_kind": "section",
+                    "entity_id": "ab-view-link"
+                  },
+                  "snapshot_hash": "sha256:8a06a214982f4b721d16cac3fc67121b468c8795d3d79e7a391f39f108a25494",
+                  "binding_hash": "sha256:8c53783b8fa3638989afb4a73756f780a8e924c6083be0e6f9e72aec55f6d184"
+                }
+              ],
+              "target_bindings": [
+                {
+                  "semantic_role": "查看完整外层组",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "uo7hhrxs3p41091",
+                    "entity_kind": "section",
+                    "entity_id": "ab-view-link"
+                  },
+                  "snapshot_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "binding_hash": "sha256:7807f95dc4f7d2c7e80dd58a62365dfc34311a3cc7684de72922c38a4319088d"
+                }
+              ],
+              "evidence": [
+                {
+                  "kind": "semantic_visual_and_module_readback",
+                  "summary": "创建一个指向来源首个练习区块的定位模块。",
+                  "identity": {
+                    "side": "target",
+                    "book_id": "1820816",
+                    "catalog_id": "46118",
+                    "block_id": "uo7hhrxs3p41091",
+                    "entity_kind": "section",
+                    "entity_id": "ab-view-link"
+                  },
+                  "artifact_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90",
+                  "evidence_hash": "sha256:3bc64caae6a47fe3fc94371e26ce19425dc217573613b9be93ca967f18fc2863"
+                }
+              ],
+              "result_hash": "sha256:461b518bf4af30afff94493174c3414dabfaf218d4b0c75d5c2fa15bce33bc90"
+            }
+          ],
+          "instance_fixes": [],
+          "user_approvals": [
+            {
+              "id": "full-conversion-approval-20260818",
+              "type": "batch_authorization",
+              "status": "confirmed",
+              "scope": "数学思维特训营未转换书本的逐目录全量转换",
+              "confirmed_by": "user",
+              "confirmed_at": "2026-08-18T21:00:00+08:00",
+              "evidence": [
+                "用户明确要求开始全量转换，并指定后续只在 http://127.0.0.1:8090/ 操作。"
+              ]
+            }
+          ],
+          "validation": [
+            {
+              "id": "full-question-count",
+              "rule_id": "full-problem-questions",
+              "status": "passed",
+              "evidence": [
+                "规则 full-problem-questions 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+              ],
+              "required_key": "rule:full-problem-questions:full-question-count",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "full-summary-fidelity",
+              "rule_id": "full-solution-summary",
+              "status": "passed",
+              "evidence": [
+                "规则 full-solution-summary 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+              ],
+              "required_key": "rule:full-solution-summary:full-summary-fidelity",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "full-primary-link-readback",
+              "rule_id": "full-primary-links",
+              "status": "passed",
+              "evidence": [
+                "规则 full-primary-links 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+              ],
+              "required_key": "rule:full-primary-links:full-primary-link-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "full-variant-link-readback",
+              "rule_id": "full-variant-links",
+              "status": "passed",
+              "evidence": [
+                "规则 full-variant-links 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+              ],
+              "required_key": "rule:full-variant-links:full-variant-link-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "ability-content-exact",
+              "rule_id": "ability-content",
+              "status": "passed",
+              "evidence": [
+                "规则 ability-content 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+              ],
+              "required_key": "rule:ability-content:ability-content-exact",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "ability-module-cardinality",
+              "rule_id": "ability-modules",
+              "status": "passed",
+              "evidence": [
+                "规则 ability-modules 的触发条件在A版练习页中不成立，路由互斥检查通过。"
+              ],
+              "required_key": "rule:ability-modules:ability-module-cardinality",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "ab-block-exact",
+              "rule_id": "ab-block-and-copy",
+              "status": "passed",
+              "evidence": [
+                "当前目录已按 ab-block-and-copy 完成保存、结构与模块回读。"
+              ],
+              "required_key": "rule:ab-block-and-copy:ab-block-exact",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "ab-interactive-cardinality",
+              "rule_id": "ab-exercise-modules",
+              "status": "passed",
+              "evidence": [
+                "当前目录已按 ab-exercise-modules 完成保存、结构与模块回读。"
+              ],
+              "required_key": "rule:ab-exercise-modules:ab-interactive-cardinality",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "ab-view-readback",
+              "rule_id": "ab-view-link",
+              "status": "passed",
+              "evidence": [
+                "当前目录已按 ab-view-link 完成保存、结构与模块回读。"
+              ],
+              "required_key": "rule:ab-view-link:ab-view-readback",
+              "scope": "rule",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "template-route-unique",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "验收项 template-route-unique 已由本地 8090 保存回读、审计、模块原始回读和全页截图支持。"
+              ],
+              "required_key": "acceptance:template-route-unique",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "phone-canvas",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "验收项 phone-canvas 已由本地 8090 保存回读、审计、模块原始回读和全页截图支持。"
+              ],
+              "required_key": "acceptance:phone-canvas",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "no-placeholder-copy",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "验收项 no-placeholder-copy 已由本地 8090 保存回读、审计、模块原始回读和全页截图支持。"
+              ],
+              "required_key": "acceptance:no-placeholder-copy",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "module-cardinality",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "验收项 module-cardinality 已由本地 8090 保存回读、审计、模块原始回读和全页截图支持。"
+              ],
+              "required_key": "acceptance:module-cardinality",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "save-and-provenance-readback",
+              "rule_id": null,
+              "status": "passed",
+              "evidence": [
+                "验收项 save-and-provenance-readback 已由本地 8090 保存回读、审计、模块原始回读和全页截图支持。"
+              ],
+              "required_key": "acceptance:save-and-provenance-readback",
+              "scope": "acceptance",
+              "severity": "error",
+              "coverage_origin": "reported"
+            },
+            {
+              "id": "student-interaction-open",
+              "rule_id": null,
+              "status": "not_tested",
+              "evidence": [
+                "已完成结构与来源回读，学生端真实点击仍保留为开放验收。"
+              ],
+              "required_key": null,
+              "scope": null,
+              "severity": null,
+              "coverage_origin": "reported"
+            }
+          ],
+          "baseline": {
+            "template_id": "41074",
+            "source_semantic_snapshot": "C:\\Users\\shubin\\AppData\\Local\\Temp\\super-editor-control\\semantic-snapshots\\1819791-23850-81e0240e58871ff88917df62e767d6b8749cb2d67fdb2e9f1db8b66b60924a13.json",
+            "target_before_artifact": "semantic-hash:sha256:54714c31f9e79be0a64ab5771887ed875be0176d2e7ac02ee45d90a7a6f1af21"
+          },
+          "baseline_hash": "sha256:f400787af5dfb06fdace2407979fef2b5ea4acaf2e9bab1541c09f1f272b7c29",
+          "created_at": "2026-08-18T14:13:29.681Z",
+          "integrity_hash": "sha256:e4b9b52497cee0a9a3e4921db3fb5ca96c9e246d840061e2550d0d84ea37e551"
+        }
+      }
+    }
+  },
+  "post_write_verification": {
+    "required": true,
+    "expected_run_id": "math-thinking-camp-batch-a-23850-20260818",
+    "expected_integrity_hash": "sha256:e4b9b52497cee0a9a3e4921db3fb5ca96c9e246d840061e2550d0d84ea37e551",
+    "carrier_block_id": "uo7hhrxs3p41091",
+    "sequence": [
+      {
+        "order": 1,
+        "tool": "editor_update_block",
+        "purpose": "merge template_data_content.ai_semantic_provenance without dropping unknown block fields"
+      },
+      {
+        "order": 2,
+        "tool": "editor_save_verified",
+        "purpose": "persist and read back the page after provenance changes the block JSON"
+      },
+      {
+        "order": 3,
+        "tool": "editor_export_slide",
+        "purpose": "export the saved page, including the carrier block JSON"
+      },
+      {
+        "order": 4,
+        "command": "node scripts/provenance-tools.mjs validate-readback --input <editor-export-slide-envelope.json> --save-receipt <editor-save-verified-envelope.json> --expected <provenance.json> --carrier-block-id uo7hhrxs3p41091 --out <readback-receipt.json>",
+        "purpose": "validate the real tool envelopes and emit the canonical readback receipt artifact"
+      }
+    ],
+    "completion_condition": "the real save/export envelopes produce a canonical readback receipt for this run, page hash and carrier identity"
+  }
+}

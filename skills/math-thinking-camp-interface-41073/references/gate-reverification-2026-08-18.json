@@ -1,0 +1,91 @@
+{
+  "artifact_type": "semantic_gate_reverification",
+  "captured_at": "2026-08-18T21:05:30+08:00",
+  "skill_name": "math-thinking-camp-interface-41073",
+  "status": "passed_full_fidelity_gate",
+  "business_writes_performed": false,
+  "runtime": {
+    "editor_origin": "http://127.0.0.1:8090",
+    "bridge_version": "1.13.0",
+    "plugin_version": "1.0.0+codex.20260818125039",
+    "instance_id": "inst-msyocfnw-6yamg50f",
+    "window_id": "win-msyocfnw-895syjkzd2"
+  },
+  "control_observation": {
+    "editor_origin": "https://shc.shanbanyun.com",
+    "result": "1_of_7_full_fidelity",
+    "diagnosis": "MCP initially retained a lease to an older production editor instance. The patched rich-text comparison was not present there, so six representative pages still reported RICH_TEXT_ROUND_TRIP_UNSAFE. This control run did not authorize writes."
+  },
+  "representative_snapshots": [
+    {
+      "book_id": 1819783,
+      "catalog_id": 22380,
+      "catalog_name": "学习之旅1 数数有多少",
+      "snapshot_file_sha256": "sha256:1cde8fb2b89e9cfc43991fdef91c5cf639335e22db03a4731c71bfa157bd5eb6",
+      "snapshot_stable_hash": "sha256:c2455e17116655f2d0ea9170454616c5ff0b547caed150822c55db38104045a2",
+      "full_fidelity": true,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819783,
+      "catalog_id": 22385,
+      "catalog_name": "能力达标A",
+      "snapshot_file_sha256": "sha256:474abe9aeae93b1db90f360c7f27cf331666f9cba735000c987b67bffb1413a8",
+      "snapshot_stable_hash": "sha256:c3b3355f340b2d282773accba2c24453ce87935c8e8672596970dd80a8259f55",
+      "full_fidelity": true,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819783,
+      "catalog_id": 22386,
+      "catalog_name": "能力达标B",
+      "snapshot_file_sha256": "sha256:e0633cd04ccf118306e5f217876e71618f2095e55a615d0de95952337d443d98",
+      "snapshot_stable_hash": "sha256:c9d2a9f8d3b40e4c75e88fbe65418dcab993c69276a3b39f7fe9ecfacdf84f84",
+      "full_fidelity": true,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819791,
+      "catalog_id": 23831,
+      "catalog_name": "学习之旅1 数数有多少",
+      "snapshot_file_sha256": "sha256:b2ece52221d779473ec6bffd8cdd84b0c2b6cb6e7cec70620f36f42ef31cb9da",
+      "snapshot_stable_hash": "sha256:0553c531125ce9b488f34704c0012835d489d10fb54b23c3d5cbab8bae600853",
+      "full_fidelity": true,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819791,
+      "catalog_id": 31565,
+      "catalog_name": "学习之旅1-解析",
+      "snapshot_file_sha256": "sha256:e9250c88a7a03a62cd365bcb4def4872464f7a9c424969d61c462fca0af477d6",
+      "snapshot_stable_hash": "sha256:dcd4f0817933c85e6ad8a9b3d494b3ded345ce286293d678111cbe2dd06607ca",
+      "full_fidelity": true,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819790,
+      "catalog_id": 23759,
+      "catalog_name": "学习之旅1 数数有多少",
+      "snapshot_file_sha256": "sha256:212e3237e5b01584145e5a2e1148d6e1dc65d1c077d5f224311ec116f336b457",
+      "snapshot_stable_hash": "sha256:afa5d77e13ba4ef08a9edfbc5d187e5f7475a94188107bd8b36c9a23624594e2",
+      "full_fidelity": true,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 }
+    },
+    {
+      "book_id": 1819790,
+      "catalog_id": 31595,
+      "catalog_name": "学习之旅1-解析",
+      "snapshot_file_sha256": "sha256:e2461ff8bc5fb8cb1938866f84aa4c40b2e6a60423dc2b7f3966dbe3694267aa",
+      "snapshot_stable_hash": "sha256:50ffc95384326e891d88411747d570d828cb90df7e9c9a4624c01900d0d80e7a",
+      "full_fidelity": true,
+      "warnings": { "FONT_MAPPING_EMPTY": 1 }
+    }
+  ],
+  "decision": {
+    "full_fidelity_gate": "passed",
+    "rule_pack_status": "draft",
+    "trial_approval": false,
+    "reason": "All seven required representative source pages now satisfy richText=deep and fullFidelity=true on the patched local editor runtime. FONT_MAPPING_EMPTY is the sole warning and is non-blocking under the current plugin policy.",
+    "next_step": "Obtain explicit user confirmation of the routing and conversion rules before changing the rule pack to trial_approved or performing any template, catalog, digital-module, provenance, or save write."
+  }
+}

@@ -1,0 +1,1316 @@
+{
+  "schema_version": 2,
+  "ledger_id": "155edc77-d434-4185-831b-7df66bfe3cc4",
+  "skill": {
+    "name": "math-thinking-camp-interface-41073",
+    "version": "0.1.0",
+    "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82"
+  },
+  "created_at": "2026-08-18T13:51:22.510Z",
+  "updated_at": "2026-08-19T02:13:11.777Z",
+  "items": [
+    {
+      "item_id": "math-thinking-camp-grade1-full",
+      "lock_key": "math-thinking-camp-interface-41073:grade1-full:20260818",
+      "target": {
+        "book_stable_identity": "math-thinking-camp-interface-41073-grade1-full-20260818",
+        "prospective_identity": "math-thinking-camp-interface-41073-grade1-full-20260818",
+        "promoted_book_id": "1820815",
+        "catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        }
+      },
+      "book": {
+        "item_id": "math-thinking-camp-grade1-full",
+        "source_book_id": "1819783",
+        "target_book_prospective_identity": "math-thinking-camp-interface-41073-grade1-full-20260818",
+        "target_book_stable_identity": "math-thinking-camp-interface-41073-grade1-full-20260818",
+        "lock_key": "math-thinking-camp-interface-41073:grade1-full:20260818",
+        "target_catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        },
+        "target_book_id": "1820815"
+      },
+      "state": "verified",
+      "attempt": 1,
+      "fingerprint": {
+        "source_snapshot_hash": "sha256:99923849107e6a0f61899e9bd53e56c3ac055e67455b72badc38cdcde5cec34e",
+        "template_snapshot_hash": "sha256:1c01b7dab7d8b0a49682a54011f82a91b4eda9ae83e5e4d977611b581034248c",
+        "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+        "target_before_hash": "sha256:7c17206a4845fc49d840cec0101d0179f60681000649fe3a41a950aee28e87d9",
+        "resolved_template_id": "41073+41075"
+      },
+      "idempotency_key": "sha256:d8193a9878a0d8ad6b13ffa800ef7f169b1ecaa0c47f2291932bece0f1f9feb3",
+      "apply_authorization": null,
+      "write_blocked": null,
+      "evidence": {
+        "target_promoted": {
+          "prospective_identity": "math-thinking-camp-interface-41073-grade1-full-20260818",
+          "lock_key": "math-thinking-camp-interface-41073:grade1-full:20260818",
+          "target_book_id": "1820815",
+          "registered_at": "2026-08-18T13:51:22.510Z",
+          "updated_at": "2026-08-18T13:52:15.664Z",
+          "promoted_at": "2026-08-18T13:52:15.664Z",
+          "promotion": {
+            "expected_prospective_identity": "math-thinking-camp-interface-41073-grade1-full-20260818",
+            "expected_lock_key": "math-thinking-camp-interface-41073:grade1-full:20260818",
+            "target_book_id": "1820815",
+            "reason": "本地8090已按授权创建目标书并完成代表页保存回读",
+            "authorized_by": "user-full-conversion-approval-20260818",
+            "lock_owner": "math-thinking-camp-full-conversion-20260818",
+            "lock_nonce": "93988da9-ceed-4d90-8e4b-ab84152920fe"
+          }
+        },
+        "planned": {},
+        "preflighted": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:99923849107e6a0f61899e9bd53e56c3ac055e67455b72badc38cdcde5cec34e",
+            "template_snapshot_hash": "sha256:1c01b7dab7d8b0a49682a54011f82a91b4eda9ae83e5e4d977611b581034248c",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+            "target_before_hash": "sha256:7c17206a4845fc49d840cec0101d0179f60681000649fe3a41a950aee28e87d9",
+            "resolved_template_id": "41073+41075"
+          },
+          "source_manifest": "runs/full-conversion-20260818/grade1-full-source-manifest.json",
+          "page_count": 42,
+          "full_fidelity_pages": 42,
+          "normal_pages": 30,
+          "ability_pages": 12,
+          "existing_verified_pages": 2,
+          "remaining_pages": 40,
+          "missing_locator_pages": 0,
+          "bad_module_cardinality_pages": 0,
+          "ordering_action": "保留已验收的22380和22385映射页，完成其余页面后按来源目录顺序重排"
+        },
+        "apply_authorized": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:99923849107e6a0f61899e9bd53e56c3ac055e67455b72badc38cdcde5cec34e",
+            "template_snapshot_hash": "sha256:1c01b7dab7d8b0a49682a54011f82a91b4eda9ae83e5e4d977611b581034248c",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+            "target_before_hash": "sha256:7c17206a4845fc49d840cec0101d0179f60681000649fe3a41a950aee28e87d9",
+            "resolved_template_id": "41073+41075"
+          },
+          "authorization": {
+            "token": "af997158-d6e0-4076-88f1-71abe204176e",
+            "issued_at": "2026-08-19T01:17:55.749Z",
+            "fingerprint_hash": "sha256:67b32d403a8b9500633ccabe4954f04d4225c150ee71d0ec0bd4473ce2500dbd",
+            "idempotency_key": "sha256:d8193a9878a0d8ad6b13ffa800ef7f169b1ecaa0c47f2291932bece0f1f9feb3",
+            "lock_owner": "math-thinking-camp-full-conversion-resume-20260819",
+            "lock_nonce": "81c4e0ae-7fcd-4e2e-8b40-5315a88810a1"
+          }
+        },
+        "applied": {
+          "target_after_hash": "sha256:0bc66a3ed31ae3f93fdbe70a69ee6e42c4bf6d78ff678e906d6629071d6c5861",
+          "apply_authorization_token": "af997158-d6e0-4076-88f1-71abe204176e",
+          "converted_pages": 42,
+          "phone_pages": 42,
+          "page_width": 375
+        },
+        "saved": {
+          "save_readback_hash": "sha256:0bc66a3ed31ae3f93fdbe70a69ee6e42c4bf6d78ff678e906d6629071d6c5861",
+          "saved_pages": 42,
+          "clean_pages": 42,
+          "readback_receipts": 42
+        },
+        "verified": {
+          "result_hash": "sha256:0bc66a3ed31ae3f93fdbe70a69ee6e42c4bf6d78ff678e906d6629071d6c5861",
+          "provenance_hash": "sha256:e0b46d0d2009113f4521b92f8fab9b62ee8e614b01f70260146e32b2efe1df0d",
+          "provenance_readback_receipt_path": "C:/Users/shubin/skills/super-editor-business-skills/skills/math-thinking-camp-interface-41073/runs/full-conversion-20260818/grade1-full-22421.readback-receipt.json",
+          "provenance_readback_receipt_sha256": "sha256:50208175d709cb5642167cb4a88de40b2a24515ccaa1332eacac387a1deede08",
+          "run_id": "math-thinking-camp-grade1-full-22421-20260819",
+          "carrier_block_id": "UN3g1OkkzG41095",
+          "slide_id": "46377",
+          "source_book_id": "1819783",
+          "source_catalog_id": "22421",
+          "target_book_id": "1820815",
+          "target_catalog_id": "46377",
+          "provenance_readback_receipt": {
+            "artifact_path": "C:\\Users\\shubin\\skills\\super-editor-business-skills\\skills\\math-thinking-camp-interface-41073\\runs\\full-conversion-20260818\\grade1-full-22421.readback-receipt.json",
+            "artifact_file_sha256": "sha256:50208175d709cb5642167cb4a88de40b2a24515ccaa1332eacac387a1deede08",
+            "artifact_canonical_hash": "sha256:be83f4bd959ff98cb53460a114a80846b8897fc93d6483c45ed350c201fe6df9",
+            "run_id": "math-thinking-camp-grade1-full-22421-20260819",
+            "provenance_integrity_hash": "sha256:e0b46d0d2009113f4521b92f8fab9b62ee8e614b01f70260146e32b2efe1df0d",
+            "carrier_block_id": "UN3g1OkkzG41095",
+            "identity": {
+              "slide_id": "46377",
+              "source_book_id": "1819783",
+              "source_catalog_id": "22421",
+              "target_book_id": "1820815",
+              "target_catalog_id": "46377"
+            },
+            "save_receipt_hash": "sha256:252ddc1583e73c72c3193ce839225c3de0712a163864abf8ff68738b9e6affb9",
+            "export_receipt_hash": "sha256:ad0ab9f8eac06bfed990126576345a26bf553d274966bfdae32f33ea8896c440",
+            "verified_at": "2026-08-19T02:09:58.336Z"
+          }
+        }
+      },
+      "last_error": null,
+      "history": [
+        {
+          "from": null,
+          "to": "pending",
+          "at": "2026-08-18T13:51:22.510Z",
+          "note": "ledger_initialized",
+          "evidence": {}
+        },
+        {
+          "from": "pending",
+          "to": "pending",
+          "at": "2026-08-18T13:52:15.672Z",
+          "note": "prospective_target_promoted",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "prospective_identity": "math-thinking-camp-interface-41073-grade1-full-20260818",
+            "lock_key": "math-thinking-camp-interface-41073:grade1-full:20260818",
+            "target_book_id": "1820815",
+            "registered_at": "2026-08-18T13:51:22.510Z",
+            "updated_at": "2026-08-18T13:52:15.664Z",
+            "promoted_at": "2026-08-18T13:52:15.664Z",
+            "promotion": {
+              "expected_prospective_identity": "math-thinking-camp-interface-41073-grade1-full-20260818",
+              "expected_lock_key": "math-thinking-camp-interface-41073:grade1-full:20260818",
+              "target_book_id": "1820815",
+              "reason": "本地8090已按授权创建目标书并完成代表页保存回读",
+              "authorized_by": "user-full-conversion-approval-20260818",
+              "lock_owner": "math-thinking-camp-full-conversion-20260818",
+              "lock_nonce": "93988da9-ceed-4d90-8e4b-ab84152920fe"
+            }
+          }
+        },
+        {
+          "from": "pending",
+          "to": "planned",
+          "at": "2026-08-19T01:17:55.313Z",
+          "note": "42页完整源课件重新冻结，富文本门禁全部通过",
+          "lock_owner": "math-thinking-camp-full-conversion-resume-20260819",
+          "evidence": {}
+        },
+        {
+          "from": "planned",
+          "to": "preflighted",
+          "at": "2026-08-19T01:17:55.551Z",
+          "note": "42页均fullFidelity且40个剩余目录可确定转换",
+          "lock_owner": "math-thinking-camp-full-conversion-resume-20260819",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:99923849107e6a0f61899e9bd53e56c3ac055e67455b72badc38cdcde5cec34e",
+              "template_snapshot_hash": "sha256:1c01b7dab7d8b0a49682a54011f82a91b4eda9ae83e5e4d977611b581034248c",
+              "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+              "target_before_hash": "sha256:7c17206a4845fc49d840cec0101d0179f60681000649fe3a41a950aee28e87d9",
+              "resolved_template_id": "41073+41075"
+            },
+            "source_manifest": "runs/full-conversion-20260818/grade1-full-source-manifest.json",
+            "page_count": 42,
+            "full_fidelity_pages": 42,
+            "normal_pages": 30,
+            "ability_pages": 12,
+            "existing_verified_pages": 2,
+            "remaining_pages": 40,
+            "missing_locator_pages": 0,
+            "bad_module_cardinality_pages": 0,
+            "ordering_action": "保留已验收的22380和22385映射页，完成其余页面后按来源目录顺序重排"
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "preflighted",
+          "at": "2026-08-19T01:17:55.749Z",
+          "note": "apply_authorized_after_fingerprint_recheck",
+          "lock_owner": "math-thinking-camp-full-conversion-resume-20260819",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:99923849107e6a0f61899e9bd53e56c3ac055e67455b72badc38cdcde5cec34e",
+              "template_snapshot_hash": "sha256:1c01b7dab7d8b0a49682a54011f82a91b4eda9ae83e5e4d977611b581034248c",
+              "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+              "target_before_hash": "sha256:7c17206a4845fc49d840cec0101d0179f60681000649fe3a41a950aee28e87d9",
+              "resolved_template_id": "41073+41075"
+            },
+            "authorization": {
+              "token": "af997158-d6e0-4076-88f1-71abe204176e",
+              "issued_at": "2026-08-19T01:17:55.749Z",
+              "fingerprint_hash": "sha256:67b32d403a8b9500633ccabe4954f04d4225c150ee71d0ec0bd4473ce2500dbd",
+              "idempotency_key": "sha256:d8193a9878a0d8ad6b13ffa800ef7f169b1ecaa0c47f2291932bece0f1f9feb3",
+              "lock_owner": "math-thinking-camp-full-conversion-resume-20260819",
+              "lock_nonce": "81c4e0ae-7fcd-4e2e-8b40-5315a88810a1"
+            }
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "applied",
+          "at": "2026-08-19T02:13:09.498Z",
+          "note": null,
+          "lock_owner": "math-thinking-camp-full-conversion-resume-20260819",
+          "evidence": {
+            "target_after_hash": "sha256:0bc66a3ed31ae3f93fdbe70a69ee6e42c4bf6d78ff678e906d6629071d6c5861",
+            "apply_authorization_token": "af997158-d6e0-4076-88f1-71abe204176e",
+            "converted_pages": 42,
+            "phone_pages": 42,
+            "page_width": 375
+          }
+        },
+        {
+          "from": "applied",
+          "to": "saved",
+          "at": "2026-08-19T02:13:10.943Z",
+          "note": null,
+          "lock_owner": "math-thinking-camp-full-conversion-resume-20260819",
+          "evidence": {
+            "save_readback_hash": "sha256:0bc66a3ed31ae3f93fdbe70a69ee6e42c4bf6d78ff678e906d6629071d6c5861",
+            "saved_pages": 42,
+            "clean_pages": 42,
+            "readback_receipts": 42
+          }
+        },
+        {
+          "from": "saved",
+          "to": "verified",
+          "at": "2026-08-19T02:13:11.777Z",
+          "note": null,
+          "lock_owner": "math-thinking-camp-full-conversion-resume-20260819",
+          "evidence": {
+            "result_hash": "sha256:0bc66a3ed31ae3f93fdbe70a69ee6e42c4bf6d78ff678e906d6629071d6c5861",
+            "provenance_hash": "sha256:e0b46d0d2009113f4521b92f8fab9b62ee8e614b01f70260146e32b2efe1df0d",
+            "provenance_readback_receipt_path": "C:/Users/shubin/skills/super-editor-business-skills/skills/math-thinking-camp-interface-41073/runs/full-conversion-20260818/grade1-full-22421.readback-receipt.json",
+            "provenance_readback_receipt_sha256": "sha256:50208175d709cb5642167cb4a88de40b2a24515ccaa1332eacac387a1deede08",
+            "run_id": "math-thinking-camp-grade1-full-22421-20260819",
+            "carrier_block_id": "UN3g1OkkzG41095",
+            "slide_id": "46377",
+            "source_book_id": "1819783",
+            "source_catalog_id": "22421",
+            "target_book_id": "1820815",
+            "target_catalog_id": "46377"
+          }
+        }
+      ]
+    },
+    {
+      "item_id": "math-thinking-camp-grade1-a",
+      "lock_key": "math-thinking-camp-interface-41073:grade1-a:20260818",
+      "target": {
+        "book_stable_identity": "math-thinking-camp-interface-41073-grade1-a-20260818",
+        "prospective_identity": "math-thinking-camp-interface-41073-grade1-a-20260818",
+        "promoted_book_id": "1820816",
+        "catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        }
+      },
+      "book": {
+        "item_id": "math-thinking-camp-grade1-a",
+        "source_book_id": "1819791",
+        "target_book_prospective_identity": "math-thinking-camp-interface-41073-grade1-a-20260818",
+        "target_book_stable_identity": "math-thinking-camp-interface-41073-grade1-a-20260818",
+        "lock_key": "math-thinking-camp-interface-41073:grade1-a:20260818",
+        "target_catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        },
+        "target_book_id": "1820816"
+      },
+      "state": "verified",
+      "attempt": 1,
+      "fingerprint": {
+        "source_snapshot_hash": "sha256:7f224c208b74dbacf50b1e02e794067f6938048f61ce95d12144564303570667",
+        "template_snapshot_hash": "sha256:2f1c4e44bda7eaddb6471209dd6a90880e214568f4c05e8e741a1f4f79786038",
+        "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+        "target_before_hash": "sha256:2298b86400facca65a8e447c7c9a03eda946a5d7d4db63264be5725be371f7cb",
+        "resolved_template_id": "41074"
+      },
+      "idempotency_key": "sha256:73c100a304f2ff1ee8901c0486ae58efa1c85849c871b99287c6372e07874bf8",
+      "apply_authorization": null,
+      "write_blocked": null,
+      "evidence": {
+        "target_promoted": {
+          "prospective_identity": "math-thinking-camp-interface-41073-grade1-a-20260818",
+          "lock_key": "math-thinking-camp-interface-41073:grade1-a:20260818",
+          "target_book_id": "1820816",
+          "registered_at": "2026-08-18T13:51:22.510Z",
+          "updated_at": "2026-08-18T13:52:16.219Z",
+          "promoted_at": "2026-08-18T13:52:16.219Z",
+          "promotion": {
+            "expected_prospective_identity": "math-thinking-camp-interface-41073-grade1-a-20260818",
+            "expected_lock_key": "math-thinking-camp-interface-41073:grade1-a:20260818",
+            "target_book_id": "1820816",
+            "reason": "本地8090已按授权创建目标书并完成A版代表练习与解析保存回读",
+            "authorized_by": "user-full-conversion-approval-20260818",
+            "lock_owner": "math-thinking-camp-full-conversion-20260818",
+            "lock_nonce": "0b65a1ab-7e59-4d75-8611-cd0af0d43a8a"
+          }
+        },
+        "planned": {},
+        "preflighted": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:7f224c208b74dbacf50b1e02e794067f6938048f61ce95d12144564303570667",
+            "template_snapshot_hash": "sha256:2f1c4e44bda7eaddb6471209dd6a90880e214568f4c05e8e741a1f4f79786038",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+            "target_before_hash": "sha256:2298b86400facca65a8e447c7c9a03eda946a5d7d4db63264be5725be371f7cb",
+            "resolved_template_id": "41074"
+          },
+          "source_manifest": "runs/full-conversion-20260818/grade1-a-source-manifest.json",
+          "page_count": 60,
+          "full_fidelity_pages": 60,
+          "missing_locator_pages": 0,
+          "bad_module_cardinality_pages": 0
+        },
+        "apply_authorized": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:7f224c208b74dbacf50b1e02e794067f6938048f61ce95d12144564303570667",
+            "template_snapshot_hash": "sha256:2f1c4e44bda7eaddb6471209dd6a90880e214568f4c05e8e741a1f4f79786038",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+            "target_before_hash": "sha256:2298b86400facca65a8e447c7c9a03eda946a5d7d4db63264be5725be371f7cb",
+            "resolved_template_id": "41074"
+          },
+          "authorization": {
+            "token": "3bde9b26-b09a-4f91-86b8-0d4491e61351",
+            "issued_at": "2026-08-18T13:57:02.677Z",
+            "fingerprint_hash": "sha256:cae98ebcb73aa2dd689e58cbe5a7b4ad2d6314fcdb697d2c8458f32180c3c2f2",
+            "idempotency_key": "sha256:73c100a304f2ff1ee8901c0486ae58efa1c85849c871b99287c6372e07874bf8",
+            "lock_owner": "math-thinking-camp-full-conversion-20260818",
+            "lock_nonce": "0b65a1ab-7e59-4d75-8611-cd0af0d43a8a"
+          }
+        },
+        "applied": {
+          "target_after_hash": "sha256:0be8a4905190ccdbeceeb594a6f3923db4f0bf93da2c180652e26490fa4821f4",
+          "apply_authorization_token": "3bde9b26-b09a-4f91-86b8-0d4491e61351",
+          "converted_pages": 60
+        },
+        "saved": {
+          "save_readback_hash": "sha256:0be8a4905190ccdbeceeb594a6f3923db4f0bf93da2c180652e26490fa4821f4",
+          "saved_pages": 60
+        },
+        "verified": {
+          "result_hash": "sha256:0be8a4905190ccdbeceeb594a6f3923db4f0bf93da2c180652e26490fa4821f4",
+          "provenance_hash": "sha256:6083287ed17b3874fae7d7505f2f423778cc96e7b4c460a093f10e7b84dbdee7",
+          "provenance_readback_receipt_path": "C:/Users/shubin/skills/super-editor-business-skills/skills/math-thinking-camp-interface-41073/runs/full-conversion-20260818/batch-a-31594.readback-receipt.json",
+          "provenance_readback_receipt_sha256": "sha256:78306faf5dfecb7b9d4eedb417a36cfd694c0113023580bb02621b74dbec028a",
+          "run_id": "math-thinking-camp-batch-a-31594-20260818",
+          "carrier_block_id": "J6E4-QXyPj41092",
+          "slide_id": "46157",
+          "source_book_id": "1819791",
+          "source_catalog_id": "31594",
+          "target_book_id": "1820816",
+          "target_catalog_id": "46157",
+          "provenance_readback_receipt": {
+            "artifact_path": "C:\\Users\\shubin\\skills\\super-editor-business-skills\\skills\\math-thinking-camp-interface-41073\\runs\\full-conversion-20260818\\batch-a-31594.readback-receipt.json",
+            "artifact_file_sha256": "sha256:78306faf5dfecb7b9d4eedb417a36cfd694c0113023580bb02621b74dbec028a",
+            "artifact_canonical_hash": "sha256:a6a69b1771d453cc010152182753ce33ba955fc7ffb8850d56f9d9c58663f74d",
+            "run_id": "math-thinking-camp-batch-a-31594-20260818",
+            "provenance_integrity_hash": "sha256:6083287ed17b3874fae7d7505f2f423778cc96e7b4c460a093f10e7b84dbdee7",
+            "carrier_block_id": "J6E4-QXyPj41092",
+            "identity": {
+              "slide_id": "46157",
+              "source_book_id": "1819791",
+              "source_catalog_id": "31594",
+              "target_book_id": "1820816",
+              "target_catalog_id": "46157"
+            },
+            "save_receipt_hash": "sha256:70c62c62ac046e0f6952b539667dceb485e896c6202557af964c8287b8a87fec",
+            "export_receipt_hash": "sha256:1dde25fecf220ef5936a18e7c81325f4f08e4573935d97e72fdb1bfe079565ff",
+            "verified_at": "2026-08-18T14:20:51.004Z"
+          }
+        }
+      },
+      "last_error": null,
+      "history": [
+        {
+          "from": null,
+          "to": "pending",
+          "at": "2026-08-18T13:51:22.510Z",
+          "note": "ledger_initialized",
+          "evidence": {}
+        },
+        {
+          "from": "pending",
+          "to": "pending",
+          "at": "2026-08-18T13:52:16.230Z",
+          "note": "prospective_target_promoted",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "prospective_identity": "math-thinking-camp-interface-41073-grade1-a-20260818",
+            "lock_key": "math-thinking-camp-interface-41073:grade1-a:20260818",
+            "target_book_id": "1820816",
+            "registered_at": "2026-08-18T13:51:22.510Z",
+            "updated_at": "2026-08-18T13:52:16.219Z",
+            "promoted_at": "2026-08-18T13:52:16.219Z",
+            "promotion": {
+              "expected_prospective_identity": "math-thinking-camp-interface-41073-grade1-a-20260818",
+              "expected_lock_key": "math-thinking-camp-interface-41073:grade1-a:20260818",
+              "target_book_id": "1820816",
+              "reason": "本地8090已按授权创建目标书并完成A版代表练习与解析保存回读",
+              "authorized_by": "user-full-conversion-approval-20260818",
+              "lock_owner": "math-thinking-camp-full-conversion-20260818",
+              "lock_nonce": "0b65a1ab-7e59-4d75-8611-cd0af0d43a8a"
+            }
+          }
+        },
+        {
+          "from": "pending",
+          "to": "planned",
+          "at": "2026-08-18T13:57:01.030Z",
+          "note": "60页源课件清单已冻结",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {}
+        },
+        {
+          "from": "planned",
+          "to": "preflighted",
+          "at": "2026-08-18T13:57:01.841Z",
+          "note": "60页均fullFidelity且路由、定位和模块基数可判定",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:7f224c208b74dbacf50b1e02e794067f6938048f61ce95d12144564303570667",
+              "template_snapshot_hash": "sha256:2f1c4e44bda7eaddb6471209dd6a90880e214568f4c05e8e741a1f4f79786038",
+              "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+              "target_before_hash": "sha256:2298b86400facca65a8e447c7c9a03eda946a5d7d4db63264be5725be371f7cb",
+              "resolved_template_id": "41074"
+            },
+            "source_manifest": "runs/full-conversion-20260818/grade1-a-source-manifest.json",
+            "page_count": 60,
+            "full_fidelity_pages": 60,
+            "missing_locator_pages": 0,
+            "bad_module_cardinality_pages": 0
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "preflighted",
+          "at": "2026-08-18T13:57:02.677Z",
+          "note": "apply_authorized_after_fingerprint_recheck",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:7f224c208b74dbacf50b1e02e794067f6938048f61ce95d12144564303570667",
+              "template_snapshot_hash": "sha256:2f1c4e44bda7eaddb6471209dd6a90880e214568f4c05e8e741a1f4f79786038",
+              "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+              "target_before_hash": "sha256:2298b86400facca65a8e447c7c9a03eda946a5d7d4db63264be5725be371f7cb",
+              "resolved_template_id": "41074"
+            },
+            "authorization": {
+              "token": "3bde9b26-b09a-4f91-86b8-0d4491e61351",
+              "issued_at": "2026-08-18T13:57:02.677Z",
+              "fingerprint_hash": "sha256:cae98ebcb73aa2dd689e58cbe5a7b4ad2d6314fcdb697d2c8458f32180c3c2f2",
+              "idempotency_key": "sha256:73c100a304f2ff1ee8901c0486ae58efa1c85849c871b99287c6372e07874bf8",
+              "lock_owner": "math-thinking-camp-full-conversion-20260818",
+              "lock_nonce": "0b65a1ab-7e59-4d75-8611-cd0af0d43a8a"
+            }
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "applied",
+          "at": "2026-08-18T14:21:47.463Z",
+          "note": "60个目录均完成模板路由和原子写入",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "target_after_hash": "sha256:0be8a4905190ccdbeceeb594a6f3923db4f0bf93da2c180652e26490fa4821f4",
+            "apply_authorization_token": "3bde9b26-b09a-4f91-86b8-0d4491e61351",
+            "converted_pages": 60
+          }
+        },
+        {
+          "from": "applied",
+          "to": "saved",
+          "at": "2026-08-18T14:21:48.110Z",
+          "note": "60个目录均逐页保存回读",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "save_readback_hash": "sha256:0be8a4905190ccdbeceeb594a6f3923db4f0bf93da2c180652e26490fa4821f4",
+            "saved_pages": 60
+          }
+        },
+        {
+          "from": "saved",
+          "to": "verified",
+          "at": "2026-08-18T14:21:48.701Z",
+          "note": "60个目录均有审计、截图与provenance回读",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "result_hash": "sha256:0be8a4905190ccdbeceeb594a6f3923db4f0bf93da2c180652e26490fa4821f4",
+            "provenance_hash": "sha256:6083287ed17b3874fae7d7505f2f423778cc96e7b4c460a093f10e7b84dbdee7",
+            "provenance_readback_receipt_path": "C:/Users/shubin/skills/super-editor-business-skills/skills/math-thinking-camp-interface-41073/runs/full-conversion-20260818/batch-a-31594.readback-receipt.json",
+            "provenance_readback_receipt_sha256": "sha256:78306faf5dfecb7b9d4eedb417a36cfd694c0113023580bb02621b74dbec028a",
+            "run_id": "math-thinking-camp-batch-a-31594-20260818",
+            "carrier_block_id": "J6E4-QXyPj41092",
+            "slide_id": "46157",
+            "source_book_id": "1819791",
+            "source_catalog_id": "31594",
+            "target_book_id": "1820816",
+            "target_catalog_id": "46157"
+          }
+        }
+      ]
+    },
+    {
+      "item_id": "math-thinking-camp-grade1-b",
+      "lock_key": "math-thinking-camp-interface-41073:grade1-b:20260818",
+      "target": {
+        "book_stable_identity": "math-thinking-camp-interface-41073-grade1-b-20260818",
+        "prospective_identity": "math-thinking-camp-interface-41073-grade1-b-20260818",
+        "promoted_book_id": "1820817",
+        "catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        }
+      },
+      "book": {
+        "item_id": "math-thinking-camp-grade1-b",
+        "source_book_id": "1819790",
+        "target_book_prospective_identity": "math-thinking-camp-interface-41073-grade1-b-20260818",
+        "target_book_stable_identity": "math-thinking-camp-interface-41073-grade1-b-20260818",
+        "lock_key": "math-thinking-camp-interface-41073:grade1-b:20260818",
+        "target_catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        },
+        "target_book_id": "1820817"
+      },
+      "state": "verified",
+      "attempt": 1,
+      "fingerprint": {
+        "source_snapshot_hash": "sha256:84c6de20130c25bfcbdc9a5e2017f4dc8b86acebf23f91dd079ace5fc4962db2",
+        "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+        "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+        "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+        "resolved_template_id": "41076"
+      },
+      "idempotency_key": "sha256:c1a6fd07b568fad7d2be192d7a748315ecbbc6cfdd60edc05827da01caa014ca",
+      "apply_authorization": null,
+      "write_blocked": null,
+      "evidence": {
+        "target_promoted": {
+          "prospective_identity": "math-thinking-camp-interface-41073-grade1-b-20260818",
+          "lock_key": "math-thinking-camp-interface-41073:grade1-b:20260818",
+          "target_book_id": "1820817",
+          "registered_at": "2026-08-18T13:51:22.510Z",
+          "updated_at": "2026-08-18T13:52:16.799Z",
+          "promoted_at": "2026-08-18T13:52:16.799Z",
+          "promotion": {
+            "expected_prospective_identity": "math-thinking-camp-interface-41073-grade1-b-20260818",
+            "expected_lock_key": "math-thinking-camp-interface-41073:grade1-b:20260818",
+            "target_book_id": "1820817",
+            "reason": "本地8090已按授权创建目标书",
+            "authorized_by": "user-full-conversion-approval-20260818",
+            "lock_owner": "math-thinking-camp-full-conversion-20260818",
+            "lock_nonce": "7e70a1d6-affc-49c0-9f7a-bd39433902de"
+          }
+        },
+        "planned": {},
+        "preflighted": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:84c6de20130c25bfcbdc9a5e2017f4dc8b86acebf23f91dd079ace5fc4962db2",
+            "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+            "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+            "resolved_template_id": "41076"
+          },
+          "page_count": 60,
+          "full_fidelity_pages": 60,
+          "missing_locator_pages": 0,
+          "bad_module_cardinality_pages": 0
+        },
+        "apply_authorized": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:84c6de20130c25bfcbdc9a5e2017f4dc8b86acebf23f91dd079ace5fc4962db2",
+            "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+            "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+            "resolved_template_id": "41076"
+          },
+          "authorization": {
+            "token": "c13116e7-3925-4121-b697-e880e214ed2d",
+            "issued_at": "2026-08-18T14:26:55.703Z",
+            "fingerprint_hash": "sha256:0ef4a175836045e1635193ea30d1c9d70475a7911d0d95af62c659ce098a5d60",
+            "idempotency_key": "sha256:c1a6fd07b568fad7d2be192d7a748315ecbbc6cfdd60edc05827da01caa014ca",
+            "lock_owner": "math-thinking-camp-full-conversion-20260818",
+            "lock_nonce": "7e70a1d6-affc-49c0-9f7a-bd39433902de"
+          }
+        },
+        "applied": {
+          "target_after_hash": "sha256:876a01e1169e2f5a8d139338c2b04ac57bfd87f685e277cf9d5dce4b838ccdcd",
+          "apply_authorization_token": "c13116e7-3925-4121-b697-e880e214ed2d",
+          "converted_pages": 60
+        },
+        "saved": {
+          "save_readback_hash": "sha256:876a01e1169e2f5a8d139338c2b04ac57bfd87f685e277cf9d5dce4b838ccdcd",
+          "saved_pages": 60
+        },
+        "verified": {
+          "result_hash": "sha256:876a01e1169e2f5a8d139338c2b04ac57bfd87f685e277cf9d5dce4b838ccdcd",
+          "provenance_hash": "sha256:db1733774edbe2e100602ff12d1f3e21b08d4b2e0e9db0113f7952f105fbaa54",
+          "provenance_readback_receipt_path": "C:/Users/shubin/skills/super-editor-business-skills/skills/math-thinking-camp-interface-41073/runs/full-conversion-20260818/batch-b1-31625.readback-receipt.json",
+          "provenance_readback_receipt_sha256": "sha256:9102d7dea9ec0aa99bf486056b1335b6b27ab2cf2a7e00a23657ee84cf9d6ac5",
+          "run_id": "math-thinking-camp-batch-b1-31625-20260818",
+          "carrier_block_id": "wGKquYztoM41094",
+          "slide_id": "46217",
+          "source_book_id": "1819790",
+          "source_catalog_id": "31625",
+          "target_book_id": "1820817",
+          "target_catalog_id": "46217",
+          "provenance_readback_receipt": {
+            "artifact_path": "C:\\Users\\shubin\\skills\\super-editor-business-skills\\skills\\math-thinking-camp-interface-41073\\runs\\full-conversion-20260818\\batch-b1-31625.readback-receipt.json",
+            "artifact_file_sha256": "sha256:9102d7dea9ec0aa99bf486056b1335b6b27ab2cf2a7e00a23657ee84cf9d6ac5",
+            "artifact_canonical_hash": "sha256:4967d1cdb6558cfa850f72379ff84da4d21e79b8f3b3502c7253b19bcf815373",
+            "run_id": "math-thinking-camp-batch-b1-31625-20260818",
+            "provenance_integrity_hash": "sha256:db1733774edbe2e100602ff12d1f3e21b08d4b2e0e9db0113f7952f105fbaa54",
+            "carrier_block_id": "wGKquYztoM41094",
+            "identity": {
+              "slide_id": "46217",
+              "source_book_id": "1819790",
+              "source_catalog_id": "31625",
+              "target_book_id": "1820817",
+              "target_catalog_id": "46217"
+            },
+            "save_receipt_hash": "sha256:69a921e346c5c13a7b07033a0fc1b3b4892b2c4b05ee01150e32f247efc4f670",
+            "export_receipt_hash": "sha256:a7e1f49380f6ac4ad15cd2c3fdcd0f22bab6dcf55371362dcfae1e6b6e99ea6c",
+            "verified_at": "2026-08-18T14:55:40.228Z"
+          }
+        }
+      },
+      "last_error": null,
+      "history": [
+        {
+          "from": null,
+          "to": "pending",
+          "at": "2026-08-18T13:51:22.510Z",
+          "note": "ledger_initialized",
+          "evidence": {}
+        },
+        {
+          "from": "pending",
+          "to": "pending",
+          "at": "2026-08-18T13:52:16.807Z",
+          "note": "prospective_target_promoted",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "prospective_identity": "math-thinking-camp-interface-41073-grade1-b-20260818",
+            "lock_key": "math-thinking-camp-interface-41073:grade1-b:20260818",
+            "target_book_id": "1820817",
+            "registered_at": "2026-08-18T13:51:22.510Z",
+            "updated_at": "2026-08-18T13:52:16.799Z",
+            "promoted_at": "2026-08-18T13:52:16.799Z",
+            "promotion": {
+              "expected_prospective_identity": "math-thinking-camp-interface-41073-grade1-b-20260818",
+              "expected_lock_key": "math-thinking-camp-interface-41073:grade1-b:20260818",
+              "target_book_id": "1820817",
+              "reason": "本地8090已按授权创建目标书",
+              "authorized_by": "user-full-conversion-approval-20260818",
+              "lock_owner": "math-thinking-camp-full-conversion-20260818",
+              "lock_nonce": "7e70a1d6-affc-49c0-9f7a-bd39433902de"
+            }
+          }
+        },
+        {
+          "from": "pending",
+          "to": "planned",
+          "at": "2026-08-18T14:26:54.510Z",
+          "note": null,
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {}
+        },
+        {
+          "from": "planned",
+          "to": "preflighted",
+          "at": "2026-08-18T14:26:55.088Z",
+          "note": null,
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:84c6de20130c25bfcbdc9a5e2017f4dc8b86acebf23f91dd079ace5fc4962db2",
+              "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+              "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+              "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+              "resolved_template_id": "41076"
+            },
+            "page_count": 60,
+            "full_fidelity_pages": 60,
+            "missing_locator_pages": 0,
+            "bad_module_cardinality_pages": 0
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "preflighted",
+          "at": "2026-08-18T14:26:55.703Z",
+          "note": "apply_authorized_after_fingerprint_recheck",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:84c6de20130c25bfcbdc9a5e2017f4dc8b86acebf23f91dd079ace5fc4962db2",
+              "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+              "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+              "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+              "resolved_template_id": "41076"
+            },
+            "authorization": {
+              "token": "c13116e7-3925-4121-b697-e880e214ed2d",
+              "issued_at": "2026-08-18T14:26:55.703Z",
+              "fingerprint_hash": "sha256:0ef4a175836045e1635193ea30d1c9d70475a7911d0d95af62c659ce098a5d60",
+              "idempotency_key": "sha256:c1a6fd07b568fad7d2be192d7a748315ecbbc6cfdd60edc05827da01caa014ca",
+              "lock_owner": "math-thinking-camp-full-conversion-20260818",
+              "lock_nonce": "7e70a1d6-affc-49c0-9f7a-bd39433902de"
+            }
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "applied",
+          "at": "2026-08-18T14:56:45.242Z",
+          "note": "60个目录均完成B版模板路由和原子写入",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "target_after_hash": "sha256:876a01e1169e2f5a8d139338c2b04ac57bfd87f685e277cf9d5dce4b838ccdcd",
+            "apply_authorization_token": "c13116e7-3925-4121-b697-e880e214ed2d",
+            "converted_pages": 60
+          }
+        },
+        {
+          "from": "applied",
+          "to": "saved",
+          "at": "2026-08-18T14:56:45.863Z",
+          "note": "60个目录均逐页保存回读",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "save_readback_hash": "sha256:876a01e1169e2f5a8d139338c2b04ac57bfd87f685e277cf9d5dce4b838ccdcd",
+            "saved_pages": 60
+          }
+        },
+        {
+          "from": "saved",
+          "to": "verified",
+          "at": "2026-08-18T14:56:46.411Z",
+          "note": "60个目录均有审计、截图与provenance回读",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "result_hash": "sha256:876a01e1169e2f5a8d139338c2b04ac57bfd87f685e277cf9d5dce4b838ccdcd",
+            "provenance_hash": "sha256:db1733774edbe2e100602ff12d1f3e21b08d4b2e0e9db0113f7952f105fbaa54",
+            "provenance_readback_receipt_path": "C:/Users/shubin/skills/super-editor-business-skills/skills/math-thinking-camp-interface-41073/runs/full-conversion-20260818/batch-b1-31625.readback-receipt.json",
+            "provenance_readback_receipt_sha256": "sha256:9102d7dea9ec0aa99bf486056b1335b6b27ab2cf2a7e00a23657ee84cf9d6ac5",
+            "run_id": "math-thinking-camp-batch-b1-31625-20260818",
+            "carrier_block_id": "wGKquYztoM41094",
+            "slide_id": "46217",
+            "source_book_id": "1819790",
+            "source_catalog_id": "31625",
+            "target_book_id": "1820817",
+            "target_catalog_id": "46217"
+          }
+        }
+      ]
+    },
+    {
+      "item_id": "math-thinking-camp-grade2-b",
+      "lock_key": "math-thinking-camp-interface-41073:grade2-b:20260818",
+      "target": {
+        "book_stable_identity": "math-thinking-camp-interface-41073-grade2-b-20260818",
+        "prospective_identity": "math-thinking-camp-interface-41073-grade2-b-20260818",
+        "promoted_book_id": "1820818",
+        "catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        }
+      },
+      "book": {
+        "item_id": "math-thinking-camp-grade2-b",
+        "source_book_id": "1819798",
+        "target_book_prospective_identity": "math-thinking-camp-interface-41073-grade2-b-20260818",
+        "target_book_stable_identity": "math-thinking-camp-interface-41073-grade2-b-20260818",
+        "lock_key": "math-thinking-camp-interface-41073:grade2-b:20260818",
+        "target_catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        },
+        "target_book_id": "1820818"
+      },
+      "state": "verified",
+      "attempt": 1,
+      "fingerprint": {
+        "source_snapshot_hash": "sha256:354955fdec794cf2b1d868c573dabad56bf5f99214953877348e3543f7aa398e",
+        "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+        "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+        "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+        "resolved_template_id": "41076"
+      },
+      "idempotency_key": "sha256:39d63134f9d1b6d9d9001d96bdad01c8a63c160d4033c7d5146890c266f21944",
+      "apply_authorization": null,
+      "write_blocked": null,
+      "evidence": {
+        "target_promoted": {
+          "prospective_identity": "math-thinking-camp-interface-41073-grade2-b-20260818",
+          "lock_key": "math-thinking-camp-interface-41073:grade2-b:20260818",
+          "target_book_id": "1820818",
+          "registered_at": "2026-08-18T13:51:22.510Z",
+          "updated_at": "2026-08-18T13:52:17.354Z",
+          "promoted_at": "2026-08-18T13:52:17.354Z",
+          "promotion": {
+            "expected_prospective_identity": "math-thinking-camp-interface-41073-grade2-b-20260818",
+            "expected_lock_key": "math-thinking-camp-interface-41073:grade2-b:20260818",
+            "target_book_id": "1820818",
+            "reason": "本地8090已按授权创建目标书",
+            "authorized_by": "user-full-conversion-approval-20260818",
+            "lock_owner": "math-thinking-camp-full-conversion-20260818",
+            "lock_nonce": "369a3b5c-882a-40ca-b136-30651ec7b7ea"
+          }
+        },
+        "planned": {},
+        "preflighted": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:354955fdec794cf2b1d868c573dabad56bf5f99214953877348e3543f7aa398e",
+            "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+            "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+            "resolved_template_id": "41076"
+          },
+          "page_count": 60,
+          "full_fidelity_pages": 60,
+          "missing_locator_pages": 0,
+          "bad_module_cardinality_pages": 0
+        },
+        "apply_authorized": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:354955fdec794cf2b1d868c573dabad56bf5f99214953877348e3543f7aa398e",
+            "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+            "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+            "resolved_template_id": "41076"
+          },
+          "authorization": {
+            "token": "ad391eec-1a77-4581-b82a-29dee1c9e61b",
+            "issued_at": "2026-08-18T14:59:31.844Z",
+            "fingerprint_hash": "sha256:9dd82f244a8179378a23ce87de6efebec7b245deaed74ea38d6cbbd411d1ea64",
+            "idempotency_key": "sha256:39d63134f9d1b6d9d9001d96bdad01c8a63c160d4033c7d5146890c266f21944",
+            "lock_owner": "math-thinking-camp-full-conversion-20260818",
+            "lock_nonce": "369a3b5c-882a-40ca-b136-30651ec7b7ea"
+          }
+        },
+        "applied": {
+          "target_after_hash": "sha256:be70ae46aab971ac4e8a7c0cbbd6c0c253350d7f46d3f252cb48e3e8ddd893e9",
+          "apply_authorization_token": "ad391eec-1a77-4581-b82a-29dee1c9e61b",
+          "converted_pages": 60
+        },
+        "saved": {
+          "save_readback_hash": "sha256:be70ae46aab971ac4e8a7c0cbbd6c0c253350d7f46d3f252cb48e3e8ddd893e9",
+          "saved_pages": 60
+        },
+        "verified": {
+          "result_hash": "sha256:be70ae46aab971ac4e8a7c0cbbd6c0c253350d7f46d3f252cb48e3e8ddd893e9",
+          "provenance_hash": "sha256:e96d471810594c6eb492e78d31a58a4aa3c3b91bfa7cac1fc405a603d4fd3d00",
+          "provenance_readback_receipt_path": "C:/Users/shubin/skills/super-editor-business-skills/skills/math-thinking-camp-interface-41073/runs/full-conversion-20260818/batch-b2-31731.readback-receipt.json",
+          "provenance_readback_receipt_sha256": "sha256:4a62f4fa5b639ccedd851719d6215165fd1e2eebd6c0b07ab176f7cb9a87565d",
+          "run_id": "math-thinking-camp-batch-b2-31731-20260818",
+          "carrier_block_id": "QbgyFPb05B41094",
+          "slide_id": "46277",
+          "source_book_id": "1819798",
+          "source_catalog_id": "31731",
+          "target_book_id": "1820818",
+          "target_catalog_id": "46277",
+          "provenance_readback_receipt": {
+            "artifact_path": "C:\\Users\\shubin\\skills\\super-editor-business-skills\\skills\\math-thinking-camp-interface-41073\\runs\\full-conversion-20260818\\batch-b2-31731.readback-receipt.json",
+            "artifact_file_sha256": "sha256:4a62f4fa5b639ccedd851719d6215165fd1e2eebd6c0b07ab176f7cb9a87565d",
+            "artifact_canonical_hash": "sha256:bca6b72707deb35530b08223a3a9860c1127ac76debddae04cc146d298b89e9a",
+            "run_id": "math-thinking-camp-batch-b2-31731-20260818",
+            "provenance_integrity_hash": "sha256:e96d471810594c6eb492e78d31a58a4aa3c3b91bfa7cac1fc405a603d4fd3d00",
+            "carrier_block_id": "QbgyFPb05B41094",
+            "identity": {
+              "slide_id": "46277",
+              "source_book_id": "1819798",
+              "source_catalog_id": "31731",
+              "target_book_id": "1820818",
+              "target_catalog_id": "46277"
+            },
+            "save_receipt_hash": "sha256:5d3f9ab1fa5d499d30f3f06d3a65ae80697e09066194fb9b6a4e5e319dfb91aa",
+            "export_receipt_hash": "sha256:57c8216ec11b9ff5649ed24e667c49389004e6d38dc966f56c09d591b0d1af3e",
+            "verified_at": "2026-08-18T15:21:55.966Z"
+          }
+        }
+      },
+      "last_error": null,
+      "history": [
+        {
+          "from": null,
+          "to": "pending",
+          "at": "2026-08-18T13:51:22.510Z",
+          "note": "ledger_initialized",
+          "evidence": {}
+        },
+        {
+          "from": "pending",
+          "to": "pending",
+          "at": "2026-08-18T13:52:17.364Z",
+          "note": "prospective_target_promoted",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "prospective_identity": "math-thinking-camp-interface-41073-grade2-b-20260818",
+            "lock_key": "math-thinking-camp-interface-41073:grade2-b:20260818",
+            "target_book_id": "1820818",
+            "registered_at": "2026-08-18T13:51:22.510Z",
+            "updated_at": "2026-08-18T13:52:17.354Z",
+            "promoted_at": "2026-08-18T13:52:17.354Z",
+            "promotion": {
+              "expected_prospective_identity": "math-thinking-camp-interface-41073-grade2-b-20260818",
+              "expected_lock_key": "math-thinking-camp-interface-41073:grade2-b:20260818",
+              "target_book_id": "1820818",
+              "reason": "本地8090已按授权创建目标书",
+              "authorized_by": "user-full-conversion-approval-20260818",
+              "lock_owner": "math-thinking-camp-full-conversion-20260818",
+              "lock_nonce": "369a3b5c-882a-40ca-b136-30651ec7b7ea"
+            }
+          }
+        },
+        {
+          "from": "pending",
+          "to": "planned",
+          "at": "2026-08-18T14:59:30.670Z",
+          "note": null,
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {}
+        },
+        {
+          "from": "planned",
+          "to": "preflighted",
+          "at": "2026-08-18T14:59:31.241Z",
+          "note": null,
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:354955fdec794cf2b1d868c573dabad56bf5f99214953877348e3543f7aa398e",
+              "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+              "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+              "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+              "resolved_template_id": "41076"
+            },
+            "page_count": 60,
+            "full_fidelity_pages": 60,
+            "missing_locator_pages": 0,
+            "bad_module_cardinality_pages": 0
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "preflighted",
+          "at": "2026-08-18T14:59:31.844Z",
+          "note": "apply_authorized_after_fingerprint_recheck",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:354955fdec794cf2b1d868c573dabad56bf5f99214953877348e3543f7aa398e",
+              "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+              "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+              "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+              "resolved_template_id": "41076"
+            },
+            "authorization": {
+              "token": "ad391eec-1a77-4581-b82a-29dee1c9e61b",
+              "issued_at": "2026-08-18T14:59:31.844Z",
+              "fingerprint_hash": "sha256:9dd82f244a8179378a23ce87de6efebec7b245deaed74ea38d6cbbd411d1ea64",
+              "idempotency_key": "sha256:39d63134f9d1b6d9d9001d96bdad01c8a63c160d4033c7d5146890c266f21944",
+              "lock_owner": "math-thinking-camp-full-conversion-20260818",
+              "lock_nonce": "369a3b5c-882a-40ca-b136-30651ec7b7ea"
+            }
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "applied",
+          "at": "2026-08-18T15:22:31.036Z",
+          "note": "60个目录均完成B版模板路由和原子写入",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "target_after_hash": "sha256:be70ae46aab971ac4e8a7c0cbbd6c0c253350d7f46d3f252cb48e3e8ddd893e9",
+            "apply_authorization_token": "ad391eec-1a77-4581-b82a-29dee1c9e61b",
+            "converted_pages": 60
+          }
+        },
+        {
+          "from": "applied",
+          "to": "saved",
+          "at": "2026-08-18T15:22:31.561Z",
+          "note": "60个目录均逐页保存回读",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "save_readback_hash": "sha256:be70ae46aab971ac4e8a7c0cbbd6c0c253350d7f46d3f252cb48e3e8ddd893e9",
+            "saved_pages": 60
+          }
+        },
+        {
+          "from": "saved",
+          "to": "verified",
+          "at": "2026-08-18T15:22:32.154Z",
+          "note": "60个目录均有审计、截图与provenance回读",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "result_hash": "sha256:be70ae46aab971ac4e8a7c0cbbd6c0c253350d7f46d3f252cb48e3e8ddd893e9",
+            "provenance_hash": "sha256:e96d471810594c6eb492e78d31a58a4aa3c3b91bfa7cac1fc405a603d4fd3d00",
+            "provenance_readback_receipt_path": "C:/Users/shubin/skills/super-editor-business-skills/skills/math-thinking-camp-interface-41073/runs/full-conversion-20260818/batch-b2-31731.readback-receipt.json",
+            "provenance_readback_receipt_sha256": "sha256:4a62f4fa5b639ccedd851719d6215165fd1e2eebd6c0b07ab176f7cb9a87565d",
+            "run_id": "math-thinking-camp-batch-b2-31731-20260818",
+            "carrier_block_id": "QbgyFPb05B41094",
+            "slide_id": "46277",
+            "source_book_id": "1819798",
+            "source_catalog_id": "31731",
+            "target_book_id": "1820818",
+            "target_catalog_id": "46277"
+          }
+        }
+      ]
+    },
+    {
+      "item_id": "math-thinking-camp-grade3-b",
+      "lock_key": "math-thinking-camp-interface-41073:grade3-b:20260818",
+      "target": {
+        "book_stable_identity": "math-thinking-camp-interface-41073-grade3-b-20260818",
+        "prospective_identity": "math-thinking-camp-interface-41073-grade3-b-20260818",
+        "promoted_book_id": "1820819",
+        "catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        }
+      },
+      "book": {
+        "item_id": "math-thinking-camp-grade3-b",
+        "source_book_id": "1819803",
+        "target_book_prospective_identity": "math-thinking-camp-interface-41073-grade3-b-20260818",
+        "target_book_stable_identity": "math-thinking-camp-interface-41073-grade3-b-20260818",
+        "lock_key": "math-thinking-camp-interface-41073:grade3-b:20260818",
+        "target_catalog_scope": {
+          "kind": "book_scope",
+          "value": "whole_book"
+        },
+        "target_book_id": "1820819"
+      },
+      "state": "verified",
+      "attempt": 1,
+      "fingerprint": {
+        "source_snapshot_hash": "sha256:55e22e8baa8fa2254f728bc076820faf46f717ecb1f1730fbffaf7fabc0cb0be",
+        "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+        "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+        "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+        "resolved_template_id": "41076"
+      },
+      "idempotency_key": "sha256:c2e3461bff26b71bd3aab5710955728b904d45804c15f18d366bdd9254ca4d24",
+      "apply_authorization": null,
+      "write_blocked": null,
+      "evidence": {
+        "target_promoted": {
+          "prospective_identity": "math-thinking-camp-interface-41073-grade3-b-20260818",
+          "lock_key": "math-thinking-camp-interface-41073:grade3-b:20260818",
+          "target_book_id": "1820819",
+          "registered_at": "2026-08-18T13:51:22.510Z",
+          "updated_at": "2026-08-18T13:52:17.925Z",
+          "promoted_at": "2026-08-18T13:52:17.925Z",
+          "promotion": {
+            "expected_prospective_identity": "math-thinking-camp-interface-41073-grade3-b-20260818",
+            "expected_lock_key": "math-thinking-camp-interface-41073:grade3-b:20260818",
+            "target_book_id": "1820819",
+            "reason": "本地8090已按授权创建目标书",
+            "authorized_by": "user-full-conversion-approval-20260818",
+            "lock_owner": "math-thinking-camp-full-conversion-20260818",
+            "lock_nonce": "ad2d80ed-1bcb-49b0-90ad-48ddc303ce90"
+          }
+        },
+        "planned": {},
+        "preflighted": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:55e22e8baa8fa2254f728bc076820faf46f717ecb1f1730fbffaf7fabc0cb0be",
+            "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+            "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+            "resolved_template_id": "41076"
+          },
+          "page_count": 60,
+          "full_fidelity_pages": 60,
+          "missing_locator_pages": 0,
+          "bad_module_cardinality_pages": 0
+        },
+        "apply_authorized": {
+          "fingerprint": {
+            "source_snapshot_hash": "sha256:55e22e8baa8fa2254f728bc076820faf46f717ecb1f1730fbffaf7fabc0cb0be",
+            "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+            "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+            "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+            "resolved_template_id": "41076"
+          },
+          "authorization": {
+            "token": "1c712a35-048f-4507-a8a9-af6ac61d54ae",
+            "issued_at": "2026-08-18T15:24:38.935Z",
+            "fingerprint_hash": "sha256:717cb1753895ede24f37c04593967fa2d81d81617772eac8f8d79ff2abf25f29",
+            "idempotency_key": "sha256:c2e3461bff26b71bd3aab5710955728b904d45804c15f18d366bdd9254ca4d24",
+            "lock_owner": "math-thinking-camp-full-conversion-20260818",
+            "lock_nonce": "ad2d80ed-1bcb-49b0-90ad-48ddc303ce90"
+          }
+        },
+        "applied": {
+          "target_after_hash": "sha256:c6a028b26c7fb65b10d0b6e301d4d7744f61b3a4e2d4a521d05d8e85dde52e15",
+          "apply_authorization_token": "1c712a35-048f-4507-a8a9-af6ac61d54ae",
+          "converted_pages": 60
+        },
+        "saved": {
+          "save_readback_hash": "sha256:c6a028b26c7fb65b10d0b6e301d4d7744f61b3a4e2d4a521d05d8e85dde52e15",
+          "saved_pages": 60
+        },
+        "verified": {
+          "result_hash": "sha256:c6a028b26c7fb65b10d0b6e301d4d7744f61b3a4e2d4a521d05d8e85dde52e15",
+          "provenance_hash": "sha256:ee8d2611a0a2156ccfe1ddb645e05fcf58dda24d74ea52da98c2845bb49f4db4",
+          "provenance_readback_receipt_path": "C:/Users/shubin/skills/super-editor-business-skills/skills/math-thinking-camp-interface-41073/runs/full-conversion-20260818/batch-b3-31779.readback-receipt.json",
+          "provenance_readback_receipt_sha256": "sha256:497ec742af25f27437c5dc7f86e6289dac236b99b4135a41bba688c23d4bf374",
+          "run_id": "math-thinking-camp-batch-b3-31779-20260818",
+          "carrier_block_id": "PPThZ1djG341094",
+          "slide_id": "46337",
+          "source_book_id": "1819803",
+          "source_catalog_id": "31779",
+          "target_book_id": "1820819",
+          "target_catalog_id": "46337",
+          "provenance_readback_receipt": {
+            "artifact_path": "C:\\Users\\shubin\\skills\\super-editor-business-skills\\skills\\math-thinking-camp-interface-41073\\runs\\full-conversion-20260818\\batch-b3-31779.readback-receipt.json",
+            "artifact_file_sha256": "sha256:497ec742af25f27437c5dc7f86e6289dac236b99b4135a41bba688c23d4bf374",
+            "artifact_canonical_hash": "sha256:4053312f39378e45ec9c3eb73bfc562f53f78787e8e56ca8c4426ce0db2ee143",
+            "run_id": "math-thinking-camp-batch-b3-31779-20260818",
+            "provenance_integrity_hash": "sha256:ee8d2611a0a2156ccfe1ddb645e05fcf58dda24d74ea52da98c2845bb49f4db4",
+            "carrier_block_id": "PPThZ1djG341094",
+            "identity": {
+              "slide_id": "46337",
+              "source_book_id": "1819803",
+              "source_catalog_id": "31779",
+              "target_book_id": "1820819",
+              "target_catalog_id": "46337"
+            },
+            "save_receipt_hash": "sha256:72da001ac57a78e1f906c88ef3dca20396c7af42d069fd8528cd1de97f695505",
+            "export_receipt_hash": "sha256:1e6463e2fe2eb73616559cd389b0005a01f1b9bb9f70dd34bf81d85d0fff5015",
+            "verified_at": "2026-08-18T15:45:29.009Z"
+          }
+        }
+      },
+      "last_error": null,
+      "history": [
+        {
+          "from": null,
+          "to": "pending",
+          "at": "2026-08-18T13:51:22.510Z",
+          "note": "ledger_initialized",
+          "evidence": {}
+        },
+        {
+          "from": "pending",
+          "to": "pending",
+          "at": "2026-08-18T13:52:17.936Z",
+          "note": "prospective_target_promoted",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "prospective_identity": "math-thinking-camp-interface-41073-grade3-b-20260818",
+            "lock_key": "math-thinking-camp-interface-41073:grade3-b:20260818",
+            "target_book_id": "1820819",
+            "registered_at": "2026-08-18T13:51:22.510Z",
+            "updated_at": "2026-08-18T13:52:17.925Z",
+            "promoted_at": "2026-08-18T13:52:17.925Z",
+            "promotion": {
+              "expected_prospective_identity": "math-thinking-camp-interface-41073-grade3-b-20260818",
+              "expected_lock_key": "math-thinking-camp-interface-41073:grade3-b:20260818",
+              "target_book_id": "1820819",
+              "reason": "本地8090已按授权创建目标书",
+              "authorized_by": "user-full-conversion-approval-20260818",
+              "lock_owner": "math-thinking-camp-full-conversion-20260818",
+              "lock_nonce": "ad2d80ed-1bcb-49b0-90ad-48ddc303ce90"
+            }
+          }
+        },
+        {
+          "from": "pending",
+          "to": "planned",
+          "at": "2026-08-18T15:24:37.848Z",
+          "note": null,
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {}
+        },
+        {
+          "from": "planned",
+          "to": "preflighted",
+          "at": "2026-08-18T15:24:38.365Z",
+          "note": null,
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:55e22e8baa8fa2254f728bc076820faf46f717ecb1f1730fbffaf7fabc0cb0be",
+              "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+              "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+              "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+              "resolved_template_id": "41076"
+            },
+            "page_count": 60,
+            "full_fidelity_pages": 60,
+            "missing_locator_pages": 0,
+            "bad_module_cardinality_pages": 0
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "preflighted",
+          "at": "2026-08-18T15:24:38.935Z",
+          "note": "apply_authorized_after_fingerprint_recheck",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "fingerprint": {
+              "source_snapshot_hash": "sha256:55e22e8baa8fa2254f728bc076820faf46f717ecb1f1730fbffaf7fabc0cb0be",
+              "template_snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+              "rule_pack_hash": "sha256:de23a56f125449ea1ed8451b0b8c9e93aa5da06e92fcd467cd693f22b99b1a82",
+              "target_before_hash": "sha256:2560618c62210f24644d215bb4b23fb077c068c0064429d44eae2fd614bb3e41",
+              "resolved_template_id": "41076"
+            },
+            "authorization": {
+              "token": "1c712a35-048f-4507-a8a9-af6ac61d54ae",
+              "issued_at": "2026-08-18T15:24:38.935Z",
+              "fingerprint_hash": "sha256:717cb1753895ede24f37c04593967fa2d81d81617772eac8f8d79ff2abf25f29",
+              "idempotency_key": "sha256:c2e3461bff26b71bd3aab5710955728b904d45804c15f18d366bdd9254ca4d24",
+              "lock_owner": "math-thinking-camp-full-conversion-20260818",
+              "lock_nonce": "ad2d80ed-1bcb-49b0-90ad-48ddc303ce90"
+            }
+          }
+        },
+        {
+          "from": "preflighted",
+          "to": "applied",
+          "at": "2026-08-18T15:51:24.533Z",
+          "note": "60个目录均完成B版模板路由和原子写入",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "target_after_hash": "sha256:c6a028b26c7fb65b10d0b6e301d4d7744f61b3a4e2d4a521d05d8e85dde52e15",
+            "apply_authorization_token": "1c712a35-048f-4507-a8a9-af6ac61d54ae",
+            "converted_pages": 60
+          }
+        },
+        {
+          "from": "applied",
+          "to": "saved",
+          "at": "2026-08-18T15:51:25.085Z",
+          "note": "60个目录均逐页保存回读",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "save_readback_hash": "sha256:c6a028b26c7fb65b10d0b6e301d4d7744f61b3a4e2d4a521d05d8e85dde52e15",
+            "saved_pages": 60
+          }
+        },
+        {
+          "from": "saved",
+          "to": "verified",
+          "at": "2026-08-18T15:51:25.610Z",
+          "note": "60个目录均有审计、截图与provenance回读",
+          "lock_owner": "math-thinking-camp-full-conversion-20260818",
+          "evidence": {
+            "result_hash": "sha256:c6a028b26c7fb65b10d0b6e301d4d7744f61b3a4e2d4a521d05d8e85dde52e15",
+            "provenance_hash": "sha256:ee8d2611a0a2156ccfe1ddb645e05fcf58dda24d74ea52da98c2845bb49f4db4",
+            "provenance_readback_receipt_path": "C:/Users/shubin/skills/super-editor-business-skills/skills/math-thinking-camp-interface-41073/runs/full-conversion-20260818/batch-b3-31779.readback-receipt.json",
+            "provenance_readback_receipt_sha256": "sha256:497ec742af25f27437c5dc7f86e6289dac236b99b4135a41bba688c23d4bf374",
+            "run_id": "math-thinking-camp-batch-b3-31779-20260818",
+            "carrier_block_id": "PPThZ1djG341094",
+            "slide_id": "46337",
+            "source_book_id": "1819803",
+            "source_catalog_id": "31779",
+            "target_book_id": "1820819",
+            "target_catalog_id": "46337"
+          }
+        }
+      ]
+    }
+  ],
+  "integrity_hash": "sha256:0b4e412a62973156a8734bb89cb6e748f37cd71ce3e56a1c0ce79e3eb4aa1212"
+}

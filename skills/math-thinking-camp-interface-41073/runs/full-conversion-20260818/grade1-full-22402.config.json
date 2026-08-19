@@ -1,0 +1,87 @@
+{
+  "run_id": "math-thinking-camp-grade1-full-22402-20260819",
+  "carrier_block_id": "QJYjbCqT4_41089",
+  "route_label": "全册普通学习之旅",
+  "output": "grade1-full-22402.provenance-run.json",
+  "execution_mode": "batch",
+  "source": {
+    "book_id": "1819783",
+    "catalog_id": "22402",
+    "catalog_path": [
+      "学习之旅17 单数和双数"
+    ],
+    "snapshot_hash": "sha256:ec3213ed6ecfd9fb6b70231fb6bef8c871a2d4cb8db9f202a2d409767cd693ad"
+  },
+  "template": {
+    "requested_template_id": "41073",
+    "resolved_template_id": "41073",
+    "variant_id": "full-normal",
+    "snapshot_hash": "sha256:18f0bccb7368b9bec006afb8a79f4b4f20b80d7d40493b9cf39a387fb88f1a33"
+  },
+  "target": {
+    "book_id": "1820815",
+    "catalog_id": "46354",
+    "before_hash": "sha256:ebd6db226d868030e86ba99b9f0a2ccfe5684b84b730cb2aa531e54f9bd85e79",
+    "result_hash": "sha256:10865a234e8ecb3457470d37c46bd17cbc287c9039757053d0e500e08fad79d9"
+  },
+  "applied_rules": {
+    "full-problem-questions": {
+      "source_block": "5039335",
+      "target_block": "QJYjbCqT4_41089",
+      "source_role": "来源问题探索完整题目",
+      "target_role": "问题探索卡片与查看入口",
+      "summary": "完整保留来源问题探索题干与富文本内嵌对象，并创建来源区块定位。"
+    },
+    "full-solution-summary": {
+      "source_block": "5039338",
+      "target_block": "QJYjbCqT4_41089",
+      "source_role": "来源解题思路与名师总结",
+      "target_role": "解题思路引导语与总结入口",
+      "summary": "写入来源支持的解题引导语，并保留解题思路和名师总结查看入口。"
+    },
+    "full-primary-links": {
+      "source_block": "5039335",
+      "target_block": "QJYjbCqT4_41089",
+      "source_role": "问题探索、解题思路、名师总结三个来源区块",
+      "target_role": "三个完整外层查看组",
+      "summary": "创建问题探索、解题思路和名师总结三个可回读来源区块定位。"
+    },
+    "full-variant-links": {
+      "source_block": "5039342",
+      "target_block": "QJYjbCqT4_41089",
+      "source_role": "两个变式的分析、解答与关键点区块",
+      "target_role": "两个变式各三个完整外层入口",
+      "summary": "两个变式分别创建思路分析、解答和关键点定位，共六个且不串题。"
+    }
+  },
+  "baseline": {
+    "template_id": "41073",
+    "source_semantic_snapshot": "C:\\Users\\shubin\\AppData\\Local\\Temp\\super-editor-control\\semantic-snapshots\\1819783-22402-f9e1fb147c0c56999c46758a0e2d8c1fbf13af72d812ae4daa045d1d912129f3.json",
+    "target_before_artifact": "C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1820815-46096-75e1b8f2fd11bc3240e7d2eadbd03ef492f576c2a1a519d58143f85133eaf544.json"
+  },
+  "instance_fixes": [
+    {
+      "kind": "phone_canvas_correction",
+      "summary": "根据用户反馈把页面级画布由 PC 修正为 phone/375，并同步全部区块宽度。"
+    },
+    {
+      "kind": "phone_group_bounds_correction",
+      "summary": "校正问题探索查看组的旧 PC 包围盒元数据，保持子元素位置和模块锚点不变。"
+    }
+  ],
+  "user_approvals": [
+    {
+      "id": "full-conversion-approval-20260818",
+      "type": "batch_authorization",
+      "status": "confirmed",
+      "scope": "数学思维特训营未转换书本的逐目录全量转换",
+      "confirmed_by": "user",
+      "confirmed_at": "2026-08-18T21:00:00+08:00",
+      "evidence": [
+        "用户明确要求开始全量转换，并指定后续只在 http://127.0.0.1:8090/ 操作。",
+        "用户于 2026-08-19 指出界面教辅必须使用 phone 宽度，已按该最新确认修正。"
+      ]
+    }
+  ],
+  "created_at": "2026-08-19T01:56:31.959Z"
+}

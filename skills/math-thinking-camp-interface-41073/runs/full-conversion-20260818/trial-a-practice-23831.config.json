@@ -1,0 +1,17 @@
+{
+  "run_id": "math-thinking-camp-trial-a-practice-23831-20260818",
+  "carrier_block_id": "gm-Y1Kegwf41091",
+  "route_label": "A版练习页",
+  "output": "trial-a-practice-23831.provenance-run.json",
+  "source": {"book_id":"1819791","catalog_id":"23831","catalog_path":["学习之旅1 数数有多少"],"snapshot_hash":"sha256:6c4487d1574a8edc5cdc96b549ae6f0a641531a29e49e300c0041055e37d3334"},
+  "template": {"requested_template_id":"41074","resolved_template_id":"41074","variant_id":"a-practice","snapshot_hash":"sha256:2f1c4e44bda7eaddb6471209dd6a90880e214568f4c05e8e741a1f4f79786038"},
+  "target": {"book_id":"1820816","catalog_id":"46098","before_hash":"sha256:e97b3eee2afd06e59e5a6307f33261064f7c7f48707c1d6a8af71ecd440d6218","result_hash":"sha256:337022140491364fe9b4540fc8793281a3d00b5cc740a6fddf2fce563a6234fa"},
+  "applied_rules": {
+    "ab-block-and-copy": {"source_block":"5121473","target_block":"gm-Y1Kegwf41091","source_role":"A版练习目录与知识点名称","target_role":"唯一保留的A版练习子区块与基础巩固文案","summary":"保留 A 版练习子区块，删除解析子区块，并写入数数有多少基础巩固文案。"},
+    "ab-exercise-modules": {"source_block":"5234792","target_block":"gm-Y1Kegwf41091","source_role":"前两个练习相邻的互动课程关系","target_role":"练习1与练习2完整卡片组","summary":"分别复制前两个相邻互动课程，目标页恰好两个互动课程。"},
+    "ab-view-link": {"source_block":"5121473","target_block":"gm-Y1Kegwf41091","source_role":"首个练习实质区块","target_role":"查看完整外层组","summary":"创建一个指向来源首个练习区块的定位模块。"}
+  },
+  "baseline": {"template_id":"41074","target_before_artifact":"C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1820816-46098-278de82d53a3c086a399c03e568162d3217466bbdb50f3fb926ca41028e6e06d.json","source_semantic_snapshot":"C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1819791-23831-d5454871d79c4fe1bb0e06a09af7f54f1e2102116ea9a5c9764f607eff7fcfb3.json"},
+  "user_approvals": [{"id":"full-conversion-approval-20260818","type":"trial_authorization","status":"confirmed","scope":"数学思维特训营未转换书本的代表页试制与后续全量转换","confirmed_by":"user","confirmed_at":"2026-08-18T21:00:00+08:00","evidence":["用户明确要求开始全量转换，并指定后续只在 http://127.0.0.1:8090/ 操作。"]}],
+  "created_at":"2026-08-18T21:46:00+08:00"
+}

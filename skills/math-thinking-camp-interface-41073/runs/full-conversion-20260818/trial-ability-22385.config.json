@@ -1,0 +1,63 @@
+{
+  "run_id": "math-thinking-camp-trial-ability-22385-20260818",
+  "carrier_block_id": "UN3g1OkkzG41095",
+  "route_label": "全册能力达标A",
+  "output": "trial-ability-22385.provenance-run.json",
+  "source": {
+    "book_id": "1819783",
+    "catalog_id": "22385",
+    "catalog_path": ["能力达标A"],
+    "snapshot_hash": "sha256:916177fed13301cdd0688062eaa1f94dcf477fe76d06f146531b603f17a06c3a"
+  },
+  "template": {
+    "requested_template_id": "41075",
+    "resolved_template_id": "41075",
+    "variant_id": "ability-a",
+    "snapshot_hash": "sha256:82ae50d30fd0eed9d64cc7fc6195a8cd30c1384707a2030867b803db451782e0"
+  },
+  "target": {
+    "book_id": "1820815",
+    "catalog_id": "46097",
+    "before_hash": "sha256:94104e826e928286cce4822607d57b85a6bf880125a1f227460bff858f01c71a",
+    "result_hash": "sha256:2932ded9a6918d7c42e4a969aefa0eb50f4f5adf0334a8555d199bdd8e58f5d1"
+  },
+  "applied_rules": {
+    "ability-content": {
+      "source_block": "5039093",
+      "target_block": "UN3g1OkkzG41095",
+      "source_role": "能力达标A及其前五个学习之旅目录",
+      "target_role": "保留的能力达标A子区块及五个知识标签",
+      "summary": "删除 B 子区块，五个知识点按最近到最早显示，并保留基础巩固文案。"
+    },
+    "ability-modules": {
+      "source_block": "5039093",
+      "target_block": "UN3g1OkkzG41095",
+      "source_role": "来源智能体与首个实质内容区块",
+      "target_role": "AI拍照批改完整外层组与查看完整外层组",
+      "summary": "复制一个来源智能体并创建一个来源区块定位；来源无打印模块，已删除打印入口且未复制核对答案关系。"
+    }
+  },
+  "baseline": {
+    "template_id": "41075",
+    "target_before_artifact": "C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1820815-46097-416fd715b7309050159cfbca96d87c6d0cebd49f66ec17e16a389deb1331db7f.json",
+    "source_semantic_snapshot": "C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1819783-22385-5bcf3b7ac3555fb146cbd6bf845871957334137fa18acb4c17de342158ca4a84.json"
+  },
+  "instance_fixes": [
+    {
+      "kind": "visual_order_correction",
+      "summary": "按标签实际纵向坐标核对并修正为最近到最早，而不是按元素数组顺序推断。"
+    }
+  ],
+  "user_approvals": [
+    {
+      "id": "full-conversion-approval-20260818",
+      "type": "trial_authorization",
+      "status": "confirmed",
+      "scope": "数学思维特训营未转换书本的代表页试制与后续全量转换",
+      "confirmed_by": "user",
+      "confirmed_at": "2026-08-18T21:00:00+08:00",
+      "evidence": ["用户明确要求开始全量转换，并指定后续只在 http://127.0.0.1:8090/ 操作。"]
+    }
+  ],
+  "created_at": "2026-08-18T21:40:00+08:00"
+}

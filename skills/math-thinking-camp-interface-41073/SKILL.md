@@ -7,12 +7,14 @@ description: 使用 super-editor-control 按语义规则审计、试制或转换
 
 # 数学思维特训营界面型教辅（41073/41074/41075/41076）
 
-当前规则包是 `0.1.0-draft`。先完整读取 [rule-pack.json](references/rule-pack.json) 和
+当前规则包是 `0.1.0-validated`。先完整读取 [rule-pack.json](references/rule-pack.json) 和
 [routing-and-gaps.md](references/routing-and-gaps.md)；核对具体书目时再读取
 [source-inventory.json](references/source-inventory.json)。继续试制前还要读取
-[trial-preflight-2026-08-18.json](references/trial-preflight-2026-08-18.json) 和
-[runtime-refresh-2026-08-18.json](references/runtime-refresh-2026-08-18.json)，并在新 MCP 任务中完成其中列出的
-七个代表页复验。草案未获试制批准，也未完成两个前向案例，禁止批量写书。
+[trial-preflight-2026-08-18.json](references/trial-preflight-2026-08-18.json)、
+[runtime-refresh-2026-08-18.json](references/runtime-refresh-2026-08-18.json) 和
+[gate-reverification-2026-08-18.json](references/gate-reverification-2026-08-18.json)。七个代表页已在包含富文本修复的
+本地运行实例中全部达到 `richText=deep` 且 `fullFidelity=true`；生产旧实例的失败结果只作运行版本对照。
+完整保真门禁已解除，用户已明确批准试制与后续全量转换；两个真实前向案例已通过，可进入受账本约束的批量执行。
 
 ## 来源边界
 
@@ -64,7 +66,7 @@ description: 使用 super-editor-control 按语义规则审计、试制或转换
 
 ## 状态升级
 
-- 当前只允许继续分析、修订规则和准备试制，不允许生产批量。
+- 当前已通过七页完整保真门禁并获试制授权，可执行代表页试制；两个真实前向案例通过前不允许生产批量。
 - 用户确认路由与规则后，刷新真实 capability catalog，把规则包升级为 `trial_approved`，再用一个常规目录、
   一个能力达标目录、一个 A/B 练习及其解析做试制。
 - 至少两个未参与教授、结构不同的目录完成真实保存、来源追溯与前向证据回读后，才能升级为 `validated`。

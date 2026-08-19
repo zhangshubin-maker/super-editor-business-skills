@@ -1,0 +1,69 @@
+{
+  "run_id": "math-thinking-camp-batch-b3-25063-20260818",
+  "carrier_block_id": "_rdvjM5DI441093",
+  "route_label": "B版练习页",
+  "output": "batch-b3-25063.provenance-run.json",
+  "execution_mode": "batch",
+  "source": {
+    "book_id": "1819803",
+    "catalog_id": "25063",
+    "catalog_path": [
+      "学习之旅1 规律填数"
+    ],
+    "snapshot_hash": "sha256:b5f236ae571f6f927f697441da914879d4c9f4c0b51a2968c58ee9f0e9d6648a"
+  },
+  "template": {
+    "requested_template_id": "41076",
+    "resolved_template_id": "41076",
+    "variant_id": "b-practice",
+    "snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7"
+  },
+  "target": {
+    "book_id": "1820819",
+    "catalog_id": "46278",
+    "before_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+    "result_hash": "sha256:b46b115a67671dd5b0b9671113b2dde73f4fb2096393d6210d76b0b2333020de"
+  },
+  "applied_rules": {
+    "ab-block-and-copy": {
+      "source_block": "5157630",
+      "target_block": "_rdvjM5DI441093",
+      "source_role": "B版练习目录与知识点名称",
+      "target_role": "唯一保留的B版练习子区块与拔高巩固文案",
+      "summary": "保留 B 版练习子区块并写入规律填数拔高巩固文案。"
+    },
+    "ab-exercise-modules": {
+      "source_block": "5232875",
+      "target_block": "_rdvjM5DI441093",
+      "source_role": "前两个练习相邻的互动课程关系",
+      "target_role": "练习1与练习2完整卡片组",
+      "summary": "分别复制前两个相邻互动课程，目标页恰好两个互动课程。"
+    },
+    "ab-view-link": {
+      "source_block": "5157630",
+      "target_block": "_rdvjM5DI441093",
+      "source_role": "首个练习实质区块",
+      "target_role": "查看完整外层组",
+      "summary": "创建一个指向来源首个练习区块的定位模块。"
+    }
+  },
+  "baseline": {
+    "template_id": "41076",
+    "source_semantic_snapshot": "C:\\Users\\shubin\\AppData\\Local\\Temp\\super-editor-control\\semantic-snapshots\\1819803-25063-ed68514c7947f20d4a01f346bba292146af0947bd7bd04c924f1ec0f09ad69d7.json",
+    "target_before_artifact": "template-hash:sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7"
+  },
+  "user_approvals": [
+    {
+      "id": "full-conversion-approval-20260818",
+      "type": "batch_authorization",
+      "status": "confirmed",
+      "scope": "数学思维特训营未转换书本的逐目录全量转换",
+      "confirmed_by": "user",
+      "confirmed_at": "2026-08-18T21:00:00+08:00",
+      "evidence": [
+        "用户明确要求开始全量转换，并指定后续只在 http://127.0.0.1:8090/ 操作。"
+      ]
+    }
+  ],
+  "created_at": "2026-08-18T15:39:38.184Z"
+}

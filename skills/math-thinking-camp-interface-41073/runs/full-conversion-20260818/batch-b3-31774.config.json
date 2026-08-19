@@ -1,0 +1,62 @@
+{
+  "run_id": "math-thinking-camp-batch-b3-31774-20260818",
+  "carrier_block_id": "Gn_ziN5yvL41094",
+  "route_label": "B版解析页",
+  "output": "batch-b3-31774.provenance-run.json",
+  "execution_mode": "batch",
+  "source": {
+    "book_id": "1819803",
+    "catalog_id": "31774",
+    "catalog_path": [
+      "学习之旅25-解析"
+    ],
+    "snapshot_hash": "sha256:36ded7a78022ce7a21db739601f8fbc38efd4a589701cebf544c47781a92c58f"
+  },
+  "template": {
+    "requested_template_id": "41076",
+    "resolved_template_id": "41076",
+    "variant_id": "b-analysis",
+    "snapshot_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7"
+  },
+  "target": {
+    "book_id": "1820819",
+    "catalog_id": "46332",
+    "before_hash": "sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7",
+    "result_hash": "sha256:07220ddf5604fc92bfefb9156df9f7f960a6aff6de5bdc9806672c7d559912e7"
+  },
+  "applied_rules": {
+    "ab-block-and-copy": {
+      "source_block": "5370994",
+      "target_block": "Gn_ziN5yvL41094",
+      "source_role": "B版解析目录与同序号练习知识点",
+      "target_role": "唯一保留的B版解析子区块与解析文案",
+      "summary": "保留 B 版解析子区块并写入盈亏问题解析说明。"
+    },
+    "ab-view-link": {
+      "source_block": "5370994",
+      "target_block": "Gn_ziN5yvL41094",
+      "source_role": "首个解析实质内容区块",
+      "target_role": "查看完整外层组",
+      "summary": "创建一个指向来源首个解析实质区块的定位模块。"
+    }
+  },
+  "baseline": {
+    "template_id": "41076",
+    "source_semantic_snapshot": "C:\\Users\\shubin\\AppData\\Local\\Temp\\super-editor-control\\semantic-snapshots\\1819803-31774-8217b1221279429b3f02125b87f884d5ad9ffe4bda596c05ccba3de1dd707343.json",
+    "target_before_artifact": "template-hash:sha256:bc675960e627a0462917cc9be388caf29b7aa04024b5f3c8372cefc80a5d81e7"
+  },
+  "user_approvals": [
+    {
+      "id": "full-conversion-approval-20260818",
+      "type": "batch_authorization",
+      "status": "confirmed",
+      "scope": "数学思维特训营未转换书本的逐目录全量转换",
+      "confirmed_by": "user",
+      "confirmed_at": "2026-08-18T21:00:00+08:00",
+      "evidence": [
+        "用户明确要求开始全量转换，并指定后续只在 http://127.0.0.1:8090/ 操作。"
+      ]
+    }
+  ],
+  "created_at": "2026-08-18T15:39:54.870Z"
+}

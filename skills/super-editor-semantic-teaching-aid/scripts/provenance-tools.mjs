@@ -71,6 +71,17 @@ function requireExactKeys(value, expectedKeys, label) {
   }
 }
 
+function requireRequiredAndAllowedKeys(value, requiredKeys, optionalKeys, label) {
+  const actual = Object.keys(requireObject(value, label)).sort()
+  const required = [...requiredKeys].sort()
+  const allowed = new Set([...requiredKeys, ...optionalKeys])
+  const missing = required.filter((key) => !actual.includes(key))
+  const unexpected = actual.filter((key) => !allowed.has(key))
+  if (missing.length || unexpected.length) {
+    throw new Error(`${label} must contain required keys: ${required.join(', ')}; optional keys: ${[...optionalKeys].sort().join(', ')}`)
+  }
+}
+
 function cloneJson(value) {
   return JSON.parse(JSON.stringify(value))
 }
@@ -938,10 +949,13 @@ export function hashEditorExportBlocks(blocks) {
 }
 
 function validateSaveReceiptData(data, slideId) {
-  requireExactKeys(data, [
+  requireRequiredAndAllowedKeys(data, [
     'scope', 'slideId', 'saved', 'savedScope', 'savedSlides', 'verified',
     'verifiedScope', 'verifiedSlides', 'contentHash', 'persistedContentHash',
     'dirty', 'warnings'
+  ], [
+    'authoringContentHash', 'persistedAuthoringContentHash', 'normalizationOnly',
+    'reconciled', 'reloadedContentHash', 'businessDiffPaths'
   ], 'editor_save_verified decoded result')
   if (data.scope !== 'current') throw new Error('editor_save_verified scope must be current')
   if (String(data.slideId) !== slideId) throw new Error('editor_save_verified slideId does not match the expected target slide')
@@ -957,6 +971,26 @@ function validateSaveReceiptData(data, slideId) {
   }
   if (data.contentHash !== data.persistedContentHash) {
     throw new Error('editor_save_verified contentHash must equal persistedContentHash')
+  }
+  if (data.authoringContentHash !== undefined || data.persistedAuthoringContentHash !== undefined) {
+    if (!FNV_PAGE_HASH_PATTERN.test(data.authoringContentHash) || !FNV_PAGE_HASH_PATTERN.test(data.persistedAuthoringContentHash)) {
+      throw new Error('editor_save_verified authoringContentHash and persistedAuthoringContentHash must match fnv1a32:<8 lowercase hex>')
+    }
+    if (data.authoringContentHash !== data.persistedAuthoringContentHash) {
+      throw new Error('editor_save_verified authoringContentHash must equal persistedAuthoringContentHash')
+    }
+  }
+  if (data.normalizationOnly !== undefined && typeof data.normalizationOnly !== 'boolean') {
+    throw new Error('editor_save_verified normalizationOnly must be boolean when present')
+  }
+  if (data.reconciled !== undefined && typeof data.reconciled !== 'boolean') {
+    throw new Error('editor_save_verified reconciled must be boolean when present')
+  }
+  if (data.reloadedContentHash !== undefined && data.reloadedContentHash !== null && !FNV_PAGE_HASH_PATTERN.test(data.reloadedContentHash)) {
+    throw new Error('editor_save_verified reloadedContentHash must be null or match fnv1a32:<8 lowercase hex>')
+  }
+  if (data.businessDiffPaths !== undefined && (!Array.isArray(data.businessDiffPaths) || data.businessDiffPaths.length !== 0)) {
+    throw new Error('editor_save_verified businessDiffPaths must be an empty array for a verified receipt')
   }
   if (data.dirty !== false) throw new Error('editor_save_verified dirty must be false')
   if (!Array.isArray(data.warnings) || data.warnings.length !== 0) {

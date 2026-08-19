@@ -1,0 +1,73 @@
+{
+  "run_id": "math-thinking-camp-grade1-full-22400-20260819",
+  "carrier_block_id": "UN3g1OkkzG41095",
+  "route_label": "全册能力达标B",
+  "output": "grade1-full-22400.provenance-run.json",
+  "execution_mode": "batch",
+  "source": {
+    "book_id": "1819783",
+    "catalog_id": "22400",
+    "catalog_path": [
+      "能力达标B"
+    ],
+    "snapshot_hash": "sha256:669228378c2e6edf8d2052fb6aad8df4ab9f6fbc203e984fc8c2cb9e9eebd9df"
+  },
+  "template": {
+    "requested_template_id": "41075",
+    "resolved_template_id": "41075",
+    "variant_id": "ability-b",
+    "snapshot_hash": "sha256:82ae50d30fd0eed9d64cc7fc6195a8cd30c1384707a2030867b803db451782e0"
+  },
+  "target": {
+    "book_id": "1820815",
+    "catalog_id": "46371",
+    "before_hash": "sha256:94104e826e928286cce4822607d57b85a6bf880125a1f227460bff858f01c71a",
+    "result_hash": "sha256:191edef32578568e0ecbda749a30be9917b72aaae63d21f6a18f465728c073af"
+  },
+  "applied_rules": {
+    "ability-content": {
+      "source_block": "5039308",
+      "target_block": "UN3g1OkkzG41095",
+      "source_role": "能力达标B及其前五个学习之旅目录",
+      "target_role": "保留的能力达标B卡片及五个知识标签",
+      "summary": "只保留能力达标B卡片，五个知识点按最近到最早显示，并保留基础巩固文案。"
+    },
+    "ability-modules": {
+      "source_block": "5039308",
+      "target_block": "UN3g1OkkzG41095",
+      "source_role": "来源智能体与首个实质内容区块",
+      "target_role": "AI拍照批改完整外层组与查看完整外层组",
+      "summary": "创建一个来源智能体和一个来源区块定位；不复制核对答案或重复模块。"
+    }
+  },
+  "baseline": {
+    "template_id": "41075",
+    "source_semantic_snapshot": "C:\\Users\\shubin\\AppData\\Local\\Temp\\super-editor-control\\semantic-snapshots\\1819783-22400-b8599e6af441642f158279c0fd0094df1c8ac7eb10c5705b3b101b94b7a30765.json",
+    "target_before_artifact": "C:/Users/shubin/AppData/Local/Temp/super-editor-control/semantic-snapshots/1820815-46097-416fd715b7309050159cfbca96d87c6d0cebd49f66ec17e16a389deb1331db7f.json"
+  },
+  "instance_fixes": [
+    {
+      "kind": "phone_canvas_correction",
+      "summary": "根据用户反馈把页面级画布由 PC 修正为 phone/375，并同步全部区块宽度。"
+    },
+    {
+      "kind": "phone_group_bounds_correction",
+      "summary": "校正能力卡片最外层组的旧 PC 包围盒元数据，保持子元素位置和模块锚点不变。"
+    }
+  ],
+  "user_approvals": [
+    {
+      "id": "full-conversion-approval-20260818",
+      "type": "batch_authorization",
+      "status": "confirmed",
+      "scope": "数学思维特训营未转换书本的逐目录全量转换",
+      "confirmed_by": "user",
+      "confirmed_at": "2026-08-18T21:00:00+08:00",
+      "evidence": [
+        "用户明确要求开始全量转换，并指定后续只在 http://127.0.0.1:8090/ 操作。",
+        "用户于 2026-08-19 指出界面教辅必须使用 phone 宽度，已按该最新确认修正。"
+      ]
+    }
+  ],
+  "created_at": "2026-08-19T01:56:31.404Z"
+}
