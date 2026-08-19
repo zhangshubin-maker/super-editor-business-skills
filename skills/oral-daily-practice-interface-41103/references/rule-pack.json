@@ -3,7 +3,7 @@
   "identity": {
     "skill_name": "oral-daily-practice-interface-41103",
     "display_name": "口语天天练界面型教辅（41103）",
-    "version": "0.1.7",
+    "version": "0.2.0",
     "status": "validated",
     "book_family": "小学英语口语天天练2.0"
   },
@@ -124,15 +124,15 @@
     {
       "id": "learning-path-content",
       "order": 20,
-      "intent": "把学习路径标题、来源实际存在的二至三个句型和四组双语词汇映射到样章第二段",
-      "when": "来源存在唯一学习路径段、二至三个有序句型和四组可唯一配对的双语词汇",
+      "intent": "把学习路径标题、来源实际存在的二至五个句型和四组双语词汇映射到样章第二段",
+      "when": "来源存在唯一学习路径段、二至五个有序句型和四组可唯一配对的双语词汇",
       "scope": {"intent": "符合本书类结构的单个 DAY 目录"},
       "source": {
-        "role": "Oral Learning Path 中英文标题、Sentence Pattern 二至三句和 Words 四组中英词项",
+        "role": "Oral Learning Path 中英文标题、Sentence Pattern 二至五句和 Words 四组中英词项",
         "cardinality": {"min": 1, "max": 1},
         "evidence": [
           {"class": "semantic", "kind": "learning_path_meaning", "claim": "该段表达学习路径、目标句型和核心词汇", "observation": "来源含 Oral Learning Path/口语学习路径、Sentence Pattern/句型、Words/单词"},
-          {"class": "structure", "kind": "sentence_and_word_cardinality", "claim": "句型按来源实际为二至三条且顺序稳定，英语词项四条且中文词义应形成四组", "observation": "本册大多数目录为三条句型，少数目录原课件只有两条；中文窄框可能因视觉换行与富文本段落数不同"}
+          {"class": "structure", "kind": "sentence_and_word_cardinality", "claim": "句型按来源实际为二至五条且顺序稳定，英语词项四条且中文词义应形成四组", "observation": "同书类不同册存在二至五条句型；中文窄框可能因视觉换行与富文本段落数不同"}
         ]
       },
       "target": {
@@ -151,20 +151,20 @@
       },
       "action": {
         "type": "atomic_sequence",
-        "intent": "保持样章样式写入标题、来源实际存在的二至三个编号句型和四组双语词汇",
+        "intent": "保持样章样式写入标题、来源实际存在的二至五个编号句型和四组双语词汇",
         "required_capabilities": ["editor_text_document", "editor_text_set_content", "editor_text_inspect_layout", "editor_duplicate_elements", "editor_replace_element_safe", "editor_resize_element", "editor_screenshot"],
         "style_policy": "preserve_target",
         "module_policy": "none",
         "steps": [
           {"type": "set_learning_path_titles", "intent": "复制来源中英文学习路径标题", "required_capabilities": ["editor_text_set_content"]},
-          {"type": "set_source_sentence_patterns", "intent": "按来源实际条数、顺序和标点写入二至三个编号句型；不得为空位编造第三句；标题框和句型正文框扩宽到蓝色卡片内的可用宽度。正文默认 16px；最长句 45–49 字符时使用 13px，50–55 字符使用 12px，56–60 字符允许使用 11px，确保全部句型完整显示", "required_capabilities": ["editor_text_set_content", "editor_text_inspect_layout", "editor_resize_element", "editor_text_format"]},
-          {"type": "pair_four_bilingual_words", "intent": "按阅读顺序写入四组英语词项与中文释义；结合伴随列表基数、富文本、截图和几何判断，禁止仅按换行切分。词汇卡排成两行四列，每行依次为英文、中文、英文、中文，每个词项和释义必须是独立文本元素；上下两行同列 left 完全一致，列宽按本页同列最长内容动态计算（英文参考字符数×9+6，中文参考字符数×16+4），列间距 6px，整组在卡片内居中，确保最右中文完整显示；禁止用空格、制表符或会被清洗的 inline width 撑列。旧单文本框不可安全往返时复制为八个文本元素，再用 editor_replace_element_safe 两阶段设置内容与几何", "required_capabilities": ["editor_text_document", "editor_screenshot", "editor_text_set_content", "editor_text_inspect_layout", "editor_duplicate_elements", "editor_replace_element_safe", "editor_resize_element", "editor_move_element"]}
+          {"type": "set_source_sentence_patterns", "intent": "按来源实际条数、顺序和标点写入二至五个编号句型，不得补句或删句。二至三句使用 72px 句型框和 588px 学习区块，四句使用 96px 和 612px，五句使用 120px 和 636px；二至三句默认 16px、最长句 45–49 字符用 13px、50–55 字符用 12px、超过 55 字符用 11px，四至五句默认 13px、最长句 50–55 字符用 12px、超过 55 字符用 11px", "required_capabilities": ["editor_text_set_content", "editor_text_inspect_layout", "editor_resize_element", "editor_text_format", "editor_update_block"]},
+          {"type": "pair_four_bilingual_words", "intent": "按阅读顺序写入四组英语词项与中文释义；结合伴随列表基数、富文本、截图和几何判断，禁止仅按换行切分。词汇卡排成两行四列，每行依次为英文、中文、英文、中文，每个词项和释义必须是独立文本元素；上下两行同列 left 完全一致，列宽按本页同列最长内容动态计算（英文参考字符数×9+6，中文参考字符数×16+4），列间距 6px，整组在卡片内居中；四列总宽超过 262px 时按 262/总宽等比压缩列宽和字号，字号下限 10px；先移动到安全位置再扩宽，确保最右中文完整显示；禁止用空格、制表符或会被清洗的 inline width 撑列。旧单文本框不可安全往返时复制为八个文本元素，再用 editor_replace_element_safe 两阶段设置内容与几何", "required_capabilities": ["editor_text_document", "editor_screenshot", "editor_text_set_content", "editor_text_inspect_layout", "editor_duplicate_elements", "editor_replace_element_safe", "editor_resize_element", "editor_move_element"]}
         ]
       },
       "on_missing": "needs_review",
       "on_ambiguous": "stop",
       "validate": [
-        {"id": "sentence-cardinality-and-order", "intent": "目标显示的二至三个完整句型条数、顺序和标点与来源一致，不得补写来源不存在的句型；Sentence Pattern 句型标题及最长句均完整显示、无右侧裁切", "severity": "error", "required_capabilities": ["editor_get_canvas_tree", "editor_text_inspect_layout", "editor_screenshot"]},
+        {"id": "sentence-cardinality-and-order", "intent": "目标显示的二至五个完整句型条数、顺序和标点与来源一致，不得补写或删除句型；Sentence Pattern 句型标题及最长句均完整显示、无右侧裁切", "severity": "error", "required_capabilities": ["editor_get_canvas_tree", "editor_text_inspect_layout", "editor_screenshot"]},
         {"id": "word-pair-cardinality", "intent": "目标恰好以八个独立文本元素显示四组中英词汇，无合并、遗漏、错配或裁切；两行四列中同列 left 数值一致，最右两个中文释义完整显示", "severity": "error", "required_capabilities": ["editor_get_canvas_tree", "editor_text_inspect_layout", "editor_screenshot"]}
       ]
     },
@@ -262,7 +262,7 @@
     {"id": "template-three-block-plus-tail-structure", "intent": "目标保留 41103 的 Dialogue、口语学习路径、打印书写练习三段结构，并在末尾追加唯一的 20px 空区块", "severity": "error", "required_capabilities": ["editor_list_blocks", "editor_get_canvas_tree", "editor_export_slide"]},
     {"id": "text-and-layout-audit", "intent": "目标无新增空文本、占位、非法几何、越界或文本裁切错误", "severity": "error", "required_capabilities": ["editor_audit_content", "editor_text_inspect_layout"]},
     {"id": "nine-module-relations", "intent": "Dialogue 定位、音频、两视频、两个智能课件、在线答题、智能体和打印共九个模块关系全部正确回读", "severity": "error", "required_capabilities": ["editor_list_digital_modules", "editor_get_digital_module"]},
-    {"id": "full-page-visual-review", "intent": "整页标题、来源实际存在的二至三句句型、四组词汇、六张学习卡和打印入口经全页截图核对无异常；词汇卡四列在两行间对齐且无右侧裁切", "severity": "error", "required_capabilities": ["editor_screenshot", "editor_get_canvas_tree"]},
+    {"id": "full-page-visual-review", "intent": "整页标题、来源实际存在的二至五句句型、四组词汇、六张学习卡和打印入口经全页截图核对无异常；词汇卡四列在两行间对齐且无右侧裁切", "severity": "error", "required_capabilities": ["editor_screenshot", "editor_get_canvas_tree"]},
     {"id": "save-export-readback", "intent": "保存回执 verified=true、dirty=false，导出页身份与区块结构匹配", "severity": "error", "required_capabilities": ["editor_save_verified", "editor_export_slide"]}
   ],
   "training": {
