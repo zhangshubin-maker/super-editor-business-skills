@@ -86,3 +86,17 @@ node scripts/analyze-annotations.mjs --json "<annotations.json>" --audio-dir "<a
 ## 8. 恢复策略
 
 连接中断或结果未知时，重新连接同一 bookId，从最后一个保存成功页开始回读；用元素位置、component_id 和模块类型判断已完成项，只补缺失项。绝不因 MCP 超时直接重试立即写库操作。
+
+## 9. 已验证经验（2026-08 高二上册 1820741 整书导入）
+
+- `editor_select_slide` 的 `slideId` 必须传字符串；数字会被 schema 校验拒绝为“slideId 不能为空”。
+- 新式 `-PDF-annotations.json`（144 标注：22 音频 + 122 原文）会在“第二节”页面把整段原文按钮
+  拆成逐题按钮（`听第X段材料，回答第X题`），并保留 Ⅰ./Ⅱ./Ⅲ./Ⅳ./Ⅴ. 与“第一节”按钮；不同版本的
+  同数字 ID 不代表同一逻辑按钮，映射必须按 `question`（原文模块题干）或音频文件名匹配，不能按 ID 或顺序。
+- 逐页写入前先 `editor_get_slide` 紧凑读取（剥离 pdfpage 的 textLayer），核对
+  `page_natural_code`、定位承载 pdfpage 的 blockUuid，并拒绝已存在按钮的页面（幂等保护）。
+- MCP 页面租约 TTL 约 30 秒；并发任务或本任务残留客户端会造成 `INSTANCE_BUSY`，等待约 35 秒后
+  重试同一次调用即可，不要在同一进程内重复消费已返回的错误响应。
+- 整书导入用持久化 stdio 客户端顺序执行：切页 → 核对页 → checkpoint → `addElements`（保持 JSON 顺序，
+  返回 elementIds 与标注一一对应）→ 音频 `editor_upload_file` 后建 77 → 原文建 76 → `editor_list_digital_modules`
+  回读 → `editor_save_verified(scope=current)`；每页独立保存，任何一页失败先删本轮模块再 rollback。
